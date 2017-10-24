@@ -1,0 +1,120 @@
+/* gujarati */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Hind Vadodara Light'), local('HindVadodara-Light'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTfBUZwfuTa19CuDJRnlbo1w.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0A80-0AFF, U+200B-200D, U+20B9, U+25CC, U+A830-A839;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Hind Vadodara Light'), local('HindVadodara-Light'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTRZaVtpo33V_rni6ACD37wA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Hind Vadodara Light'), local('HindVadodara-Light'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTTNTwKlZaTDqBdSBniKmKtQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* gujarati */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Hind Vadodara Regular'), local('HindVadodara-Regular'), url(http://fonts.gstatic.com/s/hindvadodara/v3/9c6KKeibr6NtFqknnNxZByUZf6SPjCvTHKwPaGj40_g.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0A80-0AFF, U+200B-200D, U+20B9, U+25CC, U+A830-A839;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Hind Vadodara Regular'), local('HindVadodara-Regular'), url(http://fonts.gstatic.com/s/hindvadodara/v3/9c6KKeibr6NtFqknnNxZBxLE1M_n0V67aubpfN9Cf9U.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Hind Vadodara Regular'), local('HindVadodara-Regular'), url(http://fonts.gstatic.com/s/hindvadodara/v3/9c6KKeibr6NtFqknnNxZB8I79x-VWsl9ZLFyGx7L0Fo.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* gujarati */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Hind Vadodara Medium'), local('HindVadodara-Medium'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTZfRudMoZRckgJqivmkdMIQ.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0A80-0AFF, U+200B-200D, U+20B9, U+25CC, U+A830-A839;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Hind Vadodara Medium'), local('HindVadodara-Medium'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTcJPHbK80cmThbaXzBNXidw.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Hind Vadodara Medium'), local('HindVadodara-Medium'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTeQ59q_mNX23NRW2koua-bw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* gujarati */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Hind Vadodara SemiBold'), local('HindVadodara-SemiBold'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTZdxSovrPkC8XeyL6Eqddh0.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0A80-0AFF, U+200B-200D, U+20B9, U+25CC, U+A830-A839;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Hind Vadodara SemiBold'), local('HindVadodara-SemiBold'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTWPD2e_lpcBlv_deM7NmedY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Hind Vadodara SemiBold'), local('HindVadodara-SemiBold'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTWSHKJ1opCet6Rx30umU_Lk.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* gujarati */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Hind Vadodara Bold'), local('HindVadodara-Bold'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTSEBRq_vlCNYr8d93tjepmQ.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0A80-0AFF, U+200B-200D, U+20B9, U+25CC, U+A830-A839;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Hind Vadodara Bold'), local('HindVadodara-Bold'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTV71k6RLa48Q3kQgOpE0zik.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hind Vadodara';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Hind Vadodara Bold'), local('HindVadodara-Bold'), url(http://fonts.gstatic.com/s/hindvadodara/v3/KrZ6f_YevRawHvh0qDBkTT_eokH_3GQxqJwQLllXLTM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}

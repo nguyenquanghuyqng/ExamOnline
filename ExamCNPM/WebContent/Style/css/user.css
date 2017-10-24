@@ -1,0 +1,22 @@
+.user {
+    border-left:1px solid #77b178; 
+    border-right:1px solid #77b178; 
+    padding: 17px 17px 16px 17px;
+    font-size:18px;
+}
+
+.dropdown a{
+    font-size:18px;
+}
+
+
+.dropdown a:hover {
+    background: rgb(197, 190, 190);
+}
+
+@media(max-width:480px){
+    .user{
+    border:1px solid  #77b178; 
+    margin-top: 20px;
+    }
+}
