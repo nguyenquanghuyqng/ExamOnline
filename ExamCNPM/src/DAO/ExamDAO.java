@@ -82,12 +82,12 @@ public class ExamDAO {
 			while(rs.next()){
 				
 				int number= rs.getInt("number");
-				String contentquestion= rs.getString("question");
+				String contentquestion= rs.getString("contentquestion");
 				String option1=rs.getString("option1");
 				String option2=rs.getString("option2");
 				String option3=rs.getString("option3");
 				String option4=rs.getString("option4");
-				String correctoption=rs.getString("correctanswer");
+				String correctoption=rs.getString("correctoption");
 				
 				Question ibt= new Question();
 				
