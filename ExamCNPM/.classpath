@@ -8,7 +8,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/RAR/FileJAR/mysql-connector-java-5.1.44-bin.jar"/>
-	<classpathentry kind="lib" path="E:/RAR/FileJAR/servlet-api-3.0.jar" sourcepath="E:/RAR/FileJAR/servlet-api-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/apache-tomcat-9.0.0.M13/lib/servlet-api.jar" sourcepath="E:/RAR/FileJAR/servlet-api-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/apache-tomcat-9.0.0.M13"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

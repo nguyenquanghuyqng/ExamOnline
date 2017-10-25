@@ -15,7 +15,7 @@ public class DBConnection {
 			// create connection
 			conn = DriverManager.getConnection(url,username,password);
 			
-			System.out.println("Connected successfully ...");
+			System.out.println("Connected successfully hihi...");
 		} 
 		catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
