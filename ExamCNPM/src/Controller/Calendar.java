@@ -15,6 +15,8 @@ public class Calendar extends HttpServlet {
 
 	public Calendar() {
 		super();
+		
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
