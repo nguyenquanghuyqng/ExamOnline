@@ -13,16 +13,6 @@ import DB.DBConnection;
 
 
 public class ExamDAO {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		DBConnection conn = new DBConnection();
-		ExamDAO ex = new ExamDAO();
-		List<Question> list=ex.DisplayQuestion(conn.CreateConnection());
-		System.out.println(list.get(0).getContentquestion().toString());
-	}
-	
 	
 	
 	public static List<Question> DisplayQuestion(Connection conn){
