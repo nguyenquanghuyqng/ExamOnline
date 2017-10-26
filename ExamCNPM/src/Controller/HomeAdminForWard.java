@@ -15,6 +15,7 @@ public class HomeAdminForWard extends HttpServlet {
 
 	public HomeAdminForWard() {
 		super();
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
