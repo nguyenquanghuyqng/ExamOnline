@@ -56,6 +56,7 @@ public class DeleteAccount extends HttpServlet {
 		Connection conn = (Connection) DBConnection.CreateConnection();
 		
 		int userid = Integer.parseInt(request.getParameter("index"));
+		
 		boolean kt = AccountDAO.DeleteAccount(userid, conn);
 		
 		if (kt) {
