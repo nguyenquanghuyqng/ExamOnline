@@ -46,6 +46,11 @@ public class LoginController extends HttpServlet {
 			boolean kt = LoginDAO.LoginUser(username, password, conn);
 
 			if (kt) {
+				//Khởi tạo đối tượng Session
+				HttpSession session = request.getSession();
+				// gán giá trị của userName khi đăng nhập vào username
+				session.setAttribute("username", username);
+				request.setAttribute("userName", LoginDAO.getUserName(username, conn) );
 				RequestDispatcher rd = request.getRequestDispatcher("View/HomeStudent.jsp");
 				rd.forward(request, response);
 

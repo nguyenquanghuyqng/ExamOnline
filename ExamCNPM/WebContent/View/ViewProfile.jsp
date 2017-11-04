@@ -17,6 +17,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
             addEventListener("load", function() {
                 setTimeout(hideURLbar, 0);
             }, false);
@@ -24,6 +25,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             function hideURLbar() {
                 window.scrollTo(0, 1);
             }
+
+        
 
 
 </script>
@@ -90,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="dropdown">
 						<a class="btn dropdown-toggle pull-right user" type="button"
 							data-toggle="dropdown"> <i class="glyphicon glyphicon-user"></i>
-							Luu Quang Trung <span class="caret"></span>
+							<%= request.getAttribute("fullname") %><span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" style="width: 300px;">
 							<li><a href="ViewProfile">Account Settings <span
@@ -164,8 +167,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<h3 class="panel-title" style="font-size: 20px;">Luu Quang
-								Trung</h3>
+							<h3 class="panel-title" style="font-size: 20px;">
+								<%= request.getAttribute("fullname") %></h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -177,29 +180,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<table class="table table-user-information"
 										style="font-size: 20px;">
 										<tbody>
-                                            <tr>
-                                                <td>Full name:</td>
-                                                <td>Luu Quang Trung</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Date of Birth</td>
-                                                <td>12/02/2000</td>
-                                            </tr>
+											<tr>
+												<td>Full name:</td>
+												<td><%= request.getAttribute("fullname") %></td>
+											</tr>
+											<tr>
+												<td>Date of Birth:</td>
+												<td><%= request.getAttribute("birthday") %></td>
+											</tr>
 
-                                            <tr>
-                                           
-                                                <tr>
-                                                    <td>Home Address</td>
-                                                    <td>Ba Ria City</td>
-                                                </tr>
-                                              
-                                                <td>Phone Number</td>
-                                                <td>090876321
-                                                </td>
+											<tr>
+										
+											<tr>
+												<td>Home Address:</td>
+												<td><%= request.getAttribute("country") %></td>
+											</tr>
+										
+											<td>Phone Number:</td>
+											<td><%= request.getAttribute("phone") %></td>
 
-                                            </tr>
+											</tr>
 
-                                        </tbody>
+										</tbody>
 									</table>
 
 
@@ -353,14 +355,77 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		});
 	</script>
-	<!-- 	Countdown-Timer-JavaScript -->
+	<!-- //requried-jsfiles-for owl -->
+	<!-- Countdown-Timer-JavaScript -->
 	<script src="Style/js/simplyCountdown.js"></script>
+	<script>
+		var d = new Date(new Date().getTime() + 948 * 120 * 120 * 2000);
+
+		// default example
+		simplyCountdown('.simply-countdown-one', {
+			year : d.getFullYear(),
+			month : d.getMonth() + 1,
+			day : d.getDate()
+		});
+
+		// inline example
+		simplyCountdown('.simply-countdown-inline', {
+			year : d.getFullYear(),
+			month : d.getMonth() + 1,
+			day : d.getDate(),
+			inline : true
+		});
+
+		//jQuery example
+		$('#simply-countdown-losange').simplyCountdown({
+			year : d.getFullYear(),
+			month : d.getMonth() + 1,
+			day : d.getDate(),
+			enableUtc : false
+		});
+	</script>
 	<!-- //Countdown-Timer-JavaScript -->
+
+
+	<!--search-bar-->
+	<script src="Style/js/main.js"></script>
+	<!--//search-bar-->
 
 
 	<!-- start-smoth-scrolling -->
 	<script type="text/javascript" src="Style/js/move-top.js"></script>
 	<script type="text/javascript" src="Style/js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop : $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			 */
+
+			$().UItoTop({
+				easingType : 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!--js for bootstrap working-->
 	<script src="Style/js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 
