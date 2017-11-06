@@ -1,7 +1,6 @@
-var timer=10;//1200;
+var timer=60;//1200;
 var min=0;
 var sec=0;
-var asyncRequest; 
 function countdownTimer() {
  
 	min=parseInt(timer/60);

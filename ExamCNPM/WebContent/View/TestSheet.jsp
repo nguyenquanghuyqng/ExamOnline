@@ -138,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="panel panel-default col-md-4 " data-toggle="tooltip"
 					data-placement="top">
 					<div class="panel-body text-center" style="font-size: 35px;">
-						<p id="time"></p>
+						<h1 id="time"></h1>
 					</div>
 				</div>
 				<div class="col-md-8 panel panel-default"
