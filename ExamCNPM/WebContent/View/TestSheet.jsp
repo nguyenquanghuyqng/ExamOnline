@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="Style/css/user.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="Style/js/countdown.js"></script>
 </head>
-<body>
+<body onload="countdownTimer()">
 
 	<div id="home">
 		<div class="banner-overlay-agileinfo">
@@ -138,17 +138,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="panel panel-default col-md-4 " data-toggle="tooltip"
 					data-placement="top">
 					<div class="panel-body text-center" style="font-size: 35px;">
-						<span id="showmns">00</span> <span id="showmns">:</span> <span
-							id="showscs">00</span> </br>
-						<button class="btn btn-primary" id="btnct"
-							onclick="countdownTimer()">
-							<i class="fa fa-play" aria-hidden="true"></i> START
-						</button>
+						<p id="time"></p>
 					</div>
 				</div>
 				<div class="col-md-8 panel panel-default"
 					style="padding-left: 100px;">
-					<form action="TestSheetController" method="post">
+					<div class="panel-body">
+					<form action="TestSheetController" method="post" id="test">
 						<h2><%=request.getAttribute("msg") != null ? request.getAttribute("msg") : " "%></h2>
 						<c:forEach items="${listquiz}" var="list">
 							<% System.out.println(pageContext.findAttribute("list")); %>
@@ -163,8 +159,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<br />
 
 						</c:forEach>
-						<br> <input type="submit" value="TagScript">
+						<br> <input type="submit" value="SUBMIT">
 					</form>
+					</div>
 				</div>
 			</div>
 			<div class="clearfix"></div>

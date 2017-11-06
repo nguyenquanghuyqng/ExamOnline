@@ -22,6 +22,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
         }, false);
@@ -31,6 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
 
     
+
 
 
 
@@ -139,252 +141,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="about-w3layouts">
 		<div class="container">
 			<div class="row">
-				<div class="panel panel-default col-md-4 " data-toggle="tooltip"
-					data-placement="top">
-					<div class="panel-body text-center" style="font-size: 35px;">
-						<span id="showmns">00</span> <span id="showmns">:</span> <span
-							id="showscs">00</span> </br>
-						<button class="btn btn-primary" id="btnct"
-							onclick="countdownTimer()">
-							<i class="fa fa-play" aria-hidden="true"></i> START
-						</button>
-					</div>
-				</div>
-				<div class="col-md-8 panel panel-default"
+				<div class="col-md-12 panel panel-default"
 					style="padding-left: 100px;">
-					<form action="TestSheetForward" method="post">
-						<c:forEach items="${listcorrectanswer}" var="listcorrectanswer">
-							<c:forEach items="${listansweruser}" var="listansweruser">
-
-								<c:if
-									test="${listcorrectanswer.number == listansweruser.number}">
-									<c:if test="${listcorrectanswer.correctoption == 'A'}">
-										<c:if test="${listansweruser.answer == 'A'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-											<img alt="" src="Style/images/correct.png"> ${listcorrectanswer.option1}
-								<br>
-								  ${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'B'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option1}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'C'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option1}
-								<br>
-								  ${listcorrectanswer.option2}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'D'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option1}
-								<br>
-								  ${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-									</c:if>
-
-									<c:if test="${listcorrectanswer.correctoption == 'B'}">
-
-										<c:if test="${listansweruser.answer == 'A'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option1}
-								<br>
-											<img alt="" src="Style/images/correct.png"> ${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'B'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'C'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option2}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'D'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-
-									</c:if>
-									<c:if test="${listcorrectanswer.correctoption == 'C'}">
-
-										<c:if test="${listansweruser.answer == 'A'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option1}
-								<br>
-								   ${listcorrectanswer.option2}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'B'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option2}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'C'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-								  ${listcorrectanswer.option2}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option3}
-								<br>
-								  ${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'D'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-								  ${listcorrectanswer.option2}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option3}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-
-									</c:if>
-									<c:if test="${listcorrectanswer.correctoption == 'D'}">
-
-
-										<c:if test="${listansweruser.answer == 'A'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option1}
-								<br>
-								  ${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'B'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'C'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-								  ${listcorrectanswer.option2}
-								<br>
-											<img alt="" src="Style/images/incorrect.png">${listcorrectanswer.option3}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-										<c:if test="${listansweruser.answer == 'D'}">
-											<p>${listcorrectanswer.number}.
-												${listcorrectanswer.contentquestion}</p>
-								  ${listcorrectanswer.option1}
-								<br>
-								  ${listcorrectanswer.option2}
-								<br>
-								  ${listcorrectanswer.option3}
-								<br>
-											<img alt="" src="Style/images/correct.png">${listcorrectanswer.option4}
-								<br>
-										</c:if>
-
-									</c:if>
-								</c:if>
-							</c:forEach>
-						</c:forEach>
-						<br /> <input type="submit" value="Again" />
+					<form action="TestSheetHomeStudent" method="post">
+						<div class="panel-body">
+							<p>Attempts allowed: 1</p>
+						<br />	<p>Time to do : 45 minutes</p>
+						<br />	<h2>The final score for this exam is : <%=request.getAttribute("diem")%>/<%=request.getAttribute("tongDiem")%></h2>
+						<br /> <input type="submit" value="Back to the source" />
+						</div>
 					</form>
 				</div>
 			</div>

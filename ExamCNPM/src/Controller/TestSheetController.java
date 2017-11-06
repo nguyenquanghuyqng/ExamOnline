@@ -35,10 +35,11 @@ public class TestSheetController extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Connection conn= DBConnection.CreateConnection();
 		//tra ra so hang cau hoi.
 		int countrow=ExamDAO.GetCountRow(conn);
-		
+		int diem=0;
 		// lay ra danh sach cau tra loi cua user.
 		List<AnswerUser> listansweruser= new ArrayList<AnswerUser>();
 		
@@ -47,32 +48,40 @@ public class TestSheetController extends HttpServlet {
 		List<Question> listcorrectanswer= ExamDAO.GetCorrectAnswer(conn);
 		
 		for(int i=1;i<=countrow;i++){
-			String answer= request.getParameter("ans["+i+"]");
-			
-			if(answer!=null){
-				
+			String answer= request.getParameter("ans["+i+"]");	
+//			if(answer!=null){
 				AnswerUser au= new AnswerUser();
 				au.setAnswer(answer);
 				au.setNumber(i);
 				listansweruser.add(au);
 				
-			}
-			else{
-				request.setAttribute("msg", "You must choose all option");
-				List<Question> list= ExamDAO.DisplayQuestion(conn);
-				
-				request.setAttribute("listquiz", list);
-				
-				
-				RequestDispatcher rd= request.getRequestDispatcher("View/TestSheet.jsp");
-				rd.forward(request, response);
-			}
+//			else{
+//				request.setAttribute("msg", "You must choose all option");
+//				List<Question> list= ExamDAO.DisplayQuestion(conn);
+//				
+//				request.setAttribute("listquiz", list);
+//				
+//				RequestDispatcher rd= request.getRequestDispatcher("View/TestSheet.jsp");
+//				rd.forward(request, response);
+//			}
 			
 		}
-		// tra ve ket qua duoi dang setAttribute 
-		request.setAttribute("listcorrectanswer", listcorrectanswer);
-		request.setAttribute("listansweruser", listansweruser);
 		
+		
+		for(Question qs : listcorrectanswer )
+			for(AnswerUser au : listansweruser)
+				if(qs.getNumber() == au.getNumber())
+				{
+					String a = qs.getCorrectoption();
+					String b = au.getAnswer();
+					if(a.equals(b))
+						diem++;
+				}
+	
+		
+		// tra ve ket qua duoi dang setAttribute 
+		request.setAttribute("diem", diem);
+		request.setAttribute("tongDiem", countrow);
 		RequestDispatcher rd= request.getRequestDispatcher("View/Result.jsp");
 		rd.forward(request, response);
 	}
