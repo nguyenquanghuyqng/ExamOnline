@@ -1,5 +1,10 @@
+<%@page import="DAO.LoginDAO"%>
+<%@page import="BEAN.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,6 +23,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
             addEventListener("load", function() {
                 setTimeout(hideURLbar, 0);
             }, false);
@@ -27,6 +39,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             }
 
         
+
+
+
+
+
+
+
 
 
 </script>
@@ -75,7 +94,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </head>
 <body>
-
+	<%
+		// Lấy ra username đăng nhập vào từ session
+		String user = (String) session.getAttribute("username");
+		LoginDAO userDAO = new LoginDAO();
+		User u = userDAO.getUser(user);
+	%>
 	<!-- banner -->
 	<div id="home">
 		<div class="banner-overlay-agileinfo">
@@ -93,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="dropdown">
 						<a class="btn dropdown-toggle pull-right user" type="button"
 							data-toggle="dropdown"> <i class="glyphicon glyphicon-user"></i>
-							<%= request.getAttribute("fullname") %><span class="caret"></span>
+							<%=u.getFullname()%><span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" style="width: 300px;">
 							<li><a href="ViewProfile">Account Settings <span
@@ -168,7 +192,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h3 class="panel-title" style="font-size: 20px;">
-								<%= request.getAttribute("fullname") %></h3>
+								<%=u.getFullname()%></h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -182,22 +206,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<tbody>
 											<tr>
 												<td>Full name:</td>
-												<td><%= request.getAttribute("fullname") %></td>
+												<td><%=u.getFullname()%></td>
 											</tr>
 											<tr>
 												<td>Date of Birth:</td>
-												<td><%= request.getAttribute("birthday") %></td>
+												<td><%=u.getBirthday()%></td>
 											</tr>
 
 											<tr>
-										
 											<tr>
 												<td>Home Address:</td>
-												<td><%= request.getAttribute("country") %></td>
+												<td><%=u.getCountry()%></td>
 											</tr>
-										
-											<td>Phone Number:</td>
-											<td><%= request.getAttribute("phone") %></td>
+											<tr>
+												<td>Phone Number:</td>
+												<td><%=u.getPhone()%></td>
 
 											</tr>
 

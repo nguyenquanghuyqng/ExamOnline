@@ -18,8 +18,6 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript">
 	
-	
-	
             addEventListener("load", function() {
                 setTimeout(hideURLbar, 0);
             }, false);
@@ -27,9 +25,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             function hideURLbar() {
                 window.scrollTo(0, 1);
             }
-
-        
-
 
 </script>
 
@@ -174,19 +169,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="row">
 				<div
 					class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h3 class="panel-title" style="font-size: 20px;">
 								<%=u.getFullname()%></h3>
 						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-3 col-lg-3 " align="center">
-									<a href=#><img alt="User Pic" src="Style/images/trung.jpg"
-										class="img-circle img-responsive"></a>
-								</div>
-								<form action="EditProfile" method="post">
+						<form action="UpdateProfile" method="post">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3 col-lg-3 " align="center">
+										<a href=#><img alt="User Pic" src="Style/images/trung.jpg"
+											class="img-circle img-responsive"></a>
+									</div>
 									<div class=" col-md-9 col-lg-9 ">
+
 										<table class="table table-user-information"
 											style="font-size: 20px;">
 											<tbody>
@@ -208,29 +205,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														value="<%=u.getCountry()%>"></input></td>
 												</tr>
 												<tr>
-												<td>Phone Number:</td>
-												<td><input type="text" name="phone"
-													value="<%=u.getPhone()%>"></input></td>
+													<td>Phone Number:</td>
+													<td><input type="text" name="phone"
+														value="<%=u.getPhone()%>"></input></td>
 
 												</tr>
 
 											</tbody>
 										</table>
 
-
-									</div>
-								</form>
+								</div>
 							</div>
-						</div>
-						<div class="panel-footer">
-
-							<span class="col-md-offset-5"> <a href="ViewProfile"
-								data-toggle="tooltip" type="button" class="btn btn-primary ">
-									<i class="glyphicon glyphicon-edit"></i> SUBMIT
-							</a>
-							</span>
-						</div>
-
+							<div class="panel-footer">
+								<span class="col-md-offset-5"> 
+									<input class="btn btn-primary " type="submit" name="Submit">
+								</span>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -439,6 +430,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--js for bootstrap working-->
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
+
 
 </body>
 </html>

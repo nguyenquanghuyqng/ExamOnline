@@ -19,14 +19,14 @@ public class EditProfile extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		RequestDispatcher rd = request.getRequestDispatcher("View/EditProfile.jsp");
-		rd.forward(request, response);
+		doPost(request, response);
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("View/EditProfile.jsp");
+		rd.forward(request, response);
 	}
 
 }

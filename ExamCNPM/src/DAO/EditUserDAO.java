@@ -3,6 +3,7 @@ package DAO;
 import java.util.*;
 
 import BEAN.EditUser;
+import BEAN.User;
 
 import java.sql.*;
 
@@ -43,5 +44,37 @@ public class EditUserDAO {
 		return false;
 
 	}
+	
+	public static boolean UpdateUser(User us ,Connection conn)
+	{
+		String sql = "update users set  fullname=?, birthday=?, country=?, "
+				+ "phone=?  where username='"+us.getUsername()+"';";
+		
+			try {
+			
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			
+			ptmt.setString(1, us.getFullname());
+			ptmt.setString(2, us.getBirthday());
+			ptmt.setString(3, us.getCountry());
+			ptmt.setString(4, us.getPhone());
+			
+			int kt = ptmt.executeUpdate();
+
+			if(kt!=0){
+				
+				return true;
+			}
+			ptmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Error :"+e.getMessage());
+		}
+
+		return false;
+	}
+	
+	
 
 }
