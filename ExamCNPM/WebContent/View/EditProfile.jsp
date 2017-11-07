@@ -1,5 +1,9 @@
+<%@page import="DAO.LoginDAO"%>
+<%@page import="BEAN.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
             addEventListener("load", function() {
                 setTimeout(hideURLbar, 0);
             }, false);
@@ -24,6 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             }
 
         
+
 
 </script>
 
@@ -72,6 +78,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 
+	<%
+		// Lấy ra username đăng nhập vào từ session
+		String user = (String) session.getAttribute("username");
+		LoginDAO userDAO = new LoginDAO();
+		User u = userDAO.getUser(user);
+	%>
+
 	<!-- banner -->
 	<div id="home">
 		<div class="banner-overlay-agileinfo">
@@ -89,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="dropdown">
 						<a class="btn dropdown-toggle pull-right user" type="button"
 							data-toggle="dropdown"> <i class="glyphicon glyphicon-user"></i>
-							Luu Quang Trung <span class="caret"></span>
+							<%=u.getFullname()%> <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" style="width: 300px;">
 							<li><a href="ViewProfile">Account Settings <span
@@ -163,8 +176,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<h3 class="panel-title" style="font-size: 20px;">Luu Quang
-								Trung</h3>
+							<h3 class="panel-title" style="font-size: 20px;">
+								<%=u.getFullname()%></h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -172,50 +185,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<a href=#><img alt="User Pic" src="Style/images/trung.jpg"
 										class="img-circle img-responsive"></a>
 								</div>
-								<div class=" col-md-9 col-lg-9 ">
-									<table class="table table-user-information"
-										style="font-size: 20px;">
-										<tbody>
-                                            <tr>
-                                                <td>Full name:</td>
-                                                <td>
-                                                    <input type="text" value="Luu Quang Trung"></input>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Date of Birth:</td>
-                                                <td>
-                                                    <input type="text" value="12/02/2000"></input>
-                                                </td>
-                                            </tr>
+								<form action="EditProfile" method="post">
+									<div class=" col-md-9 col-lg-9 ">
+										<table class="table table-user-information"
+											style="font-size: 20px;">
+											<tbody>
+												<tr>
+													<td>Full name:</td>
+													<td><input type="text" name="fullname"
+														value="<%=u.getFullname()%>"></input></td>
+												</tr>
+												<tr>
+													<td>Date of Birth:</td>
+													<td><input type="text" name="birthday"
+														value="<%=u.getBirthday()%>"></input></td>
+												</tr>
 
-                                            <tr>
-                                                
-                                                <tr>
-                                                    <td>Home Address:</td>
-                                                    <td>
-                                                        <input type="text" value="Ba Ria City"></input>
-                                                    </td>
-                                                </tr>
-                                            
-                                                <td>Phone Number:</td>
-                                                <td>
-                                                    <input type="text" value="090876321"></input>
+												<tr>
+												<tr>
+													<td>Home Address:</td>
+													<td><input type="text" name="country"
+														value="<%=u.getCountry()%>"></input></td>
+												</tr>
+												<tr>
+												<td>Phone Number:</td>
+												<td><input type="text" name="phone"
+													value="<%=u.getPhone()%>"></input></td>
 
-                                                </td>
+												</tr>
 
-                                            </tr>
-
-                                        </tbody>
-									</table>
+											</tbody>
+										</table>
 
 
-								</div>
+									</div>
+								</form>
 							</div>
 						</div>
 						<div class="panel-footer">
 
-							<span class="col-md-offset-5"> <a href="#"
+							<span class="col-md-offset-5"> <a href="ViewProfile"
 								data-toggle="tooltip" type="button" class="btn btn-primary ">
 									<i class="glyphicon glyphicon-edit"></i> SUBMIT
 							</a>
@@ -329,10 +338,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //smooth scrolling -->
 
 
-	
-	<script type="text/javascript" src="Style/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 	<!-- flexSlider -->
-	<script defer src="Style/js/jquery.flexslider.js"></script>
+	<script defer src="js/jquery.flexslider.js"></script>
 	<script type="text/javascript">
 		$(window).load(function() {
 			$('.flexslider').flexslider({
@@ -345,30 +353,92 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!-- //flexSlider -->
 	<!-- requried-jsfiles-for owl -->
-	<script src="Style/js/owl.carousel.js"></script>
- 	<script> 
- 		$(document).ready(function() {
- 			$("#owl-demo2").owlCarousel({
- 				items : 1,
- 				lazyLoad : false,
- 				autoPlay : true,
- 				navigation : false,
- 				navigationText : false,
- 				pagination : true,
- 			});
- 		});
- 	</script>
-	<!-- 	Countdown-Timer-JavaScript -->
-	<script src="Style/js/simplyCountdown.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#owl-demo2").owlCarousel({
+				items : 1,
+				lazyLoad : false,
+				autoPlay : true,
+				navigation : false,
+				navigationText : false,
+				pagination : true,
+			});
+		});
+	</script>
+	<!-- //requried-jsfiles-for owl -->
+	<!-- Countdown-Timer-JavaScript -->
+	<script src="js/simplyCountdown.js"></script>
+	<script>
+		var d = new Date(new Date().getTime() + 948 * 120 * 120 * 2000);
+
+		// default example
+		simplyCountdown('.simply-countdown-one', {
+			year : d.getFullYear(),
+			month : d.getMonth() + 1,
+			day : d.getDate()
+		});
+
+		// inline example
+		simplyCountdown('.simply-countdown-inline', {
+			year : d.getFullYear(),
+			month : d.getMonth() + 1,
+			day : d.getDate(),
+			inline : true
+		});
+
+		//jQuery example
+		$('#simply-countdown-losange').simplyCountdown({
+			year : d.getFullYear(),
+			month : d.getMonth() + 1,
+			day : d.getDate(),
+			enableUtc : false
+		});
+	</script>
 	<!-- //Countdown-Timer-JavaScript -->
 
 
-	<!-- start-smoth-scrolling -->
-	<script type="text/javascript" src="Style/js/move-top.js"></script>
-	<script type="text/javascript" src="Style/js/easing.js"></script>
-	<script src="Style/js/bootstrap.js"></script>
-	<!-- //for bootstrap working -->
+	<!--search-bar-->
+	<script src="js/main.js"></script>
+	<!--//search-bar-->
 
+
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop : $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			 */
+
+			$().UItoTop({
+				easingType : 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!--js for bootstrap working-->
+	<script src="js/bootstrap.js"></script>
+	<!-- //for bootstrap working -->
 
 </body>
 </html>

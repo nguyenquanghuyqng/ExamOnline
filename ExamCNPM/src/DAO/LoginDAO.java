@@ -157,7 +157,7 @@ public class LoginDAO {
 	
 	
 	//Lấy tên User đăng nhập vào.
-	public  String getUserName(String username , Connection conn)
+	public static  String getUserName(String username , Connection conn)
 	{
 		String usname = null;
 		
