@@ -19,6 +19,7 @@ public class HomeExam extends HttpServlet {
 			throws ServletException, IOException {
 		request.getRequestDispatcher("View/Exam/HomeExam.jsp").forward(request, response);
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
