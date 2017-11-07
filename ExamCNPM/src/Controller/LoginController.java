@@ -62,6 +62,7 @@ public class LoginController extends HttpServlet {
 
 				RequestDispatcher rd = request.getRequestDispatcher("View/Admin/HomeAdmin.jsp");
 				rd.forward(request, response);
+				return;
 
 			}
 
@@ -71,7 +72,7 @@ public class LoginController extends HttpServlet {
 
 				RequestDispatcher rd = request.getRequestDispatcher("View/Exam/HomeExam.jsp");
 				rd.forward(request, response);
-
+				return;
 			}
 			
 			boolean quesiton = LoginDAO.LoginQuestion(username, password, conn);
@@ -80,14 +81,14 @@ public class LoginController extends HttpServlet {
 
 				RequestDispatcher rd = request.getRequestDispatcher("View/Question/HomeQuestion.jsp");
 				rd.forward(request, response);
-
+				return;
 			}
 
 			else {
 				request.setAttribute("message", "Login Failed");
 				RequestDispatcher rd = request.getRequestDispatcher("View/HomeLogin.jsp");
-				rd.forward(request, response);
-
+				rd.include(request, response);
+				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
