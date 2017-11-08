@@ -96,21 +96,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="card card-container">
                 <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
                 <img id="profile-img" class="profile-img-card" src="Style/images/avatar_login.png" />
-                
-                
+
+
                 <p id="profile-name" class="profile-name-card"></p>
-                <form class="form-signin" action ="LoginController" method="post">
-                
-                    <span id="reauth-email"  class="reauth-email"></span> 
-                    <input type="text" name = "username" id="inputEmail" class="form-control" placeholder="Username" required autofocus >
-                    <input type="password" name ="password" id="inputPassword" class="form-control" placeholder="Password" required >
+                <form class="form-signin" action="LoginController" method="post">
+
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="text" name="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                     <div id="remember" class="checkbox">
                         <label> <input type="checkbox" value="remember-me">
 						Remember me
 					</label>
                     </div>
-<%--                     <h4 style="color: red; visibility: hidden" id="mess"><%=request.getAttribute("message")%></h4> --%>
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                    <%--                     <h4 style="color: red; visibility: hidden" id="mess"><%=request.getAttribute("message")%></h4> --%>
+                        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
                 </form>
                 <!-- /form -->
                 <a href="#" class="forgot-password"> Forgot the password? </a>
@@ -188,45 +188,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- //smooth scrolling -->
 
 
-       
-	<script type="text/javascript" src="Style/js/jquery-2.1.4.min.js"></script>
-	<!-- flexSlider -->
-	<script defer src="Style/js/jquery.flexslider.js"></script>
-	<script type="text/javascript">
-		$(window).load(function() {
-			$('.flexslider').flexslider({
-				animation : "slide",
-				start : function(slider) {
-					$('body').removeClass('loading');
-				}
-			});
-		});
-	</script>
-	<!-- //flexSlider -->
-	<!-- requried-jsfiles-for owl -->
-	<script src="Style/js/owl.carousel.js"></script>
- 	<script> 
- 		$(document).ready(function() {
- 			$("#owl-demo2").owlCarousel({
- 				items : 1,
- 				lazyLoad : false,
- 				autoPlay : true,
- 				navigation : false,
- 				navigationText : false,
- 				pagination : true,
- 			});
- 		});
- 	</script>
-	<!-- 	Countdown-Timer-JavaScript -->
-	<script src="Style/js/simplyCountdown.js"></script>
-	<!-- //Countdown-Timer-JavaScript -->
+
+        <script type="text/javascript" src="Style/js/jquery-2.1.4.min.js"></script>
+        <!-- flexSlider -->
+        <script defer src="Style/js/jquery.flexslider.js"></script>
+        <script type="text/javascript">
+            $(window).load(function() {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function(slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });
+
+        </script>
+        <!-- //flexSlider -->
+        <!-- requried-jsfiles-for owl -->
+        <script src="Style/js/owl.carousel.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#owl-demo2").owlCarousel({
+                    items: 1,
+                    lazyLoad: false,
+                    autoPlay: true,
+                    navigation: false,
+                    navigationText: false,
+                    pagination: true,
+                });
+            });
+
+        </script>
+        <!-- 	Countdown-Timer-JavaScript -->
+        <script src="Style/js/simplyCountdown.js"></script>
+        <!-- //Countdown-Timer-JavaScript -->
 
 
-	<!-- start-smoth-scrolling -->
-	<script type="text/javascript" src="Style/js/move-top.js"></script>
-	<script type="text/javascript" src="Style/js/easing.js"></script>
-	<script src="Style/js/bootstrap.js"></script>
-	<!-- //for bootstrap working -->
+        <!-- start-smoth-scrolling -->
+        <script type="text/javascript" src="Style/js/move-top.js"></script>
+        <script type="text/javascript" src="Style/js/easing.js"></script>
+        <script src="Style/js/bootstrap.js"></script>
+        <!-- //for bootstrap working -->
 
     </body>
 
