@@ -305,11 +305,11 @@
 			</a> <b class="arrow"></b>
 
                         <ul class="submenu">
-                            <li class=""><a href="ViewResult"> <i
+                            <li class=""><a href="ViewResult?pageid=1"> <i
 							class="menu-icon fa fa-caret-right"></i> View Result
 					</a> <b class="arrow"></b></li>
 
-                            <li class=""><a href="#"> <i
+                            <li class=""><a href="EditResult?pageid=1"> <i
 							class="menu-icon fa fa-caret-right"></i> Edit Result
 					</a> <b class="arrow"></b></li>
                     </li>

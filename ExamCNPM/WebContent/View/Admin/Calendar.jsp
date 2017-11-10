@@ -394,7 +394,7 @@
 
                         <ul class="submenu">
                             <li class="">
-                                <a href="ViewResult">
+                                <a href="ViewResult?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									View Result 
 								</a>
@@ -403,7 +403,7 @@
                             </li>
 
                             <li class="">
-                                <a href="#">
+                                <a href="EditResult?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Edit Result
 								</a>

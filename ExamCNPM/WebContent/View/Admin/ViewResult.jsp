@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+	    
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html>
 
@@ -308,11 +310,11 @@
 			</a> <b class="arrow"></b>
 
                             <ul class="submenu">
-                                <li class=""><a href="ViewResult"> <i
+                                <li class=""><a href="#"> <i
 							class="menu-icon fa fa-caret-right"></i> View Result
 					</a> <b class="arrow"></b></li>
 
-                                <li class=""><a href="#"> <i
+                                <li class=""><a href="EditResult?pageid=1"> <i
 							class="menu-icon fa fa-caret-right"></i> Edit Result
 					</a> <b class="arrow"></b></li>
                             </ul>
@@ -369,23 +371,81 @@
 							</small>
                                 </h1>
                             </div>
+                            
+                            
+                            <div class="">
+                                <h2>List Result User </h2>
+                                
+                                Datetime: <select name="week" id="ưeek">
+                                		<option>1</option>
+                                		<option>2</option>
+                                		<option>3</option>
+                                		<option>4</option>
+                                	</select>
+                                Class: <select name="class" id ="class">
+                                		<option>151101A</option>
+                                		<option>151102A</option>
+                                		<option>151103A</option>
+                                		<option>151103B</option>
+                                	</select>
+                                <br><br>
+                                <table border='1' style="width: 100%" class="table table-hover table-bordered table-striped">
+                                    <tr>
+                                        <th>resulttestid</th>
+                                        <th>userid</th>
+                                        <th>username</th>
+                                        <th>fullname</th>
+                                        <th>point</th>
+                                        <th>testid</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    <tbody id="myTable">
+                                        <c:forEach items="${result}" var="list">
 
-                        </div>
-                    </div>
-                    <!-- /.page-header -->
+                                            <tr>
+                                                <td>${list.resulttestid}</td>
+                                                <td>${list.userid}</td>
+                                                <td>${list.username}</td>
+                                                <td>${list.fullname}</td>
+                                                <td>${list.point}</td>
+                                                <td>${list.testid}</td>
+                                                <td><a href="EditResult?index=${list.userid}&pageid=1">Edit</a></td>
+                                                <td><a href="DeleteResult?index=${list.userid}&pageid=1" onclick="return show_comfirm()">Delete</a></td>
+                                            </tr>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <!-- PAGE CONTENT BEGINS -->
-                            <div class="row">
-                                <div class="col-sm-9">
-                                    <div class="space"></div>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                                <ul class="pagination">
+                                    <!-- numberpage trong HomeController -->
+                                    <c:if test="${numberpage==1}">
+                                        <li class="disabled"><a href="">&laquo;</a></li>
+                                        <li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
+                                        <li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+                                        <li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+                                    </c:if>
 
-                                    <div id="calendar"></div>
-                                </div>
+                                    <c:if test="${numberpage==maxpageid}">
+                                        <li class="disabled"><a href="">&laquo;</a></li>
+                                        <li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
+                                        <li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+                                        <li class="disabled"><a href="#">&raquo;</a></li>
+                                    </c:if>
+
+                                    <c:if test="${numberpage>1 && numberpage<maxpageid}">
+                                        <li><a href="UpdateandDeleteResult?pageid=${numberpage-1}">&laquo;</a></li>
+                                        <li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
+                                        <li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+                                        <li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+                                    </c:if>
+                                </ul>
                             </div>
+                            
+
                         </div>
                     </div>
+						<!--/.page-header -->
                 </div>
                 <!-- /.page-content -->
             </div>

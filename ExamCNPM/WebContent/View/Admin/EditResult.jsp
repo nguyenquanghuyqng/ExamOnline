@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Edit Account</title>
-
+<title>Edit Result</title>
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -44,6 +41,21 @@
 <!-- ace scripts -->
 <script src="Style/js/ace-elements.min.js"></script>
 <script src="Style/js/ace.min.js"></script>
+
+<!-- Show thông báo ra màn hình -->
+<script type="text/javascript">
+	function show_comfirm() {
+		var comfirmBox;
+		comfirmBox = confirm("Bạn có chắc chắn muốn xóa kết quả ?");
+		if (comfirmBox == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
+
 
 </head>
 
@@ -212,8 +224,8 @@
 									Settings
 							</a></li>
 
-							<li><a href="profile.html"> <i
-									class="ace-icon fa fa-user"></i> Profile
+							<li><a href="#"> <i class="ace-icon fa fa-user"></i>
+									Profile
 							</a></li>
 
 							<li class="divider"></li>
@@ -296,6 +308,7 @@
 						<li class=""><a href="InsertClass?pageid=1"> <i
 								class="menu-icon fa fa-caret-right"></i> Insert Class
 						</a> <b class="arrow"></b></li></li>
+
 				</li>
 			</ul>
 			</li>
@@ -339,9 +352,11 @@
 			<div class="main-content-inner">
 				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a
-							href="HomeAdminForWard">Home</a></li>
-						<li class="active">Home Admin</li>
+						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
+						</li>
+
+						<li><a href="#">Manager Result</a></li>
+						<li class="active">View Result</li>
 					</ul>
 					<!-- /.breadcrumb -->
 
@@ -360,47 +375,79 @@
 				<div class="page-content">
 					<!-- /.ace-settings-container -->
 
+
 					<div class="page-header">
 						<h1>
-							Insert Account <small> <i
-								class="ace-icon fa fa-angle-double-right"></i> Admin can insert
-								user
+							View Result <small> <i
+								class="ace-icon fa fa-angle-double-right"></i> overview &amp;
+								stats
 							</small>
 						</h1>
 					</div>
 
-					<div class="formInsert" style="margin: 30px">
-						<h2>Edit account</h2>
-						<c:forEach items="${account}" var="list">
-							<form action="SaveEditAccount?pageid=1" method="post">
-								Userid:<br> <input type="text" name="userid"
-									value="${list.userid }"><br> <br> Username: <br>
-								<input type="text" name="username" value="${list.username }"><br>
-								<br> PassWord: <br> <input type="text" name="pass"
-									value="${list.pass }"><br> <br> Fullname: <br>
-								<input type="text" name="fullname" value="${list.fullname }"><br>
-								<br> Birthday: <br> <input type="text" name="birthday"
-									value="${list.birthday }"><br> <br> Country:
-								<br> <input type="text" name="country"
-									value="${list.country }"><br> <br> Phone: <br>
-								<input type="text" name="phone" value="${list.phone }"><br>
-								<br> Image: <br> <input type="text" name="image"
-									value="${list.image }"><br> <br> Roleid: <br>
-								<select name="roleid" id="roleid">
-									<option>${list.roleid}</option>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-								</select><br> <br> <input type="submit" value="Save"
-									style="background: skyblue;"><br>
-							</form>
-						</c:forEach>
+
+					<div class="">
+						<h2>List User</h2>
+						<table border='1' style="width: 100%"
+							class="table table-hover table-bordered table-striped">
+							<tr>
+								<th>resulttestid</th>
+								<th>userid</th>
+								<th>username</th>
+								<th>fullname</th>
+								<th>point</th>
+								<th>testid</th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tbody id="myTable">
+								<c:forEach items="${result}" var="list">
+
+									<tr>
+										<td>${list.resulttestid}</td>
+										<td>${list.userid}</td>
+										<td>${list.username}</td>
+										<td>${list.fullname}</td>
+										<td>${list.point}</td>
+										<td>${list.testid}</td>
+										<td><a href="EditResult?index=${list.userid}&pageid=1">Edit</a></td>
+										<td><a href="DeleteResult?index=${list.userid}&pageid=1"
+											onclick="return show_comfirm()">Delete</a></td>
+									</tr>
+
+								</c:forEach>
+							</tbody>
+						</table>
+						<ul class="pagination">
+							<!-- numberpage trong HomeController -->
+							<c:if test="${numberpage==1}">
+								<li class="disabled"><a href="">&laquo;</a></li>
+								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+							</c:if>
+
+							<c:if test="${numberpage==maxpageid}">
+								<li class="disabled"><a href="">&laquo;</a></li>
+								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+								<li class="disabled"><a href="#">&raquo;</a></li>
+							</c:if>
+
+							<c:if test="${numberpage>1 && numberpage<maxpageid}">
+								<li><a href="UpdateandDeleteResult?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+							</c:if>
+						</ul>
 					</div>
+
+
 
 				</div>
 			</div>
-			<!-- /.page-header -->
+			<!--/.page-header -->
 		</div>
 		<!-- /.page-content -->
 	</div>
@@ -431,6 +478,7 @@
 	</a>
 	</div>
 	<!-- /.main-container -->
+
 </body>
 
 </html>
