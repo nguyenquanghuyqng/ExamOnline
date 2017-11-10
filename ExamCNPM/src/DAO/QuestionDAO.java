@@ -1,14 +1,16 @@
 package DAO;
+
 import java.sql.*;
 import java.util.*;
 import BEAN.Question;
+
 public class QuestionDAO {
-	
-	public static List<Question> DisplayQuestion(int start, int count ,Connection conn) {
+
+	public static List<Question> DisplayQuestion(int start, int count, Connection conn) {
 
 		List<Question> list = new ArrayList<Question>();
 
-		String sql = "select * from questions limit "+(start-1)+", "+count+"";
+		String sql = "select * from questions limit " + (start - 1) + ", " + count + "";
 
 		try {
 
@@ -17,7 +19,7 @@ public class QuestionDAO {
 			ResultSet rs = ptmt.executeQuery();
 
 			while (rs.next()) {
-				
+
 				Question qs = new Question();
 
 				qs.setQuestionid(rs.getInt("questionid"));
@@ -30,10 +32,9 @@ public class QuestionDAO {
 				qs.setCorrectoption(rs.getString("correctoption"));
 				qs.setMediaid(rs.getInt("mediaid"));
 				qs.setQuestiontypeid(rs.getInt("questiontypeid"));
-				
 
 				list.add(qs);
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -43,6 +44,7 @@ public class QuestionDAO {
 
 		return list;
 	}
+
 	public static List<Question> DisplayQuestion_2(Connection conn) {
 
 		List<Question> list = new ArrayList<Question>();
@@ -68,7 +70,6 @@ public class QuestionDAO {
 				qs.setCorrectoption(rs.getString("correctoption"));
 				qs.setMediaid(rs.getInt("mediaid"));
 				qs.setQuestiontypeid(rs.getInt("questiontypeid"));
-				
 
 				list.add(qs);
 			}
@@ -81,7 +82,6 @@ public class QuestionDAO {
 		return list;
 	}
 
-	
 	public static boolean DeleteQuestion(int questionid, Connection conn) {
 
 		boolean t = false;
@@ -100,30 +100,30 @@ public class QuestionDAO {
 		}
 		return t;
 	}
-		
-		public static int CountRow(Connection conn){
-			
-			int count=0;
-			
-			String sql= "select count(*) from questions";
-			
-			PreparedStatement ptmt;
-			try {
-				
-				ptmt = conn.prepareStatement(sql);
-				
-				ResultSet rs= ptmt.executeQuery();
-				
-				rs.next();
-				
-				count= rs.getInt(1);
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 
-			return count;
-			
+	public static int CountRow(Connection conn) {
+
+		int count = 0;
+
+		String sql = "select count(*) from questions";
+
+		PreparedStatement ptmt;
+		try {
+
+			ptmt = conn.prepareStatement(sql);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			rs.next();
+
+			count = rs.getInt(1);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		return count;
+
+	}
 }

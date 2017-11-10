@@ -436,9 +436,9 @@
                                                 <td>${list.birthday}</td>
                                                 <td>${list.country}</td>
                                                 <td>${list.phone}</td>
-                                                <td></td>
+                                                <td>${list.image}</td>
                                                 <td>${list.roleid}</td>
-                                                <td><a href="EditAccount">Edit</a></td>
+                                                <td><a href="EditAccount?index=${list.userid}&pageid=1">Edit</a></td>
                                                 <td><a href="DeleteAccount?index=${list.userid}&pageid=1" onclick="return show_comfirm()">Delete</a></td>
                                             </tr>
 

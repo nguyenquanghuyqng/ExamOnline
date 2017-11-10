@@ -369,22 +369,29 @@
                                 <div id="thongbao">
                                     <p id="pthongbao"></p>
                                 </div>
-                                <form action="#" method="post" name="frmInsertAcc">
-                                    Userid:<br> <input type="text" name="userid" id="userid" readonly><br><br> Username:
-                                    <br> <input type="text" name="username" id="username"><br><br> PassWord:
-                                    <br> <input type="text" name="pass" id="pass"><br><br> Fullname:
-                                    <br> <input type="text" name="fullname" id="fullname"><br><br> Birthday:
-                                    <br> <input type="text" name="birthday" id="birthday"><br><br> Country:
-                                    <br> <input type="text" name="country" id="country"><br><br> Phone:
-                                    <br> <input type="text" name="phone" id="phone"><br><br> Image:
-                                    <br> <input type="text" name="image" id="image"><br><br> Roleid:
+                                <form action="InsertAccount?pageid=1" method="post" name="frmInsertAcc">
+                                    <br> Username:
+                                    <br> <input type="text" name="username" id="username"><br>
+                                    <br> PassWord:
+                                    <br> <input type="text" name="pass" id="pass"><br>
+                                    <br> Fullname:
+                                    <br> <input type="text" name="fullname" id="fullname"><br>
+                                    <br> Birthday:
+                                    <br> <input type="text" name="birthday" id="birthday"><br>
+                                    <br> Country:
+                                    <br> <input type="text" name="country" id="country"><br>
+                                    <br> Phone:
+                                    <br> <input type="text" name="phone" id="phone"><br>
+                                    <br> Image:
+                                    <br> <input type="text" name="image" id="image"><br>
+                                    <br> Roleid:
                                     <br> <select name="roleid" id="roleid">
-								<option>Choose roleid for account</option>
-                    			<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-                    	</select><br><br>
+										<option>Choose roleid for account</option>
+		                    			<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+                    				</select><br><br>
                                     <input type="submit" value="Save" style="background: skyblue;" onclick="return KiemTraHopLe()"><br>
                                 </form>
                             </div>
