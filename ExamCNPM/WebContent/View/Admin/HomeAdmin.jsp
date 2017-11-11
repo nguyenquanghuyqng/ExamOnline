@@ -268,6 +268,7 @@
                 <!-- /.sidebar-shortcuts -->
 
                 <ul class="nav nav-list">
+                   
                     <li class="active"><a href="HomeAdminForWard"> <i
 						class="menu-icon fa fa-tachometer"></i> <span class="menu-text">Home
 							Admin</span>
@@ -293,28 +294,40 @@
 								class="menu-icon fa fa-caret-right"></i> Insert Class
 						</a> <b class="arrow"></b></li>
                             </li>
-                    </li>
-                    </ul>
-                    </li>
 
+                        </ul>
+                    </li>
 
                     <li class=""><a href="#" class="dropdown-toggle"> <i
 					class="menu-icon fa fa-pencil-square-o"></i> <span
 					class="menu-text"> Manager Result </span> <b
 					class="arrow fa fa-angle-down"></b>
-			</a> <b class="arrow"></b>
+			            </a> <b class="arrow"></b>
 
                         <ul class="submenu">
-                            <li class=""><a href="ViewResult?pageid=1"> <i
+                            <li class=""><a href="#ViewResult?pageid=1" class="dropdown-toggle"> <i
 							class="menu-icon fa fa-caret-right"></i> View Result
-					</a> <b class="arrow"></b></li>
+					</a> <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class=""><a href="AccountHaveResult?pageid=1"> <i
+									class="menu-icon fa fa-caret-right"></i> List of account have
+									result
+							</a> <b class="arrow"></b></li>
+
+                                    <li class=""><a href="AccountDontHaveResult?pageid=1"> <i
+									class="menu-icon fa fa-caret-right"></i> List of account did
+									not contest
+							</a> <b class="arrow"></b></li>
+                                </ul>
+                            </li>
 
                             <li class=""><a href="EditResult?pageid=1"> <i
 							class="menu-icon fa fa-caret-right"></i> Edit Result
 					</a> <b class="arrow"></b></li>
+
+                        </ul>
                     </li>
-                    </ul>
-                    </li>
+                    
                     <li class=""><a href="Calendar"> <i
 					class="menu-icon fa fa-calendar"></i> <span class="menu-text">
 						Calendar <span class="badge badge-transparent tooltip-error"

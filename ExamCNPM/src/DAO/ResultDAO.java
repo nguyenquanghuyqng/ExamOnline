@@ -48,6 +48,54 @@ public class ResultDAO {
 		return list;
 	}
 	
+	// Lấy danh sách những thí sinh không thi và không có kết quả thi 
+	public static List<Result> DisplayDontResult(int start, int count, Connection conn) {
+
+		List<Result> list = new ArrayList<Result>();
+
+//		String sql = "select users.userid, users.username, users.fullname, resulttest.point, resulttest.testid" + " from users "
+//				+ "left join resulttest on users.userid=resulttest.userid group by users.userid limit "+ (start - 1) + ", " + count + "" ;
+
+//		String sql = "select users.userid, users.username, users.fullname" + " from users"
+//				+ "where not exists (select resulttest.userid "
+//									+ "from resulttest, users"
+//									+ "where resulttest.userid=users.userid) limit "+ (start - 1) + ", " + count + "" ;
+
+
+		String sql = "select users.userid, users.username, users.fullname " + " from users "
+				+ "left join resulttest on users.userid=resulttest.userid"
+				+ "where resulttest.userid is null" ;
+
+		
+		try {
+
+			PreparedStatement ptmt = conn.prepareCall(sql);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			while (rs.next()) {
+
+				Result rt = new Result();
+
+//				rt.setResulttestid(rs.getInt("resulttestid"));
+				rt.setUserid(rs.getInt("userid"));
+				rt.setFullname(rs.getString("fullname"));
+				rt.setUsername(rs.getString("username"));
+//				rt.setPoint(rs.getInt("point"));
+//				rt.setTestid(rs.getInt("testid"));
+				
+				list.add(rt);
+				
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
 	public static int CountRow(Connection conn) {
 
 		int count = 0;

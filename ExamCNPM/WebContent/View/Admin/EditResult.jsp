@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -281,63 +282,79 @@
 					<span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
 				</div>
 			</div>
-			<!-- /.sidebar-shortcuts -->
+			 <!-- /.sidebar-shortcuts -->
 
-			<ul class="nav nav-list">
-				<li class="active"><a href="HomeAdminForWard"> <i
+                <ul class="nav nav-list">
+                   
+                    <li class="active"><a href="HomeAdminForWard"> <i
 						class="menu-icon fa fa-tachometer"></i> <span class="menu-text">Home
 							Admin</span>
 				</a> <b class="arrow"></b></li>
 
-				<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-				<li class=""><a href="#" class="dropdown-toggle"> <i
+                    <!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
+                    <li class=""><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 							Manager Account </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
-					<ul class="submenu">
-						<li class=""><a href="InsertAccount"> <i
+                        <ul class="submenu">
+                            <li class=""><a href="InsertAccount"> <i
 								class="menu-icon fa fa-caret-right"></i> Insert Account <b
 								class="arrow"></b>
 						</a> <b class="arrow"></b>
-						<li class=""><a href="UpdateandDeleteAccount?pageid=1"> <i
+                                <li class=""><a href="UpdateandDeleteAccount?pageid=1"> <i
 								class="menu-icon fa fa-caret-right"></i> Update and Delete
 								Account
 						</a> <b class="arrow"></b></li>
 
-						<li class=""><a href="InsertClass?pageid=1"> <i
+                                <li class=""><a href="InsertClass?pageid=1"> <i
 								class="menu-icon fa fa-caret-right"></i> Insert Class
-						</a> <b class="arrow"></b></li></li>
+						</a> <b class="arrow"></b></li>
+                            </li>
 
-				</li>
-			</ul>
-			</li>
+                        </ul>
+                    </li>
 
-
-			<li class=""><a href="#" class="dropdown-toggle"> <i
+                    <li class=""><a href="#" class="dropdown-toggle"> <i
 					class="menu-icon fa fa-pencil-square-o"></i> <span
 					class="menu-text"> Manager Result </span> <b
 					class="arrow fa fa-angle-down"></b>
-			</a> <b class="arrow"></b>
+			            </a> <b class="arrow"></b>
 
-				<ul class="submenu">
-					<li class=""><a href="ViewResult?pageid=1"> <i
+                        <ul class="submenu">
+                            <li class=""><a href="#ViewResult?pageid=1" class="dropdown-toggle"> <i
 							class="menu-icon fa fa-caret-right"></i> View Result
-					</a> <b class="arrow"></b></li>
+					</a> <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class=""><a href="AccountHaveResult?pageid=1"> <i
+									class="menu-icon fa fa-caret-right"></i> List of account have
+									result
+							</a> <b class="arrow"></b></li>
 
-					<li class=""><a href="EditResult?pageid=1"> <i
+                                    <li class=""><a href="CandidateDontHaveExam"> <i
+									class="menu-icon fa fa-caret-right"></i> List of account did
+									not contest
+							</a> <b class="arrow"></b></li>
+                                </ul>
+                            </li>
+
+                            <li class=""><a href="EditResult?pageid=1"> <i
 							class="menu-icon fa fa-caret-right"></i> Edit Result
 					</a> <b class="arrow"></b></li>
-				</ul></li>
-			<li class=""><a href="Calendar"> <i
+
+                        </ul>
+                    </li>
+                    
+                    <li class=""><a href="Calendar"> <i
 					class="menu-icon fa fa-calendar"></i> <span class="menu-text">
 						Calendar <span class="badge badge-transparent tooltip-error"
 						title="2 Important Events"> <i class="ace-icon "></i>
 					</span>
 				</span>
 			</a> <b class="arrow"></b></li>
-			</ul>
-			<!-- /.nav-list -->
+
+                </ul>
+                <!-- /.nav-list -->
 
 			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 				<i id="sidebar-toggle-icon"

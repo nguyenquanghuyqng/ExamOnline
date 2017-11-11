@@ -297,92 +297,79 @@
                                 <span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
                             </div>
                         </div>
-                        <!-- /.sidebar-shortcuts -->
+                         <!-- /.sidebar-shortcuts -->
 
-                        <ul class="nav nav-list">
-                            <li class="active"><a href="HomeAdminForWard"> <i
+                <ul class="nav nav-list">
+                   
+                    <li class="active"><a href="HomeAdminForWard"> <i
 						class="menu-icon fa fa-tachometer"></i> <span class="menu-text">Home
 							Admin</span>
 				</a> <b class="arrow"></b></li>
 
-                            <!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-                            <li class=""><a href="#" class="dropdown-toggle"> <i
+                    <!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
+                    <li class=""><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 							Manager Account </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
-                                <ul class="submenu">
-                                    <li class=""><a href="InsertAccount"> <i
+                        <ul class="submenu">
+                            <li class=""><a href="InsertAccount"> <i
 								class="menu-icon fa fa-caret-right"></i> Insert Account <b
 								class="arrow"></b>
 						</a> <b class="arrow"></b>
-                                        <li class=""><a href="UpdateandDeleteAccount?pageid=1"> <i
+                                <li class=""><a href="UpdateandDeleteAccount?pageid=1"> <i
 								class="menu-icon fa fa-caret-right"></i> Update and Delete
 								Account
 						</a> <b class="arrow"></b></li>
 
-                                        <li class=""><a href="InsertClass?pageid=1"> <i
+                                <li class=""><a href="InsertClass?pageid=1"> <i
 								class="menu-icon fa fa-caret-right"></i> Insert Class
 						</a> <b class="arrow"></b></li>
-                                    </li>
-                            </li>
-                            </ul>
                             </li>
 
+                        </ul>
+                    </li>
 
-                            <li class=""><a href="#" class="dropdown-toggle"> <i
+                    <li class=""><a href="#" class="dropdown-toggle"> <i
 					class="menu-icon fa fa-pencil-square-o"></i> <span
 					class="menu-text"> Manager Result </span> <b
 					class="arrow fa fa-angle-down"></b>
-			</a> <b class="arrow"></b>
+			            </a> <b class="arrow"></b>
 
-                                <ul class="submenu">
-                                    <li class=""><a href="ViewResult?pageid=1"> <i
+                        <ul class="submenu">
+                            <li class=""><a href="#ViewResult?pageid=1" class="dropdown-toggle"> <i
 							class="menu-icon fa fa-caret-right"></i> View Result
-					</a> <b class="arrow"></b></li>
+					</a> <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class=""><a href="AccountHaveResult?pageid=1"> <i
+									class="menu-icon fa fa-caret-right"></i> List of account have
+									result
+							</a> <b class="arrow"></b></li>
 
-                                    <li class=""><a href="EditResult?pageid=1"> <i
-							class="menu-icon fa fa-caret-right"></i> Edit Result
-					</a> <b class="arrow"></b></li>
+                                    <li class=""><a href="CandidateDontHaveExam"> <i
+									class="menu-icon fa fa-caret-right"></i> List of account did
+									not contest
+							</a> <b class="arrow"></b></li>
                                 </ul>
                             </li>
-                            <li class=""><a href="Calendar"> <i
+
+                            <li class=""><a href="EditResult?pageid=1"> <i
+							class="menu-icon fa fa-caret-right"></i> Edit Result
+					</a> <b class="arrow"></b></li>
+
+                        </ul>
+                    </li>
+                    
+                    <li class=""><a href="Calendar"> <i
 					class="menu-icon fa fa-calendar"></i> <span class="menu-text">
 						Calendar <span class="badge badge-transparent tooltip-error"
 						title="2 Important Events"> <i class="ace-icon "></i>
 					</span>
 				</span>
 			</a> <b class="arrow"></b></li>
-                        </ul>
-                        <!-- /.nav-list -->
 
-                        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-                        </div>
-                    </div>
-
-                    <div class="main-content">
-
-                        <div class="main-content-inner">
-                            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                                <ul class="breadcrumb">
-                                    <li><i class="ace-icon fa fa-home home-icon"></i> <a href="HomeAdminForWard">Home</a>
-                                    </li>
-
-                                    <li><a href="#">Manager Account</a></li>
-                                    <li class="active">Update and Delete Account</li>
-                                </ul>
-                                <!-- /.breadcrumb -->
-
-                                <div class="nav-search" id="nav-search">
-                                    <form class="form-search">
-                                        <span class="input-icon"> 
-								  <input class="nav-search-input" id="myInput" type="text" placeholder="Search ..." autocomplete="off">
-								<i class="ace-icon fa fa-search nav-search-icon"></i>
-							</span>
-                                    </form>
-                                </div>
-                                <!-- /.nav-search -->
+                </ul>
+                <!-- /.nav-list -->
                             </div>
 
                             <div class="page-content">
