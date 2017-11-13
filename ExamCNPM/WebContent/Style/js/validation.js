@@ -23,6 +23,60 @@
 //	divDnhap.style.display="block";
 //}
 
+// validate create test sheet
+
+function KTBatBuocTest(){
+	
+	var pthongbao=document.getElementById("pthongbao");
+	var classid= document.getElementById("classid");
+	var timestart= document.getElementById("timestart");	
+	var timeend= document.getElementById("timeend");	
+	var testtypeid= document.getElementById("testtypeid");	
+	var questiontypeid= document.getElementById("questiontypeid");	
+
+
+	if(classid.value == "" || timestart.value == "" || timeend.value == "" || testtypeid.value == "" ||
+			questiontypeid.value == ""){
+
+		frmCreateTest.classid.style.border="solid 2px red";
+		frmCreateTest.timestart.style.border="solid 2px red";
+		frmCreateTest.timeend.style.border="solid 2px red";
+		frmCreateTest.testtypeid.style.border="solid 2px red";
+		frmCreateTest.questiontypeid.style.border="solid 2px red";
+
+		pthongbao.style.display="block";
+		pthongbao.style.color="red";
+		pthongbao.innerHTML="Bạn cần nhập dữ liệu cho các trường đầy đủ <br/>";
+		return false;
+		
+	}else if(classid.selectedIndex==0){
+		pthongbao.style.display="block";
+		pthongbao.innerHTML="Bạn phải chọn classid <br/>";
+		return false;
+	}
+	else if(testtypeid.selectedIndex==0){
+		pthongbao.style.display="block";
+		pthongbao.innerHTML="Bạn phải chọn testtypeid <br/>";
+		return false;
+	}
+	else if(questiontypeid.selectedIndex==0){
+		pthongbao.style.display="block";
+		pthongbao.innerHTML="Bạn phải chọn questiontypeid <br/>";
+		return false;
+	}
+	else{
+		pthongbao.display="none";
+		return true;
+	}
+	
+}
+
+
+function KiemTraHopLeTest(){
+	return KTBatBuocTest();
+}
+
+
 function ktraBatBuocDangKy() {
 	var pthongbao=document.getElementById("pthongbao");
 	var username= document.getElementById("username");

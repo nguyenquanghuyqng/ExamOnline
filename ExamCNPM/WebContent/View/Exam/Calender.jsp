@@ -339,7 +339,7 @@
                         <a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text">
-								Manager Exam
+								Manage Exam
 							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
@@ -349,10 +349,10 @@
 
                         <ul class="submenu">
                             <li class="">
-                                <a href="CreateExam">
+                                <a href="CreateTestSheet">
 									<i class="menu-icon fa fa-caret-right"></i>
 
-									Create Exam
+									Create Test Sheet
 									<b class="arrow"></b>
 								</a>
 
@@ -361,7 +361,7 @@
                                 <li class="">
                                     <a href="EditExam">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Edit Exam
+									Edit Test Sheet
 								</a>
 
                                     <b class="arrow"></b>
@@ -385,7 +385,7 @@
                     <li class="">
                         <a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Manager Class Exam </span>
+							<span class="menu-text"> Manage Class Exam </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -444,7 +444,7 @@
                                 <i class="ace-icon fa fa-home home-icon"></i>
                                 <a href="#">Home</a>
                             </li>
-                            <li class="active">Manager Exam</li>
+                            <li class="active">Manage Exam</li>
                         </ul>
                         <!-- /.breadcrumb -->
 
@@ -465,7 +465,7 @@
 
                         <div class="page-header">
                             <h1>
-                                Manager Exam
+                                Manage Exam
                                 <small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 									overview &amp; stats

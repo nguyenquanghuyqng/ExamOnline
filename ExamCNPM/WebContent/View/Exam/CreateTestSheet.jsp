@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-    	<%@ page import = "java.io.*,java.util.*" %>
-	<%@ page import = "javax.servlet.*,java.text.*" %>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Account have Result </title>
+<title>Create Test Sheet</title>
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -44,25 +46,10 @@
 <!-- ace scripts -->
 <script src="Style/js/ace-elements.min.js"></script>
 <script src="Style/js/ace.min.js"></script>
-
-<!-- Show thông báo ra màn hình -->
-<script type="text/javascript">
-	function show_comfirm() {
-		var comfirmBox;
-		comfirmBox = confirm("Bạn có chắc chắn muốn xóa kết quả ?");
-		if (comfirmBox == true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-</script>
-
-
+<script src="Style/js/validation.js"></script>
 
 </head>
 
-<body>
 <body class="no-skin" style="font-size: 14px;">
 	<div id="navbar" class="navbar navbar-default          ace-save-state">
 		<div class="navbar-container ace-save-state" id="navbar-container">
@@ -284,79 +271,56 @@
 					<span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
 				</div>
 			</div>
-			 <!-- /.sidebar-shortcuts -->
+			<!-- /.sidebar-shortcuts -->
 
-                <ul class="nav nav-list">
-                   
-                    <li class="active"><a href="HomeAdminForWard"> <i
+			<ul class="nav nav-list">
+				<li class="active"><a href="HomeExam"> <i
 						class="menu-icon fa fa-tachometer"></i> <span class="menu-text">Home
-							Admin</span>
+							Exam</span>
 				</a> <b class="arrow"></b></li>
 
-                    <!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-                    <li class=""><a href="#" class="dropdown-toggle"> <i
+				<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
+				<li class=""><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							Manage Account </span> <b class="arrow fa fa-angle-down"></b>
+							Manage Exam </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
-                        <ul class="submenu">
-                            <li class=""><a href="InsertAccount"> <i
-								class="menu-icon fa fa-caret-right"></i> Insert Account <b
+					<ul class="submenu">
+						<li class=""><a href="CreateTestCheet"> <i
+								class="menu-icon fa fa-caret-right"></i> Create Test Sheet <b
 								class="arrow"></b>
 						</a> <b class="arrow"></b>
-                                <li class=""><a href="UpdateandDeleteAccount?pageid=1"> <i
-								class="menu-icon fa fa-caret-right"></i> Update and Delete
-								Account
-						</a> <b class="arrow"></b></li>
+						<li class=""><a href="EditExam"> <i
+								class="menu-icon fa fa-caret-right"></i> Edit Test Sheet
+						</a> <b class="arrow"></b></li></li>
+			</ul>
+			</li>
 
-                                <li class=""><a href="InsertClass?pageid=1"> <i
-								class="menu-icon fa fa-caret-right"></i> Insert Class
-						</a> <b class="arrow"></b></li>
-                            </li>
 
-                        </ul>
-                    </li>
-
-                    <li class=""><a href="#" class="dropdown-toggle"> <i
+			<li class=""><a href="#" class="dropdown-toggle"> <i
 					class="menu-icon fa fa-pencil-square-o"></i> <span
-					class="menu-text"> Manage Result </span> <b
+					class="menu-text"> Manage Class Exam </span> <b
 					class="arrow fa fa-angle-down"></b>
-			            </a> <b class="arrow"></b>
+			</a> <b class="arrow"></b>
 
-                        <ul class="submenu">
-                            <li class=""><a href="#ViewResult?pageid=1" class="dropdown-toggle"> <i
-							class="menu-icon fa fa-caret-right"></i> View Result
-					</a> <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class=""><a href="AccountHaveResult?pageid=1"> <i
-									class="menu-icon fa fa-caret-right"></i> List of account have
-									result
-							</a> <b class="arrow"></b></li>
-
-                                    <li class=""><a href="CandidateDontHaveExam"> <i
-									class="menu-icon fa fa-caret-right"></i> List of account did
-									not contest
-							</a> <b class="arrow"></b></li>
-                                </ul>
-                            </li>
-
-                            <li class=""><a href="EditResult?pageid=1"> <i
-							class="menu-icon fa fa-caret-right"></i> Edit Result
+				<ul class="submenu">
+					<li class=""><a href="#"> <i
+							class="menu-icon fa fa-caret-right"></i> View List Class Exam
 					</a> <b class="arrow"></b></li>
 
-                        </ul>
-                    </li>
-                    
-                    <li class=""><a href="Calendar"> <i
+					<li class=""><a href="#"> <i
+							class="menu-icon fa fa-caret-right"></i> Edit List Class Exam
+					</a> <b class="arrow"></b></li>
+				</ul></li>
+			<li class=""><a href="CalendarExam"> <i
 					class="menu-icon fa fa-calendar"></i> <span class="menu-text">
 						Calendar <span class="badge badge-transparent tooltip-error"
 						title="2 Important Events"> <i class="ace-icon "></i>
 					</span>
 				</span>
 			</a> <b class="arrow"></b></li>
-
-                </ul>
-                <!-- /.nav-list -->
+			</ul>
+			<!-- /.nav-list -->
 
 			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 				<i id="sidebar-toggle-icon"
@@ -371,11 +335,9 @@
 			<div class="main-content-inner">
 				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
-						</li>
-
-						<li><a href="#">Manage Result</a></li>
-						<li class="active">View Result</li>
+						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Manage
+								Exam</a></li>
+						<li class="active">Create Exam</li>
 					</ul>
 					<!-- /.breadcrumb -->
 
@@ -397,94 +359,59 @@
 
 					<div class="page-header">
 						<h1>
-							View Result <small> <i
-								class="ace-icon fa fa-angle-double-right"></i> overview &amp;
-								stats
+							Create Exam <small> <i
+								class="ace-icon fa fa-angle-double-right"></i> Manger Exam can
+								create exam
 							</small>
 						</h1>
 					</div>
 
 
-					<div class="">
-						<h2>List user have result</h2>
-						
-						Date : <select name="date" id="date">
-							<option>Choose date</option>
-                   			<option>11-10-2017</option>
-							<option>12-10-2017</option>
-							<option>13-10-2017</option>
-							<option>14-10-2017</option>
-                 			</select>
-                 
-                 		<span style="margin-left: 50px;">Class : </span> <select name="class" id="class">
-							<option>Choose class</option>
-                   			<option>151101A</option>
-							<option>151102A</option>
-							<option>151103A</option>
-							<option>151103B</option>
-                 			</select>
-						 <%
-					         Date dNow = new Date( );
-					         SimpleDateFormat ft = 
-					         new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-					         out.print( "<h2 align=\"center\">" + ft.format(dNow) + "</h2>");
-					      %>
-						
-						<table border='1' style="width: 100%"
-							class="table table-hover table-bordered table-striped">
-							<tr>
-								<th>resulttestid</th>
-								<th>userid</th>
-								<th>username</th>
-								<th>fullname</th>
-								<th>point</th>
-								<th>testid</th>
-							</tr>
-							<tbody id="myTable">
-								<c:forEach items="${result}" var="list">
+					<div class="formCreateTest" style="margin: 30px">
+						<h2>Create Exam</h2>
+						<div id="thongbao">
+							<p id="pthongbao"></p>
+						</div>
+						<form action="CreateTestSheet" method="post" name="frmCreateTest">
+							<br> Class id : <br> <select name="classid"
+								id="classid">
+								<option>Select class id</option>
+								<option>151101A</option>
+								<option>151101B</option>
+								<option>151101C</option>
+								<option>151101D</option>
+							</select><br> 
+							<br> Date time start: <br> <input type="text"
+								name="timestart" id="timestart"><br> 
+							<br> Date time end: <br> <input type="text" name="timeend"
+								id="timeend"><br> 
+								<br> Test type id: <br>
+							<select name="testtypeid" id="testtypeid">
+								<option>Select test type id</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select><br> <br> Question type id: <br> <select
+								name="questiontypeid" id="questiontypeid">
+								<option>Select question type id</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select><br> <br> <input type="submit"
+								value="Create Test Sheet" style="background: skyblue"
+								onclick="return KiemTraHopLeTest()">
 
-									<tr>
-										<td>${list.resulttestid}</td>
-										<td>${list.userid}</td>
-										<td>${list.username}</td>
-										<td>${list.fullname}</td>
-										<td>${list.point}</td>
-										<td>${list.testid}</td>
-									</tr>
-
-								</c:forEach>
-							</tbody>
-						</table>
-						<ul class="pagination">
-							<!-- numberpage trong HomeController -->
-							<c:if test="${numberpage==1}">
-								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
-							</c:if>
-
-							<c:if test="${numberpage==maxpageid}">
-								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li class="disabled"><a href="#">&raquo;</a></li>
-							</c:if>
-
-							<c:if test="${numberpage>1 && numberpage<maxpageid}">
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage-1}">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
-							</c:if>
-						</ul>
+						</form>
 					</div>
-
-
 
 				</div>
 			</div>
-			<!--/.page-header -->
+			<!-- /.page-header -->
+
 		</div>
 		<!-- /.page-content -->
 	</div>
