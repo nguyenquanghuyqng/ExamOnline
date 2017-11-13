@@ -325,10 +325,10 @@
                 <!-- /.sidebar-shortcuts -->
 
                 <ul class="nav nav-list">
-                    <li class="active">
+                    <li class="">
                         <a href="HomeQuestion">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text">Home Question</span>
+							<span class="menu-text">Home</span>
 						</a>
 
                         <b class="arrow"></b>
@@ -348,7 +348,7 @@
                             <li class="">
                                 <a href="InsertQuestion">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Insert Question
+									Insert Questions
 								</a>
 
                                 <b class="arrow"></b>
@@ -357,7 +357,7 @@
                             <li class="">
                                 <a href="UpdateDeleteQuestion">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Update & Delete Question
+									Update & Delete Questions
 								</a>
 
                                 <b class="arrow"></b>
@@ -436,7 +436,7 @@
                     <!--                     <b class="arrow"></b> -->
                     <!--                 </li> -->
 
-                    <li class="">
+                    <li class="active">
                         <a href="#">
 							<i class="menu-icon fa fa-calendar"></i>
 

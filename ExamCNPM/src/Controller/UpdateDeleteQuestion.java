@@ -31,7 +31,7 @@ public class UpdateDeleteQuestion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String pageidstr= request.getParameter("pageid");
-		// count là số lượng phần tử tối đa hiện ở trang
+	
 		int count =5;
 		
 		// Ep kieu Int
