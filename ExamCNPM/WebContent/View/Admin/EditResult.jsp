@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+	<%@ page import = "java.io.*,java.util.*" %>
+	<%@ page import = "javax.servlet.*,java.text.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -294,7 +296,7 @@
                     <!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
                     <li class=""><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							Manager Account </span> <b class="arrow fa fa-angle-down"></b>
+							Manage Account </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
                         <ul class="submenu">
@@ -317,7 +319,7 @@
 
                     <li class=""><a href="#" class="dropdown-toggle"> <i
 					class="menu-icon fa fa-pencil-square-o"></i> <span
-					class="menu-text"> Manager Result </span> <b
+					class="menu-text"> Manage Result </span> <b
 					class="arrow fa fa-angle-down"></b>
 			            </a> <b class="arrow"></b>
 
@@ -372,7 +374,7 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li><a href="#">Manager Result</a></li>
+						<li><a href="#">Manage Result</a></li>
 						<li class="active">View Result</li>
 					</ul>
 					<!-- /.breadcrumb -->
@@ -405,6 +407,29 @@
 
 					<div class="">
 						<h2>List User</h2>
+						Date : <select name="date" id="date">
+							<option>Choose date</option>
+                   			<option>11-10-2017</option>
+							<option>12-10-2017</option>
+							<option>13-10-2017</option>
+							<option>14-10-2017</option>
+                 			</select>
+                 
+                 		<span style="margin-left: 50px;">Class : </span> <select name="class" id="class">
+							<option>Choose class</option>
+                   			<option>151101A</option>
+							<option>151102A</option>
+							<option>151103A</option>
+							<option>151103B</option>
+                 			</select>
+						 <%
+					         Date dNow = new Date( );
+					         SimpleDateFormat ft = 
+					         new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+					         out.print( "<h2 align=\"center\">" + ft.format(dNow) + "</h2>");
+					      %>
+					      
+						
 						<table border='1' style="width: 100%"
 							class="table table-hover table-bordered table-striped">
 							<tr>

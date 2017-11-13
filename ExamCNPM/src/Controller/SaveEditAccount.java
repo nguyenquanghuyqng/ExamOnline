@@ -33,6 +33,7 @@ public class SaveEditAccount extends HttpServlet {
 		
 		Connection conn = (Connection) DBConnection.CreateConnection();
 
+		request.setCharacterEncoding("UTF-8");
 		int userid = Integer.parseInt(request.getParameter("userid"));
 		String username = request.getParameter("username");
 		String pass = request.getParameter("pass");

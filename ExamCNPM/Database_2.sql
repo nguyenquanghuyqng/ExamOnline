@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `classes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `classes` (
-  `classid` int(11) NOT NULL,
+  `classid` int(11) NOT NULL AUTO_INCREMENT,
   `classname` text,
   PRIMARY KEY (`classid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `media`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `media` (
-  `mediaid` int(11) NOT NULL,
+  `mediaid` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(45) DEFAULT NULL,
   `media` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`mediaid`)
@@ -73,7 +73,7 @@ DROP TABLE IF EXISTS `questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `questions` (
-  `questionid` int(11) NOT NULL,
+  `questionid` int(11) NOT NULL AUTO_INCREMENT,
   `number` int(11) DEFAULT NULL,
   `contentquestion` text,
   `option1` text,
@@ -86,7 +86,7 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`questionid`),
   KEY `FK_Questions_QuestionType` (`questiontypeid`),
   CONSTRAINT `FK_Questions_QuestionType` FOREIGN KEY (`questiontypeid`) REFERENCES `questiontype` (`questiontypeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,10 +107,10 @@ DROP TABLE IF EXISTS `questiontype`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `questiontype` (
-  `questiontypeid` int(11) NOT NULL,
+  `questiontypeid` int(11) NOT NULL AUTO_INCREMENT,
   `questiontypename` text,
   PRIMARY KEY (`questiontypeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +131,7 @@ DROP TABLE IF EXISTS `resulttest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `resulttest` (
-  `resulttestid` int(11) NOT NULL,
+  `resulttestid` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) DEFAULT NULL,
   `point` double DEFAULT NULL,
   `testid` int(11) DEFAULT NULL,
@@ -140,7 +140,7 @@ CREATE TABLE `resulttest` (
   KEY `ResultTest_User` (`userid`),
   CONSTRAINT `ResultTest_Test` FOREIGN KEY (`testid`) REFERENCES `tests` (`testid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `ResultTest_User` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,10 +161,10 @@ DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roles` (
-  `roleid` int(11) NOT NULL,
+  `roleid` int(11) NOT NULL AUTO_INCREMENT,
   `rolename` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`roleid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,6 +200,7 @@ CREATE TABLE `testclass` (
 
 LOCK TABLES `testclass` WRITE;
 /*!40000 ALTER TABLE `testclass` DISABLE KEYS */;
+INSERT INTO `testclass` VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
 /*!40000 ALTER TABLE `testclass` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,11 +239,14 @@ DROP TABLE IF EXISTS `tests`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tests` (
-  `testid` int(11) NOT NULL,
-  `testname` varchar(45) DEFAULT NULL,
-  `time` int(11) DEFAULT NULL,
-  PRIMARY KEY (`testid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `testid` int(11) NOT NULL AUTO_INCREMENT,
+  `datetimestart` datetime DEFAULT NULL,
+  `datetimeend` datetime DEFAULT NULL,
+  `testtypeid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`testid`),
+  KEY `FK_test_testtype_idx` (`testtypeid`),
+  CONSTRAINT `FK_test_testtype` FOREIGN KEY (`testtypeid`) REFERENCES `testtype` (`testtypeid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,38 +255,33 @@ CREATE TABLE `tests` (
 
 LOCK TABLES `tests` WRITE;
 /*!40000 ALTER TABLE `tests` DISABLE KEYS */;
-INSERT INTO `tests` VALUES (1,'Mini Test',15),(2,'Medium Test',30),(3,'Large Test',60),(4,'Test Sheet',90),(5,'Quiz',120);
+INSERT INTO `tests` VALUES (1,NULL,NULL,NULL),(2,NULL,NULL,NULL),(3,NULL,NULL,NULL),(4,NULL,NULL,NULL),(5,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `tests` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `testsheet`
+-- Table structure for table `testtype`
 --
 
-DROP TABLE IF EXISTS `testsheet`;
+DROP TABLE IF EXISTS `testtype`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `testsheet` (
-  `testsheetid` int(11) NOT NULL AUTO_INCREMENT,
-  `classid` int(11) DEFAULT NULL,
-  `datetimestart` datetime DEFAULT NULL,
-  `datetimeend` datetime DEFAULT NULL,
-  `questiontype` varchar(45) DEFAULT NULL,
+CREATE TABLE `testtype` (
+  `testtypeid` int(11) NOT NULL AUTO_INCREMENT,
+  `testname` varchar(45) DEFAULT NULL,
   `numberquestion` int(11) DEFAULT NULL,
-  PRIMARY KEY (`testsheetid`),
-  KEY `FK_TestSheet_Classes_idx` (`classid`),
-  CONSTRAINT `FK_TestSheet_Classes` FOREIGN KEY (`classid`) REFERENCES `classes` (`classid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `time` time DEFAULT NULL,
+  PRIMARY KEY (`testtypeid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `testsheet`
+-- Dumping data for table `testtype`
 --
 
-LOCK TABLES `testsheet` WRITE;
-/*!40000 ALTER TABLE `testsheet` DISABLE KEYS */;
-INSERT INTO `testsheet` VALUES (1,1,NULL,NULL,NULL,NULL),(2,2,NULL,NULL,NULL,NULL),(3,3,NULL,NULL,NULL,NULL),(4,4,NULL,NULL,NULL,NULL),(5,5,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `testsheet` ENABLE KEYS */;
+LOCK TABLES `testtype` WRITE;
+/*!40000 ALTER TABLE `testtype` DISABLE KEYS */;
+/*!40000 ALTER TABLE `testtype` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -319,7 +318,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `userid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL,
   `fullname` varchar(45) DEFAULT NULL,
@@ -331,7 +330,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`userid`),
   KEY `user_role` (`roleid`),
   CONSTRAINT `user_role` FOREIGN KEY (`roleid`) REFERENCES `roles` (`roleid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,4 +360,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-11 23:20:57
+-- Dump completed on 2017-11-13 18:09:17

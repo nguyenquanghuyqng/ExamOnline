@@ -281,7 +281,7 @@
                     <!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
                     <li class=""><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							Manager Account </span> <b class="arrow fa fa-angle-down"></b>
+							Manage Account </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
                         <ul class="submenu">
@@ -304,7 +304,7 @@
 
                     <li class=""><a href="#" class="dropdown-toggle"> <i
 					class="menu-icon fa fa-pencil-square-o"></i> <span
-					class="menu-text"> Manager Result </span> <b
+					class="menu-text"> Manage Result </span> <b
 					class="arrow fa fa-angle-down"></b>
 			            </a> <b class="arrow"></b>
 
@@ -356,7 +356,7 @@
                                 <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
                                 </li>
 
-                                <li><a href="#">Manager Result</a></li>
+                                <li><a href="#">Manage Result</a></li>
                                 <li class="active">View Result</li>
                             </ul>
                             <!-- /.breadcrumb -->
