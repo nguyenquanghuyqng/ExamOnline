@@ -407,6 +407,7 @@
                     </ul>
                 </li>
 
+<!-- 
                 <li class="">
                     <a href="#QuestionManager" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
@@ -511,9 +512,15 @@
                     </div>
 <!--                     Show dữ liệu lên bảng -->
                     <div class="" id="UpdateDeleteQuestion ">
-					<h2>Questions </h2>
+					<h2 align-text="left">Questions </h2>
+					<input type="button" style="float:right" name="" value="Search"/>
+					<input type="text" style="float:right" name="" autocomplete="on"/>
+					<br />
+					<br />
+					
 <!-- 						<table class="table" id="makeEditable" border='1' style="width: 100%" class="table table-hover table-bordered table-striped"> -->
 						<table class="table" id="makeEditable" border='1' style="width: 100%" >
+							
 							<tr>
                                             <th class="center">QuestionID</th>
                                             <th class="center">Number</th>
@@ -525,7 +532,8 @@
                                             <th class="center">Answer </th>
                                             <th class="center">MediaID</th>
                                             <th class="center">QuestionTypeID</th>
-                                            <th><span style="float:right"><button id="but_add">Add New Row</button></span></th>
+                                            <th /> <th />
+                                       <!-- <th><span style="float:right"><button id="but_add">Add New Row</button></span></th>-->
                                         </tr>
 						<tbody id="myTable">
 							<c:forEach items="${questions}" var="list">

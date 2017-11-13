@@ -407,6 +407,7 @@
                     </ul>
                 </li>
 
+<!-- 
                 <li class="">
                     <a href="#QuestionManager" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
@@ -437,6 +438,7 @@
                         </li>
                     </ul>
                 </li>
+-->
 
                 <li class="">
                     <a href="CalendarQuestion">

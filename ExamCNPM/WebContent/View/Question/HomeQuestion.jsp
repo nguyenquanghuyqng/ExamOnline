@@ -338,7 +338,7 @@
              <li class="active">
                     <a href="HomeQuestion">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text">Home Question</span>
+							<span class="menu-text">Home</span>
 						</a>
 
                     <b class="arrow"></b>
@@ -406,6 +406,7 @@
                     </ul>
                 </li>
 
+<!-- 
                 <li class="">
                     <a href="#QuestionManager" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
@@ -473,9 +474,9 @@
                     <ul class="breadcrumb">
                         <li>
                             <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="HomeQuestion">Home Question</a>
+                            <a href="HomeQuestion">Home</a>
                         </li>
-                        <li class="active">Home Question Manager</li>
+                        <li class="active">Home</li>
                     </ul>
                     <!-- /.breadcrumb -->
 
@@ -496,7 +497,7 @@
 
                     <div class="page-header">
                         <h1>
-                           Home Question Manager
+                           Home
                             <small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 									overview &amp; stats
