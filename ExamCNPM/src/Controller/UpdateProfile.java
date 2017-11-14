@@ -44,6 +44,7 @@ public class UpdateProfile extends HttpServlet {
 		User us = new User();
 
 		// set all the values in User's class object.
+		request.setCharacterEncoding("UTF-8");
 		us.setUsername(username);
 		us.setFullname(request.getParameter("fullname"));
 		us.setBirthday(request.getParameter("birthday"));

@@ -38,6 +38,7 @@ public class ViewProfile extends HttpServlet {
 		
 		us = lgdao.getUser(user);
 		
+		request.setCharacterEncoding("UTF-8");
 		String fullname = us.getFullname();
 		String birthday = us.getBirthday();
 		String country = us.getCountry();
