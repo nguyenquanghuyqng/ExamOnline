@@ -333,10 +333,10 @@
                     <span class="btn btn-danger"></span>
                 </div>
             </div>
-            <!-- /.sidebar-shortcuts -->
+             <!-- /.sidebar-shortcuts -->
 
             <ul class="nav nav-list">
-             <li class="">
+             <li class="active">
                     <a href="HomeQuestion">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text">Home</span>
@@ -345,7 +345,7 @@
                     <b class="arrow"></b>
                 </li>
             
-                <li class="open">
+                <li class="">
                     <a href="#QuestionManager" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text"> Questions </span>
@@ -356,10 +356,10 @@
                     <b class="arrow"></b>
 
                     <ul class="submenu">
-                        <li class="active">
+                        <li class="">
                             <a href="InsertQuestion">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Insert Questions
+									Insert Question
 								</a>
 
                             <b class="arrow"></b>
@@ -368,7 +368,7 @@
                         <li class="">
                             <a href="UpdateDeleteQuestion?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Update & Delete Questions
+									Update & Delete Question
 								</a>
 
                             <b class="arrow"></b>
@@ -397,7 +397,7 @@
                         </li>
 
                         <li class="">
-                            <a href="UpdateDeleteQuestionType">
+                            <a href="UpdateDeleteQuestionType?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Update & Delete Question Types
 								</a>
@@ -407,38 +407,6 @@
                     </ul>
                 </li>
 
-<!-- 
-                <li class="">
-                    <a href="#QuestionManager" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Search </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Questions
-								</a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Question Types
-								</a>
-
-                            <b class="arrow"></b>
-                        </li>
-                    </ul>
-                </li>
--->
 
                 <li class="">
                     <a href="CalendarQuestion">

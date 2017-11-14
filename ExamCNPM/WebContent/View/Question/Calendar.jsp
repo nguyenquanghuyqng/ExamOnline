@@ -322,123 +322,83 @@
                         <span class="btn btn-danger"></span>
                     </div>
                 </div>
-                <!-- /.sidebar-shortcuts -->
+                 <!-- /.sidebar-shortcuts -->
 
-                <ul class="nav nav-list">
-                    <li class="">
-                        <a href="HomeQuestion">
+            <ul class="nav nav-list">
+             <li class="active">
+                    <a href="HomeQuestion">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text">Home</span>
 						</a>
 
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="#QuestionManager" class="dropdown-toggle">
+                    <b class="arrow"></b>
+                </li>
+            
+                <li class="">
+                    <a href="#QuestionManager" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text"> Questions </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
-                        <b class="arrow"></b>
+                    <b class="arrow"></b>
 
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="InsertQuestion">
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="InsertQuestion">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Insert Questions
+									Insert Question
 								</a>
 
-                                <b class="arrow"></b>
-                            </li>
+                            <b class="arrow"></b>
+                        </li>
 
-                            <li class="">
-                                <a href="UpdateDeleteQuestion">
+                        <li class="">
+                            <a href="UpdateDeleteQuestion?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Update & Delete Questions
+									Update & Delete Question
 								</a>
 
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
 
-                    <li class="">
-                        <a href="#" class="dropdown-toggle">
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Question Types </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
-                        <b class="arrow"></b>
+                    <b class="arrow"></b>
 
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="InsertQuestionType">
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="InsertQuestionType">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Insert Question Types
 								</a>
 
-                                <b class="arrow"></b>
-                            </li>
+                            <b class="arrow"></b>
+                        </li>
 
-                            <li class="">
-                                <a href="UpdateDeleteQuestionType">
+                        <li class="">
+                            <a href="UpdateDeleteQuestionType?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Update & Delete Question Types
 								</a>
 
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
 
-<!-- 
-                    <li class="">
-                        <a href="#QuestionManager" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Search </span>
 
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-                        <b class="arrow"></b>
-
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Questions
-								</a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Question Types
-								</a>
-
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- 				 <li class=""> -->
-                    <!--                     <a href="EditProfle"> -->
-                    <!-- 							<i class="menu-icon fa fa-tachometer"></i> -->
-                    <!-- 							<span class="menu-text">Profile</span> -->
-                    <!-- 						</a> -->
-
-                    <!--                     <b class="arrow"></b> -->
-                    <!--                 </li> -->
-
-                    <li class="active">
-                        <a href="#">
+                <li class="">
+                    <a href="CalendarQuestion">
 							<i class="menu-icon fa fa-calendar"></i>
 
 							<span class="menu-text">
@@ -447,10 +407,10 @@
 							</span>
 						</a>
 
-                        <b class="arrow"></b>
-                    </li>
-                </ul>
-                <!-- /.nav-list -->
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+            <!-- /.nav-list -->
 
                 <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
                     <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

@@ -32,7 +32,7 @@ public class UpdateDeleteQuestionType extends HttpServlet {
 			throws ServletException, IOException {
 		String pageidstr= request.getParameter("pageid");
 		// count là số lượng phần tử tối đa hiện ở trang
-		int count =5;
+		int count =2;
 		
 		// Ep kieu Int
 		int pageid=Integer.parseInt(pageidstr);

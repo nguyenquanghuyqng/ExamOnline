@@ -334,13 +334,13 @@
                     <span class="btn btn-danger"></span>
                 </div>
             </div>
-            <!-- /.sidebar-shortcuts -->
+             <!-- /.sidebar-shortcuts -->
 
             <ul class="nav nav-list">
-             <li class="">
+             <li class="active">
                     <a href="HomeQuestion">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text">Home Question</span>
+							<span class="menu-text">Home</span>
 						</a>
 
                     <b class="arrow"></b>
@@ -367,7 +367,7 @@
                         </li>
 
                         <li class="">
-                            <a href="UpdateDeleteQuestion">
+                            <a href="UpdateDeleteQuestion?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Update & Delete Question
 								</a>
@@ -377,7 +377,7 @@
                     </ul>
                 </li>
 
-                <li class="open">
+                <li class="">
                     <a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Question Types </span>
@@ -397,8 +397,8 @@
                             <b class="arrow"></b>
                         </li>
 
-                        <li class="active">
-                            <a href="UpdateDeleteQuestionType">
+                        <li class="">
+                            <a href="UpdateDeleteQuestionType?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Update & Delete Question Types
 								</a>
@@ -408,46 +408,6 @@
                     </ul>
                 </li>
 
-<!-- 
-                <li class="">
-                    <a href="#QuestionManager" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Search </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Questions
-								</a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Question Types
-								</a>
-
-                            <b class="arrow"></b>
-                        </li>
-                    </ul>
-                </li>
-
-<!-- 				 <li class=""> -->
-<!--                     <a href="EditProfle"> -->
-<!-- 							<i class="menu-icon fa fa-tachometer"></i> -->
-<!-- 							<span class="menu-text">Profile</span> -->
-<!-- 						</a> -->
-
-<!--                     <b class="arrow"></b> -->
-<!--                 </li> -->
 
                 <li class="">
                     <a href="CalendarQuestion">
@@ -514,10 +474,7 @@
 <!--                     Show dữ liệu lên bảng -->
                     <div class="" id="UpdateDeleteQuestionType ">
 					<h2>Question Types </h2>
-					<input type="button" style="float:right" name="" value="Search"/>
-					<input type="text" style="float:right" name="" autocomplete="on"/>
-					<br />
-					<br />
+				
 					
 <!-- 						<table class="table" id="makeEditable" border='1' style="width: 100%" class="table table-hover table-bordered table-striped"> -->
 						<table class="table" id="makeEditable" border='1' style="width: 100%" >
