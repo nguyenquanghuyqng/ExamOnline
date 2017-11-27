@@ -4,7 +4,7 @@ public class DBConnection {
 	public static Connection CreateConnection(){
 		Connection conn= null;
 
-		String url="jdbc:mysql://localhost:3306/examcnpm";
+		String url="jdbc:mysql://localhost:3306/examonline";
 		String username="root";
 		String password="1234";
 
