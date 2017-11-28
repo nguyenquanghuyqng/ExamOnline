@@ -66,7 +66,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                     <div class="col-md-3 top-header-agile-left" style="margin-top: 0px;">
-
                         <div class="dropdown">
                             <a class="btn dropdown-toggle pull-right user" type="button" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-user"></i>
@@ -91,10 +90,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <span class="glyphicon glyphicon-log-out pull-right"></span>
                                 </a>
                                 </li>
-
                             </ul>
                         </div>
-
                     </div>
                 </div>
                 <div class="top-header-agile" style="background: white">
