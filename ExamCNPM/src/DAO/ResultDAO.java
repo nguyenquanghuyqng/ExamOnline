@@ -16,8 +16,8 @@ public class ResultDAO {
 
 		List<Result> list = new ArrayList<Result>();
 
-		String sql = "select resulttestid, resulttest.userid, username, fullname, point, testid" + " from users, resulttest "
-				+ "where users.userid=resulttest.userid limit "+ (start - 1) + ", " + count + "" ;
+		String sql = "select resultid, results.userid, username, fullname, point, testid" + " from users, results "
+				+ "where users.userid=results.userid limit " + (start - 1) + ", " + count + "";
 
 		try {
 
@@ -29,15 +29,15 @@ public class ResultDAO {
 
 				Result rt = new Result();
 
-				rt.setResulttestid(rs.getInt("resulttestid"));
+				rt.setResulttestid(rs.getInt("resultid"));
 				rt.setUserid(rs.getInt("userid"));
 				rt.setFullname(rs.getString("fullname"));
 				rt.setUsername(rs.getString("username"));
 				rt.setPoint(rs.getInt("point"));
 				rt.setTestid(rs.getInt("testid"));
-				
+
 				list.add(rt);
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -47,26 +47,29 @@ public class ResultDAO {
 
 		return list;
 	}
-	
-	// Lấy danh sách những thí sinh không thi và không có kết quả thi 
+
+	// Lấy danh sách những thí sinh không thi và không có kết quả thi
 	public static List<Result> DisplayDontResult(int start, int count, Connection conn) {
 
 		List<Result> list = new ArrayList<Result>();
 
-//		String sql = "select users.userid, users.username, users.fullname, resulttest.point, resulttest.testid" + " from users "
-//				+ "left join resulttest on users.userid=resulttest.userid group by users.userid limit "+ (start - 1) + ", " + count + "" ;
+		// String sql = "select users.userid, users.username, users.fullname,
+		// results.point, results.testid" + " from users "
+		// + "left join results on users.userid=results.userid group by users.userid
+		// limit "+ (start - 1) + ", " + count + "" ;
 
-//		String sql = "select users.userid, users.username, users.fullname" + " from users"
-//				+ "where not exists (select resulttest.userid "
-//									+ "from resulttest, users"
-//									+ "where resulttest.userid=users.userid) limit "+ (start - 1) + ", " + count + "" ;
+		// String sql = "select users.userid, users.username, users.fullname" + " from
+		// users"
+		// + "where not exists (select results.userid "
+		// + "from results, users"
+		// + "where results.userid=users.userid) limit "+ (start - 1) + ", " + count +
+		// "" ;
 
+		String sql = "select users.userid, users.username, users.fullname " 
+				+ " from users "
+				+ "left join results on users.userid=results.userid" 
+				+ "where results.userid is null";
 
-		String sql = "select users.userid, users.username, users.fullname " + " from users "
-				+ "left join resulttest on users.userid=resulttest.userid"
-				+ "where resulttest.userid is null" ;
-
-		
 		try {
 
 			PreparedStatement ptmt = conn.prepareCall(sql);
@@ -77,15 +80,15 @@ public class ResultDAO {
 
 				Result rt = new Result();
 
-//				rt.setResulttestid(rs.getInt("resulttestid"));
+				// rt.setresultsid(rs.getInt("resultid"));
 				rt.setUserid(rs.getInt("userid"));
 				rt.setFullname(rs.getString("fullname"));
 				rt.setUsername(rs.getString("username"));
-//				rt.setPoint(rs.getInt("point"));
-//				rt.setTestid(rs.getInt("testid"));
-				
+				// rt.setPoint(rs.getInt("point"));
+				// rt.setTestid(rs.getInt("testid"));
+
 				list.add(rt);
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -95,12 +98,12 @@ public class ResultDAO {
 
 		return list;
 	}
-	
+
 	public static int CountRow(Connection conn) {
 
 		int count = 0;
 
-		String sql = "select count(*) from resulttest";
+		String sql = "select count(*) from results";
 
 		PreparedStatement ptmt;
 		try {
