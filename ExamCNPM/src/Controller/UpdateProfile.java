@@ -34,22 +34,23 @@ public class UpdateProfile extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		Connection conn = (Connection) DBConnection.CreateConnection();
 		// Khởi tạo đối tượng Session
 		HttpSession session = request.getSession(false);
-		// Lấy ra username đăng nhập vào
+		// Lay ra username dang nhap vao
 		String username = (String) session.getAttribute("username");
 		String name = request.getParameter("fullname");
-		System.out.println("Full :" + name);
 		User us = new User();
 
 		// set all the values in User's class object.
-		request.setCharacterEncoding("UTF-8");
+		
 		us.setUsername(username);
 		us.setFullname(request.getParameter("fullname"));
 		us.setBirthday(request.getParameter("birthday"));
 		us.setCountry(request.getParameter("country"));
 		us.setPhone(request.getParameter("phone"));
+		System.out.println("Full :" + request.getParameter("fullname"));
 		boolean flag = EditUserDAO.UpdateUser(us, conn);
 
 		if (flag == true) {
