@@ -26,7 +26,6 @@ public class DBConnection {
 			System.out.println("Error connection " + ex);
 		}
 
-		// create connection
 		return conn;
 	}
 }
