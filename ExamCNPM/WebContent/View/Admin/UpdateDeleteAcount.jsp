@@ -44,7 +44,7 @@
 <!-- ace scripts -->
 <script src="Style/js/ace-elements.min.js"></script>
 <script src="Style/js/ace.min.js"></script>
-
+<script src="Style/js/validation.js"></script>
 
 <!-- Show thông báo ra màn hình -->
 <script type="text/javascript">
@@ -421,7 +421,7 @@
 					<div class="">
 						<h2>List User</h2>
 						<table border='1' style="width: 100%"
-							class="table table-hover table-bordered table-striped">
+							class="table table-hover table-bordered table-striped" id ="simple-table">
 							<tr style="background: skyblue">
 								<th>userid</th>
 								<th>username</th>
@@ -535,41 +535,56 @@
 					</h2>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
-					<form action="#" method="POST">
+					<form action="InsertAccount?pageid=1" method="POST" name="frmInsertAcc">
 						<div class="form-group">
 							<label for="usrname">Username</label> <input type="text"
-								class="form-control" name="courseid"
+								class="form-control" name="username" id ="username"
 								placeholder="Username">
 						</div>
 						<div class="form-group">
 							<label for="psw">Password</label> <input
-								type="text" class="form-control" name="coursename"
+								type="text" class="form-control" name="pass" id="pass"
 								placeholder="Password">
 						</div>
 
 
 						<div class="form-group">
 							<label for="usrname">Fullname</label> <input
-								type="text" class="form-control" name="coursetime"
+								type="text" class="form-control" name="fullname" id="fullname"
 								placeholder="Fullname">
 						</div>
 						<div class="form-group">
 							<label for="psw">Birthday</label> <input
-								type="text" class="form-control" name="coursemoney"
+								type="text" class="form-control" name="birthday" id="birthday"
 								placeholder="Birthday">
 						</div>
 						<div class="form-group">
 							<label for="usrname"> Country</label> <input type="text"
-								class="form-control" name="courseid"
+								class="form-control" name="country" id="country"
 								placeholder="Country">
 						</div>
 						<div class="form-group">
 							<label for="psw">Phone</label> <input
-								type="text" class="form-control" name="coursename"
+								type="text" class="form-control" name="phone" id="phone"
 								placeholder="Phone">
 						</div>
+						<div class="form-group">
+							<label for="psw">Image</label> <input
+								type="text" class="form-control" name="image" id="image"
+								placeholder="Image">
+						</div>
+						<div class="form-group">
+							<label for="psw">Roleid</label><br>
+							<select name="roleid" id="roleid">
+								<option>Choose roleid for account</option>
+                    			<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+                    		</select>
+						</div>
 
-						<button type="submit" class="btn btn-success btn-block">
+						<button type="submit" class="btn btn-success btn-block"  onclick="return KiemTraHopLe()">
 							<span class="glyphicon glyphicon-ok"></span> Save
 						</button>
 					</form>
@@ -591,6 +606,24 @@
 				$("#myModal").modal();
 			});
 		});
+	</script>
+
+	<script>
+        var table = document.getElementById("simple-table"),rindex;
+		
+		for(var i =1 ; i < table.rows.length; i++)
+		{
+			 table.rows[i].onclick = function()
+			{
+				rindex = this.rowIndex;		
+				document.getElementByID("Courseid").value = this.cells[0].innerHTML;
+				document.getElementByID("Coursename").value = this.cells[1].innerHTML;
+				document.getElementByID("Coursetime").value = this.cells[2].innerHTML;
+				document.getElementByID("Coursemoney").value = this.cells[3].innerHTML;
+				
+			};
+		}
+
 	</script>
 
 	<!-- /.main-content -->
