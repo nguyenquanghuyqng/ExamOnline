@@ -101,7 +101,7 @@ public class LoginDAO {
 				String password = rs.getString("pass");
 				int roleid = rs.getInt("roleid");
 
-				if ((uname.equals(name)) && (password.equals(pass)) && roleid == 4) {
+				if ((uname.equals(name)) && (password.equals(pass)) && roleid == 3) {
 					t = true;
 				}
 
@@ -136,7 +136,7 @@ public class LoginDAO {
 				String password = rs.getString("pass");
 				int roleid = rs.getInt("roleid");
 
-				if ((uname.equals(name)) && (password.equals(pass)) && roleid == 3) {
+				if ((uname.equals(name)) && (password.equals(pass)) && roleid == 2) {
 					t = true;
 				}
 

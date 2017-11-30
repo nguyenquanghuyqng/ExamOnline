@@ -223,7 +223,7 @@ public class AccountDAO {
 	// Insert One Account Liên kết với servlet InsertAccount
 	public static boolean InsertOneAccount(Account acc, Connection conn, int t) {
 
-		String sql = "insert into users(userid, username, pass, fullname, birthday,"
+		String sql = "insert into users(userid, username, pass, fullname, birthday, "
 				+ "country, phone, image, roleid) value(?,?,?,?,?,?,?,?,?)";
 
 		try {

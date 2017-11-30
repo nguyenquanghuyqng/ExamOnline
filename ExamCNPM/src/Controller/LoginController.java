@@ -65,6 +65,16 @@ public class LoginController extends HttpServlet {
 				return;
 
 			}
+			
+			boolean quesiton = LoginDAO.LoginQuestion(username, password, conn);
+
+			if (quesiton) {
+
+				RequestDispatcher rd = request.getRequestDispatcher("View/Question/HomeQuestion.jsp");
+				rd.forward(request, response);
+				return;
+
+			}
 
 			boolean exammanager = LoginDAO.ExamManager(username, password, conn);
 
@@ -75,14 +85,6 @@ public class LoginController extends HttpServlet {
 				return;
 			}
 			
-			boolean quesiton = LoginDAO.LoginQuestion(username, password, conn);
-
-			if (quesiton) {
-
-				RequestDispatcher rd = request.getRequestDispatcher("View/Question/HomeQuestion.jsp");
-				rd.forward(request, response);
-				return;
-			}
 
 			else {
 				request.setAttribute("message", "Login Failed");
