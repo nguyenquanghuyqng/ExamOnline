@@ -18,7 +18,7 @@ public class LoginDAO {
 		PreparedStatement ptmt = null;
 
 		String sql = "select username, pass, roleid from users";
-
+		//String sql = "select username, pass, roleid from users where username = ?";
 		try {
 
 			ptmt = (PreparedStatement) conn.prepareStatement(sql);

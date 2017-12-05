@@ -19,7 +19,7 @@ public class AccountDAO {
 		List<Account> list = new ArrayList<Account>();
 
 		String sql = "select * from users limit " + (start - 1) + ", " + count + "";
-
+//		https://www.youtube.com/watch?v=mG6zPc-L85w :Spring
 		try {
 
 			PreparedStatement ptmt = conn.prepareCall(sql);
