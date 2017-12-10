@@ -2,7 +2,9 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import BEAN.Question;
 import DAO.ExamDAO;
 import DB.DBConnection;
 
@@ -36,7 +36,16 @@ public class TestSheetForward extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection conn= DBConnection.CreateConnection();
 		
-		
+		Date time =  ExamDAO.getTime("trung");
+		Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
+		calendar.setTime(time);   // assigns calendar to given date 
+		int hours = calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
+		int minute = calendar.get(Calendar.MINUTE);        // gets hour in 12h format
+		int second = calendar.get(Calendar.SECOND);       // gets month number, NOTE this is zero based!
+		System.out.println(""+hours+""+minute+""+second+"");
+		request.setAttribute("hours", hours);
+		request.setAttribute("minute", minute);
+		request.setAttribute("second", second);
 		
 		RequestDispatcher rd= request.getRequestDispatcher("View/TestSheet.jsp");
 		rd.forward(request, response);

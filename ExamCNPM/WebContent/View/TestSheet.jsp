@@ -146,12 +146,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-8 panel panel-default"
 					style="padding-left: 100px;">
 					<div class="panel-body">
-						<script type="text/javascript">
+	<% int hours = (Integer) request.getAttribute("hours"); %>
+	<% int minute = (Integer) request.getAttribute("minute"); %>
+	<% int second = (Integer) request.getAttribute("second"); %>
+	<script type="text/javascript">
     var question_no=1;
     var question_id=0;
     var max_questions=5;
     
-    var timer=1200; 
+    var timer=<%= minute*60%>; 
     var min=0;
     var sec=0;
     
@@ -169,7 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     	document.getElementById("time").innerHTML = "<b style='color:red;'>Time Left: </b><span>"+min.toString()+"</span>:"+sec.toString();
     	timer--;
     	setTimeout(function(){ startTimer(); }, 1000);
-    }
+   		 }
     	
     	$(document).ready(function(){
     	 $.get('View/getQuestionDAO.jsp?question_no='+question_no+'&req=first',function(data,status){
@@ -283,12 +286,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          $('#submit').click(function(){
       	   	   var answer=$('input[name=answer]:checked').val();
           	   $.post('View/getQuestionDAO.jsp?question_no='+question_no+'&question_id='+question_id+'&answer='+answer+"&req=last");
-          	   window.location='/TestAndResult/resultDAO';
+          	   window.location='/ExamCNPM/resultDAO';
       		});
          
          
     	});
-    </script>
+    	</script>
 						<p id="question"></p>
 						<br />
 						<p id="a"></p>
