@@ -36,9 +36,7 @@ public class TestSheetForward extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection conn= DBConnection.CreateConnection();
 		
-		List<Question> list= ExamDAO.DisplayQuestion(conn);
 		
-		request.setAttribute("listquiz", list);
 		
 		RequestDispatcher rd= request.getRequestDispatcher("View/TestSheet.jsp");
 		rd.forward(request, response);

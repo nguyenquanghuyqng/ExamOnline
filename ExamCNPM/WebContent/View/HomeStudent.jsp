@@ -467,9 +467,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
 
         </script>
-        <!-- 	Countdown-Timer-JavaScript -->
-        <script src="Style/js/simplyCountdown.js"></script>
-        <!-- //Countdown-Timer-JavaScript -->
+
 
 
         <!-- start-smoth-scrolling -->
