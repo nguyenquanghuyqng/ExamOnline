@@ -21,7 +21,7 @@ if(req!=null){
 		          
 		          if(lhm==null){
 		              lhm=new LinkedHashMap();
-
+		              lhm.put(question_id, answer);
 		              session.setAttribute("all_answers", lhm);
 		          }
 		          else{
