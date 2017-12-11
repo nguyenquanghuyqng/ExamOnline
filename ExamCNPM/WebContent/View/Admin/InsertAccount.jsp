@@ -67,7 +67,8 @@
                     <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                         <ul class="breadcrumb">
                             <li><i class="ace-icon fa fa-home home-icon"></i> <a href="HomeAdminForWard">Home</a></li>
-                            <li class="active">Home Admin</li>
+                            <li><a href="#">Manage Account</a></li>
+						<li class="active">Insert Account</li>
                         </ul>
                         <!-- /.breadcrumb -->
 

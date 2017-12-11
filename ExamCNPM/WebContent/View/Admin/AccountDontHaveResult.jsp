@@ -87,8 +87,9 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li><a href="#">Manage Result</a></li>
-						<li class="active">View Result</li>
+						<li><a href="ViewResult.jsp">Manage Result</a></li>
+						<li><a href="ViewResult.jsp">View Result</a></li>
+						<li class="active">Account Don't Have Result</li>
 					</ul>
 					<!-- /.breadcrumb -->
 

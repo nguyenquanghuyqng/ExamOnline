@@ -91,7 +91,8 @@
 						</li>
 
 						<li><a href="#">Manage Result</a></li>
-						<li class="active">View Result</li>
+						<li><a href="#">View Result</a></li>
+						<li class="active">Account Have Result</li>
 					</ul>
 					<!-- /.breadcrumb -->
 
