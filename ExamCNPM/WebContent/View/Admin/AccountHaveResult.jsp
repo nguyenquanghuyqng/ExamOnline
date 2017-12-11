@@ -159,6 +159,7 @@
 								<th>fullname</th>
 								<th>point</th>
 								<th>testid</th>
+<!-- 								<th>classname</th> -->
 							</tr>
 							<tbody id="myTable">
 								<c:forEach items="${result}" var="list">
@@ -170,6 +171,7 @@
 										<td>${list.fullname}</td>
 										<td>${list.point}</td>
 										<td>${list.testid}</td>
+<%-- 										<td>${list.classes}</td> --%>
 									</tr>
 
 								</c:forEach>

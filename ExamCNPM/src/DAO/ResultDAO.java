@@ -16,9 +16,10 @@ public class ResultDAO {
 
 		List<Result> list = new ArrayList<Result>();
 
-		String sql = "select resultid, results.userid, username, fullname, point, testid" + " from users, results "
-				+ "where users.userid=results.userid limit " + (start - 1) + ", " + count + "";
+//		String sql = "select resultid, results.userid, username, fullname, point, testid" + " from users, results "
+//				+ "where users.userid=results.userid  limit " + (start - 1) + ", " + count + "";
 
+		String sql = "{ call pr_HaveExam()}";
 		try {
 
 			PreparedStatement ptmt = conn.prepareCall(sql);
@@ -35,6 +36,7 @@ public class ResultDAO {
 				rt.setUsername(rs.getString("username"));
 				rt.setPoint(rs.getInt("point"));
 				rt.setTestid(rs.getInt("testid"));
+//				rt.setClasses(rs.getString("classname"));
 
 				list.add(rt);
 
@@ -65,10 +67,12 @@ public class ResultDAO {
 		// + "where results.userid=users.userid) limit "+ (start - 1) + ", " + count +
 		// "" ;
 
-		String sql = "select users.userid, users.username, users.fullname " 
-				+ " from users "
-				+ "left join results on users.userid=results.userid" 
-				+ "where results.userid is null";
+//		String sql = "select users.userid, users.username, users.fullname " 
+//				+ "from users "
+//				+ "left join results on users.userid=results.userid" 
+//				+ "where results.userid is null";
+		
+		String sql ="{ call pr_DontExam()}";
 
 		try {
 
@@ -84,6 +88,7 @@ public class ResultDAO {
 				rt.setUserid(rs.getInt("userid"));
 				rt.setFullname(rs.getString("fullname"));
 				rt.setUsername(rs.getString("username"));
+				rt.setClasses(rs.getString("classname"));
 				// rt.setPoint(rs.getInt("point"));
 				// rt.setTestid(rs.getInt("testid"));
 

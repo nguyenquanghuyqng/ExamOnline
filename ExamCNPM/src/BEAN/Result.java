@@ -6,8 +6,10 @@ public class Result {
 	private int userid;
 	private String username;
 	private String fullname;
+	private String classes;
 	private int point;
 	private int testid;
+	
 
 	public int getResulttestid() {
 		return resulttestid;
@@ -55,5 +57,13 @@ public class Result {
 
 	public void setTestid(int testid) {
 		this.testid = testid;
+	}
+
+	public String getClasses() {
+		return classes;
+	}
+
+	public void setClasses(String classes) {
+		this.classes = classes;
 	}
 }

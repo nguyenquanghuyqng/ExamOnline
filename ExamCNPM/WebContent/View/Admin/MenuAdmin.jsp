@@ -127,7 +127,7 @@
 									result
 							</a> <b class="arrow"></b></li>
 
-                                <li class=""><a href="CandidateDontHaveExam"> <i
+                                <li class=""><a href="AccountDontHaveResult?pageid=1"> <i
 									class="menu-icon fa fa-caret-right"></i> List of account did
 									not contest
 							</a> <b class="arrow"></b></li>

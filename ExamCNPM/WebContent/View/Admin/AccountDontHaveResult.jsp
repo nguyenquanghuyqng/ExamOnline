@@ -151,7 +151,7 @@
 								<th>userid</th>
 								<th>username</th>
 								<th>fullname</th>
-<!-- 								<th>point</th> -->
+								<th>Classname</th>
 <!-- 								<th>testid</th> -->
 							</tr>
 							<tbody id="myTable">
@@ -162,7 +162,7 @@
 										<td>${list.userid}</td>
 										<td>${list.username}</td>
 										<td>${list.fullname}</td>
-<%-- 										<td>${list.point}</td> --%>
+										<td>${list.classes}</td>
 <%-- 										<td>${list.testid}</td> --%>
 									</tr>
 
