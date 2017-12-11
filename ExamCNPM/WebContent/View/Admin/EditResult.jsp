@@ -440,7 +440,7 @@
 								<th>point</th>
 								<th>testid</th>
 								<th></th>
-								<th></th>
+<!-- 								<th></th> -->
 							</tr>
 							<tbody id="myTable">
 								<c:forEach items="${result}" var="list">
@@ -452,9 +452,23 @@
 										<td>${list.fullname}</td>
 										<td>${list.point}</td>
 										<td>${list.testid}</td>
-										<td><a href="EditResult?index=${list.userid}&pageid=1">Edit</a></td>
-										<td><a href="DeleteResult?index=${list.userid}&pageid=1"
-											onclick="return show_comfirm()">Delete</a></td>
+<%-- 										<td><a href="EditResult?index=${list.userid}&pageid=1">Edit</a></td> --%>
+<%-- 										<td><a href="DeleteResult?index=${list.userid}&pageid=1" --%>
+<!-- 											onclick="return show_comfirm()">Delete</a></td> -->
+
+										<td class="center">
+											<div class="hidden-sm hidden-xs action-buttons">
+
+												<a class="skyblue"
+													href="EditResult?index=${list.userid}&pageid=1"> <i
+													class="ace-icon fa fa-pencil bigger-130"> </i>
+												</a> <a class="skyblue"
+													href="DeleteResult?index=${list.userid}&pageid=1"
+													onclick="return show_comfirm()"> <i
+													class="ace-icon fa fa-trash-o bigger-130"> </i>
+												</a>
+											</div>
+										</td>
 									</tr>
 
 								</c:forEach>

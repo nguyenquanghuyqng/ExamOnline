@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-    	<%@ page import = "java.io.*,java.util.*" %>
+    <%@ page import = "java.io.*,java.util.*" %>
 	<%@ page import = "javax.servlet.*,java.text.*" %>
+<%-- 	<%@ page import="java.sql.*" %> --%>
+<%-- 	<%ResultSet resultset =null;%> --%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -415,6 +418,9 @@
 							<option>13-10-2017</option>
 							<option>14-10-2017</option>
                  			</select>
+                 			
+                 			
+                 			
                  
                  		<span style="margin-left: 50px;">Class : </span> <select name="class" id="class">
 							<option>Choose class</option>

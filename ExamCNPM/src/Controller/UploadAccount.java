@@ -54,7 +54,7 @@ public class UploadAccount extends HttpServlet {
 		String exam = request.getParameter("file");
 
 		Connection conn = DBConnection.CreateConnection();
-
+		System.out.println("Hello Huy Insert Data");
 		UploadUser.ImportExcel(request, response, conn, exam);
 
 //		conn = DBConnection.CreateConnection();
@@ -71,7 +71,7 @@ public class UploadAccount extends HttpServlet {
 		request.setAttribute("numberpage", Integer.parseInt(pageidstr));
 		
 		request.setAttribute("account", list);
-
+		System.out.println("Hello Huy");
 		RequestDispatcher rd = request.getRequestDispatcher("View/Admin/InsertClass.jsp");
 		rd.forward(request, response);
 	}

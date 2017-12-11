@@ -39,22 +39,31 @@ public class UploadUser {
 
 				Account_2 acc = new Account_2();
 				try {
-					acc.setUserid((int) row.getCell(0).getNumericCellValue());
-					acc.setUsername(row.getCell(1).getStringCellValue());
-					acc.setPass(row.getCell(2).getStringCellValue());
-					acc.setFullname(row.getCell(3).getStringCellValue());
-					acc.setBirthday(row.getCell(4).getStringCellValue());
-					acc.setCountry(row.getCell(5).getStringCellValue());
-					acc.setPhone(row.getCell(6).getStringCellValue());
-					acc.setImage(row.getCell(7).getStringCellValue());
-					acc.setRoleid((int) row.getCell(8).getNumericCellValue());
+//					acc.setUserid((int) row.getCell(0).getNumericCellValue());
+//					acc.setUsername(row.getCell(1).getStringCellValue());
+//					acc.setPass(row.getCell(2).getStringCellValue());
+//					acc.setFullname(row.getCell(3).getStringCellValue());
+//					acc.setBirthday(row.getCell(4).getStringCellValue());
+//					acc.setCountry(row.getCell(5).getStringCellValue());
+//					acc.setPhone(row.getCell(6).getStringCellValue());
+//					acc.setImage(row.getCell(7).getStringCellValue());
+//					acc.setRoleid((int) row.getCell(8).getNumericCellValue());
+					
+					acc.setUsername(row.getCell(0).getStringCellValue());
+					acc.setPass(row.getCell(1).getStringCellValue());
+					acc.setFullname(row.getCell(2).getStringCellValue());
+					acc.setBirthday(row.getCell(3).getStringCellValue());
+					acc.setCountry(row.getCell(4).getStringCellValue());
+					acc.setPhone(row.getCell(5).getStringCellValue());
+					acc.setImage(row.getCell(6).getStringCellValue());
+					acc.setRoleid((int) row.getCell(7).getNumericCellValue());
 				}
 				catch(Exception e) {
 					e.printStackTrace();
 
 				}
 
-				
+				System.out.println("Hi");
 				UploadUser.InsertData(request, acc, conn);
 
 			}
@@ -70,27 +79,38 @@ public class UploadUser {
 	public static void InsertData(HttpServletRequest request, Account_2 acc, Connection conn) {
 		try {
 
-			PreparedStatement ptmt = conn.prepareStatement("insert into users(userid,username,"
-					+ "pass, fullname, birthday, country, phone, image, roleid) values(?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ptmt = conn.prepareStatement("insert into users(username,"
+					+ "pass, fullname, birthday, country, phone, image, roleid) values(?,?,?,?,?,?,?,?)");
 			
-			ptmt.setInt(1, acc.getUserid());
-			ptmt.setString(2, acc.getUsername());
-			ptmt.setString(3, acc.getPass());
-			ptmt.setString(4, acc.getFullname());
-			ptmt.setString(5, acc.getBirthday());
-			ptmt.setString(6, acc.getCountry());
-			ptmt.setString(7, acc.getPhone());
-			ptmt.setString(8, acc.getImage());
-			ptmt.setInt(9, acc.getRoleid());
+//			ptmt.setInt(1, acc.getUserid());
+//			ptmt.setString(2, acc.getUsername());
+//			ptmt.setString(3, acc.getPass());
+//			ptmt.setString(4, acc.getFullname());
+//			ptmt.setString(5, acc.getBirthday());
+//			ptmt.setString(6, acc.getCountry());
+//			ptmt.setString(7, acc.getPhone());
+//			ptmt.setString(8, acc.getImage());
+//			ptmt.setInt(9, acc.getRoleid());
+			
+			
+			ptmt.setString(1, acc.getUsername());
+			ptmt.setString(2, acc.getPass());
+			ptmt.setString(3, acc.getFullname());
+			ptmt.setString(4, acc.getBirthday());
+			ptmt.setString(5, acc.getCountry());
+			ptmt.setString(6, acc.getPhone());
+			ptmt.setString(7, acc.getImage());
+			ptmt.setInt(8, acc.getRoleid());
 			
 			int kt = ptmt.executeUpdate();
 			if (kt != 0) {
 				
+				System.out.println("Insert data from excel to mysql  success");
 				request.setAttribute("message", "Insert data from excel to mysql  success");
 				
 			} 
 			else {
-				
+				System.out.println("Insert data from excel to mysql  failed");
 				request.setAttribute("message", "Insert data from excel to mysql  failed");
 			}
 			ptmt.close();

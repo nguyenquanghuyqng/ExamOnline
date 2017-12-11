@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet("/InsertAccount")
 public class InsertAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	int t = 7;
+	int t = 15;
 
 	public InsertAccount() {
 		super();
