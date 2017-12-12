@@ -96,12 +96,13 @@
                             </h1>
                         </div>
 
-                        <div class="formInsert" style="margin:30px">
+                        <div class="form-group" style="margin:30px">
                             <h2>Insert account</h2>
                             <div id="thongbao">
                                 <p id="pthongbao"></p>
                             </div>
-                            <form action="InsertAccount?pageid=1" method="post" name="frmInsertAcc">
+                            <form action="InsertAccount?pageid=1" method="post" name="frmInsertAcc" class="form-horizontal">
+                            	
                                 <br> Username:
                                 <br> <input type="text" name="username" id="username"><br>
                                 <br> PassWord:
@@ -141,15 +142,12 @@
         <!-- /.main-content -->
 
          <!--     Include file Footer -->
-	<jsp:include page="Footer.jsp" />
-
-        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse"> <i
-		class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-	</a>
-        </div>
+		<jsp:include page="Footer.jsp" />
+		
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse"> 
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i> </a>
+      
         <!-- /.main-container -->
-
-
 
     </body>
 

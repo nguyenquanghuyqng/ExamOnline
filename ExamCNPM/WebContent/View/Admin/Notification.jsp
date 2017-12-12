@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<meta name="description" content="overview &amp; stats" />
+		<meta name="description" content="overview &amp; stats" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
         <!-- bootstrap & fontawesome -->
@@ -43,8 +43,7 @@
 
 </head>
 <body class="no-skin" style="font-size: 14px;">
-
-<div id="navbar" class="navbar navbar-default ace-save-state">
+		<div id="navbar" class="navbar navbar-default ace-save-state">
             <div class="navbar-container ace-save-state" id="navbar-container">
                 <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
 				<span class="sr-only">Toggle sidebar</span> <span class="icon-bar"></span>
@@ -187,7 +186,7 @@
                                     </ul>
                                 </li>
 
-                                <li class="dropdown-footer"><a href="inbox.html"> See
+                                <li class="dropdown-footer"><a href="#"> See
 									all messages <i class="ace-icon fa fa-arrow-right"></i>
 							</a></li>
                             </ul>

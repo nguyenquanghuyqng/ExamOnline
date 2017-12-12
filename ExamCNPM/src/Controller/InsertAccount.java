@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet("/InsertAccount")
 public class InsertAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	int t = 15;
+	int t = 1;
 
 	public InsertAccount() {
 		super();
@@ -37,6 +37,7 @@ public class InsertAccount extends HttpServlet {
 		Connection conn = DBConnection.CreateConnection();
 
 		Account acc = new Account();
+		request.setCharacterEncoding("UTF-8");
 
 		acc.setUsername(request.getParameter("username"));
 		acc.setPass(request.getParameter("pass"));

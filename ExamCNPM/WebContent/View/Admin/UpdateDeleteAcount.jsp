@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 	
 	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 	<%@ page import="java.sql.*" %>
 	<%ResultSet resultset =null;%>
 	
@@ -256,21 +257,17 @@
 				<div class="modal-body" style="padding: 40px 50px;">
 					<form action="InsertAccount?pageid=1" method="POST" name="frmInsertAcc">
 						<div class="form-group">
-							<label for="usrname">Username</label> <input type="text"
-								class="form-control" name="username" id ="username"
-								placeholder="Username">
+							<label for="usrname">Username</label> 
+							<input type="text" class="form-control" name="username" id ="username" placeholder="Username">
 						</div>
 						<div class="form-group">
-							<label for="psw">Password</label> <input
-								type="text" class="form-control" name="pass" id="pass"
-								placeholder="Password">
+							<label for="psw">Password</label> 
+							<input type="text" class="form-control" name="pass" id="pass" placeholder="Password">
 						</div>
 
-
 						<div class="form-group">
-							<label for="usrname">Fullname</label> <input
-								type="text" class="form-control" name="fullname" id="fullname"
-								placeholder="Fullname">
+							<label for="usrname">Fullname</label> 
+							<input type="text" class="form-control" name="fullname" id="fullname" placeholder="Fullname">
 						</div>
 						<div class="form-group">
 							<label for="psw">Birthday</label> <input
@@ -278,19 +275,16 @@
 								placeholder="Birthday">
 						</div>
 						<div class="form-group">
-							<label for="usrname"> Country</label> <input type="text"
-								class="form-control" name="country" id="country"
-								placeholder="Country">
+							<label for="usrname"> Country</label> 
+							<input type="text" class="form-control" name="country" id="country" placeholder="Country">
 						</div>
 						<div class="form-group">
-							<label for="psw">Phone</label> <input
-								type="text" class="form-control" name="phone" id="phone"
-								placeholder="Phone">
+							<label for="psw">Phone</label> 
+							<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone">
 						</div>
 						<div class="form-group">
-							<label for="psw">Image</label> <input
-								type="text" class="form-control" name="image" id="image"
-								placeholder="Image">
+							<label for="psw">Image</label> 
+							<input type="text" class="form-control" name="image" id="image" placeholder="Image">
 						</div>
 						<div class="form-group">
 							<label for="psw">Roleid</label><br>
@@ -306,6 +300,8 @@
 						<button type="submit" class="btn btn-success btn-block"  onclick="return KiemTraHopLe()">
 							<span class="glyphicon glyphicon-ok"></span> Save
 						</button>
+
+						
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -327,23 +323,6 @@
 		});
 	</script>
 
-	<script>
-        var table = document.getElementById("simple-table"),rindex;
-		
-		for(var i =1 ; i < table.rows.length; i++)
-		{
-			 table.rows[i].onclick = function()
-			{
-				rindex = this.rowIndex;		
-				document.getElementByID("Courseid").value = this.cells[0].innerHTML;
-				document.getElementByID("Coursename").value = this.cells[1].innerHTML;
-				document.getElementByID("Coursetime").value = this.cells[2].innerHTML;
-				document.getElementByID("Coursemoney").value = this.cells[3].innerHTML;
-				
-			};
-		}
-
-	</script>
 
 	<!-- /.main-content -->
 
@@ -354,7 +333,7 @@
 		class="btn-scroll-up btn btn-sm btn-inverse"> <i
 		class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 	</a>
-	</div>
+
 	<!-- /.main-container -->
 </body>
 

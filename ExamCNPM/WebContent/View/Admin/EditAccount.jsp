@@ -104,19 +104,22 @@
 						<h2>Edit account</h2>
 						<c:forEach items="${account}" var="list">
 							<form action="SaveEditAccount?pageid=1" method="post">
-								Userid:<br> <input type="text" name="userid"
-									value="${list.userid }"><br> <br> Username: <br>
-								<input type="text" name="username" value="${list.username }"><br>
-								<br> PassWord: <br> <input type="text" name="pass"
-									value="${list.pass }"><br> <br> Fullname: <br>
-								<input type="text" name="fullname" value="${list.fullname }"><br>
-								<br> Birthday: <br> <input type="text" name="birthday"
-									value="${list.birthday }"><br> <br> Country:
-								<br> <input type="text" name="country"
-									value="${list.country }"><br> <br> Phone: <br>
-								<input type="text" name="phone" value="${list.phone }"><br>
-								<br> Image: <br> <input type="text" name="image"
-									value="${list.image }"><br> <br> Roleid: <br>
+								Userid:<br> 
+								<input type="text" name="userid" value="${list.userid }"><br> <br>
+								Username: <br>
+								<input type="text" name="username" value="${list.username }"><br> <br> 
+								PassWord: <br> 
+								<input type="password" name="pass" value="${list.pass }"><br> <br> 
+								Fullname: <br>
+								<input type="text" name="fullname" value="${list.fullname }"><br> <br>
+								Birthday: <br> 
+								<input type="text" name="birthday" value="${list.birthday }"><br> <br> 
+								Country:<br> 
+								<input type="text" name="country" value="${list.country }"><br> <br> 
+								Phone: <br>
+								<input type="text" name="phone" value="${list.phone }"><br> <br>
+								Image: <br> 
+								<input type="text" name="image" value="${list.image }"><br> <br> Roleid: <br>
 								<select name="roleid" id="roleid">
 									<option>${list.roleid}</option>
 									<option>1</option>
