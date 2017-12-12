@@ -4,11 +4,13 @@
 <%
 String question_no=request.getParameter("question_no");
 String req=request.getParameter("req");
-String set="1";
+int subjectid = (int)session.getAttribute("subjectid");
+int testid = (int)session.getAttribute("testid");
+int set=(int)session.getAttribute("qstypeID");
 
 if(req!=null){
 	if(req.equals("first")){
-	String result=ExamDAO.getQuestion(question_no,set);
+	String result=ExamDAO.getQuestion(question_no,subjectid,testid,set);
 	out.print(result);
 	}
 	else{
@@ -52,7 +54,7 @@ else{
 	}
 	
 
-	String result=ExamDAO.getQuestion(question_no, set);
+	String result=ExamDAO.getQuestion(question_no,subjectid,testid, set);
 	out.print(result);
 
 }

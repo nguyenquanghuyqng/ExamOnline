@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="dropdown">
 						<a class="btn dropdown-toggle pull-right user" type="button"
 							data-toggle="dropdown"> <i class="glyphicon glyphicon-user"></i>
-							Luu Quang Trung <span class="caret"></span>
+							 <%=session.getAttribute("fullname") %> <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" style="width: 300px;">
 							<li><a href="#">Account Settings <span
@@ -146,13 +146,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-8 panel panel-default"
 					style="padding-left: 100px;">
 					<div class="panel-body">
-	<% int hours = (Integer) request.getAttribute("hours"); %>
-	<% int minute = (Integer) request.getAttribute("minute"); %>
-	<% int second = (Integer) request.getAttribute("second"); %>
+	<% 		int hours = (Integer) request.getAttribute("hours"); 
+			int minute = (Integer) request.getAttribute("minute"); 
+	 		int second = (Integer) request.getAttribute("second"); 
+	 		int max_question = (Integer) request.getAttribute("numberqs");
+	 		int qsID = (Integer) request.getAttribute("qsID");
+	 %>
 	<script type="text/javascript">
     var question_no=1;
-    var question_id=0;
-    var max_questions=5;
+    var question_id=<%=qsID%>;
+    var max_questions=<%=max_question%>;
     
     var timer=<%= minute*60%>; 
     var min=0;

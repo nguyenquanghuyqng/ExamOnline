@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.ExamDAO;
 import DB.DBConnection;
@@ -35,8 +36,23 @@ public class TestSheetForward extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection conn= DBConnection.CreateConnection();
+		HttpSession session=request.getSession(false);
+		int subjectid = (int) session.getAttribute("subjectid");
+		System.out.println(subjectid);
+		int testid = (int) session.getAttribute("testid");
+		System.out.println(testid);
 		
-		Date time =  ExamDAO.getTime("trung");
+		//lay tong so cau hoi
+		int numberqs = ExamDAO.getNumberQuestion(subjectid, testid);
+		
+		// lay ra question id
+		int qsID = ExamDAO.getQuestionID(subjectid, testid);
+		
+		//lay ra question type id
+		int qstypeID = ExamDAO.getQuestionTypeID(subjectid, testid);
+		
+		//lay ra gio thi trong bai thi
+		Date time =  ExamDAO.getTime("trung",subjectid,testid);
 		Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
 		calendar.setTime(time);   // assigns calendar to given date 
 		int hours = calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
@@ -46,7 +62,9 @@ public class TestSheetForward extends HttpServlet {
 		request.setAttribute("hours", hours);
 		request.setAttribute("minute", minute);
 		request.setAttribute("second", second);
-		
+		request.setAttribute("numberqs", numberqs);
+		request.setAttribute("qsID", qsID);
+		session.setAttribute("qstypeID", qstypeID);
 		RequestDispatcher rd= request.getRequestDispatcher("View/TestSheet.jsp");
 		rd.forward(request, response);
 	}

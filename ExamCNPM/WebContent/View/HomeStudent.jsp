@@ -69,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="dropdown">
                             <a class="btn dropdown-toggle pull-right user" type="button" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-user"></i>
-                            Luu Quang Trung
+                            <%=session.getAttribute("fullname") %>
                             <span class="caret"></span>
                         </a>
                             <ul class="dropdown-menu" style="width:300px;">
@@ -239,7 +239,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                     </div>
                     <div class="col-md-4 service-grids-w3ls">
-                        <a href="TestSheet">
+                        <a href="CheckTest?data=1">
                         <i class="fa fa-desktop" aria-hidden="true"></i>
                         <h5>C# Programming</h5>
                         <p>Tran Thi Van</p>
@@ -256,7 +256,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="service-grid2">
                     <div class="col-md-4 service-grids-w3ls">
-                        <a href="TestSheetForward">
+                        <a href="CheckTest?data=2">
                         <i class="fa fa-language" aria-hidden="true"></i>
                         <h5>TOEIC</h5>
                         <p>Center</p>
