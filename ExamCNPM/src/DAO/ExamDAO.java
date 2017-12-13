@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.json.simple.JSONObject;
@@ -271,8 +272,32 @@ public class ExamDAO {
 		return ls;
 	}
 	
-	
-	
+	public static LinkedHashMap getCorrectOption(String username,int subjectid, int testid){
+		String query="select *from users inner join users_subjects on users.userid = users_subjects.userid \r\n" + 
+				"inner join subjects on subjects.subjectid = users_subjects.subjectid \r\n" + 
+				"inner join	tests on tests.subjectid = subjects.subjectid inner join test_question on tests.testid = test_question.testid \r\n" + 
+				"	inner join questions on questions.questionid = test_question.questionid where  users.username=?  and subjects.subjectid=? and tests.testid=?";
+		LinkedHashMap lhm = new LinkedHashMap<>();
+		try{
+			Connection con=DBConnection.CreateConnection();
+			PreparedStatement ps=(PreparedStatement) con.prepareStatement(query);
+			ps.setString(1,username);
+			ps.setInt(2, subjectid);
+			ps.setInt(3,testid);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				
+				int key = rs.getInt("questionid");
+				String value = rs.getString("correctoption");
+				lhm.put(key, value);
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return lhm;
+	}
 	
 	
 	

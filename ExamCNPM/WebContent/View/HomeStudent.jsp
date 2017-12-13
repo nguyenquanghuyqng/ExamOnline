@@ -232,7 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-6 services-left">
                 <div class="service-grid1">
                     <div class="col-md-4 service-grids-w3ls">
-                        <a href="TestSheet">
+                        <a href="CheckTest?data=3">
                         <i class="fa fa-connectdevelop" aria-hidden="true"></i>
                         <h5>Web Programming</h5>
                         <p>Dang Thi Kim Giao </p>

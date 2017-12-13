@@ -36,6 +36,10 @@ public class CheckTest extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession(false);
+		session.removeAttribute("subjectid");
+		session.removeAttribute("testid");
+		session.removeAttribute("all_answers");
+		session.removeAttribute("qstypeID");
 		String abc = request.getParameter("data");
 		int idMon = Integer.parseInt(abc);
 		System.out.println("Number:  "+idMon);
@@ -56,12 +60,13 @@ public class CheckTest extends HttpServlet {
 						session.setAttribute("testid", tsid);
 						RequestDispatcher rd= request.getRequestDispatcher("/TestSheetForward");
 						rd.forward(request, response);
+						return;
 						//System.out.println("Testid "+test+" ");  
 					}
 				}
 					
 
-				if (sub == 1 && idMon == 1) {
+				else if (sub == 1 && idMon == 1) {
 					if (flag == true) {
 						sid = sub;
 						tsid = test;
@@ -69,11 +74,12 @@ public class CheckTest extends HttpServlet {
 						session.setAttribute("testid", tsid);
 						RequestDispatcher rd= request.getRequestDispatcher("/TestSheetForward");
 						rd.forward(request, response);
+						return;
 					}
 					//System.out.println("Testid "+test+" ");  
 				}
 
-				if (sub == 3 && idMon == 3) {
+				else if (sub == 3 && idMon == 3) {
 					if (flag == true) {
 						sid = sub;
 						tsid = test;
@@ -81,9 +87,9 @@ public class CheckTest extends HttpServlet {
 						session.setAttribute("testid", tsid);
 						RequestDispatcher rd= request.getRequestDispatcher("/TestSheetForward");
 						rd.forward(request, response);
+						return;
 
 					}
-					//System.out.println("Testid "+test+" ");  
 				}
 
 			}

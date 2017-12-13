@@ -156,8 +156,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     var question_no=1;
     var question_id=<%=qsID%>;
     var max_questions=<%=max_question%>;
-    
-    var timer=<%= minute*60%>; 
+    var hours = <%=hours%>;
+    var timer = 0;
+    if(hours>0)
+    	timer=<%= (hours*60*60) + minute*60%>; 
+    else if(hours==0)
+  		timer=<%= minute*60%>; 
     var min=0;
     var sec=0;
     
@@ -289,7 +293,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          $('#submit').click(function(){
       	   	   var answer=$('input[name=answer]:checked').val();
           	   $.post('View/getQuestionDAO.jsp?question_no='+question_no+'&question_id='+question_id+'&answer='+answer+"&req=last");
-          	   window.location='/ExamCNPM/resultDAO';
+          	   window.location='/ExamCNPM/resultController';
       		});
          
          
