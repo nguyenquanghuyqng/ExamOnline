@@ -110,7 +110,7 @@
                                 <br> Fullname:
                                 <br> <input type="text" name="fullname" id="fullname"><br>
                                 <br> Birthday:
-                                <br> <input type="text" name="birthday" id="birthday"><br>
+                                <br> <input type="date" name="birthday" id="birthday"><br>
                                 <br> Country:
                                 <br> <input type="text" name="country" id="country"><br>
                                 <br> Phone:

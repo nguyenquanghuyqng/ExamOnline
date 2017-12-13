@@ -118,10 +118,10 @@
 								<option>151101C</option>
 								<option>151101D</option>
 							</select><br> 
-							<br> Date time start: <br> <input type="text"
-								name="timestart" id="timestart"><br> 
-							<br> Date time end: <br> <input type="text" name="timeend"
-								id="timeend"><br> 
+							<br> Date time start: <br> 
+							<input type="datetime-local" name="timestart" id="timestart"/><br> 
+							<br> Date time end: <br> 
+							<input type="datetime-local" name="timeend" id="timeend"/><br> 
 								<br> Test type id: <br>
 							<select name="testtypeid" id="testtypeid">
 								<option>Select test type id</option>

@@ -271,7 +271,7 @@
 						</div>
 						<div class="form-group">
 							<label for="psw">Birthday</label> <input
-								type="text" class="form-control" name="birthday" id="birthday"
+								type="date" class="form-control" name="birthday" id="birthday"
 								placeholder="Birthday">
 						</div>
 						<div class="form-group">
