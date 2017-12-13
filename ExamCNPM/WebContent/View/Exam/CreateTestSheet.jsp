@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	   <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+    <%@ page import="java.sql.*" %>
+	<%ResultSet resultset =null;%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -47,6 +52,8 @@
 <script src="Style/js/ace-elements.min.js"></script>
 <script src="Style/js/ace.min.js"></script>
 <script src="Style/js/validation.js"></script>
+
+
 
 </head>
 
@@ -104,46 +111,129 @@
 					</div>
 
 
-					<div class="formCreateTest" style="margin: 30px">
+					<div class="col-md-5 top-header-agile-left table-responsive" style="margin: 30px">
 						<h2>Create Exam</h2>
 						<div id="thongbao">
 							<p id="pthongbao"></p>
 						</div>
+						
 						<form action="CreateTestSheet" method="post" name="frmCreateTest">
-							<br> Class id : <br> <select name="classid"
-								id="classid">
-								<option>Select class id</option>
-								<option>151101A</option>
-								<option>151101B</option>
-								<option>151101C</option>
-								<option>151101D</option>
-							</select><br> 
+						
+							<br>Test id : <br>
+							<input type="text" name="testid" id="testid" placeholder="Enter testid"><br>
+						
+							<br> Class id : <br> 
+							<%
+							    try{
+							//Class.forName("com.mysql.jdbc.Driver").newInstance();
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select classid from classes") ;
+							%>
+							
+						        <select id="classid" name="classid">
+						        <%  while(resultset.next()){ %>
+						            <option><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br>
+							
 							<br> Date time start: <br> 
 							<input type="datetime-local" name="timestart" id="timestart"/><br> 
 							<br> Date time end: <br> 
 							<input type="datetime-local" name="timeend" id="timeend"/><br> 
-								<br> Test type id: <br>
-							<select name="testtypeid" id="testtypeid">
-								<option>Select test type id</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select><br> <br> Question type id: <br> <select
-								name="questiontypeid" id="questiontypeid">
-								<option>Select question type id</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select><br> <br> <input type="submit"
+							
+							<br> Test type id: <br>
+							<%
+							    try{
+							//Class.forName("com.mysql.jdbc.Driver").newInstance();
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select testtypeid from testtypes") ;
+							%>
+							
+						        <select id="testtypeid" name="testtypeid">
+						        <%  while(resultset.next()){ %>
+						            <option><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br>
+							
+							
+							
+							<br> Subject id: <br> 
+							<%
+							    try{
+							//Class.forName("com.mysql.jdbc.Driver").newInstance();
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select subjectid from subjects") ;
+							%>
+							
+						        <select id="subjectid" name="subjectid">
+						        <%  while(resultset.next()){ %>
+						            <option><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br> 
+							
+							<br> Number of question :<br>
+							<input type="number" name="number" id="number" min="1" placeholder="Enter number of question"><br>
+							
+							<br> Time : <br>
+							<input type="time" name="time" id="time" min="1"><br>
+							
+							<br> <input type="submit"
+
 								value="Create Test Sheet" style="background: skyblue"
 								onclick="return KiemTraHopLeTest()">
 
 						</form>
 					</div>
+					
+					
+<!-- 					<div class="col-md-5 top-header-agile-right"> -->
+<%-- 						<jsp:include page="NewCalender.jsp"></jsp:include> --%>
+<!-- 					</div>	 -->
 
 				</div>
 			</div>
@@ -152,7 +242,6 @@
 		</div>
 		<!-- /.page-content -->
 	</div>
-
 
 	<!-- /.main-content -->
 

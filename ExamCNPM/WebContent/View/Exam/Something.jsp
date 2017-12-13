@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-    <html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Exam</title>
-
-        <meta name="description" content="overview &amp; stats" />
+<meta name="description" content="overview &amp; stats" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
         <!-- bootstrap & fontawesome -->
@@ -42,70 +41,10 @@
         <script src="Style/js/ace-elements.min.js"></script>
         <script src="Style/js/ace.min.js"></script>
 
-    </head>
 
-    <body class="no-skin" style="font-size: 14px;">
-        
-        <!-- Insert file  -->
-        
-		<jsp:include page="NotificationExam.jsp"></jsp:include>
-		
-		
-
-        <div class="main-container ace-save-state" id="main-container">
-            <script type="text/javascript">
-                try {
-                    ace.settings.loadState('main-container')
-                } catch (e) {}
-
-            </script>
-
-			<!-- 			Insert menu -->
-            <jsp:include page="MenuExam.jsp"></jsp:include>
-
-            <div class="main-content">
-
-                <div class="main-content-inner">
-                    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                        <ul class="breadcrumb">
-                            <li>
-                                <i class="ace-icon fa fa-home home-icon"></i>
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="active">Manage Exam</li>
-                        </ul>
-                        <!-- /.breadcrumb -->
-
-                        <div class="nav-search" id="nav-search">
-                            <form class="form-search">
-                                <span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-                            </form>
-                        </div>
-                        <!-- /.nav-search -->
-                    </div>
-
-                    <div class="page-content">
-                        <!-- /.ace-settings-container -->
-
-
-                        <div class="page-header">
-                            <h1>
-                                Manage Exam
-                                <small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									overview &amp; stats
-								</small>
-                            </h1>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- /.page-header -->
-			
-			<div class="row">
+</head>
+<body class="no-skin" style="font-size: 14px;">
+		<div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
                         <div class="alert alert-block alert-success">
@@ -123,7 +62,7 @@
 								</div>
                         <div class="row">
                             
-                            <div class="col-sm-7 infobox-container" style="margin-top: 5px;">
+                            <div class="col-sm-7 infobox-container">
 										<div class="infobox infobox-green">
 											<div class="infobox-icon">
 												<i class="ace-icon fa fa-comments"></i>
@@ -209,7 +148,7 @@
 											</div>
 										</div>
 
-										<div class="space-6" style ="margin-top: 30px;"></div>
+										<div class="space-6"></div>
 
 										<div class="infobox infobox-green infobox-small infobox-dark">
 											<div class="infobox-progress">
@@ -263,7 +202,7 @@
 													<div class="dialogs ace-scroll"><div class="scroll-track scroll-active" style="display: block; height: 300px;"><div class="scroll-bar" style="height: 236px; top: 0px;"></div></div><div class="scroll-content" style="max-height: 300px;">
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="Alexa's Avatar" src="Style/images/avatar1.png">
+																<img alt="Alexa's Avatar" src="assets/images/avatars/avatar1.png">
 															</div>
 
 															<div class="body">
@@ -287,7 +226,7 @@
 
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="John's Avatar" src="Style/images/avatar.png">
+																<img alt="John's Avatar" src="assets/images/avatars/avatar.png">
 															</div>
 
 															<div class="body">
@@ -311,7 +250,7 @@
 
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="Bob's Avatar" src="Style/images/user.jpg">
+																<img alt="Bob's Avatar" src="assets/images/avatars/user.jpg">
 															</div>
 
 															<div class="body">
@@ -336,7 +275,7 @@
 
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="Jim's Avatar" src="Style/images/avatar4.png">
+																<img alt="Jim's Avatar" src="assets/images/avatars/avatar4.png">
 															</div>
 
 															<div class="body">
@@ -360,7 +299,7 @@
 
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="Alexa's Avatar" src="Style/images/avatar1.png">
+																<img alt="Alexa's Avatar" src="assets/images/avatars/avatar1.png">
 															</div>
 
 															<div class="body">
@@ -403,45 +342,5 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /.page-content -->
-        </div>
-
-
-        <!-- /.main-content -->
-        
-<%--         <jsp:include page="Footer.jsp" />  --%>
-
-        <div class="footer">
-            <div class="footer-inner">
-                <div class="footer-content">
-                    <span class="bigger-120">
-							<span class="blue bolder">HCMUTE</span> Application &copy; 2016-2017
-                    </span>
-
-                    &nbsp; &nbsp;
-                    <span class="action-buttons">
-							<a href="#">
-								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-							</a>
-
-							<a href="#">
-								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-							</a>
-
-							<a href="#">
-								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-							</a>
-						</span>
-                </div>
-            </div>
-        </div>
-
-             <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-			</a>
-        <!-- /.main-container -->
-
-    </body>
-
-    </html>
+</body>
+</html>

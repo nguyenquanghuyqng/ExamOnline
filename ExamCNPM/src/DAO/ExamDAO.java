@@ -1,3 +1,4 @@
+
 package DAO;
 
 import java.sql.Connection;
@@ -298,11 +299,5 @@ public class ExamDAO {
 		}
 		return lhm;
 	}
-	
-	
-	
-	
-	
-	
 
 }
