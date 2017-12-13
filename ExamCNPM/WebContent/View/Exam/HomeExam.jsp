@@ -46,7 +46,7 @@
 
     <body class="no-skin" style="font-size: 14px;">
         
-        <!-- Insert file menu -->
+        <!-- Insert file  -->
         
 		<jsp:include page="NotificationExam.jsp"></jsp:include>
 		
