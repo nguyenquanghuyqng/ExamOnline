@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+    <%@ page import="java.sql.*" %>
+	<%ResultSet resultset =null;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -119,14 +121,37 @@
 								Phone: <br>
 								<input type="text" name="phone" value="${list.phone }"><br> <br>
 								Image: <br> 
-								<input type="text" name="image" value="${list.image }"><br> <br> Roleid: <br>
-								<select name="roleid" id="roleid">
-									<option>${list.roleid}</option>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-								</select><br> <br> <input type="submit" value="Save"
+								<input type="text" name="image" value="${list.image }"><br> 
+								<br> Roleid: <br>
+								<%
+								   	try{
+									//Class.forName("com.mysql.jdbc.Driver").newInstance();
+									Class.forName("com.mysql.jdbc.Driver");
+									Connection connection = 
+								         DriverManager.getConnection
+								            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+								
+								       Statement statement = connection.createStatement() ;
+								
+								       resultset =statement.executeQuery("select roleid from roles") ;
+								%>
+									
+								        <select id="classid" name="classid">
+								        <%  while(resultset.next()){ %>
+								            <option><%= resultset.getString(1)%></option>
+								        <% } %>
+								        </select>
+							
+									<%
+								        }
+								        catch(Exception e)
+								        {
+								             out.println("wrong entry"+e);
+								        }
+									%>
+									<br>
+								
+								<br> <input type="submit" value="Save"
 									style="background: skyblue;"><br>
 							</form>
 						</c:forEach>

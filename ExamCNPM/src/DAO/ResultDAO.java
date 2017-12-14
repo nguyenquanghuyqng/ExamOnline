@@ -19,10 +19,12 @@ public class ResultDAO {
 //		String sql = "select resultid, results.userid, username, fullname, point, testid" + " from users, results "
 //				+ "where users.userid=results.userid  limit " + (start - 1) + ", " + count + "";
 
-		String sql = "{ call pr_HaveExam()}";
+		String sql = "{ call pr_HaveExam(?,?)}";
 		try {
 
 			PreparedStatement ptmt = conn.prepareCall(sql);
+			ptmt.setInt(1, start-1);
+			ptmt.setInt(2, count);
 
 			ResultSet rs = ptmt.executeQuery();
 
@@ -72,11 +74,13 @@ public class ResultDAO {
 //				+ "left join results on users.userid=results.userid" 
 //				+ "where results.userid is null";
 		
-		String sql ="{ call pr_DontExam()}";
+		String sql ="{ call pr_DontExam(?,?)}";
 
 		try {
 
 			PreparedStatement ptmt = conn.prepareCall(sql);
+			ptmt.setInt(1, start-1);
+			ptmt.setInt(2, count);
 
 			ResultSet rs = ptmt.executeQuery();
 
@@ -103,6 +107,27 @@ public class ResultDAO {
 
 		return list;
 	}
+	
+	public static boolean DeleteResult(int id, Connection conn) {
+		
+		boolean t = false;
+
+		String sql = "Delete From results Where resultid =?";
+
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			t = true;
+		}
+
+		
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return t;
+		
+	}	
 
 	public static int CountRow(Connection conn) {
 
@@ -129,5 +154,6 @@ public class ResultDAO {
 		return count;
 
 	}
+	
 
 }

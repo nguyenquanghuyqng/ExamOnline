@@ -3,6 +3,8 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 	<%@ page import = "java.io.*,java.util.*" %>
 	<%@ page import = "javax.servlet.*,java.text.*" %>
+	    <%@ page import="java.sql.*" %>
+	<%ResultSet resultset =null;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -121,32 +123,48 @@
 
 					<div class="">
 						<h2>List User</h2>
-						Date : <select name="date" id="date">
-							<option>Choose date</option>
-                   			<option>11-10-2017</option>
-							<option>12-10-2017</option>
-							<option>13-10-2017</option>
-							<option>14-10-2017</option>
-                 			</select>
+						Date : <input type="date" id="date" name="date">
                  
-                 		<span style="margin-left: 50px;">Class : </span> <select name="class" id="class">
-							<option>Choose class</option>
-                   			<option>151101A</option>
-							<option>151102A</option>
-							<option>151103A</option>
-							<option>151103B</option>
-                 			</select>
-						 <%
-					         Date dNow = new Date( );
-					         SimpleDateFormat ft = 
-					         new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-					         out.print( "<h2 align=\"center\">" + ft.format(dNow) + "</h2>");
-					      %>
-					      
+                 		<span style="margin-left: 50px;">Class : </span>
+                 		 <%
+							    try{
+							//Class.forName("com.mysql.jdbc.Driver").newInstance();
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
 						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select classname from classes") ;
+							%>
+							
+						        <select id="class" name="class">
+						        <%  while(resultset.next()){ %>
+						            <option><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br>
+							<hr>
+							 <% 
+// 								 Date dNow = new Date();
+// 						         SimpleDateFormat ft = 
+// 						         new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+// 						         out.print( "<h2 align=\"center\">" + ft.format(dNow) + "</h2>");
+				       		%>
+					        
+						<br>
 						<table border='1' style="width: 100%"
-							class="table table-hover table-bordered table-striped">
-							<tr>
+							class="table table-hover table-bordered table-striped" id="simple-table">
+							<tr style="background: skyblue">
 								<th>resulttestid</th>
 								<th>userid</th>
 								<th>username</th>
@@ -172,19 +190,42 @@
 
 										<td class="center">
 											<div class="hidden-sm hidden-xs action-buttons">
-
 												<a class="skyblue"
-													href="EditResult?index=${list.userid}&pageid=1"> <i
-													class="ace-icon fa fa-pencil bigger-130"> </i>
+													href="#" id="myBtn${list.resulttestid }"> 
+													<i class="ace-icon fa fa-pencil bigger-130" > </i>
 												</a> <a class="skyblue"
-													href="DeleteResult?index=${list.userid}&pageid=1"
+													href="DeleteResult?index=${list.resulttestid }&pageid=1"
 													onclick="return show_comfirm()"> <i
 													class="ace-icon fa fa-trash-o bigger-130"> </i>
 												</a>
 											</div>
 										</td>
+										
+											
 									</tr>
-
+									<script type="text/javascript">
+											$(document).ready(function() {
+												$("#myBtn${list.resulttestid}").click(function() {
+													$("#myModal").modal();
+												});
+											});
+											
+									        var table = document.getElementById("simple-table"),rindex;
+											
+											for(var i =1 ; i < table.rows.length; i++)
+											{
+												 table.rows[i].onclick = function()
+												{
+													rindex = this.rowIndex;		
+													document.getElementById("resulttestid").value = this.cells[0].innerHTML;
+													document.getElementById("userid").value = this.cells[1].innerHTML;
+													document.getElementById("username").value = this.cells[2].innerHTML;
+													document.getElementById("fullname").value = this.cells[3].innerHTML;
+													document.getElementById("point").value = this.cells[4].innerHTML;
+													document.getElementById("testid").value = this.cells[5].innerHTML;
+												};
+											}
+									</script>
 								</c:forEach>
 							</tbody>
 						</table>
@@ -192,28 +233,26 @@
 							<!-- numberpage trong HomeController -->
 							<c:if test="${numberpage==1}">
 								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="EditResult?pageid=1">1</a></li>
+								<li><a href="EditResult?pageid=2">2</a></li>
+								<li><a href="EditResult?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage==maxpageid}">
 								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+								<li><a href="EditResult?pageid=1">1</a></li>
+								<li><a href="EditResult?pageid=2">2</a></li>
 								<li class="disabled"><a href="#">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage>1 && numberpage<maxpageid}">
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage-1}">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="EditResult?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="EditResult?pageid=1">1</a></li>
+								<li><a href="EditResult?pageid=2">2</a></li>
+								<li><a href="EditResult?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 						</ul>
 					</div>
-
-
 
 				</div>
 			</div>
@@ -221,6 +260,93 @@
 		</div>
 		<!-- /.page-content -->
 	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content" >
+				<div class="modal-header" style="padding: 0px 10px; background:skyblue">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h2>
+						<span class="glyphicon glyphicon-user"></span> Add new user
+					</h2>
+				</div>
+				<div class="modal-body" style="padding: 40px 50px;">
+					<form action="InsertAccount?pageid=1" method="POST" name="frmInsertAcc">
+						<div class="form-group">
+							<label for="usrname">Result Test ID</label> 
+							<input type="text" class="form-control" name="resulttestid" id ="resulttestid" placeholder="Result Test ID">
+						</div>
+						<div class="form-group">
+							<label for="psw">User ID</label> 
+							<input type="text" class="form-control" name="userid" id="userid" placeholder="User ID">
+						</div>
+
+						<div class="form-group">
+							<label for="usrname">Username</label> 
+							<input type="text" class="form-control" name="username" id="username" placeholder="Username">
+						</div>
+						<div class="form-group">
+							<label for="psw">Fullname</label> <input
+								type="text" class="form-control" name="fullname" id="fullname"
+								placeholder="Fullname">
+						</div>
+						<div class="form-group">
+							<label for="usrname">Point</label> 
+							<input type="text" class="form-control" name="point" id="point" placeholder="Point">
+						</div>
+						<div class="form-group">
+							<label for="psw">Testid</label> <br>
+							<%
+							    try{
+							//Class.forName("com.mysql.jdbc.Driver").newInstance();
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select testid from tests") ;
+							%>
+							
+						        <select id="testid" name="testid">
+						        <%  while(resultset.next()){ %>
+						            <option><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br>
+						</div>
+
+						<button type="submit" class="btn btn-success btn-block"  onclick="return KiemTraHopLe()">
+							<span class="glyphicon glyphicon-ok"></span> Save
+						</button>
+
+						
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger btn-default pull-left"
+						data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> Cancel
+					</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 
 
 	<!-- /.main-content -->

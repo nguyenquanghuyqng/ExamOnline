@@ -179,7 +179,7 @@
 										<td class="center">
 											<div class="hidden-sm hidden-xs action-buttons">
 
-												<a class="skyblue" href="#" onclick="return ShowData()"> 
+												<a class="skyblue" href="EditAccount?index=${list.userid}&pageid=1"> 
 												<i class="ace-icon fa fa-pencil bigger-130" > </i>
 												</a> <a class="skyblue"
 													href="DeleteAccount?index=${list.userid}&pageid=1"
@@ -275,15 +275,39 @@
 		<!-- /.page-content -->
 	</div>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#myBtn").click(function() {
-				$("#myModal").modal();
-			});
-		});
-	</script>
 
-	<!-- Modal -->
+
+	
+	<!-- /.main-content -->
+
+	 <!--     Include file Footer -->
+<%-- 	<jsp:include page="Footer.jsp" /> --%>
+ <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-120">
+							<span class="blue bolder">HCMUTE</span> Application &copy; 2016-2017
+                    </span>
+
+                    &nbsp; &nbsp;
+                    <span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+                </div>
+            </div>
+        </div>
+
+			<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
@@ -357,40 +381,13 @@
 		</div>
 	</div>
 
-
-	<!-- /.main-content -->
-
-	 <!--     Include file Footer -->
-<%-- 	<jsp:include page="Footer.jsp" /> --%>
- <div class="footer">
-            <div class="footer-inner">
-                <div class="footer-content">
-                    <span class="bigger-120">
-							<span class="blue bolder">HCMUTE</span> Application &copy; 2016-2017
-                    </span>
-
-                    &nbsp; &nbsp;
-                    <span class="action-buttons">
-							<a href="#">
-								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-							</a>
-
-							<a href="#">
-								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-							</a>
-
-							<a href="#">
-								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-							</a>
-						</span>
-                </div>
-            </div>
-        </div>
+		
 
 	<a href="#" id="btn-scroll-up"
 		class="btn-scroll-up btn btn-sm btn-inverse"> <i
 		class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 	</a>
+	
 
 	<!-- /.main-container -->
 </body>
