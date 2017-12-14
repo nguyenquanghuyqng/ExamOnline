@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             <div class="dropdown">
                                 <a class="btn dropdown-toggle pull-right user" type="button" data-toggle="dropdown"> <i class="glyphicon glyphicon-user"></i>
-							Luu Quang Trung <span class="caret"></span>
+							<%=session.getAttribute("fullname") %> <span class="caret"></span>
 						</a>
                                 <ul class="dropdown-menu" style="width: 300px;">
                                     <li><a href="#">Account Settings <span
