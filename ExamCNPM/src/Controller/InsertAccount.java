@@ -18,7 +18,6 @@ import java.util.List;
 @WebServlet("/InsertAccount")
 public class InsertAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	int t = 1;
 
 	public InsertAccount() {
 		super();
@@ -32,9 +31,10 @@ public class InsertAccount extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		t++;
-
+		
 		Connection conn = DBConnection.CreateConnection();
+
+		int sumrow = AccountDAO.CountRow(conn);
 
 		Account acc = new Account();
 		request.setCharacterEncoding("UTF-8");
@@ -48,7 +48,7 @@ public class InsertAccount extends HttpServlet {
 		acc.setImage(request.getParameter("image"));
 		acc.setRoleid(Integer.parseInt(request.getParameter("roleid")));
 
-		boolean kt = AccountDAO.InsertOneAccount(acc, conn, t);
+		boolean kt = AccountDAO.InsertOneAccount(acc, conn, sumrow+1);
 
 		if (kt) {
 
@@ -72,8 +72,6 @@ public class InsertAccount extends HttpServlet {
 			}
 
 			List<Account> list = AccountDAO.DisplayAccount(pageid, count, conn);
-
-			int sumrow = AccountDAO.CountRow(conn);
 
 			int maxpageid = (sumrow / count) + 1;
 

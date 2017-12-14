@@ -152,8 +152,8 @@
 								<th>phone</th>
 								<th>image</th>
 								<th>roleid</th>
-								<!--                                         <th></th> -->
-								<!--                                         <th></th> -->
+								<!-- <th></th> -->
+								<!-- <th></th> -->
 
 								<th>
 									<button type="button" id="myBtn" style="background:#40ff00">Add
@@ -173,19 +173,18 @@
 										<td>${list.phone}</td>
 										<td>${list.image}</td>
 										<td>${list.roleid}</td>
-										<%--                                                 <td><a href="EditAccount?index=${list.userid}&pageid=1">Edit</a></td> --%>
+										<%--<td><a href="EditAccount?index=${list.userid}&pageid=1">Edit</a></td> --%>
 
-										<%--                                                 <td><a href="DeleteAccount?index=${list.userid}&pageid=1" onclick="return show_comfirm()">Delete</a></td> --%>
+										<%--<td><a href="DeleteAccount?index=${list.userid}&pageid=1" onclick="return show_comfirm()">Delete</a></td> --%>
 										<td class="center">
 											<div class="hidden-sm hidden-xs action-buttons">
 
-												<a class="skyblue"
-													href="EditAccount?index=${list.userid}&pageid=1"> <i
-													class="ace-icon fa fa-pencil bigger-130"> </i>
+												<a class="skyblue" href="#" onclick="return ShowData()"> 
+												<i class="ace-icon fa fa-pencil bigger-130" > </i>
 												</a> <a class="skyblue"
 													href="DeleteAccount?index=${list.userid}&pageid=1"
-													onclick="return show_comfirm()"> <i
-													class="ace-icon fa fa-trash-o bigger-130"> </i>
+													onclick="return show_comfirm()"> 
+													<i class="ace-icon fa fa-trash-o bigger-130"> </i>
 												</a>
 											</div>
 										</td>
@@ -195,6 +194,42 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						
+						<script type="text/javascript">
+
+						
+//         				function ShowData() {
+        					
+//         					$(document).ready(function() {
+//         						$("#myBtn").click(function() {
+//         							$("#myModal").modal();
+//         						});
+//         					});
+        					
+//         					alert.innerHTML("Hi");
+
+        					
+// 							var table = document.getElementById("simple-table"),rindex;
+							
+// 							for(var i =1 ; i < table.rows.length; i++)
+// 							{
+// 								 table.rows[i].onclick = function()
+// 								{
+// 									rindex = this.rowIndex;		
+// 									document.getElementByID("Courseid").value = this.cells[0].innerHTML;
+// 									document.getElementByID("Coursename").value = this.cells[1].innerHTML;
+// 									document.getElementByID("Coursetime").value = this.cells[2].innerHTML;
+// 									document.getElementByID("Coursemoney").value = this.cells[3].innerHTML;
+									
+// 								};
+// 							}
+							
+// 						}
+					        
+
+						</script>
+						
+						
 						<ul class="pagination">
 							<!-- numberpage trong HomeController -->
 							<c:if test="${numberpage==1}">
@@ -240,7 +275,13 @@
 		<!-- /.page-content -->
 	</div>
 
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#myBtn").click(function() {
+				$("#myModal").modal();
+			});
+		});
+	</script>
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
@@ -315,13 +356,6 @@
 
 		</div>
 	</div>
-	<script>
-		$(document).ready(function() {
-			$("#myBtn").click(function() {
-				$("#myModal").modal();
-			});
-		});
-	</script>
 
 
 	<!-- /.main-content -->
