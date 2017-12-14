@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
     <!DOCTYPE html>
     <html>
 
@@ -25,6 +26,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         <!-- Bootstrap-CSS -->
         <link href="Style/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        
+         <!-- Jquery-confirm -->
+         <script type="text/javascript" src="Style/js/jquery-2.1.4.min.js"></script>
+         <script type="text/javascript" src="Style/js/jquery-confirm.js"></script>
+         <link href="Style/css/jquery-confirm.css" rel="stylesheet" type="text/css" media="all" />
 
         <!-- Font-awesome-CSS -->
         <link href="Style/css/font-awesome.css" rel="stylesheet">
@@ -46,7 +52,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         <link href="Style/css/user.css" rel="stylesheet" type="text/css" />
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
@@ -228,40 +233,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <h3>COURSE OVERVIEW</h3>
         </div>
         <!--/services-->
+        
+   
+		
         <div class="services-w3-agileits w3agileits-ref">
             <div class="col-md-6 services-left">
                 <div class="service-grid1">
                     <div class="col-md-4 service-grids-w3ls">
-                        <a href="CheckTest?data=3">
-                        <i class="fa fa-connectdevelop" aria-hidden="true"></i>
-                        <h5>Web Programming</h5>
-                        <p>Dang Thi Kim Giao </p>
-                    </a>
-                    </div>
-                    <div class="col-md-4 service-grids-w3ls">
-                        <a href="CheckTest?data=1">
+                        <a href="CheckTest?data=1" class="jqueryConfirm">
                         <i class="fa fa-desktop" aria-hidden="true"></i>
                         <h5>C# Programming</h5>
                         <p>Tran Thi Van</p>
+                        <h4 style="color: red"><%=request.getAttribute("program") %></h4>
                     </a>
                     </div>
+                   
                     <div class="col-md-4 service-grids-w3ls">
+                        <a href="CheckTest?data=2" class="jqueryConfirm">
+                        <i class="fa fa-language" aria-hidden="true"></i>
+                        <h5>TOEIC</h5>
+                        <p>Center</p>
+                        <h4 style="color: red"><%=request.getAttribute("toeic") %></h4>
+                    </a>
+                    </div>
+                    
+                    <div class="col-md-4 service-grids-w3ls">
+                        <a href="CheckTest?data=3" class="jqueryConfirm">
+                        <i class="fa fa-connectdevelop" aria-hidden="true"></i>
+                        <h5>Web Programming</h5>
+                        <p>Dang Thi Kim Giao </p>
+                        <h4 style="color: red"><%=request.getAttribute("web") %></h4>
+                    </a>
+                    </div>
+                    <script type="text/javascript">
+                    $('.jqueryConfirm').confirm( {
+                    	title :"Test",
+                    	 theme: 'dark',
+                    	content: "Are you want to take a test ?",
+                    });
+                </script>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="service-grid2">
+                 <div class="col-md-4 service-grids-w3ls">
                         <a href="TestSheet">
                         <i class="fa fa-language" aria-hidden="true"></i>
                         <h5>Javascript Programming</h5>
                         <p>Ta Dinh Vu</p>
                     </a>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="service-grid2">
-                    <div class="col-md-4 service-grids-w3ls">
-                        <a href="CheckTest?data=2">
-                        <i class="fa fa-language" aria-hidden="true"></i>
-                        <h5>TOEIC</h5>
-                        <p>Center</p>
-                    </a>
-                    </div>
+       
                     <div class="col-md-4 service-grids-w3ls">
                         <a href="TestSheet">
                         <i class="fa fa-language" aria-hidden="true"></i>
@@ -437,7 +458,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-        <script type="text/javascript" src="Style/js/jquery-2.1.4.min.js"></script>
+
         <!-- flexSlider -->
         <script defer src="Style/js/jquery.flexslider.js"></script>
         <script type="text/javascript">

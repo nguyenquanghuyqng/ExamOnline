@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 				// gán giá trị của userName khi đăng nhập vào username
 				session.setAttribute("username", username);
 				session.setAttribute("fullname", LoginDAO.getUserName(username, conn) );
-				RequestDispatcher rd = request.getRequestDispatcher("View/HomeStudent.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/LoginForwardHomeSt");
 				rd.forward(request, response);
 
 			}

@@ -31,6 +31,18 @@ if(req!=null){
 		              session.setAttribute("all_answers", lhm);
 		          }
 		    }
+		    else
+		    {
+		    	if(lhm==null){
+		              lhm=new LinkedHashMap();
+		              lhm.put(question_id, answer);
+		              session.setAttribute("all_answers", lhm);
+		          }
+		          else{
+		              lhm.put(question_id, answer);
+		              session.setAttribute("all_answers", lhm);
+		          }
+		    }
 	
 	}
 }
@@ -52,6 +64,18 @@ else{
               session.setAttribute("all_answers", lhm);
 		  }
 	}
+	 else
+	    {
+	    	if(lhm==null){
+	              lhm=new LinkedHashMap();
+	              lhm.put(question_id, answer);
+	              session.setAttribute("all_answers", lhm);
+	          }
+	          else{
+	              lhm.put(question_id, answer);
+	              session.setAttribute("all_answers", lhm);
+	          }
+	    }
 	
 
 	String result=ExamDAO.getQuestion(question_no,subjectid,testid, set);

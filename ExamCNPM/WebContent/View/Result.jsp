@@ -125,11 +125,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 panel panel-default" style="padding-left: 100px;">
-                            <form action="TestSheetHomeStudent" method="post">
+                            <form action="LoginForwardHomeSt" method="post">
                                 <div class="panel-body">
                                     <p>Attempts allowed: 1</p>
                                     <br />
-                                    <p>Time to do : 45 minutes</p>
+                                    <p>Time to do :  <%=request.getAttribute("numberqs")%> minutes</p>
                                     <br />
                                     <h2>The final score for this exam is :
                                         <%=request.getAttribute("diem")%>/
