@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import BEAN.Account;
 import BEAN.Result;
 
 public class ResultDAO {
@@ -152,6 +155,38 @@ public class ResultDAO {
 		}
 
 		return count;
+
+	}
+	public static boolean UpdateResult(Result rt, Connection conn) {
+
+		boolean t = false;
+
+		String sql = "{ call pr_UpdateResult(?,?,?,?,?,?)}";
+
+		try { 
+			PreparedStatement ptmt = conn.prepareCall(sql);
+
+			ptmt.setInt(1, rt.getResulttestid());
+			ptmt.setInt(2, rt.getUserid());
+			ptmt.setString(3, rt.getUsername());
+			ptmt.setString(4, rt.getFullname());
+			ptmt.setInt(5, rt.getPoint());
+			ptmt.setInt(6, rt.getTestid());
+
+			int kt = ptmt.executeUpdate();
+
+			if (kt != 0) {
+
+				// request.setAttribute("message", "Insert data success");
+				return t = true;
+			}
+			ptmt.close();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return t;
 
 	}
 	

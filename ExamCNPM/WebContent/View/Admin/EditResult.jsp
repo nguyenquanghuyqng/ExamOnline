@@ -274,10 +274,10 @@
 					</h2>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
-					<form action="InsertAccount?pageid=1" method="POST" name="frmInsertAcc">
+					<form action="UpdateResult?pageid=1" method="POST" name="frmInsertAcc">
 						<div class="form-group">
 							<label for="usrname">Result Test ID</label> 
-							<input type="text" class="form-control" name="resulttestid" id ="resulttestid" placeholder="Result Test ID">
+							<input type="text" class="form-control" name="resulttestid" id ="resulttestid" placeholder="Result Test ID" disabled>
 						</div>
 						<div class="form-group">
 							<label for="psw">User ID</label> 
