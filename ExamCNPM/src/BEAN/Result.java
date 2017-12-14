@@ -2,7 +2,7 @@ package BEAN;
 
 public class Result {
 
-	private int resulttestid;
+	private int Resultid;
 	private int userid;
 	private String username;
 	private String fullname;
@@ -10,14 +10,6 @@ public class Result {
 	private int point;
 	private int testid;
 	
-
-	public int getResulttestid() {
-		return resulttestid;
-	}
-
-	public void setResulttestid(int resulttestid) {
-		this.resulttestid = resulttestid;
-	}
 
 	public int getUserid() {
 		return userid;
@@ -65,5 +57,13 @@ public class Result {
 
 	public void setClasses(String classes) {
 		this.classes = classes;
+	}
+
+	public int getResultid() {
+		return Resultid;
+	}
+
+	public void setResultid(int resultid) {
+		Resultid = resultid;
 	}
 }

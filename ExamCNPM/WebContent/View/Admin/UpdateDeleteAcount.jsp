@@ -156,7 +156,7 @@
 								<!-- <th></th> -->
 
 								<th>
-									<button type="button" id="myBtn" style="background:#40ff00">Add
+									<button type="button" id="AddNewUser" style="background:#40ff00" onclick="return AddNewUser()">Add
 										User</button>
 								</th>
 							</tr>
@@ -179,7 +179,7 @@
 										<td class="center">
 											<div class="hidden-sm hidden-xs action-buttons">
 
-												<a class="skyblue" href="EditAccount?index=${list.userid}&pageid=1"> 
+												<a class="skyblue" href="#" id="myBtn${list.userid }"> 
 												<i class="ace-icon fa fa-pencil bigger-130" > </i>
 												</a> <a class="skyblue"
 													href="DeleteAccount?index=${list.userid}&pageid=1"
@@ -190,46 +190,40 @@
 										</td>
 
 									</tr>
+									<script type="text/javascript">
+
+									$(document).ready(function() {
+										$("#myBtn${list.userid}").click(function() {
+											$("#myModal_2").modal();
+										});
+									});
+									
+							        var table = document.getElementById("simple-table"),rindex;
+									
+									for(var i =1 ; i < table.rows.length; i++)
+									{
+										 table.rows[i].onclick = function()
+										{
+											rindex = this.rowIndex;		
+											document.getElementById("userid").value = this.cells[0].innerHTML;
+											document.getElementById("username").value = this.cells[1].innerHTML;
+											document.getElementById("pass").value = this.cells[2].innerHTML;
+											document.getElementById("fullname").value = this.cells[3].innerHTML;
+											document.getElementById("birthday").value = this.cells[4].innerHTML;
+											document.getElementById("country").value = this.cells[5].innerHTML;
+											document.getElementById("phone").value = this.cells[6].innerHTML;
+											document.getElementById("image").value = this.cells[7].innerHTML;
+											document.getElementById("roleid").value = this.cells[8].innerHTML;
+										};
+									}
+									</script>
 
 								</c:forEach>
 							</tbody>
 						</table>
 						
-						<script type="text/javascript">
-
 						
-//         				function ShowData() {
-        					
-//         					$(document).ready(function() {
-//         						$("#myBtn").click(function() {
-//         							$("#myModal").modal();
-//         						});
-//         					});
-        					
-//         					alert.innerHTML("Hi");
 
-        					
-// 							var table = document.getElementById("simple-table"),rindex;
-							
-// 							for(var i =1 ; i < table.rows.length; i++)
-// 							{
-// 								 table.rows[i].onclick = function()
-// 								{
-// 									rindex = this.rowIndex;		
-// 									document.getElementByID("Courseid").value = this.cells[0].innerHTML;
-// 									document.getElementByID("Coursename").value = this.cells[1].innerHTML;
-// 									document.getElementByID("Coursetime").value = this.cells[2].innerHTML;
-// 									document.getElementByID("Coursemoney").value = this.cells[3].innerHTML;
-									
-// 								};
-// 							}
-							
-// 						}
-					        
-
-						</script>
-						
-						
 						<ul class="pagination">
 							<!-- numberpage trong HomeController -->
 							<c:if test="${numberpage==1}">
@@ -307,8 +301,8 @@
             </div>
         </div>
 
-			<!-- Modal -->
-	<div class="modal fade" id="myModal" role="dialog">
+
+	<div class="modal fade" id="myModal_2" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
@@ -316,11 +310,15 @@
 				<div class="modal-header" style="padding: 0px 10px; background:skyblue">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h2>
-						<span class="glyphicon glyphicon-user"></span> Add new user
+						<span class="glyphicon glyphicon-user"></span> Edit User
 					</h2>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
-					<form action="InsertAccount?pageid=1" method="POST" name="frmInsertAcc">
+					<form action="SaveEditAccount?pageid=1" method="POST" name="frmInsertAcc">
+						<div class="form-group">
+							<label for="usrname">User ID</label> 
+							<input type="text" class="form-control" name="userid" id ="userid" placeholder="UserID">
+						</div>
 						<div class="form-group">
 							<label for="usrname">Username</label> 
 							<input type="text" class="form-control" name="username" id ="username" placeholder="Username">
@@ -381,6 +379,17 @@
 		</div>
 	</div>
 
+<!-- 	<script type="text/javascript"> -->
+// 		function AddNewUser() {
+	
+// 			$(document).ready(function() {
+// 				$("#AddNewUser").click(function() {
+// 					$("#myModal").modal();
+// 				});
+// 			});
+			
+// 		}
+<!-- 	</script> -->
 		
 
 	<a href="#" id="btn-scroll-up"

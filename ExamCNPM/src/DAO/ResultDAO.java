@@ -35,7 +35,7 @@ public class ResultDAO {
 
 				Result rt = new Result();
 
-				rt.setResulttestid(rs.getInt("resultid"));
+				rt.setResultid(rs.getInt("resultid"));
 				rt.setUserid(rs.getInt("userid"));
 				rt.setFullname(rs.getString("fullname"));
 				rt.setUsername(rs.getString("username"));
@@ -161,17 +161,15 @@ public class ResultDAO {
 
 		boolean t = false;
 
-		String sql = "{ call pr_UpdateResult(?,?,?,?,?,?)}";
+		String sql = "{ call pr_UpdateResult(?,?,?,?)}";
 
 		try { 
 			PreparedStatement ptmt = conn.prepareCall(sql);
 
-			ptmt.setInt(1, rt.getResulttestid());
+			ptmt.setInt(1, rt.getResultid());
 			ptmt.setInt(2, rt.getUserid());
-			ptmt.setString(3, rt.getUsername());
-			ptmt.setString(4, rt.getFullname());
-			ptmt.setInt(5, rt.getPoint());
-			ptmt.setInt(6, rt.getTestid());
+			ptmt.setInt(3, rt.getPoint());
+			ptmt.setInt(4, rt.getTestid());
 
 			int kt = ptmt.executeUpdate();
 

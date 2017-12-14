@@ -52,13 +52,15 @@ public class UpdateResult extends HttpServlet {
 		}
 		Connection conn = (Connection) DBConnection.CreateConnection();
 		
-		Result rs = new Result();
+		
+		System.out.println("Hello");
 		
 		request.setCharacterEncoding("UTF-8");
-		rs.setResulttestid(Integer.parseInt(request.getParameter("resulttestid")));
+		
+		Result rs = new Result();
+		
+		rs.setResultid(Integer.parseInt(request.getParameter("resultid")));
 		rs.setUserid(Integer.parseInt(request.getParameter("userid")));
-		rs.setUsername(request.getParameter("username"));
-		rs.setFullname(request.getParameter("fullname"));
 		rs.setPoint(Integer.parseInt(request.getParameter("point")));
 		rs.setTestid(Integer.parseInt(request.getParameter("testid")));
 		

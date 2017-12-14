@@ -165,7 +165,7 @@
 						<table border='1' style="width: 100%"
 							class="table table-hover table-bordered table-striped" id="simple-table">
 							<tr style="background: skyblue">
-								<th>resulttestid</th>
+								<th>resultid</th>
 								<th>userid</th>
 								<th>username</th>
 								<th>fullname</th>
@@ -178,7 +178,7 @@
 								<c:forEach items="${result}" var="list">
 
 									<tr>
-										<td>${list.resulttestid}</td>
+										<td>${list.resultid}</td>
 										<td>${list.userid}</td>
 										<td>${list.username}</td>
 										<td>${list.fullname}</td>
@@ -191,10 +191,10 @@
 										<td class="center">
 											<div class="hidden-sm hidden-xs action-buttons">
 												<a class="skyblue"
-													href="#" id="myBtn${list.resulttestid }"> 
+													href="#" id="myBtn${list.resultid }"> 
 													<i class="ace-icon fa fa-pencil bigger-130" > </i>
 												</a> <a class="skyblue"
-													href="DeleteResult?index=${list.resulttestid }&pageid=1"
+													href="DeleteResult?index=${list.resultid }&pageid=1"
 													onclick="return show_comfirm()"> <i
 													class="ace-icon fa fa-trash-o bigger-130"> </i>
 												</a>
@@ -205,7 +205,7 @@
 									</tr>
 									<script type="text/javascript">
 											$(document).ready(function() {
-												$("#myBtn${list.resulttestid}").click(function() {
+												$("#myBtn${list.resultid}").click(function() {
 													$("#myModal").modal();
 												});
 											});
@@ -217,7 +217,7 @@
 												 table.rows[i].onclick = function()
 												{
 													rindex = this.rowIndex;		
-													document.getElementById("resulttestid").value = this.cells[0].innerHTML;
+													document.getElementById("resultid").value = this.cells[0].innerHTML;
 													document.getElementById("userid").value = this.cells[1].innerHTML;
 													document.getElementById("username").value = this.cells[2].innerHTML;
 													document.getElementById("fullname").value = this.cells[3].innerHTML;
@@ -270,14 +270,14 @@
 				<div class="modal-header" style="padding: 0px 10px; background:skyblue">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h2>
-						<span class="glyphicon glyphicon-user"></span> Add new user
+						<span class="glyphicon glyphicon-user"></span> Edit Result
 					</h2>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
 					<form action="UpdateResult?pageid=1" method="POST" name="frmInsertAcc">
 						<div class="form-group">
-							<label for="usrname">Result Test ID</label> 
-							<input type="text" class="form-control" name="resulttestid" id ="resulttestid" placeholder="Result Test ID" disabled>
+							<label for="usrname">Result ID</label> 
+							<input type="text" class="form-control" name="resultid" id ="resultid" placeholder="Result Test ID" >
 						</div>
 						<div class="form-group">
 							<label for="psw">User ID</label> 
@@ -286,12 +286,12 @@
 
 						<div class="form-group">
 							<label for="usrname">Username</label> 
-							<input type="text" class="form-control" name="username" id="username" placeholder="Username">
+							<input type="text" class="form-control" name="username" id="username" placeholder="Username" disabled>
 						</div>
 						<div class="form-group">
 							<label for="psw">Fullname</label> <input
 								type="text" class="form-control" name="fullname" id="fullname"
-								placeholder="Fullname">
+								placeholder="Fullname" disabled>
 						</div>
 						<div class="form-group">
 							<label for="usrname">Point</label> 
@@ -328,10 +328,10 @@
 							<br>
 						</div>
 
-						<button type="submit" class="btn btn-success btn-block"  onclick="return KiemTraHopLe()">
+						<button type="submit" class="btn btn-success btn-block" >
 							<span class="glyphicon glyphicon-ok"></span> Save
 						</button>
-
+<!-- 						<input type="submit" value="Save"> -->
 						
 					</form>
 				</div>
