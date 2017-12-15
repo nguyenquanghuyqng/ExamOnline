@@ -57,6 +57,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script src="Style/js/jquery-1.11.3.js"></script>
 
+<!-- Jquery-confirm -->
+<script type="text/javascript" src="Style/js/jquery-confirm.js"></script>
+<link href="Style/css/jquery-confirm.css" rel="stylesheet"
+	type="text/css" media="all" />
+
 
 </head>
 
@@ -188,10 +193,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
              console.log(obj);
              question_id=obj.id;
              $('#question').html('<b>Question '+question_no+': </b><br/>'+obj.question);
-             $('#a').html('<b>A:</b><input type="radio" name="answer" value="A">'+obj.a);
-             $('#b').html('<b>B:</b><input type="radio" name="answer" value="B">'+obj.b);
-             $('#c').html('<b>C:</b><input type="radio" name="answer" value="C">'+obj.c);
-             $('#d').html('<b>D:</b><input type="radio" name="answer" value="D">'+obj.d);
+             $('#a').html('<b></b><input type="radio" name="answer" value="A">'+obj.a);
+             $('#b').html('<b></b><input type="radio" name="answer" value="B">'+obj.b);
+             $('#c').html('<b></b><input type="radio" name="answer" value="C">'+obj.c);
+             $('#d').html('<b></b><input type="radio" name="answer" value="D">'+obj.d);
          });
          
          if(question_no==1){
@@ -225,10 +230,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                  var obj=JSON.parse(data);
                  question_id=obj.id;
                  $('#question').html('<b>Question '+question_no+': </b><br/>'+obj.question);
-                 $('#a').html('<b>A:</b><input type="radio" name="answer" value="A">'+obj.a);
-                 $('#b').html('<b>B:</b><input type="radio" name="answer" value="B">'+obj.b);
-                 $('#c').html('<b>C:</b><input type="radio" name="answer" value="C">'+obj.c);
-                 $('#d').html('<b>D:</b><input type="radio" name="answer" value="D">'+obj.d);
+                 $('#a').html('<b></b><input type="radio" name="answer" value="A">'+obj.a);
+                 $('#b').html('<b></b><input type="radio" name="answer" value="B">'+obj.b);
+                 $('#c').html('<b></b><input type="radio" name="answer" value="C">'+obj.c);
+                 $('#d').html('<b></b><input type="radio" name="answer" value="D">'+obj.d);
              });
          	
          	if(question_no==1){
@@ -261,10 +266,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                  var obj=JSON.parse(data);
                  question_id=obj.id;
                  $('#question').html('<b>Question '+question_no+': </b><br/>'+obj.question);
-                 $('#a').html('<b>A:</b><input type="radio" name="answer" value="A" required>'+obj.a);
-                 $('#b').html('<b>B:</b><input type="radio" name="answer" value="B">'+obj.b);
-                 $('#c').html('<b>C:</b><input type="radio" name="answer" value="C">'+obj.c);
-                 $('#d').html('<b>D:</b><input type="radio" name="answer" value="D">'+obj.d);
+                 $('#a').html('<b></b><input type="radio" name="answer" value="A" required>'+obj.a);
+                 $('#b').html('<b></b>input type="radio" name="answer" value="B">'+obj.b);
+                 $('#c').html('<b></b><input type="radio" name="answer" value="C">'+obj.c);
+                 $('#d').html('<b></b><input type="radio" name="answer" value="D">'+obj.d);
              });
              
              if(question_no==1){
@@ -291,9 +296,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          
          
          $('#submit').click(function(){
-      	   	   var answer=$('input[name=answer]:checked').val();
-          	   $.post('View/getQuestionDAO.jsp?question_no='+question_no+'&question_id='+question_id+'&answer='+answer+"&req=last");
-          	   window.location='/ExamCNPM/resultController';
+        	 var r = confirm("Are you sure?");
+        	 if (r == true) {
+        		 var answer=$('input[name=answer]:checked').val();
+            	   $.post('View/getQuestionDAO.jsp?question_no='+question_no+'&question_id='+question_id+'&answer='+answer+"&req=last");
+            	   window.location='/ExamCNPM/resultController';      
+        	    } 
+      	   	  
       		});
          
          
