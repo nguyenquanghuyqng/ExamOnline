@@ -139,11 +139,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="about-w3layouts">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 panel panel-default"
-					style="padding-left: 100px;">
-					<div class="panel-body">
-						<table class="table table-hover table-responsive">
-							<thead>
+				<div class="col-md-12 ">
+						<table class="table table-hover table-responsive table-bordered">
+							<thead  style=" font-size:21px;">
 								<tr>
 									<th scope="col">S.No.</th>
 									<th scope="col">Full name</th>
@@ -160,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             obj=(JSONObject)array.get(i);
         
         %>
-							<tbody>
+							<tbody style=" font-size:20px;">
 								<tr>
 									<th scope="row"><%=i+1%></th>
 									<td><%=ExamDAO.getFullNameID((int)obj.get("userid"))%></td>
@@ -172,9 +170,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</tbody>
 							  <%} %>
 						</table>
-					</div>
+				
 				</div>
 			</div>
+			<form action="LoginForwardHomeSt" class="inline" method="post"	>
+			 <div class="modal-footer">
+                <button type="submit" class="btn btn-success" style=" font-size:20px;" >Exit</button>
+            </div>
+            </form>
 			<div class="clearfix"></div>
 		</div>
 		<!-- //about -->
