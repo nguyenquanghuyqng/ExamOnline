@@ -379,17 +379,17 @@
 		</div>
 	</div>
 
-<!-- 	<script type="text/javascript"> -->
-// 		function AddNewUser() {
+<!-- <!-- 	<script type="text/javascript"> --> -->
+<!-- // 		function AddNewUser() { -->
 	
-// 			$(document).ready(function() {
-// 				$("#AddNewUser").click(function() {
-// 					$("#myModal").modal();
-// 				});
-// 			});
+<!-- // 			$(document).ready(function() { -->
+<!-- // 				$("#AddNewUser").click(function() { -->
+<!-- // 					$("#myModal").modal(); -->
+<!-- // 				}); -->
+<!-- // 			}); -->
 			
-// 		}
-<!-- 	</script> -->
+<!-- // 		} -->
+<!-- <!-- 	</script> --> -->
 		
 
 	<a href="#" id="btn-scroll-up"

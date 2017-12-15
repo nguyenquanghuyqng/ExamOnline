@@ -145,7 +145,7 @@
 
                     <ul class="submenu">
                         <li class="">
-                            <a href="#">
+                            <a href="ViewListClassExam?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									View List Class Exam 
 								</a>

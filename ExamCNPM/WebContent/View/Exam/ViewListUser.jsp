@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-    <%@ page import = "java.io.*,java.util.*" %>
-	<%@ page import = "javax.servlet.*,java.text.*" %>
-<%-- 	<%@ page import="java.sql.*" %> --%>
-<%-- 	<%ResultSet resultset =null;%> --%>
-	
+    	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
+	<%@ page import="java.sql.*" %>
+	<%ResultSet resultset =null;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Account have Result </title>
+<title>View User About Class</title>
+
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -34,6 +33,7 @@
 
 <link rel="stylesheet" href="Style/css/ace-skins.min.css" />
 <link rel="stylesheet" href="Style/css/ace-rtl.min.css" />
+<link type="text/javascript" href="Style/css/style.css"/>
 
 <!-- ace settings handler -->
 <script src="Style/js/ace-extra.min.js"></script>
@@ -47,31 +47,13 @@
 <!-- ace scripts -->
 <script src="Style/js/ace-elements.min.js"></script>
 <script src="Style/js/ace.min.js"></script>
+<script src="Style/js/validation.js"></script>
 
-<!-- Show thông báo ra màn hình -->
-<script type="text/javascript">
-	function show_comfirm() {
-		var comfirmBox;
-		comfirmBox = confirm("Bạn có chắc chắn muốn xóa kết quả ?");
-		if (comfirmBox == true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-</script>
-
-
-
-</head>
-
-<body>
 <body class="no-skin" style="font-size: 14px;">
 
-    <!-- Insert file notification -->
-        <jsp:include page="Notification.jsp" /> 
-
-	<div class="main-container ace-save-state" id="main-container">
+		<!-- Insert file notification -->
+        <jsp:include page="NotificationExam.jsp" /> 
+        <div class="main-container ace-save-state" id="main-container">
 		<script type="text/javascript">
 			try {
 				ace.settings.loadState('main-container')
@@ -80,7 +62,7 @@
 		</script>
 
         <!-- Insert file menu -->
-        <jsp:include page="MenuAdmin.jsp" />  
+        <jsp:include page="MenuExam.jsp" />  
 
 		<div class="main-content">
 
@@ -90,17 +72,16 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li><a href="#">Manage Result</a></li>
-						<li><a href="#">View Result</a></li>
-						<li class="active">Account Have Result</li>
+						<li><a href="#">Manage Account</a></li>
+						<li class="active">Update and Delete Account</li>
 					</ul>
 					<!-- /.breadcrumb -->
 
 					<div class="nav-search" id="nav-search">
 						<form class="form-search">
-							<span class="input-icon"> <input type="text"
-								placeholder="Search ..." class="nav-search-input"
-								id="nav-search-input" autocomplete="off" /> <i
+							<span class="input-icon"> <input class="nav-search-input"
+								id="myInput" type="text" placeholder="Search ..."
+								autocomplete="off"> <i
 								class="ace-icon fa fa-search nav-search-icon"></i>
 							</span>
 						</form>
@@ -111,113 +92,147 @@
 				<div class="page-content">
 					<!-- /.ace-settings-container -->
 
-
 					<div class="page-header">
 						<h1>
-							View Result <small> <i
-								class="ace-icon fa fa-angle-double-right"></i> overview &amp;
-								stats
+							Upadate and Delete Account <small> <i
+								class="ace-icon fa fa-angle-double-right"></i> Admin can delete
+								account user or update account user
 							</small>
 						</h1>
 					</div>
 
-
 					<div class="">
-						<h2>List user have result</h2>
+						<h2>List User</h2>
 						
-						Date : <select name="date" id="date">
-							<option>Choose date</option>
-                   			<option>11-10-2017</option>
-							<option>12-10-2017</option>
-							<option>13-10-2017</option>
-							<option>14-10-2017</option>
-                 			</select>
-                 			
-                 			
-                 			
-                 
-                 		<span style="margin-left: 50px;">Class : </span> <select name="class" id="class">
-							<option>Choose class</option>
-                   			<option>151101A</option>
-							<option>151102A</option>
-							<option>151103A</option>
-							<option>151103B</option>
-                 			</select>
-						 <%
-					         Date dNow = new Date( );
-					         SimpleDateFormat ft = 
-					         new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-					         out.print( "<h2 align=\"center\">" + ft.format(dNow) + "</h2>");
-					      %>
+						<form action="ViewListClassExam" method ="post">
+								
+								Testid:<br>
+							<%
+							    try{
+							//Class.forName("com.mysql.jdbc.Driver").newInstance();
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select testid from tests group by testid asc") ;
+							%>
+							
+						        <select id="testid" name="testid">
+						        <%  while(resultset.next()){ %>
+						            <option><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
+						        
+	<!-- 						        <div id="scroll_box"> -->
+							        
+	<%-- 						        	  <%  while(resultset.next()){ %> --%>
+	<%-- 								            <p><%= resultset.getString(1)%></p	> --%>
+	<%-- 								      <% } %> --%>
+							        	
+	<!-- 						        </div> -->
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br>
+							<br>
+							
+						</form>
 						
 						<table border='1' style="width: 100%"
-							class="table table-hover table-bordered table-striped">
-							<tr>
-								<th>resultid</th>
+							class="table table-hover table-bordered table-striped" id ="simple-table">
+							<tr style="background: skyblue">
 								<th>userid</th>
 								<th>username</th>
+								<th>pass</th>
 								<th>fullname</th>
-								<th>point</th>
-								<th>testid</th>
-<!-- 								<th>classname</th> -->
+								<th>birthday</th>
+								<th>country</th>
+								<th>phone</th>
+								<th>image</th>
+								<th>roleid</th>
 							</tr>
 							<tbody id="myTable">
-								<c:forEach items="${result}" var="list">
+								<c:forEach items="${account}" var="list">
 
 									<tr>
-										<td>${list.resultid}</td>
 										<td>${list.userid}</td>
 										<td>${list.username}</td>
+										<td>${list.pass}</td>
 										<td>${list.fullname}</td>
-										<td>${list.point}</td>
-										<td>${list.testid}</td>
-<%-- 										<td>${list.classes}</td> --%>
+										<td>${list.birthday}</td>
+										<td>${list.country}</td>
+										<td>${list.phone}</td>
+										<td>${list.image}</td>
+										<td>${list.roleid}</td>
 									</tr>
 
 								</c:forEach>
 							</tbody>
 						</table>
+						
+						
+
 						<ul class="pagination">
 							<!-- numberpage trong HomeController -->
 							<c:if test="${numberpage==1}">
 								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage==maxpageid}">
-								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+								<li class="disabled"><a
+									href="HomeForward?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
 								<li class="disabled"><a href="#">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage>1 && numberpage<maxpageid}">
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage-1}">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 						</ul>
 					</div>
-
-
-
 				</div>
 			</div>
-			<!--/.page-header -->
+			<!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<div class="row">
+						<div class="col-sm-9">
+							<div class="space"></div>
+
+							<div id="calendar"></div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- /.page-content -->
 	</div>
 
 
+
+	
 	<!-- /.main-content -->
 
 	 <!--     Include file Footer -->
 <%-- 	<jsp:include page="Footer.jsp" /> --%>
-
-	 <div class="footer">
+ <div class="footer">
             <div class="footer-inner">
                 <div class="footer-content">
                     <span class="bigger-120">
@@ -241,13 +256,15 @@
                 </div>
             </div>
         </div>
+		
 
 	<a href="#" id="btn-scroll-up"
 		class="btn-scroll-up btn btn-sm btn-inverse"> <i
 		class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 	</a>
+	
+
 	<!-- /.main-container -->
 
 </body>
-
 </html>

@@ -5,9 +5,10 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <title>Insert Question</title>
 
-
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
         <meta name="description" content="overview &amp; stats" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
@@ -42,7 +43,10 @@
         <!-- ace scripts -->
         <script src="Style/js/ace-elements.min.js"></script>
         <script src="Style/js/ace.min.js"></script>
+        <script src="Style/js/jquery.min.js"></script>
 
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
     </head>
 
@@ -293,7 +297,6 @@
                 try {
                     ace.settings.loadState('main-container')
                 } catch (e) { }
-
             </script>
 
             <script type="text/javascript">
@@ -326,8 +329,8 @@
                     $('#add').click(function () {
                         i++;
                         $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, semi-colon:80%" name="name[]" placeholder="Enter question type" class="form-control name_list" ></textarea></td><td><button type="button" name="remove" id="' +
-                            i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
+                            '"><td><input type="text" name="name[]" placeholder="Enter Option Content" class="form-control name_list" /></td><td><button type="button" name="remove" id="' +
+                            i + '" class="btn btn-danger btn_remove">X</button><input type="checkbox" id="option' + i + '"></td></tr>');
                     });
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
@@ -346,13 +349,11 @@
                     });
                 });
             </script>
-
             <div id="sidebar" class="sidebar responsive ace-save-state">
                 <script type="text/javascript">
                     try {
                         ace.settings.loadState('sidebar')
                     } catch (e) { }
-
                 </script>
 
                 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
@@ -392,10 +393,11 @@
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text">Home</span>
                         </a>
+
                         <b class="arrow"></b>
                     </li>
 
-                    <li class="">
+                    <li class="open">
                         <a href="#QuestionManager" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> Questions </span>
@@ -415,7 +417,7 @@
                                 <b class="arrow"></b>
                             </li>
 
-                            <li class="">
+                            <li class="active">
                                 <a href="UpdateDeleteQuestion?pageid=1">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Update & Delete Question
@@ -426,7 +428,7 @@
                         </ul>
                     </li>
 
-                    <li class="open">
+                    <li class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-pencil-square-o"></i>
                             <span class="menu-text"> Question Types </span>
@@ -437,7 +439,7 @@
                         <b class="arrow"></b>
 
                         <ul class="submenu">
-                            <li class="active">
+                            <li class="">
                                 <a href="InsertQuestionType">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Insert Question Types
@@ -480,90 +482,138 @@
             </div>
 
             <div class="main-content">
-
-                <div class="main-content-inner">
-                    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                        <ul class="breadcrumb">
-                            <li>
-                                <i class="ace-icon fa fa-home home-icon"></i>
-                                <a href="HomeQuestion">Home</a>
-                            </li>
-                            <li class="active">
-                                <a href="">Question Types</a>
-                            </li>
-                            <li class="active">
-                                <a href="">Insert Question Types</a>
-                            </li>
-                        </ul>
-                        <!-- /.breadcrumb -->
-
-                        <div class="nav-search" id="nav-search">
-                            <form class="form-search">
-                                <span class="input-icon">
-                                    <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                                    <i class="ace-icon fa fa-search nav-search-icon"></i>
-                                </span>
-                            </form>
-                        </div>
-                        <!-- /.nav-search -->
-                    </div>
-
-                    <div class="page-content">
-                        <!-- /.ace-settings-container -->
-
-
-                        <div class="page-header">
-                            <h1>
-                                Insert Question Types
-                                <small>
-                                    <i class="ace-icon fa fa-angle-double-right"></i>
-                                    overview &amp; stats
-                                </small>
-                            </h1>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="well-block">
-                                    <div class="well-title">
-                                        <h2 align="center">Insert Question Types</h2>
-                                    </div>
-                                    <form method="POST" action="InsertAQuestion?pageid=1">
-                                        <!-- Form start -->
-                                        <div class="form-group">
-                                            <div class="control-group" id="fields">
-                                                <label class="control-label" for="option">Question type</label>
-                                                <form name="add_name" id="add_name">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered" id="dynamic_field">
-                                                            <tr>
-                                                                <td>
-                                                                    <textarea style="height:80px, semi-colon:80%" name="name[]" placeholder="Enter question type" class="form-control name_list" ></textarea>
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" name="add" id="add" class="btn btn-success">+
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                </form>
-                                                <br>
-                                                <input value="ADD" id="singlebutton" name="singlebutton" class="btn btn-info">
-                                            </div>
-                                        </div>
-                                </div>
+                    <div class="main-content-inner">
+                        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                            <ul class="breadcrumb">
+                                <li>
+                                    <i class="ace-icon fa fa-home home-icon"></i>
+                                    <a href="HomeQuestion">Home</a>
+                                </li>
+                                <li class="">
+                                    <a href="">Questions</a>
+                                </li>
+    
+                                <li class="active">
+                                    <a href="">Insert Questions</a>
+                                </li>
+                            </ul>
+                            <!-- /.breadcrumb -->
+    
+                            <div class="nav-search" id="nav-search">
+                                <form class="form-search">
+                                    <span class="input-icon">
+                                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                    </span>
                                 </form>
-                                <!-- form end -->
                             </div>
-
+                            <!-- /.nav-search -->
                         </div>
-
+    
+                        <div class="page-content">
+                            <!-- /.ace-settings-container -->
+    
+    
+                            <div class="page-header">
+                                <h1>
+                                    Insert Questions
+                                    <small>
+                                        <i class="ace-icon fa fa-angle-double-right"></i>
+                                        overview &amp; stats
+                                    </small>
+                                </h1>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="well-block">
+                                        <div class="well-title">
+                                            <h2 align="center">Insert Question</h2>
+                                        </div>
+                                        <form method="POST" action="InsertAQuestion?pageid=1">
+                                            <!-- Form start -->
+                                            <div class="row">
+                                                <!-- Select Basic -->
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="appointmentfor">Subject</label>
+                                                        <select id="subject" name="subject" class="form-control">
+                                                            <option value="English">English</option>
+                                                            <option value="Math">Math</option>
+                                                            <option value="C++">C++</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- Select Basic -->
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="time">Question Type</label>
+                                                        <select id="questiontype" name="questiontype" class="form-control">
+                                                            <option value="Toiec">Toiec</option>
+                                                            <option value="Math">Math</option>
+                                                            <option value="Software Engenering">Software Engenering</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="name">Question</label>
+                                                        <input id="questioncontent" name="questioncontent" type="text" placeholder="Content" class="form-control input-md">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="appointmentfor">Media file</label>
+                                                        <input type="file" name="file">
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="control-group" id="fields">
+                                                            <label class="control-label" for="option">Option</label>
+                                                            <form name="add_name" id="add_name">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered" id="dynamic_field">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <textarea style="height:80px, width=80%" name="name[]" placeholder="Enter Option Content" class="form-control name_list" ></textarea>
+                                                                            </td>
+                                                                            <td>
+                                                                                <button type="button" name="add" id="add" class="btn btn-success">
+                                                                                    <strong>+</strong>
+                                                                                </button>
+                                                                                <input type="checkbox" id="option1" />
+                                                                            </td>
+    
+                                                                        </tr>
+                                                                    </table>
+                                                                    <!--<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" /> -->
+                                                                </div>
+                                                            </form>
+                                                            <br>
+                                                        </div>
+                                                        <input value="ADD" id="singlebutton" name="singlebutton" class="btn btn-info" />
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+    
+                                    </div>
+                                    </form>
+                                    <!-- form end -->
+    
+    
+                                </div>
+                            </div>
+    
+                        </div>
                     </div>
                 </div>
-                <!-- /.page-header -->
+            <!-- /.page-header -->
 
-            </div>
-            <!-- /.page-content -->
+        </div>
+        <!-- /.page-content -->
         </div>
 
 
