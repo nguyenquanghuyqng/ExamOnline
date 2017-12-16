@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-	   <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
     <%@ page import="java.sql.*" %>
 	<%ResultSet resultset =null;%>
 	
@@ -117,10 +117,7 @@
 							<p id="pthongbao"></p>
 						</div>
 						
-						<form action="CreateTestSheet" method="post" name="frmCreateTest">
-						
-							<br>Test id : <br>
-							<input type="text" name="testid" id="testid" placeholder="Enter testid"><br>
+						<form action="CreateTestSheet?pageid=1" method="post" name="frmCreateTest">
 						
 							<br> Class id : <br> 
 							<%
@@ -136,9 +133,9 @@
 						       resultset =statement.executeQuery("select classid from classes") ;
 							%>
 							
-						        <select id="classid" name="classid">
+						        <select id="classid" name="classid" style="border: 1px solid #00ffc1">
 						        <%  while(resultset.next()){ %>
-						            <option><%= resultset.getString(1)%></option>
+						            <option selected><%= resultset.getString(1)%></option>
 						        <% } %>
 						        </select>
 					
@@ -152,9 +149,9 @@
 							<br>
 							
 							<br> Date time start: <br> 
-							<input type="datetime-local" name="timestart" id="timestart"/><br> 
+							<input type="datetime-local" name="timestart" id="timestart" style="border: 1px solid #00ffc1"/><br> 
 							<br> Date time end: <br> 
-							<input type="datetime-local" name="timeend" id="timeend"/><br> 
+							<input type="datetime-local" name="timeend" id="timeend" style="border: 1px solid #00ffc1"/><br> 
 							
 							<br> Test type id: <br>
 							<%
@@ -170,9 +167,9 @@
 						       resultset =statement.executeQuery("select testtypeid from testtypes") ;
 							%>
 							
-						        <select id="testtypeid" name="testtypeid">
+						        <select id="testtypeid" name="testtypeid" style="border: 1px solid #00ffc1">
 						        <%  while(resultset.next()){ %>
-						            <option><%= resultset.getString(1)%></option>
+						            <option selected><%= resultset.getString(1)%></option>
 						        <% } %>
 						        </select>
 					
@@ -201,9 +198,9 @@
 						       resultset =statement.executeQuery("select subjectid from subjects") ;
 							%>
 							
-						        <select id="subjectid" name="subjectid">
+						        <select id="subjectid" name="subjectid" style="border: 1px solid #00ffc1">
 						        <%  while(resultset.next()){ %>
-						            <option><%= resultset.getString(1)%></option>
+						            <option selected><%= resultset.getString(1)%></option>
 						        <% } %>
 						        </select>
 					
@@ -216,16 +213,45 @@
 							%>
 							<br> 
 							
+							<br>Question type ID : <br>
+							<%
+							    try{
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select questiontypeid from questiontypes") ;
+							%>
+							
+						        <select id="questiontypeid" name="questiontypeid" style="border: 1px solid #00ffc1">
+						        <%  while(resultset.next()){ %>
+						            <option selected><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br>
+							
 							<br> Number of question :<br>
-							<input type="number" name="number" id="number" min="1" placeholder="Enter number of question"><br>
+							<input type="number" name="number" id="number" min="1" 
+							placeholder="Enter number of question" style="border: 1px solid #00ffc1"><br>
 							
 							<br> Time : <br>
-							<input type="time" name="time" id="time" min="1"><br>
+							<input type="time" name="time" id="time" min="1" style="border: 1px solid #00ffc1"><br>
 							
 							<br> <input type="submit"
 
 								value="Create Test Sheet" style="background: skyblue"
-								onclick="return KiemTraHopLeTest()">
+								>
 
 						</form>
 					</div>

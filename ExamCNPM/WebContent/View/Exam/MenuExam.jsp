@@ -111,7 +111,7 @@
 
                     <ul class="submenu">
                         <li class="">
-                            <a href="CreateTestSheet">
+                            <a href="CreateTestSheet?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 
 									Create Test Sheet
@@ -121,7 +121,7 @@
                             <b class="arrow"></b>
 
                             <li class="">
-                                <a href="EditExam">
+                                <a href="EditExam?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Edit Test Sheet
 								</a>

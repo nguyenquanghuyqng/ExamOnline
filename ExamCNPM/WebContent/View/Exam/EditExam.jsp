@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
+	<%@ page import="java.sql.*" %>
+	<%ResultSet resultset =null;%>
+    
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html>
 
@@ -95,23 +101,122 @@
 								</small>
                             </h1>
                         </div>
+                        
+                        
+                        <div class="">
+						<h2>List User</h2>
+						<table border='1' style="width: 100%"
+							class="table table-hover table-bordered table-striped" id ="simple-table">
+							<tr style="background: skyblue">
+								<th>testtypename</th>
+								<th>classname</th>
+								<th>subjectname</th>
+								<th>datetimestart</th>
+								<th>datetimeend</th>
+								<th>numberquestion</th>
+								<th>time</th>
+
+								<th>
+									<button type="button" id="AddNewUser" style="background:#40ff00" onclick="return AddNewUser()">Add
+										User</button>
+								</th>
+							</tr>
+							<tbody id="myTable">
+								<c:forEach items="${listexam}" var="list">
+
+									<tr>
+										<td>${list.testtypename}</td>
+										<td>${list.classname}</td>
+										<td>${list.subjectname}</td>
+										<td>${list.datetimestart}</td>
+										<td>${list.datetimeend}</td>
+										<td>${list.numberquestion}</td>
+										<td>${list.time}</td>
+										<%--<td><a href="EditAccount?index=${list.userid}&pageid=1">Edit</a></td> --%>
+
+<!-- 										<td><a href="DeleteAccount?pageid=1" onclick="return show_comfirm()">Delete</a></td> -->
+										<td class="center">
+											<div class="hidden-sm hidden-xs action-buttons">
+
+												<a class="skyblue" href="#" id="myBtn"> 
+												<i class="ace-icon fa fa-pencil bigger-130" > </i>
+												</a> <a class="skyblue"
+													href="DeleteAccount?pageid=1"
+													onclick="return show_comfirm()"> 
+													<i class="ace-icon fa fa-trash-o bigger-130"> </i>
+												</a>
+											</div>
+										</td>
+
+									</tr>
+									<script type="text/javascript">
+
+									$(document).ready(function() {
+										$("#myBtn${list.userid}").click(function() {
+											$("#myModal_2").modal();
+										});
+									});
+									
+							        var table = document.getElementById("simple-table"),rindex;
+									
+									for(var i =1 ; i < table.rows.length; i++)
+									{
+										 table.rows[i].onclick = function()
+										{
+											rindex = this.rowIndex;		
+											document.getElementById("userid").value = this.cells[0].innerHTML;
+											document.getElementById("username").value = this.cells[1].innerHTML;
+											document.getElementById("pass").value = this.cells[2].innerHTML;
+											document.getElementById("fullname").value = this.cells[3].innerHTML;
+											document.getElementById("birthday").value = this.cells[4].innerHTML;
+											document.getElementById("country").value = this.cells[5].innerHTML;
+											document.getElementById("phone").value = this.cells[6].innerHTML;
+											document.getElementById("image").value = this.cells[7].innerHTML;
+											document.getElementById("roleid").value = this.cells[8].innerHTML;
+										};
+									}
+									</script>
+
+								</c:forEach>
+							</tbody>
+						</table>
+						
+						
+
+						<ul class="pagination">
+							<!-- numberpage trong HomeController -->
+							<c:if test="${numberpage==1}">
+								<li class="disabled"><a href="">&laquo;</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=${numberpage+1}">&raquo;</a></li>
+							</c:if>
+
+							<c:if test="${numberpage==maxpageid}">
+								<li class="disabled"><a
+									href="HomeForward?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
+								<li class="disabled"><a href="#">&raquo;</a></li>
+							</c:if>
+
+							<c:if test="${numberpage>1 && numberpage<maxpageid}">
+								<li><a href="UpdateandDeleteAccount?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
+								<li><a href="UpdateandDeleteAccount?pageid=${numberpage+1}">&raquo;</a></li>
+							</c:if>
+						</ul>
+					</div>
 
                     </div>
                 </div>
                 <!-- /.page-header -->
 
-                <div class="row">
-                    <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <div class="space"></div>
-
-                                <div id="calendar"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                
+                
+                
             </div>
             <!-- /.page-content -->
         </div>

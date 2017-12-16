@@ -60,8 +60,6 @@ public class UpdateandDeleteAccount extends HttpServlet {
 		
 		request.setAttribute("maxpageid", maxpageid);
 		
-		request.setAttribute("listemp", list);
-		
 		request.setAttribute("numberpage", Integer.parseInt(pageidstr));
 		
 		request.setAttribute("account", list);

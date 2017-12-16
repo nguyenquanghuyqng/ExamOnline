@@ -249,6 +249,7 @@
 							</c:if>
 						</ul>
 					</div>
+				
 				</div>
 			</div>
 			<!-- /.page-header -->

@@ -10,6 +10,7 @@ public class TestSheet {
 	private int number;
 	private int testtypeid;
 	private int subjectid;
+	private int questiontypeid;
 	private int classid;
 	
 	public int getTestid() {
@@ -59,5 +60,11 @@ public class TestSheet {
 	}
 	public void setClassid(int classid) {
 		this.classid = classid;
+	}
+	public int getQuestiontypeid() {
+		return questiontypeid;
+	}
+	public void setQuestiontypeid(int questiontypeid) {
+		this.questiontypeid = questiontypeid;
 	}
 }
