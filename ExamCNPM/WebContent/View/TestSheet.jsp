@@ -94,7 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										42 </span>
 							</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Sign Out <span
+							<li><a href="HomePage">Sign Out <span
 									class="glyphicon glyphicon-log-out pull-right"></span>
 							</a></li>
 
@@ -267,7 +267,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                  question_id=obj.id;
                  $('#question').html('<b>Question '+question_no+': </b><br/>'+obj.question);
                  $('#a').html('<b></b><input type="radio" name="answer" value="A" required>'+obj.a);
-                 $('#b').html('<b></b>input type="radio" name="answer" value="B">'+obj.b);
+                 $('#b').html('<b></b><input type="radio" name="answer" value="B">'+obj.b);
                  $('#c').html('<b></b><input type="radio" name="answer" value="C">'+obj.c);
                  $('#d').html('<b></b><input type="radio" name="answer" value="D">'+obj.d);
              });
