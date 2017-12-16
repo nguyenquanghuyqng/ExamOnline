@@ -34,6 +34,9 @@ public class LoginForwardHomeSt extends HttpServlet {
 		HttpSession session=request.getSession(false);
 		String user = (String) session.getAttribute("username");
 		List<Integer> subid = ExamDAO.getSubjectID(user);
+		String program=null;
+		String toeic = null;
+		String web = null;
 		for (Integer sub : subid) {
 			// 		    System.out.println("Subjectid : "+sub+" ");
 			List<Integer> testid = ExamDAO.getTestID(user, sub);
@@ -43,12 +46,12 @@ public class LoginForwardHomeSt extends HttpServlet {
 				{
 					if(flag==true)
 					{
-						String program = "Hava a test";
+						program = "Hava a test";
 						request.setAttribute("program", program);
 					}
 					else
 					{
-						String program = "Don't have a test";
+						program = "Don't have a test";
 						request.setAttribute("program", program);
 					}
 				}
@@ -56,12 +59,12 @@ public class LoginForwardHomeSt extends HttpServlet {
 				{
 					if(flag==true)
 					{
-						String toeic = "Hava a test";
+						toeic = "Hava a test";
 						request.setAttribute("toeic", toeic);
 					}
 					else
 					{
-						String toeic = "Don't have a test";
+						toeic = "Don't have a test";
 						request.setAttribute("toeic", toeic);
 					}
 				}
@@ -69,17 +72,35 @@ public class LoginForwardHomeSt extends HttpServlet {
 				{
 					if(flag==true)
 					{
-						String web = "Hava a test";
+						web = "Hava a test";
 						request.setAttribute("web", web);
 					}
 					else
 					{
-						String web = "Don't have a test";
+						web = "Don't have a test";
 						request.setAttribute("web", web);
 					}
 				}
 			}
 		}
+		
+		if(program == null)
+		{
+			program = "Don't have subject";
+			request.setAttribute("program", program);
+		}
+		if(toeic == null)
+		{
+			toeic = "Don't have subject";
+			request.setAttribute("toeic", toeic);
+		}
+		if(web == null)
+		{
+			web = "Don't have subject";
+			request.setAttribute("web", web);
+		}
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/View/HomeStudent.jsp");
 		rd.forward(request, response);
 	}
