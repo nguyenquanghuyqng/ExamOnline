@@ -2,6 +2,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="DAO.ExamDAO"%>
 <%
+String username = (String)session.getAttribute("username");
 String question_no=request.getParameter("question_no");
 String req=request.getParameter("req");
 int subjectid = (int)session.getAttribute("subjectid");
@@ -10,7 +11,7 @@ int set=(int)session.getAttribute("qstypeID");
 
 if(req!=null){
 	if(req.equals("first")){
-	String result=ExamDAO.getQuestion(question_no,subjectid,testid,set);
+	String result=ExamDAO.getQuestion(question_no,username,subjectid,testid,set);
 	out.print(result);
 	}
 	else{
@@ -78,7 +79,7 @@ else{
 	    }
 	
 
-	String result=ExamDAO.getQuestion(question_no,subjectid,testid, set);
+	String result=ExamDAO.getQuestion(question_no,username,subjectid,testid, set);
 	out.print(result);
 
 }
