@@ -154,7 +154,7 @@
                         </li>
 
                         <li class="">
-                            <a href="#">
+                            <a href="EditListClassExam?pageid=1">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Edit List Class Exam 
 								</a>

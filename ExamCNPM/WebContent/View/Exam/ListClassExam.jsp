@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 	<%@ page import="java.sql.*" %>
 	<%ResultSet resultset =null;%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>View User About Class</title>
+<title>Edit List Class Exam </title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -49,6 +51,7 @@
 <script src="Style/js/ace.min.js"></script>
 <script src="Style/js/validation.js"></script>
 
+</head>
 <body class="no-skin" style="font-size: 14px;">
 
 		<!-- Insert file notification -->
@@ -73,7 +76,7 @@
 						</li>
 
 						<li><a href="#">Manage Class Exam</a></li>
-						<li class="active">View List Class Exam </li>
+						<li class="active">Edit List Class Exam</li>
 					</ul>
 					<!-- /.breadcrumb -->
 
@@ -94,8 +97,8 @@
 
 					<div class="page-header">
 						<h1>
-							View List Class Exam <small> <i
-								class="ace-icon fa fa-angle-double-right"></i> View list class have exam and information about student in class
+							Edit List Class Exam <small> <i
+								class="ace-icon fa fa-angle-double-right"></i> Manage Class Exam can update class exam 
 							</small>
 						</h1>
 					</div>
@@ -137,7 +140,7 @@
 						        }
 							%>
 							
-							<span>Classname:</span>
+							<span>Classid:</span>
 							<%
 							
 							    try{
@@ -173,29 +176,21 @@
 						<table border='1' style="width: 100%"
 							class="table table-hover table-bordered table-striped" id ="simple-table">
 							<tr style="background: skyblue">
-								<th>userid</th>
-								<th>username</th>
-								<th>pass</th>
-								<th>fullname</th>
-								<th>birthday</th>
-								<th>country</th>
-								<th>phone</th>
-								<th>image</th>
-								<th>roleid</th>
+								<th>classid</th>
+								<th>classname</th>
+								<th>subjectname</th>
+								<th>testtypemame</th>
+								<th>testid</th>
 							</tr>
 							<tbody id="myTable">
-								<c:forEach items="${account}" var="list">
+								<c:forEach items="${classexam}" var="list">
 
 									<tr>
-										<td>${list.userid}</td>
-										<td>${list.username}</td>
-										<td>${list.pass}</td>
-										<td>${list.fullname}</td>
-										<td>${list.birthday}</td>
-										<td>${list.country}</td>
-										<td>${list.phone}</td>
-										<td>${list.image}</td>
-										<td>${list.roleid}</td>
+										<td>${list.classid}</td>
+										<td>${list.classname}</td>
+										<td>${list.subjectname}</td>
+										<td>${list.testtypemame}</td>
+										<td>${list.testid}</td>
 									</tr>
 
 								</c:forEach>

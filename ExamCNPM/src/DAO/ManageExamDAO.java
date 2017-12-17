@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import BEAN.ClassExam;
 import BEAN.Exam;
 import BEAN.TestSheet;
 import DB.DBConnection;
@@ -83,10 +84,6 @@ public class ManageExamDAO {
 					ex.setNumberquestion(rs.getInt("numberquestion"));
 					ex.setTime(rs.getString("time"));
 					
-					System.out.println(rs.getString("time"));
-					System.out.println(rs.getString("datetimestart"));
-					System.out.println(rs.getString("datetimeend"));
-					
 					exam.add(ex);
 				}
 
@@ -101,7 +98,7 @@ public class ManageExamDAO {
 			
 			int count = 0;
 
-			String sql = "select count(*) from tests";
+			String sql = "select count(*) from listclassexamview";
 
 			PreparedStatement ptmt;
 			try {
@@ -153,5 +150,36 @@ public class ManageExamDAO {
 				e.printStackTrace();
 			}
 			return t;
+		}
+		public static List<ClassExam> DisplayListClassExam(int start, int count, Connection conn){
+			List<ClassExam> list = new ArrayList<ClassExam>();
+			
+			try {
+				CallableStatement ptmt = conn.prepareCall("{call pr_ListClassExam(?,?)}");
+				
+				ptmt.setInt(1, start-1);
+				ptmt.setInt(2, count);
+				
+				ResultSet rs = ptmt.executeQuery();
+				
+				while(rs.next()) {
+					ClassExam cx = new ClassExam();
+					
+					cx.setClassid(rs.getInt("classid"));
+					cx.setClassname(rs.getString("classname"));
+					cx.setSubjectname(rs.getString("subjectname"));
+					cx.setTesttypemame(rs.getString("testtypemame"));
+					cx.setTestid(rs.getInt("testid"));
+					
+					list.add(cx);
+					
+				}
+				
+			}
+			catch(Exception e) {
+				System.err.println("Error :"+e.getMessage());
+			}
+			
+			return list;
 		}
 }
