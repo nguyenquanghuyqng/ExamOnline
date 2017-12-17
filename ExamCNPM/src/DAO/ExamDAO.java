@@ -108,19 +108,20 @@ public class ExamDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static String getQuestion(String question_no, int subjectid, int testid, int questiontypeid) {
+	public static String getQuestion(String question_no,String username ,int subjectid, int testid, int questiontypeid) {
 		String query = "select *from users inner join users_subjects on users.userid = users_subjects.userid \r\n"
 				+ "inner join subjects on subjects.subjectid = users_subjects.subjectid \r\n"
 				+ "inner join	tests on tests.subjectid = subjects.subjectid inner join test_question on tests.testid = test_question.testid \r\n"
-				+ "	inner join questions on questions.questionid = test_question.questionid where subjects.subjectid=? and tests.testid=? and questions.questiontypeid=?";
+				+ "	inner join questions on questions.questionid = test_question.questionid where users.username=? and subjects.subjectid=? and tests.testid=? and questions.questiontypeid=?";
 		JSONObject obj = new JSONObject();
 
 		try {
 			Connection con = DBConnection.CreateConnection();
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
-			ps.setInt(1, subjectid);
-			ps.setInt(2, testid);
-			ps.setInt(3, questiontypeid);
+			ps.setString(1, username);
+			ps.setInt(2, subjectid);
+			ps.setInt(3, testid);
+			ps.setInt(4, questiontypeid);
 			ResultSet rs = ps.executeQuery();
 			ResultSet rs1 = null;
 
@@ -161,7 +162,6 @@ public class ExamDAO {
 
 		return obj.toString();
 	}
-
 	public static boolean checkTestTime(String username, int subjectid, int testid) {
 		Connection conn = DBConnection.CreateConnection();
 		String sql = "select *from users inner join users_subjects on users.userid = users_subjects.userid \r\n"
