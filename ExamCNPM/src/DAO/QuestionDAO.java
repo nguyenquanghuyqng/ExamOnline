@@ -3,35 +3,86 @@ package DAO;
 import java.sql.*;
 import java.util.*;
 import BEAN.Question;
-
+import DB.DBConnection;
 public class QuestionDAO {
 
+	public static String getQuestiontypename(int questiontypeid)
+	{
+		String name=null;
+		Connection conn = DBConnection.CreateConnection();
+
+		PreparedStatement ptmt = null;
+
+		String sql = "select questiontypename from questiontypes t where questiontypeid=?";
+
+		try {
+			ptmt = (PreparedStatement) conn.prepareStatement(sql);
+			ptmt.setInt(1, questiontypeid);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			while (rs.next()) {
+				name = rs.getString("questiontypename");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return name;
+	}
+
+	public static String getOptions(int questionid)
+	{
+		String  options= "";
+		Connection conn = DBConnection.CreateConnection();
+
+		PreparedStatement ptmt = null;
+
+		String sql = "select *from options where questionid =?;";
+
+		try {
+			ptmt = (PreparedStatement) conn.prepareStatement(sql);
+			ptmt.setInt(1, questionid);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			while (rs.next()) {
+				options+=(rs.getString("optionname")+"    ");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//String text= options.toString();
+		return options;
+	}
 	public static List<Question> DisplayQuestion(int start, int count, Connection conn) {
 
 		List<Question> list = new ArrayList<Question>();
 
 		String sql = "select * from questions limit " + (start - 1) + ", " + count + "";
-
+		//String sqlop= "select *from options  where questionid =?;";
 		try {
 
 			PreparedStatement ptmt = conn.prepareCall(sql);
 
 			ResultSet rs = ptmt.executeQuery();
+			//ResultSet rsop=null;
 
 			while (rs.next()) {
 
 				Question qs = new Question();
 
 				qs.setQuestionid(rs.getInt("questionid"));
-				qs.setNumber(rs.getInt("number"));
+				qs.setQuestiontype(getQuestiontypename(rs.getInt("questiontypeid")));
+				//qs.setNumber(rs.getInt("number"));
 				qs.setContentquestion(rs.getString("contentquestion"));
-				qs.setOption1(rs.getString("option1"));
-				qs.setOption2(rs.getString("option2"));
-				qs.setOption3(rs.getString("option3"));
-				qs.setOption4(rs.getString("option4"));
+				qs.setOptions(getOptions(qs.getQuestionid()));
 				qs.setCorrectoption(rs.getString("correctoption"));
 				qs.setMediaid(rs.getInt("mediaid"));
-				qs.setQuestiontypeid(rs.getInt("questiontypeid"));
 
 				list.add(qs);
 
@@ -45,6 +96,7 @@ public class QuestionDAO {
 		return list;
 	}
 
+	/*
 	public static List<Question> DisplayQuestion_2(Connection conn) {
 
 		List<Question> list = new ArrayList<Question>();
@@ -81,6 +133,7 @@ public class QuestionDAO {
 
 		return list;
 	}
+	*/
 
 	public static boolean DeleteQuestion(int questionid, Connection conn) {
 

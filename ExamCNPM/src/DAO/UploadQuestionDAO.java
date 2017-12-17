@@ -77,9 +77,6 @@ public class UploadQuestionDAO {
 					ptmt.setInt(2, qs.getNumber());
 					ptmt.setString(3, qs.getContentquestion());
 					ptmt.setString(4, qs.getOption1());
-					ptmt.setString(5, qs.getOption2());
-					ptmt.setString(6, qs.getOption3());
-					ptmt.setString(7, qs.getOption4());
 					ptmt.setString(8, qs.getCorrectoption());
 					ptmt.setInt(9, qs.getMediaid());
 					ptmt.setInt(10, qs.getQuestiontypeid());

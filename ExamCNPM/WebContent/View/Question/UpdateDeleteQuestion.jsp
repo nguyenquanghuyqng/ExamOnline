@@ -478,15 +478,12 @@
 						<table class="table" id="makeEditable" border='1' style="width: 100%" >
 							
 							<tr>
-                                            <th class="center">QuestionID</th>
-                                            <th class="center">QuestionTypeID</th>
-                                            <th class="center">Content</th>
-                                            <th class="center">Option 01</th>
-                                            <th class="center">Option 02</th>
-                                            <th class="center">Option 03</th>
-                                            <th class="center">Option 04</th>
-                                            <th class="center">Answer </th>
-                                            <th class="center">MediaID</th>
+                                        <th class="center">QuestionID</th>
+                                        <th class="center">QuestionType</th>
+                                        <th class="center">Content</th>
+                                        <th class="center">Options</th>
+                                        <th class="center">Answer </th>
+                                        <th class="center">MediaID</th>
                                             
                                             <th /> <th />
                                        <!-- <th><span style="float:right"><button id="but_add">Add New Row</button></span></th>-->
@@ -495,16 +492,12 @@
 							<c:forEach items="${questions}" var="list">
 
 								<tr>
-									<td>${list.questionid}</td>
-									<td>${list.number}</td>
-									<td>${list.contentquestion}</td>
-									<td>${list.option1}</td>
-									<td>${list.option2}</td>
-									<td>${list.option3}</td>
-									<td>${list.option4}</td>
-									<td>${list.correctoption}</td>
-									<td>${list.mediaid}</td>
-									<td>${list.questiontypeid}</td>
+									  <td>${list.questionid}</td>
+                                      <td>${list.questiontype}</td>
+                                      <td>${list.contentquestion}</td>
+                                      <td>${list.options}</td>
+                                      <td>${list.correctoption}</td>
+                                      <td>${list.mediaid}</td>
 									<td><a href="EditQuestion?index=${list.questionid}&pageid=1">Edit</a></td>
 									<td><a href="DeleteQuestion?index=${list.questionid}&pageid=1"
 										onclick="return show_comfirm()">Delete</a></td>
