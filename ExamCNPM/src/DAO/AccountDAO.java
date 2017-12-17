@@ -37,7 +37,6 @@ public class AccountDAO {
 				acc.setCountry(rs.getString("country"));
 				acc.setPhone(rs.getString("phone"));
 				acc.setImage(rs.getString("image"));
-				acc.setRoleid(rs.getInt("roleid"));
 
 				list.add(acc);
 			}

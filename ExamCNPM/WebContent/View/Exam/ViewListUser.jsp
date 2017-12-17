@@ -181,7 +181,6 @@
 								<th>country</th>
 								<th>phone</th>
 								<th>image</th>
-								<th>roleid</th>
 							</tr>
 							<tbody id="myTable">
 								<c:forEach items="${account}" var="list">
@@ -195,7 +194,6 @@
 										<td>${list.country}</td>
 										<td>${list.phone}</td>
 										<td>${list.image}</td>
-										<td>${list.roleid}</td>
 									</tr>
 
 								</c:forEach>
