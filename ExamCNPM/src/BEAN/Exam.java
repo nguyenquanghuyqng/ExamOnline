@@ -1,6 +1,7 @@
 package BEAN;
 
 public class Exam {
+	private int testid;
 	private String testtypename;
 	private String classname;
 	private String subjectname;
@@ -66,4 +67,11 @@ public class Exam {
 		this.numberquestion = numberquestion;
 	}
 
+	public int getTestid() {
+		return testid;
+	}
+
+	public void setTestid(int testid) {
+		this.testid = testid;
+	}
 }

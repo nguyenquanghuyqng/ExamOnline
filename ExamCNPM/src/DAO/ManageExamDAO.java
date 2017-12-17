@@ -74,13 +74,7 @@ public class ManageExamDAO {
 					
 					Exam ex = new Exam();
 					
-					System.out.println("Testtypename: "+rs.getString("testtypename"));
-					System.out.println("classname: "+rs.getString("classname"));
-					System.out.println("subjectname: "+rs.getString("subjectname"));
-					System.out.println("datetimestart: "+rs.getString("datetimestart"));
-					System.out.println("datetimeend: "+rs.getString("datetimeend"));
-					System.out.println("numberquestion: "+rs.getInt("numberquestion"));
-					
+					ex.setTestid(rs.getInt("testid"));
 					ex.setTesttypename(rs.getString("testtypename"));
 					ex.setClassname(rs.getString("classname"));
 					ex.setSubjectname(rs.getString("subjectname"));
@@ -89,7 +83,9 @@ public class ManageExamDAO {
 					ex.setNumberquestion(rs.getInt("numberquestion"));
 					ex.setTime(rs.getString("time"));
 					
-					System.out.println("Hello");
+					System.out.println(rs.getString("time"));
+					System.out.println(rs.getString("datetimestart"));
+					System.out.println(rs.getString("datetimeend"));
 					
 					exam.add(ex);
 				}
@@ -125,5 +121,37 @@ public class ManageExamDAO {
 
 			return count;
 
+		}
+		
+		public static boolean DeleteExam(int testid,int number, Connection conn) {
+
+			boolean t = false;
+
+			try {
+				
+				CallableStatement ptmt = conn.prepareCall("{call pr_DeleteExam(?,?)}");
+
+				ptmt.setInt(1, testid);
+				ptmt.setInt(2, number);
+				
+				int kt = ptmt.executeUpdate();
+				
+				if (kt != 0) {
+
+					System.out.println("Successfull");
+					return true;
+
+				} else {
+
+					System.out.println("Failed");
+					return false;
+				}
+				
+			}
+
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			return t;
 		}
 }

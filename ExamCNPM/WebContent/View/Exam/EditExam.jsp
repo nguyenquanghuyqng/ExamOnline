@@ -46,6 +46,20 @@
         <!-- ace scripts -->
         <script src="Style/js/ace-elements.min.js"></script>
         <script src="Style/js/ace.min.js"></script>
+        
+        
+		<!-- Show thông báo ra màn hình -->
+		<script type="text/javascript">
+			function show_comfirm() {
+				var comfirmBox;
+				comfirmBox = confirm("Bạn có chắc chắn muốn xóa tài khoản?");
+				if (comfirmBox == true) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		</script>
 
     </head>
 
@@ -108,6 +122,7 @@
 						<table border='1' style="width: 100%"
 							class="table table-hover table-bordered table-striped" id ="simple-table">
 							<tr style="background: skyblue">
+								<th>testid</th>
 								<th>testtypename</th>
 								<th>classname</th>
 								<th>subjectname</th>
@@ -125,6 +140,7 @@
 								<c:forEach items="${listexam}" var="list">
 
 									<tr>
+										<td>${list.testid}</td>
 										<td>${list.testtypename}</td>
 										<td>${list.classname}</td>
 										<td>${list.subjectname}</td>
@@ -137,11 +153,13 @@
 <!-- 										<td><a href="DeleteAccount?pageid=1" onclick="return show_comfirm()">Delete</a></td> -->
 										<td class="center">
 											<div class="hidden-sm hidden-xs action-buttons">
-
-												<a class="skyblue" href="#" id="myBtn"> 
-												<i class="ace-icon fa fa-pencil bigger-130" > </i>
-												</a> <a class="skyblue"
-													href="DeleteAccount?pageid=1"
+											
+												<a class="skyblue" href="EditExam" id="myBtn"> 
+													<i class="ace-icon fa fa-pencil bigger-130" > </i>
+												</a> 
+												
+												<a class="skyblue" 
+												href="DeleteExam?index=${list.testid }&pageid=1&number=${list.numberquestion}"
 													onclick="return show_comfirm()"> 
 													<i class="ace-icon fa fa-trash-o bigger-130"> </i>
 												</a>
@@ -149,33 +167,6 @@
 										</td>
 
 									</tr>
-									<script type="text/javascript">
-
-									$(document).ready(function() {
-										$("#myBtn${list.userid}").click(function() {
-											$("#myModal_2").modal();
-										});
-									});
-									
-							        var table = document.getElementById("simple-table"),rindex;
-									
-									for(var i =1 ; i < table.rows.length; i++)
-									{
-										 table.rows[i].onclick = function()
-										{
-											rindex = this.rowIndex;		
-											document.getElementById("userid").value = this.cells[0].innerHTML;
-											document.getElementById("username").value = this.cells[1].innerHTML;
-											document.getElementById("pass").value = this.cells[2].innerHTML;
-											document.getElementById("fullname").value = this.cells[3].innerHTML;
-											document.getElementById("birthday").value = this.cells[4].innerHTML;
-											document.getElementById("country").value = this.cells[5].innerHTML;
-											document.getElementById("phone").value = this.cells[6].innerHTML;
-											document.getElementById("image").value = this.cells[7].innerHTML;
-											document.getElementById("roleid").value = this.cells[8].innerHTML;
-										};
-									}
-									</script>
 
 								</c:forEach>
 							</tbody>
@@ -187,24 +178,24 @@
 							<!-- numberpage trong HomeController -->
 							<c:if test="${numberpage==1}">
 								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteAccount?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="EditExam?pageid=1">1</a></li>
+								<li><a href="EditExam?pageid=2">2</a></li>
+								<li><a href="EditExam?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage==maxpageid}">
 								<li class="disabled"><a
-									href="HomeForward?pageid=${numberpage-1}">&laquo;</a></li>
-								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
+									href="EditExam?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="EditExam?pageid=1">1</a></li>
+								<li><a href="EditExam?pageid=2">2</a></li>
 								<li class="disabled"><a href="#">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage>1 && numberpage<maxpageid}">
-								<li><a href="UpdateandDeleteAccount?pageid=${numberpage-1}">&laquo;</a></li>
-								<li><a href="UpdateandDeleteAccount?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteAccount?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteAccount?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="EditExam?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="EditExam?pageid=1">1</a></li>
+								<li><a href="EditExam?pageid=2">2</a></li>
+								<li><a href="EditExam?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 						</ul>
 					</div>
@@ -213,9 +204,6 @@
                 </div>
                 <!-- /.page-header -->
 
-                
-                
-                
                 
             </div>
             <!-- /.page-content -->
@@ -251,8 +239,7 @@
 
         <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-			</a>
-        </div>
+		</a>
         <!-- /.main-container -->
 
     </body>

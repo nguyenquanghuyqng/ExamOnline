@@ -106,7 +106,7 @@
 						
 						<form action="ViewListClassExam" method ="post">
 								
-								Testid:<br>
+							<br>Testid:<br>
 							<%
 							    try{
 							//Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -125,14 +125,34 @@
 						            <option><%= resultset.getString(1)%></option>
 						        <% } %>
 						        </select>
-						        
-	<!-- 						        <div id="scroll_box"> -->
-							        
-	<%-- 						        	  <%  while(resultset.next()){ %> --%>
-	<%-- 								            <p><%= resultset.getString(1)%></p	> --%>
-	<%-- 								      <% } %> --%>
-							        	
-	<!-- 						        </div> -->
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br>
+							<br>Classname:<br>
+							<%
+							    try{
+							//Class.forName("com.mysql.jdbc.Driver").newInstance();
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select testid from tests group by testid asc") ;
+							%>
+							
+						        <select id="testid" name="testid">
+						        <%  while(resultset.next()){ %>
+						            <option><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
 					
 							<%
 						        }

@@ -36,7 +36,9 @@ public class CreateTestSheet extends HttpServlet {
 		TestSheet ts = new TestSheet();
 		
 		System.out.println("Hello");
-		System.out.println(request.getParameter("classid"));
+		System.out.println(request.getParameter("timestart"));
+		System.out.println(request.getParameter("timeend"));
+		System.out.println(request.getParameter("time"));
 		
 		ts.setClassid(Integer.parseInt(request.getParameter("classid")));
 		ts.setDatetimestart(request.getParameter("timestart"));
