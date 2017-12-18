@@ -270,16 +270,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-6 services-left">
 			<div class="service-grid1">
 				<div class="col-md-4 service-grids-w3ls">
-					<a href="CheckTest?data=1" class="jqueryConfirm"> <i
+					<a href="CheckTest?data=1" class="jqueryConfirm1"> <i
 						class="fa fa-desktop" aria-hidden="true"></i>
 						<h5>C# Programming</h5>
 						<p>Tran Thi Van</p>
-						<h4 style="color: red"><%=request.getAttribute("program") %></h4>
+						<h4 style="color: red"><%=request.getAttribute("program")%></h4>
 					</a>
 				</div>
 
 				<div class="col-md-4 service-grids-w3ls">
-					<a href="CheckTest?data=2" class="jqueryConfirm"> <i
+					<a href="CheckTest?data=2" class="jqueryConfirm2"> <i
 						class="fa fa-language" aria-hidden="true"></i>
 						<h5>TOEIC</h5>
 						<p>Center</p>
@@ -288,18 +288,82 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 
 				<div class="col-md-4 service-grids-w3ls">
-					<a href="CheckTest?data=3" class="jqueryConfirm"> <i
+					<a href="CheckTest?data=3" class="jqueryConfirm3"> <i
 						class="fa fa-connectdevelop" aria-hidden="true"></i>
 						<h5>Web Programming</h5>
 						<p>Dang Thi Kim Giao</p>
 						<h4 style="color: red"><%=request.getAttribute("web") %></h4>
 					</a>
 				</div>
+			
 				<script type="text/javascript">
-                    $('.jqueryConfirm').confirm( {
+				
+				var program ="<%=request.getAttribute("program")%>";
+				var toeic = "<%=request.getAttribute("toeic")%>";
+				var ltw ="<%=request.getAttribute("web")%>";
+				//data 1
+                    $('.jqueryConfirm1').confirm( {
                     	title :"Test",
                     	type: 'green',
                     	content: "Are you want to take a test ?",
+                    	buttons: {
+                            Ok: {
+                                text: 'Ok',
+                                btnClass: 'btn-success',
+                                action: function(){
+                                	if(program.toString().trim() == "Don't have a test" || program.toString().trim() == "Don't have subject" )
+                                		window.location = '/ExamCNPM/LoginForwardHomeSt';
+                                	else
+                                		window.location = '/ExamCNPM/CheckTest?data=1';
+                                }
+                            },
+                            close: function () {
+                            }
+                        }
+                    });
+                    
+                    //data 2
+                    $('.jqueryConfirm2').confirm( {
+                    	title :"Test",
+                    	type: 'green',
+                    	content: "Are you want to take a test ?",
+                    	buttons: {
+                            Ok: {
+                                text: 'Ok',
+                                btnClass: 'btn-success',
+                                action: function(){
+                                	if(toeic.toString().trim() == "Don't have a test" || toeic.toString().trim() == "Don't have subject" )
+                                		window.location = '/ExamCNPM/LoginForwardHomeSt';
+                                	else
+                                		window.location = '/ExamCNPM/CheckTest?data=2';
+                                }
+                            },
+                            close: function () {
+                            }
+                        }
+                    });
+                    
+                    
+                    
+                    //data 3
+                    $('.jqueryConfirm3').confirm( {
+                    	title :"Test",
+                    	type: 'green',
+                    	content: "Are you want to take a test ?",
+                    	buttons: {
+                            Ok: {
+                                text: 'Ok',
+                                btnClass: 'btn-success',
+                                action: function(){
+                                	if(ltw.toString().trim() == "Don't have a test" || ltw.toString().trim() == "Don't have subject" )
+                                		window.location = '/ExamCNPM/LoginForwardHomeSt';
+                                	else
+                                		window.location = '/ExamCNPM/CheckTest?data=3';
+                                }
+                            },
+                            close: function () {
+                            }
+                        }
                     });
                 </script>
 				<div class="clearfix"></div>
