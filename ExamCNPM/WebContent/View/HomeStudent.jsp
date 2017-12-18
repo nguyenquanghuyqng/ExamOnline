@@ -114,7 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!--p style="color: skyblue;font-size: 22px">TRƯỜNG ĐẠI HỌC</p>
                     <P style="color: skyblue;font-size: 22px">SƯ PHẠM KỸ THUẬT THÀNH PHỐ HỒ CHÍ MÌNH</P-->
 					<h1>
-						<a href="#"> <img class="img-responsive"
+						<a href="HomeStudent"> <img class="img-responsive"
 							src="Style/images/spkt.jpg">
 						</a>
 					</h1>
