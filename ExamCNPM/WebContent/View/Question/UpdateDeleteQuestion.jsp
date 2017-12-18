@@ -45,7 +45,7 @@
 <script src="Style/js/ace-elements.min.js"></script>
 <script src="Style/js/ace.min.js"></script>
 
-!-- Show thông báo ra màn hình -->
+<!-- Show thông báo ra màn hình -->
 <script type="text/javascript">
 	function show_comfirm() {
 		var comfirmBox;

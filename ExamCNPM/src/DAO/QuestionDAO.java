@@ -3,6 +3,7 @@ package DAO;
 import java.sql.*;
 import java.util.*;
 import BEAN.Question;
+import BEAN.Option;
 import DB.DBConnection;
 public class QuestionDAO {
 
@@ -175,8 +176,52 @@ public class QuestionDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return count;
+	}
 
+	public static int maxQuestionid(Connection conn){
+		String sql="select max(questionid) from questions";
+		int max=0;
+		try{
+		PreparedStatement ptmt = conn.prepareStatement(sql);
+		ResultSet rs = ptmt.executeQuery();
+		max= rs.getInt(1);
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return max;
+	}
+
+	public static boolean InsertOptions(List<Option> qt, Connection conn) {
+
+		String sql = "insert into options value(?,?,?,?)";
+		String n= "select max(optionid) from options";
+		PreparedStatement ptmt;
+
+		try {
+			int questionid= maxQuestionid(conn);
+
+			ptmt = conn.prepareStatement(n);
+			ResultSet rs = ptmt.executeQuery();
+			int i = rs.getInt(1);
+
+			ptmt = conn.prepareStatement(sql);
+
+			int j = 0;
+			while (j < qt.size()) {
+				ptmt.setInt(1,questionid);
+				ptmt.setInt(2,++i);
+				ptmt.setString(3, qt.get(j).getOptionname());
+				ptmt.setBoolean(4, qt.get(j).isIsanswer());
+				if (ptmt.executeUpdate() == 0) {
+					return false;
+				}
+				j++;
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 }

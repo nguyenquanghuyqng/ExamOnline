@@ -46,7 +46,7 @@
 <script src="Style/js/ace.min.js"></script>
 
 
-!-- Show thông báo ra màn hình -->
+<!-- Show thông báo ra màn hình -->
 <script type="text/javascript">
 	function show_comfirm() {
 		var comfirmBox;
@@ -516,8 +516,7 @@
 							<tr>
                                             <th class="text-center" >QuestiontypeID</th>
                                             <th class="text-center">QuestiontypeName</th>
-                                            <th class="text-center"><button type="button" id="AddNewQuestion" class="btn btn-xs btn-info" onclick="return AddNewQuestion()">AddQuestion</button></th>
-                                          <!--  <th><span style="float:right"><button id="but_add">Add New Row</button></span></th>  --> 
+                                            <th class="text-center"><button type="button" id="AddQuestionType" class="btn btn-xs btn-info" onclick="return AddNewQuestionType()">AddQuestionType</button></th>
                             </tr>
 						<tbody id="myTable">
 							<c:forEach items="${questiontype}" var="list">

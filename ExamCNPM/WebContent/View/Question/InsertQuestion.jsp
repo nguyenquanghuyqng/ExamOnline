@@ -573,7 +573,7 @@
                                                     <div class="control-group" id="fields">
                                                         <label class="control-label" for="option">Option</label>
                                                         <form name="add_name" id="add_name">
-                                                            <div class="table-responsive" style="max-width: 445px;">
+                                                            <div class="" style="max-width: 445px;">
                                                                 <table class="table table-bordered" id="dynamic_field">
                                                                     <tr>
                                                                         <td>
