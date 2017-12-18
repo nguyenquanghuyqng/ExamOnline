@@ -37,17 +37,19 @@ public class LoginForwardHomeSt extends HttpServlet {
 		String program=null;
 		String toeic = null;
 		String web = null;
+		boolean flag1=true,flag2=true,flag3=true;
 		for (Integer sub : subid) {
 			// 		    System.out.println("Subjectid : "+sub+" ");
 			List<Integer> testid = ExamDAO.getTestID(user, sub);
 			for (Integer test : testid) {
 				boolean flag = ExamDAO.checkTestTime(user, sub, test);
-				if(sub==1)
+				if(sub==1 && flag1==true)
 				{
 					if(flag==true)
 					{
 						program = "Hava a test";
 						request.setAttribute("program", program);
+						flag1 = false;
 					}
 					else
 					{
@@ -55,12 +57,13 @@ public class LoginForwardHomeSt extends HttpServlet {
 						request.setAttribute("program", program);
 					}
 				}
-				if(sub==2)
+				if(sub==2 && flag2 == true)
 				{
 					if(flag==true)
 					{
 						toeic = "Hava a test";
 						request.setAttribute("toeic", toeic);
+						flag2=false;
 					}
 					else
 					{
@@ -68,12 +71,13 @@ public class LoginForwardHomeSt extends HttpServlet {
 						request.setAttribute("toeic", toeic);
 					}
 				}
-				if(sub==3)
+				if(sub==3 && flag3==true)
 				{
 					if(flag==true)
 					{
 						web = "Hava a test";
 						request.setAttribute("web", web);
+						flag3=false;
 					}
 					else
 					{
