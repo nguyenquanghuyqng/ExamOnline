@@ -528,7 +528,7 @@
                             <div class="col-md-6">
                                 <div class="well-block">
                                     <div class="well-title">
-                                        <h2 align="center">Insert Question</h2>
+                                        <h2 align="left">Insert Question</h2>
                                     </div>
                                     <form method="POST" action="InsertAQuestion?pageid=1">
                                         <!-- Form start -->
@@ -609,7 +609,7 @@
                             <div class="col-md-6">
                                 <div class="well-block">
                                     <div class="well-title">
-                                        <h2 align="center">Import File Excel</h2>
+                                        <h2 align="left">Import File Excel</h2>
                                     </div>
                                     <div class="">
                                         <form method="POST" action="UploadQuestion?pageid=1">

@@ -45,6 +45,38 @@
 <script src="Style/js/ace-elements.min.js"></script>
 <script src="Style/js/ace.min.js"></script>
 
+!-- Show thông báo ra màn hình -->
+<script type="text/javascript">
+	function show_comfirm() {
+		var comfirmBox;
+		comfirmBox = confirm("Are you sure to delete this Question?");
+		if (comfirmBox == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
+<!-- Search -->
+<script>
+	$(document).ready(
+			function() {
+				$("#myInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#myTable tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
+</script>
+
+
 </head>
 <body class="no-skin" style="font-size: 14px;">
     <div id="navbar" class="navbar navbar-default          ace-save-state">
@@ -448,7 +480,7 @@
                     <div class="nav-search" id="nav-search">
                         <form class="form-search">
                             <span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="myInput" autocomplete="off" />
 									<i class="ace-icon fa fa-search nav-search-icon"></i>
 								</span>
                         </form>
@@ -471,38 +503,69 @@
                     </div>
 <!--                     Show dữ liệu lên bảng -->
                     <div class="" id="UpdateDeleteQuestion ">
-					<h2 align-text="left">Questions </h2>
+					<h2 align="center">QUESTIONS </h2>
 					
 					
 <!-- 						<table class="table" id="makeEditable" border='1' style="width: 100%" class="table table-hover table-bordered table-striped"> -->
-						<table class="table" id="makeEditable" border='1' style="width: 100%" >
+						<table class="table table-hover" id="makeEditable" style=" width: 100%;max-width: 100%;
+                        margin-bottom: 20px; border-collapse: collapse; border-spacing: 0;" >
 							
 							<tr>
-                                        <th class="center">QuestionID</th>
-                                        <th class="center">QuestionType</th>
-                                        <th class="center">Content</th>
-                                        <th class="center">Options</th>
-                                        <th class="center">Answer </th>
-                                        <th class="center">MediaID</th>
+                                        <th>QuestionID</th>
+                                        <th>QuestionType</th>
+                                        <th class="text-center">Content</th>
+                                        <th class="text-center">Options</th>
+                                        <th>Answer </th>
+                                        <th>MediaID</th>
                                             
-                                            <th /> <th />
-                                       <!-- <th><span style="float:right"><button id="but_add">Add New Row</button></span></th>-->
+                                            <!-- <th /> <th /> -->
+                                       <th><button type="button" id="AddNewQuestion" class="btn btn-xs btn-info" onclick="return AddNewQuestion()">AddQuestion</button></th>
                                         </tr>
 						<tbody id="myTable">
 							<c:forEach items="${questions}" var="list">
 
-								<tr>
+								<tr class="text-center">
 									  <td>${list.questionid}</td>
                                       <td>${list.questiontype}</td>
                                       <td>${list.contentquestion}</td>
                                       <td>${list.options}</td>
                                       <td>${list.correctoption}</td>
                                       <td>${list.mediaid}</td>
-									<td><a href="EditQuestion?index=${list.questionid}&pageid=1">Edit</a></td>
-									<td><a href="DeleteQuestion?index=${list.questionid}&pageid=1"
-										onclick="return show_comfirm()">Delete</a></td>
+                                        <td class="text-center" style="text-align: center !important;">
+                                            <div class="btn-group">
+                                                <!-- <a href="EditAQuestion?index=${list.questionid}&pageid=1" data-toggle="tooltip" title="" class="btn btn-xs btn-success" data-original-title="Edit" ><i class="fa fa-pencil" > </i>
+                                                </a> -->
+                                                <a href="myBtn${list.questionid}&pageid=1" data-toggle="tooltip" title="" class="btn btn-xs btn-success" data-original-title="Edit" ><i class="fa fa-pencil" > </i>
+                                                </a>
+                                                <a href="DeleteQuestion?index=${list.questionid}&pageid=1" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" data-original-title="Delete" onclick="return show_comfirm()"><i class="fa fa-trash-o "> </i></a>
+                                            </div>
+                                        </td>
+                                    
 								</tr>
+                                <!-- <script type="text/javascript">
 
+									$(document).ready(function() {
+										$("#myBtn${list.questionid}").click(function() {
+											$("#myModal_2").modal();
+										});
+									});
+									
+							        var table = document.getElementById("simple-table"),rindex;
+									
+									for(var i =1 ; i < table.rows.length; i++)
+									{
+										 table.rows[i].onclick = function()
+										{
+											rindex = this.rowIndex;		
+											document.getElementById("questionid").value = this.cells[0].innerHTML;
+											document.getElementById("questiontype").value = this.cells[1].innerHTML;
+											document.getElementById("contentquestion").value = this.cells[2].innerHTML;
+											document.getElementById("options").value = this.cells[3].innerHTML;
+											document.getElementById("correctoption").value = this.cells[4].innerHTML;
+											document.getElementById("mediaid").value = this.cells[5].innerHTML;
+										};
+									}
+									</script> -->
 							</c:forEach>
 							</tbody>
 						</table>
@@ -541,7 +604,71 @@
         <!-- /.page-content -->
     </div>
 
+    <div class="modal fade" id="myModal_2" role="dialog">
+		<div class="modal-dialog">
 
+			<!-- Modal content-->
+			<div class="modal-content" >
+				<div class="modal-header" style="padding: 0px 10px; background:skyblue">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h2>
+						<span class="glyphicon glyphicon-user"></span> Edit Question
+					</h2>
+				</div>
+				<div class="modal-body" style="padding: 40px 50px;">
+					<form action="SaveEditAccount?pageid=1" method="POST" name="frmInsertAcc">
+						<div class="form-group">
+							<label for="questionid">Question ID</label> 
+							<input type="text" class="form-control" name="questionid" id ="questionid" placeholder="Question ID">
+						</div>
+						<div class="form-group">
+							<label for="questiontype">Questiontype</label> 
+							<input type="text" class="form-control" name="questiontype" id ="questiontype" placeholder="Questiontype">
+						</div>
+						<div class="form-group">
+							<label for="contentquestion">Content</label> 
+							<input type="text" class="form-control" name="contentquestion" id="contentquestion" placeholder="Content">
+						</div>
+
+						<div class="form-group">
+							<label for="options">Options</label> 
+							<input type="text" class="form-control" name="options" id="options" placeholder="options">
+						</div>
+						<div class="form-group">
+							<label for="mediaid">Mediaid</label> <input
+								type="date" class="form-control" name="mediaid" id="mediaid"
+								placeholder="Birthday">
+						</div>
+
+						<div class="form-group">
+							<label for="questiontypeid">Roleid</label><br>
+							<select name="roleid" id="roleid">
+								<option>Choose roleid for account</option>
+                    			<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+                    		</select>
+						</div>
+
+						<button type="submit" class="btn btn-success btn-block"  onclick="return KiemTraHopLe()">
+							<span class="glyphicon glyphicon-ok"></span> Save
+						</button>
+
+						
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger btn-default pull-left"
+						data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> Cancel
+					</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
     <!-- /.main-content -->
 
     <div class="footer">

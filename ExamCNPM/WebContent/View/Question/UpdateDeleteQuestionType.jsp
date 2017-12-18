@@ -45,6 +45,39 @@
 <script src="Style/js/ace-elements.min.js"></script>
 <script src="Style/js/ace.min.js"></script>
 
+
+!-- Show thông báo ra màn hình -->
+<script type="text/javascript">
+	function show_comfirm() {
+		var comfirmBox;
+		comfirmBox = confirm("Are you sure to delete this type of question??");
+		if (comfirmBox == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
+<!-- Search -->
+<script>
+	$(document).ready(
+			function() {
+				$("#myInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#myTable tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
+</script>
+
+
 </head>
 <body class="no-skin" style="font-size: 14px;">
     <div id="navbar" class="navbar navbar-default          ace-save-state">
@@ -450,7 +483,7 @@
                     <div class="nav-search" id="nav-search">
                         <form class="form-search">
                             <span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="myInput" autocomplete="off" />
 									<i class="ace-icon fa fa-search nav-search-icon"></i>
 								</span>
                         </form>
@@ -473,27 +506,33 @@
                     </div>
 <!--                     Show dữ liệu lên bảng -->
                     <div class="" id="UpdateDeleteQuestionType ">
-					<h2>Question Types </h2>
+					<h2 align="center">TYPES OF QUESTION</h2>
 				
 					
 <!-- 						<table class="table" id="makeEditable" border='1' style="width: 100%" class="table table-hover table-bordered table-striped"> -->
-						<table class="table" id="makeEditable" border='1' style="width: 100%" >
+						<table  class="table table-hover" id="makeEditable" style=" width: 100%;max-width: 100%;
+                        margin-bottom: 20px; border-collapse: collapse; border-spacing: 0;" >
 						
 							<tr>
-                                            <th class="center">QuestiontypeID</th>
-                                            <th class="center">QuestiontypeName</th>
-                                            <th /> <th />
+                                            <th class="text-center" >QuestiontypeID</th>
+                                            <th class="text-center">QuestiontypeName</th>
+                                            <th class="text-center"><button type="button" id="AddNewQuestion" class="btn btn-xs btn-info" onclick="return AddNewQuestion()">AddQuestion</button></th>
                                           <!--  <th><span style="float:right"><button id="but_add">Add New Row</button></span></th>  --> 
                             </tr>
 						<tbody id="myTable">
 							<c:forEach items="${questiontype}" var="list">
 
-								<tr>
+								<tr class="text-center">
 									<td>${list.questiontypeid}</td>
-									<td>${list.questiontypename}</td>
-									<td><a href="EditQuestionType?index=${list.questiontypeid}&pageid=1">Edit</a></td>
-									<td><a href="DeleteQuestionType?index=${list.questiontypeid}&pageid=1"
-										onclick="return show_comfirm()">Delete</a></td>
+                                    <td>${list.questiontypename}</td>
+                                    <td class="text-center" style="text-align: center !important;">
+                                        <div class="btn-group">
+                                            <a href="EditQuestionType?index=${list.questiontypeid}&pageid=1" data-toggle="tooltip" title="" class="btn btn-xs btn-success" data-original-title="Edit" ><i class="fa fa-pencil" > </i>
+                                            </a>
+                                            <a href="DeleteQuestionType?index=${list.questiontypeid}&pageid=1"
+                                            onclick="return show_comfirm()" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" data-original-title="Delete" onclick="return show_comfirm()"><i class="fa fa-trash-o "> </i></a>
+                                        </div>
+                                    </td>
 								</tr>
 
 							</c:forEach>

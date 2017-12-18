@@ -8,7 +8,7 @@ public class QuestionTypeDAO {
 
 		List<QuestionType> list = new ArrayList<QuestionType>();
 
-		String sql = "select * from questiontype limit "+(start-1)+", "+count+"";
+		String sql = "select * from questiontypes limit "+(start-1)+", "+count+"";
 
 		try {
 
@@ -38,7 +38,7 @@ public class QuestionTypeDAO {
 
 		List<QuestionType> list = new ArrayList<QuestionType>();
 
-		String sql = "select * from questiontype";
+		String sql = "select * from questiontypes";
 
 		try {
 
@@ -69,7 +69,7 @@ public class QuestionTypeDAO {
 
 		boolean t = false;
 
-		String sql = "Delete From questiontype Where questiontypeid =?";
+		String sql = "Delete From questiontypes Where questiontypeid =?";
 
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -88,7 +88,7 @@ public class QuestionTypeDAO {
 			
 			int count=0;
 			
-			String sql= "select count(*) from questiontype";
+			String sql= "select count(*) from questiontypes";
 			
 			PreparedStatement ptmt;
 			try {
