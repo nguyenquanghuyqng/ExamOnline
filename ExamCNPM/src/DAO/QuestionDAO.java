@@ -50,7 +50,7 @@ public class QuestionDAO {
 			ResultSet rs = ptmt.executeQuery();
 
 			while (rs.next()) {
-				options+=(rs.getString("optionname")+"    ");
+				options+=(rs.getString("optionname")+"    \r\n");
 			}
 
 		} catch (SQLException e) {
@@ -142,7 +142,7 @@ public class QuestionDAO {
 		boolean t = false;
 
 		String sql = "call usp_dQuestion(?)";
-
+		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, questionid);

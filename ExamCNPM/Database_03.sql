@@ -146,7 +146,7 @@ CREATE TABLE `options` (
 
 LOCK TABLES `options` WRITE;
 /*!40000 ALTER TABLE `options` DISABLE KEYS */;
-INSERT INTO `options` VALUES (1,11,'A.Then',0),(1,12,'B.Which',0),(1,13,'C.Who',1),(1,14,'D.If',0),(2,21,'A.Infact',0),(2,22,'B.Recently',0),(2,23,'C.Although',1),(2,24,'D.Also',0),(3,31,'A.Addition',1),(3,32,'B.Increased',0),(3,33,'C.Division',0),(3,34,'D.Additional',0),(4,41,'A. Opportunism',0),(4,42,'B.Opportunities',1),(4,43,'C.Favorable',0),(4,44,'D.Chances',0),(5,51,'A. Widest',0),(5,52,'B. Highest',1),(5,53,'C. Least',0),(5,54,'D. Deepest',0);
+INSERT INTO `options` VALUES (1,11,'A.Then',0),(1,12,'B.Which',0),(1,13,'C.Who',1),(1,14,'D.If',0),(2,21,'A.Infact',0),(2,22,'B.Recently',0),(2,23,'C.Although',1),(2,24,'D.Also',0),(3,31,'A.Addition',1),(3,32,'B.Increased',0),(3,33,'C.Division',0),(3,34,'D.Additional',0),(4,41,'A.Opportunism',0),(4,42,'B.Opportunities',1),(4,43,'C.Favorable',0),(4,44,'D.Chances',0),(5,51,'A.Widest',0),(5,52,'B.Highest',1),(5,53,'C.Least',0),(5,54,'D.Deepest',0);
 /*!40000 ALTER TABLE `options` ENABLE KEYS */;
 UNLOCK TABLES;
 

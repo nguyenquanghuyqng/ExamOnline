@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import BEAN.Question;
-import DAO.QuestionDAO;
+import BEAN.QuestionType;
+import DAO.QuestionTypeDAO;
 import DB.DBConnection;
 
-@WebServlet("/DeleteQuestion")
-public class DeleteQuestion extends HttpServlet {
+@WebServlet("/DeleteQuestionType")
+public class DeleteQuestionType extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public DeleteQuestion() {
+	public DeleteQuestionType() {
 		super();
 	}
 
@@ -52,14 +52,14 @@ public class DeleteQuestion extends HttpServlet {
 		}
 		Connection conn = (Connection) DBConnection.CreateConnection();
 		
-		int questionid = Integer.parseInt(request.getParameter("index"));
+		int questiontypeid = Integer.parseInt(request.getParameter("index"));
 		
-		boolean kt = QuestionDAO.DeleteQuestion(questionid, conn);
+		boolean kt = QuestionTypeDAO.DeleteQuestionType(questiontypeid, conn);
 
 		if (kt) {
 
-		List<Question> list = QuestionDAO.DisplayQuestion(pageid, count, conn);
-		int sumrow=QuestionDAO.CountRow(conn);
+		List<QuestionType> list = QuestionTypeDAO.DisplayQuestionType(pageid, count, conn);
+		int sumrow=QuestionTypeDAO.CountRow(conn);
 		
 		int maxpageid= (sumrow/count)+1;
 		
@@ -67,16 +67,16 @@ public class DeleteQuestion extends HttpServlet {
 		
 		request.setAttribute("numberpage", Integer.parseInt(pageidstr));
 		
-		request.setAttribute("questions", list);
+		request.setAttribute("questiontypes", list);
 		
-		RequestDispatcher rd= request.getRequestDispatcher("View/Question/UpdateDeleteQuestion.jsp");
+		RequestDispatcher rd= request.getRequestDispatcher("View/Question/UpdateDeleteQuestionType.jsp");
 		rd.forward(request, response);
 		}
 
 		else {
 			
 			request.setAttribute("error", "Fail");
-			RequestDispatcher rd = request.getRequestDispatcher("View/Question/UpdateDeleteQuestion.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("View/Question/UpdateDeleteQuestionType.jsp");
 			rd.forward(request, response);
 		}
 	}

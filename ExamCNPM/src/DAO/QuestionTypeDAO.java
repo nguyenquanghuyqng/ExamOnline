@@ -67,15 +67,15 @@ public class QuestionTypeDAO {
 		return list;
 	}
 
-	public static boolean DeleteQuestionType(int QuestionTypeid, Connection conn) {
+	public static boolean DeleteQuestionType(int questiontypeid, Connection conn) {
 
 		boolean t = false;
 
-		String sql = "Delete From questiontypes Where questiontypeid =?";
-
+		String sql = "call usp_dQuestiontype(?)";
+		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, QuestionTypeid);
+			stmt.setInt(1, questiontypeid);
 			stmt.executeUpdate();
 			t = true;
 		}
