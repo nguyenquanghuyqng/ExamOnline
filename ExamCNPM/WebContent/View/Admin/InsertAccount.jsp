@@ -107,19 +107,19 @@
                             <form action="InsertAccount?pageid=1" method="post" name="frmInsertAcc" class="form-horizontal">
                             	
                                 <br> Username:
-                                <br> <input type="text" name="username" id="username"><br>
+                                <br> <input type="text" name="username" id="username" style="border: 1px solid #00ffc1"><br>
                                 <br> PassWord:
-                                <br> <input type="text" name="pass" id="pass"><br>
+                                <br> <input type="text" name="pass" id="pass" style="border: 1px solid #00ffc1"><br>
                                 <br> Fullname:
-                                <br> <input type="text" name="fullname" id="fullname"><br>
+                                <br> <input type="text" name="fullname" id="fullname" style="border: 1px solid #00ffc1"><br>
                                 <br> Birthday:
-                                <br> <input type="date" name="birthday" id="birthday"><br>
+                                <br> <input type="date" name="birthday" id="birthday" style="border: 1px solid #00ffc1"><br>
                                 <br> Country:
-                                <br> <input type="text" name="country" id="country"><br>
+                                <br> <input type="text" name="country" id="country" style="border: 1px solid #00ffc1"><br>
                                 <br> Phone:
-                                <br> <input type="text" name="phone" id="phone"><br>
+                                <br> <input type="text" name="phone" id="phone" style="border: 1px solid #00ffc1"><br>
                                 <br> Image:
-                                <br> <input type="text" name="image" id="image"><br>
+                                <br> <input type="text" name="image" id="image" style="border: 1px solid #00ffc1"><br>
                                 <br> Roleid:
                                 <br> <%
 								   	try{
@@ -134,7 +134,7 @@
 								       resultset =statement.executeQuery("select roleid from roles") ;
 								%>
 									
-								        <select id="classid" name="classid">
+								        <select id="classid" name="classid" style="border: 1px solid #00ffc1">
 								        <option>Choose userid</option>
 								        <%  while(resultset.next()){ %>
 								            <option><%= resultset.getString(1)%></option>
