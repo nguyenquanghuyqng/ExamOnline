@@ -204,8 +204,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     </div>
                                                 </div>
                                                 <div class="panel-footer">
-                                                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"> <i
-								class="glyphicon glyphicon-envelope"></i>
+                                                    <a href="LoginForwardHomeSt" data-original-title="Home Student" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"> <i
+								class="glyphicon glyphicon-home"></i>
 							</a> <span class="pull-right"> <a href="EditProfile"
 								data-toggle="tooltip" type="button"
 								class="btn btn-primary btn-warning"> <i

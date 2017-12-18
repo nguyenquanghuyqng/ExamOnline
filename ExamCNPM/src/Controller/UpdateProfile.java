@@ -36,9 +36,9 @@ public class UpdateProfile extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		Connection conn = (Connection) DBConnection.CreateConnection();
-		// Khởi tạo đối tượng Session
+		// create session have value flase
 		HttpSession session = request.getSession(false);
-		// Lay ra username dang nhap vao
+		// get username
 		String username = (String) session.getAttribute("username");
 		String name = request.getParameter("fullname");
 		User us = new User();
