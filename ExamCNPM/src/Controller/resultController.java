@@ -35,6 +35,7 @@ public class resultController extends HttpServlet {
 		//// String id=Test.getUserID((String)session.getAttribute("username"));
 		int diem = 0;
 		String username = (String) session.getAttribute("username");
+		int userid = ExamDAO.getUserID(username);
 		int subjectid = (int) session.getAttribute("subjectid");
 		int testid = (int) session.getAttribute("testid");
 		int numberqs = ExamDAO.getNumberQuestion(subjectid, testid);
@@ -63,7 +64,7 @@ public class resultController extends HttpServlet {
 			System.out.println("" + m.getKey().toString() + "  " + m.getValue().toString() + "");
 
 		}
-		
+		ExamDAO.setResult(userid, subjectid, testid,diem);
 		request.setAttribute("numberqs", numberqs);
 		request.setAttribute("diem", diem);
 		request.setAttribute("tongDiem", ExamDAO.getNumberQuestion(subjectid, testid));

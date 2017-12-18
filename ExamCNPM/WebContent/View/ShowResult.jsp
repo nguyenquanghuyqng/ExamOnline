@@ -151,7 +151,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</tr>
 							</thead>
 							<%
-        JSONArray array=ExamDAO.getResult();
+		String username = (String)session.getAttribute("username");
+		int userid = ExamDAO.getUserID(username);
+        JSONArray array=ExamDAO.getResult(userid);
         JSONObject obj;
                 
         for(int i=0;i<array.size();++i){

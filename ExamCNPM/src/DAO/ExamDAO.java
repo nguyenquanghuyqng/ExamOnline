@@ -162,6 +162,7 @@ public class ExamDAO {
 
 		return obj.toString();
 	}
+
 	public static boolean checkTestTime(String username, int subjectid, int testid) {
 		Connection conn = DBConnection.CreateConnection();
 		String sql = "select *from users inner join users_subjects on users.userid = users_subjects.userid \r\n"
@@ -269,15 +270,16 @@ public class ExamDAO {
 		return lhm;
 	}
 
-	public static void setResult(int userid,int diem, int testid) {
-		String query = " insert into results(userid,testid,point) \r\n" + 
-				" values(?,?,?)";
+	public static void setResult(int userid,int subjectid, int testid,int diem) {
+		String query = " insert into results(userid,subjectid,testid,point) \r\n" + 
+				" values(?,?,?,?)";
 		try {
 			Connection con = DBConnection.CreateConnection();
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
 			ps.setInt(1, userid);
-			ps.setInt(2, testid);
-			ps.setInt(3, diem);
+			ps.setInt(2, subjectid);
+			ps.setInt(3, testid);
+			ps.setInt(4, diem);
 
 			ps.executeUpdate();
 
@@ -287,7 +289,34 @@ public class ExamDAO {
 	}
 	
 	
-	
+	public static int getUserID(String username) {
+		int id = 0;
+		
+		
+		 Connection conn = DBConnection.CreateConnection();
+
+		PreparedStatement ptmt = null;
+
+		String sql = "select * from users where username=?";
+
+		try {
+			
+			ptmt = (PreparedStatement) conn.prepareStatement(sql);
+			ptmt.setString(1, username);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			while (rs.next()) {
+				id = rs.getInt("userid");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return id;
+	}
 	
 	public static String getFullNameID(int id) {
 		String usname = null;
@@ -379,15 +408,15 @@ public class ExamDAO {
 		return testtypename;
 	}
 	@SuppressWarnings("unchecked")
-	public static JSONArray getResult(){
-		String query="select * from results";
+	public static JSONArray getResult(int userid){
+		String query="select * from results where userid=?";
 		JSONArray array= new JSONArray();
 		JSONObject obj;
 		
 		try{
 			Connection con=DBConnection.CreateConnection();
 			PreparedStatement ps=(PreparedStatement) con.prepareStatement(query);
-			
+			ps.setInt(1, userid);
 			ResultSet rs=ps.executeQuery();
 		
 			
