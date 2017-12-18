@@ -60,6 +60,7 @@ public class QuestionDAO {
 		//String text= options.toString();
 		return options;
 	}
+	
 	public static List<Question> DisplayQuestion(int start, int count, Connection conn) {
 
 		List<Question> list = new ArrayList<Question>();
@@ -140,7 +141,7 @@ public class QuestionDAO {
 
 		boolean t = false;
 
-		String sql = "Delete From questions Where questionid =?";
+		String sql = "call usp_dQuestion(?)";
 
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
