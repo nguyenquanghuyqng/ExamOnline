@@ -53,6 +53,7 @@ public class UpdateProfile extends HttpServlet {
 		us.setPhone(request.getParameter("phone"));
 		us.setImage(image);
 		System.out.println("Full :" + request.getParameter("fullname"));
+		System.out.println("image :" + image);
 		boolean flag = EditUserDAO.UpdateUser(us);
 		if (flag == true) {
 			RequestDispatcher rd = request.getRequestDispatcher("View/ViewProfile.jsp");
