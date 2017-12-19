@@ -154,7 +154,7 @@
 										<td class="center">
 											<div class="hidden-sm hidden-xs action-buttons">
 											
-												<a class="skyblue" href="#" id="myBtn${list.userid }"> 
+												<a class="skyblue" href="#" id="myBtn${list.testid }"> 
 													<i class="ace-icon fa fa-pencil bigger-130" > </i>
 												</a> 
 												

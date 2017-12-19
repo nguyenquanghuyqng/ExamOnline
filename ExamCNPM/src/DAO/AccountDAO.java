@@ -37,7 +37,8 @@ public class AccountDAO {
 				acc.setCountry(rs.getString("country"));
 				acc.setPhone(rs.getString("phone"));
 				acc.setImage(rs.getString("image"));
-
+				acc.setRoleid(rs.getInt("roleid"));
+				acc.setClassid(rs.getInt("classid"));
 				list.add(acc);
 			}
 
@@ -74,6 +75,7 @@ public class AccountDAO {
 				acc.setPhone(rs.getString("phone"));
 				acc.setImage(rs.getString("image"));
 				acc.setRoleid(rs.getInt("roleid"));
+				
 
 				list.add(acc);
 			}
@@ -187,7 +189,7 @@ public class AccountDAO {
 		boolean t = false;
 
 		String sql = "UPDATE users set username=?, pass=?, fullname=?, birthday=?, "
-				+ "country=?, phone=?, image=?, roleid=? where userid=" + id + "";
+				+ "country=?, phone=?, image=?, roleid=?, classid=? where userid=" + id + "";
 
 		try {
 
@@ -201,12 +203,12 @@ public class AccountDAO {
 			ptmt.setString(6, acc.getPhone());
 			ptmt.setString(7, acc.getImage());
 			ptmt.setInt(8, acc.getRoleid());
+			ptmt.setInt(9, acc.getClassid());
 
 			int kt = ptmt.executeUpdate();
 
 			if (kt != 0) {
 
-				// request.setAttribute("message", "Insert data success");
 				return t = true;
 			}
 			ptmt.close();
@@ -222,25 +224,25 @@ public class AccountDAO {
 	// Insert One Account Liên kết với servlet InsertAccount
 	public static boolean InsertOneAccount(Account acc, Connection conn, int t) {
 
-		String sql = "insert into users(userid, username, pass, fullname, birthday, "
-				+ "country, phone, image, roleid) value(?,?,?,?,?,?,?,?,?)";
+//		String sql = "insert into users(userid, username, pass, fullname, birthday, "
+//				+ "country, phone, image, roleid) value(?,?,?,?,?,?,?,?,?)";
 
 		try {
 
-			PreparedStatement ptmt = conn.prepareStatement(sql);
+			
+			PreparedStatement ptmt = conn.prepareCall("Call pr_InsertAccount(?,?,?,?,?,?,?,?,?,?)");
 
-			ptmt.setInt(1, t);
-			ptmt.setString(2, acc.getUsername());
-			ptmt.setString(3, acc.getPass());
-			ptmt.setString(4, acc.getFullname());
-			ptmt.setString(5, acc.getBirthday());
-			ptmt.setString(6, acc.getCountry());
-			ptmt.setString(7, acc.getPhone());
-			ptmt.setString(8, acc.getImage());
-			ptmt.setInt(9, acc.getRoleid());
+			ptmt.setString(1, acc.getUsername());
+			ptmt.setString(2, acc.getPass());
+			ptmt.setString(3, acc.getFullname());
+			ptmt.setString(4, acc.getBirthday());
+			ptmt.setString(5, acc.getCountry());
+			ptmt.setString(6, acc.getPhone());
+			ptmt.setString(7, acc.getImage());
+			ptmt.setInt(8, acc.getRoleid());
+			ptmt.setInt(9, acc.getClassid());
+			ptmt.setInt(10, acc.getSubjectid());			
 
-			System.out.println(acc.getUsername());
-			System.out.println(acc.getUserid());
 
 			int kt = ptmt.executeUpdate();
 			if (kt != 0) {

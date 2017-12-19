@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+    <%@ page import="java.sql.*" %>
+	<%ResultSet resultset =null;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -101,10 +103,69 @@
 
 
 					<div class="">
-						<form method="POST" action="UploadAccount?pageid=1">
+						<form method="POST" action="UploadAccount?pageid=1"> 
 
-							File to upload: <input type="file" name="file"> <input
-								type="submit" value="Import" Style="background: skyblue">
+							File to upload: <input type="file" name="file" style="border: 1px solid #00ffc1"> 
+							
+							<br> Class id : <br> 
+							<%
+							    try{
+							//Class.forName("com.mysql.jdbc.Driver").newInstance();
+							Class.forName("com.mysql.jdbc.Driver");
+							Connection connection = 
+						         DriverManager.getConnection
+						            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						
+						       Statement statement = connection.createStatement() ;
+						
+						       resultset =statement.executeQuery("select classid from classes") ;
+							%>
+							
+						        <select id="classid" name="classid" style="border: 1px solid #00ffc1">
+						        <%  while(resultset.next()){ %>
+						            <option selected><%= resultset.getString(1)%></option>
+						        <% } %>
+						        </select>
+					
+							<%
+						        }
+						        catch(Exception e)
+						        {
+						             out.println("wrong entry"+e);
+						        }
+							%>
+							<br>
+							<br>
+							Subjectid:
+								<br>
+								<%
+									    try{
+									//Class.forName("com.mysql.jdbc.Driver").newInstance();
+									Class.forName("com.mysql.jdbc.Driver");
+									Connection connection = 
+								         DriverManager.getConnection
+								            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+								
+								       Statement statement = connection.createStatement() ;
+								
+								       resultset =statement.executeQuery("select subjectid from subjects") ;
+									%>
+									
+								        <select id="subjectid" name="subjectid"  style="border: 1px solid #00ffc1">
+								        <%  while(resultset.next()){ %>
+								            <option selected><%= resultset.getString(1)%></option>
+								        <% } %>
+								        </select>
+							
+									<%
+								        }
+								        catch(Exception e)
+								        {
+								             out.println("wrong entry"+e);
+								        }
+									%>
+								<br><br>
+							<input type="submit" value="Import" Style="background: skyblue">
 						</form>
 					</div>
 					<div class="">
@@ -121,6 +182,8 @@
 								<th>phone</th>
 								<th>image</th>
 								<th>roleid</th>
+								<th>classid</th>
+								<th>subjectid</th>
 								<!-- 								<th></th> -->
 								<!-- 								<th></th> -->
 							</tr>
@@ -135,8 +198,10 @@
 										<td>${list.birthday}</td>
 										<td>${list.country}</td>
 										<td>${list.phone}</td>
-										<td></td>
+										<td>${list.image}</td>
 										<td>${list.roleid}</td>
+										<td>${list.classid}</td>
+										<td>${list.subjectid}</td>
 										<%-- 									<td><a href="EditAccount?index=${list.userid}&pageid=1">Edit</a></td> --%>
 										<%-- 									<td><a href="DeleteAccount?index=${list.userid}&pageid=1" --%>
 										<!-- 										onclick="return show_comfirm()">Delete</a></td> -->

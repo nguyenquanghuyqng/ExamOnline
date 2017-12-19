@@ -152,7 +152,7 @@
 								<th>phone</th>
 								<th>image</th>
 								<th>roleid</th>
-								<!-- <th></th> -->
+								<th>classid</th>
 								<!-- <th></th> -->
 
 								<th>
@@ -173,6 +173,7 @@
 										<td>${list.phone}</td>
 										<td>${list.image}</td>
 										<td>${list.roleid}</td>
+										<td>${list.classid}</td>
 										<%--<td><a href="EditAccount?index=${list.userid}&pageid=1">Edit</a></td> --%>
 
 										<%--<td><a href="DeleteAccount?index=${list.userid}&pageid=1" onclick="return show_comfirm()">Delete</a></td> --%>
@@ -214,6 +215,7 @@
 											document.getElementById("phone").value = this.cells[6].innerHTML;
 											document.getElementById("image").value = this.cells[7].innerHTML;
 											document.getElementById("roleid").value = this.cells[8].innerHTML;
+											document.getElementById("classid").value = this.cells[9].innerHTML;
 										};
 									}
 									</script>
@@ -360,7 +362,10 @@
 								<option>4</option>
                     		</select>
 						</div>
-
+						<div class="form-group">
+							<label for="psw">Classid</label> 
+							<input type="text" class="form-control" name="classid" id="classid" placeholder="Image">
+						</div>
 						<button type="submit" class="btn btn-success btn-block"  onclick="return KiemTraHopLe()">
 							<span class="glyphicon glyphicon-ok"></span> Save
 						</button>

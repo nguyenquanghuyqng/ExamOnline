@@ -51,6 +51,20 @@
 <script src="Style/js/ace.min.js"></script>
 <script src="Style/js/validation.js"></script>
 
+		<!-- Show thông báo ra màn hình -->
+		<script type="text/javascript">
+			function show_comfirm() {
+				var comfirmBox;
+				comfirmBox = confirm("Bạn có chắc chắn muốn xóa tài khoản?");
+				if (comfirmBox == true) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		</script>
+
+
 </head>
 <body class="no-skin" style="font-size: 14px;">
 
@@ -181,6 +195,11 @@
 								<th>subjectname</th>
 								<th>testtypemame</th>
 								<th>testid</th>
+								<th>
+<!-- 									<button type="button" id="AddNewUser" style="background:#40ff00" onclick="return AddNewUser()">Add -->
+<!-- 										User</button> -->
+								</th>
+								
 							</tr>
 							<tbody id="myTable">
 								<c:forEach items="${classexam}" var="list">
@@ -191,6 +210,20 @@
 										<td>${list.subjectname}</td>
 										<td>${list.testtypemame}</td>
 										<td>${list.testid}</td>
+										<td class="center">
+											<div class="hidden-sm hidden-xs action-buttons">
+											
+												<a class="skyblue" href="#" id="myBtn${list.testid }"> 
+													<i class="ace-icon fa fa-pencil bigger-130" > </i>
+												</a> 
+												
+												<a class="skyblue" 
+												href="DeleteExam?index=${list.testid }&pageid=1"
+													onclick="return show_comfirm()"> 
+													<i class="ace-icon fa fa-trash-o bigger-130"> </i>
+												</a>
+											</div>
+										</td>
 									</tr>
 
 								</c:forEach>

@@ -11,6 +11,8 @@ public class Account {
 	private String phone;
 	private String image;
 	private int roleid;
+	private int classid;
+	private int subjectid;
 
 	public int getUserid() {
 		return userid;
@@ -82,6 +84,22 @@ public class Account {
 
 	public void setRoleid(int roleid) {
 		this.roleid = roleid;
+	}
+
+	public int getClassid() {
+		return classid;
+	}
+
+	public void setClassid(int classid) {
+		this.classid = classid;
+	}
+
+	public int getSubjectid() {
+		return subjectid;
+	}
+
+	public void setSubjectid(int subjectid) {
+		this.subjectid = subjectid;
 	}
 
 }

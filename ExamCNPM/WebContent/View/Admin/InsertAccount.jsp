@@ -60,6 +60,56 @@
                 } catch (e) {}
 
             </script>
+            
+            <script type="text/javascript">
+                $(function () {
+                    $(document).on('click', '.btn-add', function (e) {
+                        e.preventDefault();
+
+                        var controlForm = $('.controls form:first'),
+                            currentEntry = $(this).parents('.entry:first'),
+                            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                        newEntry.find('input').val('');
+                        controlForm.find('.entry:not(:last) .btn-add')
+                            .removeClass('btn-add').addClass('btn-remove')
+                            .removeClass('btn-success').addClass('btn-danger')
+                            .html('<span class="glyphicon glyphicon-minus"></span>');
+                    }).on('click', '.btn-remove', function (e) {
+                        $(this).parents('.entry:first').remove();
+
+                        e.preventDefault();
+                        return false;
+                    });
+                });
+            </script>
+            
+             <script>
+                $(document).ready(function () {
+                    var i = 1;
+                    $('#add').click(function () {
+                        i++;
+                        $('#dynamic_field').append('<tr id="row' + i +
+                            '"><td></td><td style="max-width: 51px;"><button type="button" name="remove" id="' +
+                            i + '" class="btn btn-danger btn_remove">X</button><input type="checkbox" id="option' + i + '"  style="margin-left: -102px;margin-top: -30px;"/></td></tr>');
+                    });
+                    $(document).on('click', '.btn_remove', function () {
+                        var button_id = $(this).attr("id");
+                        $('#row' + button_id + '').remove();
+                    });
+                    $('#submit').click(function () {
+                        $.ajax({
+                            url: "name.php",
+                            method: "POST",
+                            data: $('#add_name').serialize(),
+                            success: function (data) {
+                                alert(data);
+                                $('#add_name')[0].reset();
+                            }
+                        });
+                    });
+                });
+            </script>
 
 			<!-- Insert file menu -->
             <jsp:include page="MenuAdmin.jsp" />  
@@ -134,10 +184,10 @@
 								       resultset =statement.executeQuery("select roleid from roles") ;
 								%>
 									
-								        <select id="classid" name="classid" style="border: 1px solid #00ffc1">
-								        <option>Choose userid</option>
+								        <select id="roleid" name="roleid" style="border: 1px solid #00ffc1">
+								        <option>Choose roleid</option>
 								        <%  while(resultset.next()){ %>
-								            <option><%= resultset.getString(1)%></option>
+								            <option selected><%= resultset.getString(1)%></option>
 								        <% } %>
 								        </select>
 							
@@ -148,7 +198,67 @@
 								             out.println("wrong entry"+e);
 								        }
 									%>
-									<br><br>
+								<br><br>
+								Classid:
+								<br>
+								<%
+									    try{
+									//Class.forName("com.mysql.jdbc.Driver").newInstance();
+									Class.forName("com.mysql.jdbc.Driver");
+									Connection connection = 
+								         DriverManager.getConnection
+								            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+								
+								       Statement statement = connection.createStatement() ;
+								
+								       resultset =statement.executeQuery("select classid from classes") ;
+									%>
+									
+								        <select id="classid" name="classid" style="border: 1px solid #00ffc1">
+								        <%  while(resultset.next()){ %>
+								            <option selected><%= resultset.getString(1)%></option>
+								        <% } %>
+								        </select>
+							
+									<%
+								        }
+								        catch(Exception e)
+								        {
+								             out.println("wrong entry"+e);
+								        }
+									%>
+								<br><br>
+								Subjectid:
+								<br>
+								<%
+									    try{
+									//Class.forName("com.mysql.jdbc.Driver").newInstance();
+									Class.forName("com.mysql.jdbc.Driver");
+									Connection connection = 
+								         DriverManager.getConnection
+								            ("jdbc:mysql://localhost:3306/examonline","root","1234");
+								
+								       Statement statement = connection.createStatement() ;
+								
+								       resultset =statement.executeQuery("select subjectid from subjects") ;
+									%>
+									
+								        <select id="subjectid" name="subjectid" style="border: 1px solid #00ffc1">
+								        <%  while(resultset.next()){ %>
+								            <option selected><%= resultset.getString(1)%></option>
+								        <% } %>
+								        </select>
+							
+									<%
+								        }
+								        catch(Exception e)
+								        {
+								             out.println("wrong entry"+e);
+								        }
+									%>
+								<br>
+								<br>
+								
                                 <input type="submit" value="Save" style="background: skyblue;" onclick="return KiemTraHopLe()"><br>
                             </form>
                         </div>

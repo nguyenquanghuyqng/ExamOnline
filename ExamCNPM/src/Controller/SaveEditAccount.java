@@ -45,6 +45,7 @@ public class SaveEditAccount extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String image = request.getParameter("image");
 		int roleid = Integer.parseInt(request.getParameter("roleid"));
+		int classid = Integer.parseInt(request.getParameter("classid"));
 		
 		Account acc = new Account();
 		
@@ -56,6 +57,7 @@ public class SaveEditAccount extends HttpServlet {
 		acc.setPhone(phone);
 		acc.setImage(image);
 		acc.setRoleid(roleid);
+		acc.setClassid(classid);
 		
 		boolean kt = AccountDAO.UpdateData(request, userid, acc, conn);
 		if (kt) {

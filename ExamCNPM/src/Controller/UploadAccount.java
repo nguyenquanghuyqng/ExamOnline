@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import BEAN.Account;
 import DAO.AccountDAO;
@@ -51,11 +52,25 @@ public class UploadAccount extends HttpServlet {
 			pageid=pageid*count + 1;
 			
 		}
-		String exam = request.getParameter("file");
+		String filePath = request.getParameter("file");
+		
+//		 Part filePart = request.getPart("file");
+		 
+//		 ServletContext context = pageContext.getServletContext();
+//		 String filePath = applicaion.getInitParameter("file");
+//		 
+		 System.out.println("Path" + filePath);
+
 
 		Connection conn = DBConnection.CreateConnection();
-		System.out.println("Hello Huy Insert Data");
-		UploadUser.ImportExcel(request, response, conn, exam);
+
+		int classid = Integer.parseInt(request.getParameter("classid"));
+		
+		int subjectid = Integer.parseInt(request.getParameter("subjectid"));
+		
+		System.out.println("Start import file");
+		
+		UploadUser.ImportExcel(conn, filePath, classid, subjectid);
 
 //		conn = DBConnection.CreateConnection();
 		
@@ -71,7 +86,7 @@ public class UploadAccount extends HttpServlet {
 		request.setAttribute("numberpage", Integer.parseInt(pageidstr));
 		
 		request.setAttribute("account", list);
-		System.out.println("Hello Huy");
+		System.out.println("Hello show file excel ");
 		RequestDispatcher rd = request.getRequestDispatcher("View/Admin/InsertClass.jsp");
 		rd.forward(request, response);
 	}

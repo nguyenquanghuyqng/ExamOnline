@@ -38,7 +38,7 @@ public class InsertAccount extends HttpServlet {
 
 		Account acc = new Account();
 		request.setCharacterEncoding("UTF-8");
-
+		
 		acc.setUsername(request.getParameter("username"));
 		acc.setPass(request.getParameter("pass"));
 		acc.setFullname(request.getParameter("fullname"));
@@ -47,6 +47,8 @@ public class InsertAccount extends HttpServlet {
 		acc.setPhone(request.getParameter("phone"));
 		acc.setImage(request.getParameter("image"));
 		acc.setRoleid(Integer.parseInt(request.getParameter("roleid")));
+		acc.setClassid(Integer.parseInt(request.getParameter("classid")));
+		acc.setSubjectid(Integer.parseInt(request.getParameter("subjectid")));
 
 		boolean kt = AccountDAO.InsertOneAccount(acc, conn, sumrow+1);
 

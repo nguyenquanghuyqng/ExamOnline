@@ -2,7 +2,11 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.List;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import BEAN.Result;
 import DAO.ResultDAO;
 import DB.DBConnection;
+import java.text.SimpleDateFormat;
 
 @WebServlet("/EditResult")
 public class EditResult extends HttpServlet {
@@ -49,6 +54,28 @@ public class EditResult extends HttpServlet {
 
 		}
 
+		// try {
+		// DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss aa");
+		//
+		// String time=request.getParameter("date");
+		//
+		// java.util.Date date1 = (java.util.Date) formatter.parse(time);
+		//
+		// System.out.print("date:"+date1);
+		//
+		// Timestamp datetime = new Timestamp(date1.getTime());
+		//
+		// List<Result> list = ResultDAO.checkTestTime(pageid, count, datetime);
+		//
+		// request.setAttribute("result", list);
+		//
+		// } catch (ParseException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+
+//		Timestamp date = SimpleDateFormat("dd/MM/yyyy").parse();
+
 		List<Result> list = ResultDAO.DisplayResult(pageid, count, conn);
 
 		int sumrow = ResultDAO.CountRow(conn);
@@ -58,9 +85,7 @@ public class EditResult extends HttpServlet {
 		request.setAttribute("maxpageid", maxpageid);
 
 		request.setAttribute("numberpage", Integer.parseInt(pageidstr));
-
 		request.setAttribute("result", list);
-
 		request.getRequestDispatcher("View/Admin/EditResult.jsp").forward(request, response);
 	}
 

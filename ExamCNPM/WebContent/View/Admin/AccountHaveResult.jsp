@@ -125,7 +125,7 @@
 					<div class="">
 						<h2>List user have result</h2>
 						
-						Date : <select name="date" id="date">
+						Date : <select name="date" id="date" style="border: 1px solid #00ffc1">
 							<option>Choose date</option>
                    			<option>11-10-2017</option>
 							<option>12-10-2017</option>
@@ -136,7 +136,7 @@
                  			
                  			
                  
-                 		<span style="margin-left: 50px;">Class : </span> <select name="class" id="class">
+                 		<span style="margin-left: 50px;">Class : </span> <select name="class" id="class" style="border: 1px solid #00ffc1">
 							<option>Choose class</option>
                    			<option>151101A</option>
 							<option>151102A</option>
@@ -152,7 +152,7 @@
 						
 						<table border='1' style="width: 100%"
 							class="table table-hover table-bordered table-striped">
-							<tr>
+							<tr style="background: skyblue">
 								<th>resultid</th>
 								<th>userid</th>
 								<th>username</th>
@@ -181,23 +181,23 @@
 							<!-- numberpage trong HomeController -->
 							<c:if test="${numberpage==1}">
 								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="AccountHaveResult?pageid=1">1</a></li>
+								<li><a href="AccountHaveResult?pageid=2">2</a></li>
+								<li><a href="AccountHaveResult?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage==maxpageid}">
 								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+								<li><a href="AccountHaveResult?pageid=1">1</a></li>
+								<li><a href="AccountHaveResult?pageid=2">2</a></li>
 								<li class="disabled"><a href="#">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage>1 && numberpage<maxpageid}">
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage-1}">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="AccountHaveResult?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="AccountHaveResult?pageid=1">1</a></li>
+								<li><a href="AccountHaveResult?pageid=2">2</a></li>
+								<li><a href="AccountHaveResult?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 						</ul>
 					</div>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import BEAN.Account;
 import BEAN.Result;
+import DB.DBConnection;
 
 public class ResultDAO {
 
@@ -188,5 +190,61 @@ public class ResultDAO {
 
 	}
 	
+	public static List<Result> checkTestTime(int start, int count, Timestamp date) {
+		Connection conn = DBConnection.CreateConnection();
+//		String sql = "select *from users inner join users_subjects on users.userid = users_subjects.userid \r\n"
+//				+ "inner join subjects on subjects.subjectid = users_subjects.subjectid \r\n"
+//				+ "inner join	tests on tests.subjectid = subjects.subjectid where users.username=? and subjects.subjectid=? and tests.testid=?";
+
+		List<Result> list = new ArrayList<Result>();
+		
+		String sql ="select results.resultid,users.userid,users.username," +
+			    "users.fullname,results.point, tests.testid,tests.datetimestart,tests.datetimeend" +
+				"from users,results,tests" +
+				"where users.userid=results.userid" +
+				"and results.testid= tests.testid"+
+			    "limit " + (start - 1) + ", " + count + "";
+		
+		PreparedStatement ptmt = null;
+		Timestamp dtstart = null;
+		Timestamp dtend = null;
+		Timestamp dtnow = date;
+		
+		try {
+
+			ptmt = (PreparedStatement) conn.prepareStatement(sql);
+			ptmt.setInt(1, start-1);
+			ptmt.setInt(2, count);
+
+			ResultSet rs = ptmt.executeQuery();
+
+				while (rs.next()) {
+
+					dtstart = rs.getTimestamp("datetimestart");
+					dtend = rs.getTimestamp("datetimeend");
+					if (dtstart.before(dtnow) == true && dtend.after(dtnow) == true) {
+						Result rt = new Result();
+
+						rt.setResultid(rs.getInt("resultid"));
+						rt.setUserid(rs.getInt("userid"));
+						rt.setFullname(rs.getString("fullname"));
+						rt.setUsername(rs.getString("username"));
+						rt.setPoint(rs.getInt("point"));
+						rt.setTestid(rs.getInt("testid"));
+//						rt.setClasses(rs.getString("classname"));
+
+						list.add(rt);
+					}
+
+			}
+
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 
 }

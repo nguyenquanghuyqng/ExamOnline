@@ -10,6 +10,7 @@ public class Account_2 {
 	private String phone;
 	private String image;
 	private int roleid;
+	private int classid;
 
 	public int getUserid() {
 		return userid;
@@ -81,6 +82,14 @@ public class Account_2 {
 
 	public void setRoleid(int roleid) {
 		this.roleid = roleid;
+	}
+
+	public int getClassid() {
+		return classid;
+	}
+
+	public void setClassid(int classid) {
+		this.classid = classid;
 	}
 
 }
