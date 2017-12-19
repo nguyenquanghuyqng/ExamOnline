@@ -64,7 +64,7 @@ public class resultController extends HttpServlet {
 			System.out.println("" + m.getKey().toString() + "  " + m.getValue().toString() + "");
 
 		}
-		ExamDAO.setResult(userid, subjectid, testid,diem);
+		ExamDAO.setResult(userid,testid,diem);
 		request.setAttribute("numberqs", numberqs);
 		request.setAttribute("diem", diem);
 		request.setAttribute("tongDiem", ExamDAO.getNumberQuestion(subjectid, testid));

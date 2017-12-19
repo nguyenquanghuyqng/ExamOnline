@@ -270,16 +270,15 @@ public class ExamDAO {
 		return lhm;
 	}
 
-	public static void setResult(int userid,int subjectid, int testid,int diem) {
-		String query = " insert into results(userid,subjectid,testid,point) \r\n" + 
+	public static void setResult(int userid, int testid,int diem) {
+		String query = " insert into results(userid,testid,point) \r\n" + 
 				" values(?,?,?,?)";
 		try {
 			Connection con = DBConnection.CreateConnection();
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
 			ps.setInt(1, userid);
-			ps.setInt(2, subjectid);
-			ps.setInt(3, testid);
-			ps.setInt(4, diem);
+			ps.setInt(2, testid);
+			ps.setInt(3, diem);
 
 			ps.executeUpdate();
 
@@ -425,7 +424,6 @@ public class ExamDAO {
 				
 				obj=new JSONObject();
 				obj.put("userid", rs.getInt("userid"));
-				obj.put("subjectid", rs.getInt("subjectid"));
 				obj.put("testid", rs.getInt("testid"));
 				obj.put("point", rs.getInt("point"));
 				array.add(obj);
