@@ -19,11 +19,18 @@ public class User {
 		this.password = password;
 	}
 	
-	public User(String fullname, String birthday , String country, String phone ) {
+	public User(String fullname, String birthday , String country, String phone) {
 		this.fullname = fullname;
 		this.birthday = birthday;
 		this.country = country;
 		this.phone = phone;
+	}
+	public User(String fullname, String birthday , String country, String phone,String image ) {
+		this.fullname = fullname;
+		this.birthday = birthday;
+		this.country = country;
+		this.phone = phone;
+		this.image = image;
 	}
 	
 	public String getUsername() {

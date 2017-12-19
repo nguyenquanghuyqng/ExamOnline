@@ -41,6 +41,7 @@ public class UpdateProfile extends HttpServlet {
 		// get username
 		String username = (String) session.getAttribute("username");
 		String name = request.getParameter("fullname");
+		String image = request.getParameter("imgload");
 		User us = new User();
 
 		// set all the values in User's class object.
@@ -50,9 +51,9 @@ public class UpdateProfile extends HttpServlet {
 		us.setBirthday(request.getParameter("birthday"));
 		us.setCountry(request.getParameter("country"));
 		us.setPhone(request.getParameter("phone"));
+		us.setImage(image);
 		System.out.println("Full :" + request.getParameter("fullname"));
-		boolean flag = EditUserDAO.UpdateUser(us, conn);
-
+		boolean flag = EditUserDAO.UpdateUser(us);
 		if (flag == true) {
 			RequestDispatcher rd = request.getRequestDispatcher("View/ViewProfile.jsp");
 			rd.forward(request, response);

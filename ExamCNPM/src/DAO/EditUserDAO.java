@@ -45,12 +45,13 @@ public class EditUserDAO {
 
 	}
 	
-	public static boolean UpdateUser(User us ,Connection conn)
+	public static boolean UpdateUser(User us)
 	{
 		String sql = "update users set  fullname=?, birthday=?, country=?, "
-				+ "phone=?  where username='"+us.getUsername()+"';";
+				+ "phone=? , image=?  where username='"+us.getUsername()+"';";
 		
 			try {
+				Connection conn = DB.DBConnection.CreateConnection();
 			
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			
@@ -58,6 +59,7 @@ public class EditUserDAO {
 			ptmt.setString(2, us.getBirthday());
 			ptmt.setString(3, us.getCountry());
 			ptmt.setString(4, us.getPhone());
+			ptmt.setString(5, us.getImage());
 			
 			int kt = ptmt.executeUpdate();
 

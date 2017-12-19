@@ -82,6 +82,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		LoginDAO userDAO = new LoginDAO();
 		User u = userDAO.getUser(user);
 	%>
+	
+	<script language="JavaScript">
+        $('document').ready(function () {
+             $("#imgload").change(function () {
+              if (this.files && this.files[0]) {
+                   var reader = new FileReader();
+                    reader.onload = function (e) {
+                     $('#imgshow').attr('src', e.target.result);
+                 }
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+    });
+        </script>
 
 	<!-- banner -->
 	<div id="home">
@@ -183,8 +197,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-3 col-lg-3 " align="center">
-										<a href=#><img alt="User Pic" src="Style/images/trung.jpg"
-											class="img-circle img-responsive"></a>
+										<img alt="User Pic" src="<%=u.getImage()%>" id="imgshow"
+											class="img-circle img-responsive"
+											style="width: 100px; height: 100px"> <label
+											for="imgload" class="btn btn-default"
+											style="height: 30px; width: 100px;">Select <span
+											class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+											<input type="file" id="imgload" name="imgload" style="display: none">
+										</label>
 									</div>
 									<div class=" col-md-9 col-lg-9 ">
 

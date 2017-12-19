@@ -180,7 +180,7 @@ public class LoginDAO {
 	// Lấy ra thông tin User đăng nhập vào.
 	public User getUser(String username) {
 		Connection con = DBConnection.CreateConnection();
-		String sql = "select fullname,birthday,country,phone from users where username='" + username + "'";
+		String sql = "select * from users where username='" + username + "'";
 		User us = new User();
 		try {
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -190,7 +190,8 @@ public class LoginDAO {
 				String birthday = rs.getString("birthday");
 				String country = rs.getString("country");
 				String phone = rs.getString("phone");
-				us = new User(fullname, birthday, country, phone);
+				String image = rs.getString("image");
+				us = new User(fullname, birthday, country, phone,image);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
