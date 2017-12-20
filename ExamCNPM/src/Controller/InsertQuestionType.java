@@ -11,6 +11,7 @@ import BEAN.QuestionType;
 import DAO.QuestionTypeDAO;
 import DB.DBConnection;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/InsertQuestionType")
@@ -29,17 +30,19 @@ public class InsertQuestionType extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-				Connection conn = DBConnection.CreateConnection();
+		Connection conn = DBConnection.CreateConnection();
 
 		int sumrow = QuestionTypeDAO.CountRow(conn);
 
-		QuestionType qt = new QuestionType();
+		List<QuestionType> qtlist = new ArrayList<QuestionType>();
 		request.setCharacterEncoding("UTF-8");
-
-		qt.setQuestiontypeid(Integer.parseInt(request.getParameter("questiontypeid")));
-		qt.setQuestiontypename(request.getParameter("questiontypename"));
-
-		boolean kt = QuestionTypeDAO.InsertQuestionType(qt, conn, sumrow+1);
+		int j=0;
+		while(j<qtlist.size()){
+			// qtlist.get(j).setQuestiontypeid(sumrow);
+			qtlist.get(j).setQuestiontypename(request.getParameter("questiontypename[]"));
+			j++;
+		}
+		boolean kt = QuestionTypeDAO.InsertQuestionType(qtlist, conn);
 
 		if (kt) {
 
@@ -54,15 +57,13 @@ public class InsertQuestionType extends HttpServlet {
 			// Neu pageid != 1 thi se phan trang
 
 			if (pageid == 1) {
-
 			} else {
 
 				pageid = pageid - 1;
 				pageid = pageid * count + 1;
-
 			}
 
-			List<qtount> list = QuestionTypeDAO.Displayqtount(pageid, count, conn);
+			List<QuestionType> list = QuestionTypeDAO.DisplayQuestionType(pageid, count, conn);
 
 			int maxpageid = (sumrow / count) + 1;
 
@@ -72,13 +73,12 @@ public class InsertQuestionType extends HttpServlet {
 
 			request.setAttribute("numberpage", Integer.parseInt(pageidstr));
 
-			request.setAttribute("qtount", list);
+			request.setAttribute("questiontypes", list);
 
-			RequestDispatcher rd = request.getRequestDispatcher("View/Admin/UpdateDeleteAcount.jsp");
-			rd.forward(request, response);
+			request.getRequestDispatcher("View/Question/UpdateDeleteQuestionType.jsp").forward(request, response);
 		}
 		else {
-			request.getRequestDispatcher("View/Admin/Insertqtount.jsp").forward(request, response);
+			request.getRequestDispatcher("View/Question/InsertQuestionType.jsp").forward(request, response);
 		}
 
 	}

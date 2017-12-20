@@ -14,6 +14,7 @@ import javax.servlet.http.Part;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
@@ -53,16 +54,19 @@ public class UploadUser {
 //					acc.setPhone(row.getCell(6).getStringCellValue());
 //					acc.setImage(row.getCell(7).getStringCellValue());
 //					acc.setRoleid((int) row.getCell(8).getNumericCellValue());
-					
+//					DataFormatter formatter = new DataFormatter();
 					System.out.println("Get Cell:");
 					System.out.println(row.getCell(0).getStringCellValue());
 					System.out.println(row.getCell(1).getStringCellValue());
 					System.out.println(row.getCell(2).getStringCellValue());
-					System.out.println(row.getCell(3).getStringCellValue());
+					System.out.println((int) row.getCell(3).getNumericCellValue());
 					System.out.println(row.getCell(4).getStringCellValue());
 					System.out.println(row.getCell(5).getStringCellValue());
 					System.out.println(row.getCell(6).getStringCellValue());
 					System.out.println((int) row.getCell(7).getNumericCellValue());
+//					System.out.println(formatter.formatCellValue(row.getCell(7)));
+					
+					
 					
 					acc.setUsername(row.getCell(0).getStringCellValue());
 					acc.setPass(row.getCell(1).getStringCellValue());

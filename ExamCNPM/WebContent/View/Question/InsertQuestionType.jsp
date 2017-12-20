@@ -318,17 +318,25 @@
                     });
                 });
             </script>
-
-
+    <!-- COUNT TEXTAREA  -->
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $("#textarea").keyup(function(){
+                    $("#count").text($(this).val().length);
+                  });
+            });
+            </script>
+    <!-- DYNAMIC CREATING TEXTAREA -->
             <script>
                 $(document).ready(function () {
                     var i = 1;
                     $('#add').click(function () {
                         i++;
                         $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, semi-colon:80%" name="name[]" placeholder="Enter question type" class="form-control name_list" ></textarea></td><td><button type="button" name="remove" id="' +
-                            i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
+                            '"><td><textarea style="height:80px, semi-colon=80%" name="questiontypename'+i+'" placeholder="Enter question type" class="form-control name_list" ></textarea></td><td><button type="button" name="remove" id="' +
+                            i + '" class="btn btn-danger btn_remove">X</button></td></tr><c:out>${amount='+i+'}</c:out>');
                     });
+
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
                         $('#row' + button_id + '').remove();
@@ -527,17 +535,17 @@
                                     <div class="well-title">
                                         <h2 align="center">Insert Question Types</h2>
                                     </div>
-                                    <form method="POST" action="InsertAQuestion?pageid=1">
+                                    <form method="POST" action="InsertQuestionType?pageid=1">
                                         <!-- Form start -->
                                         <div class="form-group">
                                             <div class="control-group" id="fields">
                                                 <label class="control-label" for="option">Question type</label>
                                                 <form name="add_name" id="add_name">
-                                                    <div class="table-responsive">
+                                                    <div class="">
                                                         <table class="table table-bordered" id="dynamic_field">
                                                             <tr>
                                                                 <td>
-                                                                    <textarea style="height:80px, semi-colon:80%" name="name[]" placeholder="Enter question type" class="form-control name_list" ></textarea>
+                                                                    <textarea style="height:80px, semi-colon=80%" name="questiontypename" placeholder="Enter question type" class="form-control name_list"></textarea>
                                                                 </td>
                                                                 <td>
                                                                     <button type="button" name="add" id="add" class="btn btn-success">+
@@ -546,13 +554,17 @@
                                                             </tr>
                                                         </table>
                                                     </div>
+                                                   
                                                 </form>
                                                 <br>
-                                                <input value="ADD" id="singlebutton" name="singlebutton" class="btn btn-info">
+                                                
                                             </div>
                                         </div>
+                                         <!-- <input type="submit" value="ADD" id="singlebutton" name="singlebutton" class="btn btn-info"> -->
+                                         <input type="submit" value="ADD" class="btn btn-info"/>
+                                         </form>
                                 </div>
-                                </form>
+
                                 <!-- form end -->
                             </div>
 

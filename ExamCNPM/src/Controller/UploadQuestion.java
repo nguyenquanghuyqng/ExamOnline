@@ -57,7 +57,7 @@ public class UploadQuestion extends HttpServlet {
 
 //		conn = DBConnection.CreateConnection();
 		
-		// Lấy danh sach users dua vao list
+		// Lấy danh sach question dua vao list
 		List<Question> list = QuestionDAO.DisplayQuestion(pageid, count, conn);
 
 		int sumrow=QuestionDAO.CountRow(conn);

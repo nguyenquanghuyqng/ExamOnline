@@ -36,7 +36,7 @@ public class QuestionDAO {
 
 	public static String getOptions(int questionid)
 	{
-		String  options= "";
+		String options="";
 		Connection conn = DBConnection.CreateConnection();
 
 		PreparedStatement ptmt = null;
@@ -61,6 +61,7 @@ public class QuestionDAO {
 		return options;
 	}
 	
+
 	public static List<Question> DisplayQuestion(int start, int count, Connection conn) {
 
 		List<Question> list = new ArrayList<Question>();
@@ -178,6 +179,20 @@ public class QuestionDAO {
 			e.printStackTrace();
 		}
 		return count;
+	}
+
+	public static int maxOptionid(Connection conn){
+		String sql="select max(optionid) from options";
+		int max=0;
+		try{
+		PreparedStatement ptmt = conn.prepareStatement(sql);
+		ResultSet rs = ptmt.executeQuery();
+		max= rs.getInt(1);
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return max;
 	}
 
 	public static int maxQuestionid(Connection conn){

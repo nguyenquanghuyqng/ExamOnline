@@ -329,7 +329,7 @@
                     $('#add').click(function () {
                         i++;
                         $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, width=80%" name="name[]" placeholder="Enter Option Content" class="form-control name_list" ></textarea></td><td style="max-width: 51px;"><button type="button" name="remove" id="' +
+                            '"><td><textarea style="height:80px, width=80%" name="optionname[]" placeholder="Enter Option Content" class="form-control name_list" ></textarea></td><td style="max-width: 51px;"><button type="button" name="remove" id="' +
                             i + '" class="btn btn-danger btn_remove">X</button><input type="checkbox" id="option' + i + '"  style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
                     });
                     $(document).on('click', '.btn_remove', function () {
@@ -572,35 +572,34 @@
                                                 <div class="form-group">
                                                     <div class="control-group" id="fields">
                                                         <label class="control-label" for="option">Option</label>
-                                                        <form name="add_name" id="add_name">
-                                                            <div class="" style="max-width: 445px;">
-                                                                <table class="table table-bordered" id="dynamic_field">
-                                                                    <tr>
-                                                                        <td>
-                                                                            <textarea style="height:80px, width=80%" name="name[]" placeholder="Enter Option Content" class="form-control name_list" ></textarea>
-                                                                        </td>
-                                                                        <td style="max-width: 51px;">
-                                                                            <button type="button" name="add" id="add" class="btn btn-success">
-                                                                                <strong>+</strong>
-                                                                            </button>
-                                                                            <input type="checkbox" id="option1" style="margin-left: -93px;margin-top: -33px;"/>
-                                                                        </td>
+                                                        <form action="InsertOption?pageid=1" method="post" name="add_name" id="add_name">
+                                                            <!-- <div class="" style="max-width: 445px;"> -->
+                                                            <table class="table table-bordered" id="dynamic_field">
+                                                                <tr>
+                                                                    <td>
+                                                                        <textarea style="height:80px, width=80%" name="optionname[]" placeholder="Enter Option Content" class="form-control name_list"></textarea>
+                                                                    </td>
+                                                                    <td style="max-width: 51px;">
+                                                                        <button type="button" name="add" id="add" class="btn btn-success">
+                                                                            <strong>+</strong>
+                                                                        </button>
+                                                                        <input type="checkbox" id="option1" style="margin-left: -93px;margin-top: -33px;" />
+                                                                    </td>
 
-                                                                    </tr>
-                                                                </table>
-                                                                <!--<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" /> -->
-                                                            </div>
+                                                                </tr>
+                                                            </table>
+                                                            <!--<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" /> -->
+                                                            <!-- </div> -->
                                                         </form>
                                                         <br>
                                                     </div>
-                                                    <input value="ADD" id="singlebutton" name="singlebutton" class="btn btn-info" />
                                                 </div>
-
                                             </div>
                                         </div>
-
+                                        <input type="submit" value="ADD" id="insert" name="insert" class="btn btn-info" />
+                                    </form>
                                 </div>
-                                </form>
+                               
                                 <!-- form end -->
 
 
@@ -618,6 +617,7 @@
                                             <input type="file" name="file">
                                             <br> Question type
                                             <br>
+
                                             <select name="questionstype">
                                                 <option>OOP</option>
                                                 <option>Lap Trinh Windows</option>
@@ -626,8 +626,7 @@
                                             </select>
                                             <br>
                                             <br>
-                                            <!--input type="submit" value="Import" style="background:skyblue"-->
-                                            <input value="IMPORT" id="singlebutton" name="singlebutton" class="btn btn-info">
+                                            <input type="submit" value="IMPORT" id="import" name="import" class="btn btn-info">
                                         </form>
                                     </div>
                                     <!-- form end -->

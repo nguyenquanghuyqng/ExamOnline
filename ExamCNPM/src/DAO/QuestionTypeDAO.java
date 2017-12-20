@@ -111,6 +111,20 @@ public class QuestionTypeDAO {
 		return count;
 	}
 
+	public static int maxQuestiontypeid(Connection conn){
+		String sql="select max(questiontypeid) from questiontypes";
+		int max=0;
+		try{
+		PreparedStatement ptmt = conn.prepareStatement(sql);
+		ResultSet rs = ptmt.executeQuery();
+		max= rs.getInt(1);
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return max;
+	}
+
 	public static boolean InsertQuestionType(List<QuestionType> qt, Connection conn) {
 
 		String sql = "insert into users(questiontypeid, questiontypename) value(?,?)";
