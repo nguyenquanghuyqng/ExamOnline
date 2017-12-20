@@ -510,7 +510,7 @@
 				
 					
 <!-- 						<table class="table" id="makeEditable" border='1' style="width: 100%" class="table table-hover table-bordered table-striped"> -->
-						<table  class="table table-hover" id="makeEditable" style=" width: 100%;max-width: 100%;
+						<table  class="table table-hover" id="Editable" style=" width: 100%;max-width: 100%;
                         margin-bottom: 20px; border-collapse: collapse; border-spacing: 0;" >
 						
 							<tr>
@@ -519,20 +519,50 @@
                                             <th class="text-center"><button type="button" id="AddQuestionType" class="btn btn-xs btn-info" onclick="return AddNewQuestionType()">AddQuestionType</button></th>
                             </tr>
 						<tbody id="myTable">
-							<c:forEach items="${questiontype}" var="list">
+							<c:forEach items="${questiontypes}" var="list">
 
 								<tr class="text-center">
 									<td>${list.questiontypeid}</td>
                                     <td>${list.questiontypename}</td>
-                                    <td class="text-center" style="text-align: center !important;">
+                                    <!-- <td class="text-center" style="text-align: center !important;">
                                         <div class="btn-group">
                                             <a href="EditQuestionType?index=${list.questiontypeid}&pageid=1" data-toggle="tooltip" title="" class="btn btn-xs btn-success" data-original-title="Edit" ><i class="fa fa-pencil" > </i>
                                             </a>
                                             <a href="DeleteQuestionType?index=${list.questiontypeid}&pageid=1"
                                             onclick="return show_comfirm()" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" data-original-title="Delete" onclick="return show_comfirm()"><i class="fa fa-trash-o "> </i></a>
                                         </div>
+                                    </td> -->
+
+                                    <td class="text-center" style="text-align: center !important;">
+                                        <div class="btn-group">
+                                            <a href="#" id="myBtn${list.questiontypeid}" data-toggle="tooltip" title="" class="btn btn-xs btn-success" data-original-title="Edit" ><i class="fa fa-pencil" > </i>
+                                            </a>
+                                            <a href="DeleteQuestionType?index=${list.questiontypeid}&pageid=1"
+                                            onclick="return show_comfirm()" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" data-original-title="Delete" ><i class="fa fa-trash-o "> </i></a>
+                                        </div>
                                     </td>
 								</tr>
+
+                                <script type="text/javascript">
+
+									$(document).ready(function() {
+										$("#myBtn${list.questiontypeid}").click(function() {
+											$("#myModal_2").modal();
+										});
+									});
+									
+							        var table = document.getElementById("Editable"),rindex;
+									
+									for(var i =1 ; i < table.rows.length; i++)
+									{
+										 table.rows[i].onclick = function()
+										{
+											rindex = this.rowIndex;		
+											document.getElementById("questiontypeid").value = this.cells[0].innerHTML;
+											document.getElementById("questiontypename").value = this.cells[1].innerHTML;
+										};
+									}
+									</script>
 
 							</c:forEach>
 							</tbody>
@@ -600,6 +630,47 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="myModal_2" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content" >
+				<div class="modal-header" style="padding: 0px 10px; background:skyblue">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h2>
+						<span class="glyphicon glyphicon-user"></span> Edit Question Type
+					</h2>
+				</div>
+				<div class="modal-body" style="padding: 40px 50px;">
+					<form action="SaveEditQuestionType?pageid=1" method="POST" name="frmInsertAcc">
+						<div class="form-group">
+							<label for="qtid">Questiontype ID</label> 
+							<input type="text" class="form-control" name="questiontypeid" id ="questiontypeid" value="${list.questiontypeid}"> <!--placeholder="QuestiontypeID">-->
+						</div>
+						<div class="form-group">
+							<label for="questiontypename">Questiontype</label> 
+							<input type="text" class="form-control" name="questiontypename" id ="questiontypename" value="${list.questiontypename}"> <!--placeholder="Questiontype Name">-->
+						</div>
+						
+						<button type="submit" class="btn btn-success btn-block"  onclick="return KiemTraHopLe()">
+							<span class="glyphicon glyphicon-ok"></span> Save
+						</button>	
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger btn-default pull-left"
+						data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> Cancel
+					</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+    
+    
     <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>

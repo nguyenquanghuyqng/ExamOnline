@@ -537,21 +537,28 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="appointmentfor">Subject</label>
-                                                    <select id="subject" name="subject" class="form-control">
-                                                        <option value="English">English</option>
+                                                    <select id="subjects" name="subjects" class="form-control">
+                                                  <!--  <option value="English">English</option>
                                                         <option value="Math">Math</option>
-                                                        <option value="C++">C++</option>
+                                                        <option value="C++">C++</option>  -->
+                                                        <c:forEach items="${subjects}" var="subjects">
+			                                        		<option class="dropdown" value="${subjects.subjectid}">${subjects.subjectname}</option>
+			                                        	</c:forEach>
                                                     </select>
+                                                    
                                                 </div>
                                             </div>
                                             <!-- Select Basic -->
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="time">Question Type</label>
-                                                    <select id="questiontype" name="questiontype" class="form-control">
-                                                        <option value="Toiec">Toiec</option>
+                                                    <select id="questiontypes" name="questiontypes" class="form-control">
+                                                 <!--   <option value="Toiec">Toiec</option>
                                                         <option value="Math">Math</option>
-                                                        <option value="Software Engenering">Software Engenering</option>
+                                                        <option value="Software Engenering">Software Engenering</option> -->
+                                                        <c:forEach items="$questiontypes}" var="questiontypes">
+			                                        		<option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
+			                                        	</c:forEach>
                                                     </select>
                                                 </div>
                                             </div>
@@ -618,11 +625,14 @@
                                             <br> Question type
                                             <br>
 
-                                            <select name="questionstype">
-                                                <option>OOP</option>
+                                            <select name="questionstypes">
+                                          <!--  <option>OOP</option>
                                                 <option>Lap Trinh Windows</option>
                                                 <option>Lap Trinh Web</option>
-                                                <option>Thuong mai dien tu</option>
+                                                <option>Thuong mai dien tu</option> -->
+                                                <c:forEach items="$questiontypes}" var="questiontypes">
+			                                       <option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
+			                                    </c:forEach>
                                             </select>
                                             <br>
                                             <br>

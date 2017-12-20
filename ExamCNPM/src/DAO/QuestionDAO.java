@@ -3,13 +3,14 @@ package DAO;
 import java.sql.*;
 import java.util.*;
 import BEAN.Question;
+import BEAN.Question_01;
 import BEAN.Option;
 import DB.DBConnection;
+
 public class QuestionDAO {
 
-	public static String getQuestiontypename(int questiontypeid)
-	{
-		String name=null;
+	public static String getQuestiontypename(int questiontypeid) {
+		String name = null;
 		Connection conn = DBConnection.CreateConnection();
 
 		PreparedStatement ptmt = null;
@@ -34,9 +35,8 @@ public class QuestionDAO {
 		return name;
 	}
 
-	public static String getOptions(int questionid)
-	{
-		String options="";
+	public static String getOptions(int questionid) {
+		String options = "";
 		Connection conn = DBConnection.CreateConnection();
 
 		PreparedStatement ptmt = null;
@@ -50,7 +50,7 @@ public class QuestionDAO {
 			ResultSet rs = ptmt.executeQuery();
 
 			while (rs.next()) {
-				options+=(rs.getString("optionname")+"    \r\n");
+				options += (rs.getString("optionname") + "    \r\n");
 			}
 
 		} catch (SQLException e) {
@@ -60,7 +60,6 @@ public class QuestionDAO {
 		//String text= options.toString();
 		return options;
 	}
-	
 
 	public static List<Question> DisplayQuestion(int start, int count, Connection conn) {
 
@@ -101,20 +100,20 @@ public class QuestionDAO {
 
 	/*
 	public static List<Question> DisplayQuestion_2(Connection conn) {
-
+	
 		List<Question> list = new ArrayList<Question>();
-
+	
 		String sql = "select * from questions";
-
+	
 		try {
-
+	
 			PreparedStatement ptmt = conn.prepareCall(sql);
-
+	
 			ResultSet rs = ptmt.executeQuery();
-
+	
 			while (rs.next()) {
 				Question qs = new Question();
-
+	
 				qs.setQuestionid(rs.getInt("questionid"));
 				qs.setNumber(rs.getInt("number"));
 				qs.setContentquestion(rs.getString("contentquestion"));
@@ -125,15 +124,15 @@ public class QuestionDAO {
 				qs.setCorrectoption(rs.getString("correctoption"));
 				qs.setMediaid(rs.getInt("mediaid"));
 				qs.setQuestiontypeid(rs.getInt("questiontypeid"));
-
+	
 				list.add(qs);
 			}
-
+	
 		} catch (SQLException e) {
-
+	
 			e.printStackTrace();
 		}
-
+	
 		return list;
 	}
 	*/
@@ -143,7 +142,7 @@ public class QuestionDAO {
 		boolean t = false;
 
 		String sql = "call usp_dQuestion(?)";
-		
+
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, questionid);
@@ -181,66 +180,103 @@ public class QuestionDAO {
 		return count;
 	}
 
-	public static int maxOptionid(Connection conn){
-		String sql="select max(optionid) from options";
-		int max=0;
-		try{
-		PreparedStatement ptmt = conn.prepareStatement(sql);
-		ResultSet rs = ptmt.executeQuery();
-			while(rs.next())
-			{
-				System.out.println("Get Option truosc:" +max);
-				max= rs.getInt("max(optionid)");
-				System.out.println("Get Option sau:" +max);
+	public static int maxOptionid(Connection conn) {
+		String sql = "select max(optionid) from options";
+		int max = 0;
+		try {
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			ResultSet rs = ptmt.executeQuery();
+			while (rs.next()) {
+				System.out.println("Get Option truosc:" + max);
+				max = rs.getInt("max(optionid)");
+				System.out.println("Get Option sau:" + max);
 
 			}
 		} catch (SQLException e) {
-		// TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return max;
 	}
 
-	public static int maxQuestionid(Connection conn){
-		String sql="select max(questionid) from questions";
-		int max=0;
-		try{
-		PreparedStatement ptmt = conn.prepareStatement(sql);
-		ResultSet rs = ptmt.executeQuery();
-		max= rs.getInt(1);
+	public static int maxQuestionid(Connection conn) {
+		String sql = "select questionid from questions ORDER BY questionid DESC LIMIT 1";
+		int max = 0;
+		try {
+			PreparedStatement ptmt = conn.prepareCall(sql);
+			ResultSet rs = ptmt.executeQuery();
+			max = rs.getInt("questionid");
+			System.out.println("maxQuestionid= " + max);
 		} catch (SQLException e) {
-		// TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return max;
 	}
+
+	// public static boolean InsertOptions(int questionid,List<Option> qt, Connection conn) {
+
+	// 	String sql = "call usp_iOption(?,?,?)";
+
+	// 	PreparedStatement ptmt;
+
+	// 	try {
+	// 		ptmt = conn.prepareStatement(sql);
+	// 		int j = 0;
+	// 		while (j < qt.size()) {
+	// 			ptmt.setInt(1, questionid);
+	// 			ptmt.setString(2, qt.get(j).getOptionname());
+	// 			ptmt.setBoolean(3, qt.get(j).isIsanswer());
+	// 			if (ptmt.executeUpdate() == 0) {
+	// 				return false;
+	// 			}
+	// 			j++;
+	// 		}
+	// 	} catch (SQLException e) {
+	// 		e.printStackTrace();
+	// 	}
+	// 	return true;
+	// }
 
 	public static boolean InsertOptions(List<Option> qt, Connection conn) {
 
-		String sql = "insert into options value(?,?,?,?)";
-		String n= "select max(optionid) from options";
+		String sql = "call usp_iOption(?,?)";
+
 		PreparedStatement ptmt;
 
 		try {
-			int questionid= maxQuestionid(conn);
-
-			ptmt = conn.prepareStatement(n);
-			ResultSet rs = ptmt.executeQuery();
-			int i = rs.getInt(1);
-
 			ptmt = conn.prepareStatement(sql);
-
 			int j = 0;
 			while (j < qt.size()) {
-				ptmt.setInt(1,questionid);
-				ptmt.setInt(2,++i);
-				ptmt.setString(3, qt.get(j).getOptionname());
-				ptmt.setBoolean(4, qt.get(j).isIsanswer());
+				ptmt.setString(1, qt.get(j).getOptionname());
+				ptmt.setBoolean(2, qt.get(j).isIsanswer());
 				if (ptmt.executeUpdate() == 0) {
 					return false;
 				}
 				j++;
-			}	
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public static boolean InsertQuestion(Question_01 qt, Connection conn) {
+
+		String sql = "call usp_iQuestion(?,?,?,?,?)";
+		PreparedStatement ptmt;
+
+		try {
+			ptmt = conn.prepareStatement(sql);
+
+			ptmt.setInt(1, qt.getNumber());
+			ptmt.setString(2,qt.getContentquestion());
+			ptmt.setString(3, qt.getCorrectoption());
+			ptmt.setInt(4, qt.getMediaid());
+			ptmt.setInt(5, qt.getQuestiontypeid());
+			if (ptmt.executeUpdate() == 0) {
+				return false;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

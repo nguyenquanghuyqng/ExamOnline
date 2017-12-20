@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.*;
 import java.util.*;
+import javax.servlet.http.HttpServletRequest;
 import BEAN.QuestionType;
 
 public class QuestionTypeDAO {
@@ -67,6 +68,38 @@ public class QuestionTypeDAO {
 		return list;
 	}
 
+	public static List<QuestionType> SelectQuestionType(int id, Connection conn) {
+
+		List<QuestionType> list = new ArrayList<QuestionType>();
+
+		String sql = "select * from questiontypes where questiontypeid = " + id + "";
+
+		try {
+
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			while (rs.next()) {
+
+				QuestionType qt = new QuestionType();
+
+				qt.setQuestiontypeid(rs.getInt("questiontypeid"));
+				qt.setQuestiontypename(rs.getString("questiontypename"));
+
+				list.add(qt);
+
+			}
+			ptmt.close();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return list;
+	}
+
+
 	public static boolean DeleteQuestionType(int questiontypeid, Connection conn) {
 
 		boolean t = false;
@@ -127,7 +160,7 @@ public class QuestionTypeDAO {
 
 	public static boolean InsertQuestionType(List<QuestionType> qt, Connection conn) {
 
-		String sql = "insert into users(questiontypeid, questiontypename) value(?,?)";
+		String sql = "insert into questiontypes (questiontypeid, questiontypename) value(?,?)";
 		String n= "select max(questiontypeid) from questiontypes";
 		PreparedStatement ptmt;
 
@@ -151,6 +184,33 @@ public class QuestionTypeDAO {
 			e.printStackTrace();
 		}
 		return true;
+	}
+
+	public static boolean UpdateData(HttpServletRequest request, int id,QuestionType qt, Connection conn) {
+
+		boolean t = false;
+
+		String sql = "UPDATE questiontypes set questiontypename=? where questiontypeid=" + id + ";";
+
+		try {
+
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, qt.getQuestiontypename());
+
+			int kt = ptmt.executeUpdate();
+
+			if (kt != 0) {
+
+				return t = true;
+			}
+			ptmt.close();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return t;
+
 	}
 
 }

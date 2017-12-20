@@ -61,7 +61,7 @@ public class UpdateDeleteQuestionType extends HttpServlet {
 		
 		request.setAttribute("numberpage", Integer.parseInt(pageidstr));
 		
-		request.setAttribute("questiontype", list);
+		request.setAttribute("questiontypes", list);
 		
 		RequestDispatcher rd= request.getRequestDispatcher("View/Question/UpdateDeleteQuestionType.jsp");
 		rd.forward(request, response);
