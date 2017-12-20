@@ -272,7 +272,7 @@ public class ExamDAO {
 
 	public static void setResult(int userid, int testid,int diem) {
 		String query = " insert into results(userid,testid,point) \r\n" + 
-				" values(?,?,?,?)";
+				" values(?,?,?)";
 		try {
 			Connection con = DBConnection.CreateConnection();
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
