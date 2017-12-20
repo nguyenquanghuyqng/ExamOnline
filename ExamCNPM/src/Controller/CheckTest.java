@@ -58,7 +58,7 @@ public class CheckTest extends HttpServlet {
 						tsid = test;
 						session.setAttribute("subjectid", sid);
 						session.setAttribute("testid", tsid);
-						RequestDispatcher rd= request.getRequestDispatcher("/TestSheetForward");
+						RequestDispatcher rd= request.getRequestDispatcher("TestSheetForward");
 						rd.forward(request, response);
 						return;
 						//System.out.println("Testid "+test+" ");  
@@ -72,7 +72,7 @@ public class CheckTest extends HttpServlet {
 						tsid = test;
 						session.setAttribute("subjectid", sid);
 						session.setAttribute("testid", tsid);
-						RequestDispatcher rd= request.getRequestDispatcher("/TestSheetForward");
+						RequestDispatcher rd= request.getRequestDispatcher("TestSheetForward");
 						rd.forward(request, response);
 						return;
 					}
@@ -85,7 +85,7 @@ public class CheckTest extends HttpServlet {
 						tsid = test;
 						session.setAttribute("subjectid", sid);
 						session.setAttribute("testid", tsid);
-						RequestDispatcher rd= request.getRequestDispatcher("/TestSheetForward");
+						RequestDispatcher rd= request.getRequestDispatcher("TestSheetForward");
 						rd.forward(request, response);
 						return;
 

@@ -65,7 +65,7 @@ public class TestSheetForward extends HttpServlet {
 		request.setAttribute("numberqs", numberqs);
 		request.setAttribute("qsID", qsID);
 		session.setAttribute("qstypeID", qstypeID);
-		RequestDispatcher rd= request.getRequestDispatcher("View/TestSheet.jsp");
+		RequestDispatcher rd= request.getRequestDispatcher("/View/TestSheet.jsp");
 		rd.forward(request, response);
 	}
 

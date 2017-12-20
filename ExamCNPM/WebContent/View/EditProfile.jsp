@@ -201,7 +201,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											for="imgload" class="btn btn-default"
 											style="height: 30px; width: 100px;">Select <span
 											class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-											<input type="file" id="imgload" name="imgload" style="display: none">
+											<input type="file" id="imgload" name="imgload" style="display: none" src="Style/images/<%=u.getImage()%>">
 										</label>
 									</div>
 									<div class=" col-md-9 col-lg-9 ">

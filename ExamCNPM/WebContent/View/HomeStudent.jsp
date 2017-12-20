@@ -312,9 +312,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 btnClass: 'btn-success',
                                 action: function(){
                                 	if(program.toString().trim() == "Don't have a test" || program.toString().trim() == "Don't have subject" )
-                                		window.location = '/ExamCNPM/LoginForwardHomeSt';
+                                		window.location = '/LoginForwardHomeSt';
                                 	else
-                                		window.location = '/ExamCNPM/CheckTest?data=1';
+                                		window.location = '/CheckTest?data=1';
                                 }
                             },
                             close: function () {
@@ -333,9 +333,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 btnClass: 'btn-success',
                                 action: function(){
                                 	if(toeic.toString().trim() == "Don't have a test" || toeic.toString().trim() == "Don't have subject" )
-                                		window.location = '/ExamCNPM/LoginForwardHomeSt';
+                                		window.location = '/LoginForwardHomeSt';
                                 	else
-                                		window.location = '/ExamCNPM/CheckTest?data=2';
+                                		window.location = '/CheckTest?data=2';
                                 }
                             },
                             close: function () {
@@ -356,9 +356,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 btnClass: 'btn-success',
                                 action: function(){
                                 	if(ltw.toString().trim() == "Don't have a test" || ltw.toString().trim() == "Don't have subject" )
-                                		window.location = '/ExamCNPM/LoginForwardHomeSt';
+                                		window.location = '/LoginForwardHomeSt';
                                 	else
-                                		window.location = '/ExamCNPM/CheckTest?data=3';
+                                		window.location = '/CheckTest?data=3';
                                 }
                             },
                             close: function () {

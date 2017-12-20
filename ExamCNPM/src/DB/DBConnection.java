@@ -7,6 +7,11 @@ public class DBConnection {
 		String url="jdbc:mysql://localhost:3306/examonline";
 		String username="root";
 		String password="1234";
+		
+//		String host= "node16809-examonline.kilatiron.com";
+//		String url="jdbc:mysql://"+host+"/examonline";
+//		String username="root";
+//		String password="KMQeii39580";
 
 		try {
 			// load Driver

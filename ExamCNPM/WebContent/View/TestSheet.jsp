@@ -300,7 +300,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         	 if (r == true) {
         		 var answer=$('input[name=answer]:checked').val();
             	   $.post('View/getQuestionDAO.jsp?question_no='+question_no+'&question_id='+question_id+'&answer='+answer+"&req=last");
-            	   window.location='/ExamCNPM/resultController';      
+            	   window.location='/resultController';      
         	    } 
       	   	  
       		});
