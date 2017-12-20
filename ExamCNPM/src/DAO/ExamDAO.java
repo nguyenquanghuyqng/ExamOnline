@@ -317,6 +317,38 @@ public class ExamDAO {
 		return id;
 	}
 	
+	
+	public static int getTestID(int  userid) {
+		int id = 0;
+		
+		
+		 Connection conn = DBConnection.CreateConnection();
+
+		PreparedStatement ptmt = null;
+
+		String sql = "select * from results where userid=?";
+
+		try {
+			
+			ptmt = (PreparedStatement) conn.prepareStatement(sql);
+			ptmt.setInt(1, userid);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			if (rs.next()) {
+				id = rs.getInt("testid");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return id;
+	}
+	
+	
+	
 	public static String getFullNameID(int id) {
 		String usname = null;
 		
@@ -347,7 +379,7 @@ public class ExamDAO {
 	}
 	
 	
-	public static String getSubjectName(int id) {
+	public static String getSubjectName(int userid, int testid) {
 		String subjectname = null;
 		
 		
@@ -355,16 +387,20 @@ public class ExamDAO {
 
 		PreparedStatement ptmt = null;
 
-		String sql = "select subjectname from subjects where subjectid=?";
+		String sql = "select *from users inner join users_subjects on users.userid = users_subjects.userid  \n" + 
+				"				inner join subjects on subjects.subjectid = users_subjects.subjectid  \n" + 
+				"				inner join	tests on tests.subjectid = subjects.subjectid inner join test_question on tests.testid = test_question.testid "
+				+ " where users.userid=? and tests.testid=?;";
 
 		try {
 			
 			ptmt = (PreparedStatement) conn.prepareStatement(sql);
-			ptmt.setInt(1, id);
+			ptmt.setInt(1,userid);
+			ptmt.setInt(2,testid);
 
 			ResultSet rs = ptmt.executeQuery();
 
-			while (rs.next()) {
+			if(rs.next()) {
 				subjectname = rs.getString("subjectname");
 			}
 
