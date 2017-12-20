@@ -121,7 +121,7 @@ public class UploadQuestionDAO {
 
 			try {
 
-				PreparedStatement ptmt = conn.prepareCall("Call pr_InsertQuestion(?,?,?,?,?,?,?)");
+				PreparedStatement ptmt = conn.prepareCall("Call pr_InsertQuestion(?,?,?,?,?)");
 				ptmt.setInt(1, qs.getNumber());
 				ptmt.setString(2, qs.getContentquestion());
 				ptmt.setString(3, qs.getCorrectoption());
@@ -133,13 +133,12 @@ public class UploadQuestionDAO {
 				
 				if (kt != 0) {
 					System.out.println("dc 1/2 r");
-					PreparedStatement ptmtop = conn.prepareStatement(sqlop);
+					PreparedStatement ptmtop = conn.prepareCall("Call pr_InsertOption(?,?)");
 					while(i<op.size())
 					{
-						ptmtop.setInt(1,qs.getQuestionid());
 						ptmtop.setString(1,op.get(i).getOptionname());
 						ptmtop.setBoolean(2,op.get(i).isIsanswer());
-						int ktt= ptmtop.executeUpdate(sqlop);
+						int ktt= ptmtop.executeUpdate();
 						if(ktt!=0)
 						{
 							request.setAttribute("message", "Insert data from excel to mysql  success");
