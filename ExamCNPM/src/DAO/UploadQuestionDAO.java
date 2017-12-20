@@ -65,7 +65,7 @@ public class UploadQuestionDAO {
 							op.setOptionid(maxoptionid++);
 							op.setOptionname(row.getCell(j).getStringCellValue());
 							//XL_PlyWorksheet.cells(1, "A").End().Column
-							if(qs.getCorrectoption().equals(op.getOptionname().charAt(0)))
+							if((qs.getCorrectoption())==(op.getOptionname().charAt(0)))
 							{
 								op.setIsanswer(true);
 							}
