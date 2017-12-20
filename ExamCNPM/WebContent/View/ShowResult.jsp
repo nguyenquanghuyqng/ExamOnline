@@ -144,7 +144,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<thead  style=" font-size:21px;">
 								<tr>
 									<th scope="col">S.No.</th>
-									<th scope="col">Full name</th>
 									<th scope="col">Subject name</th>
 									<th scope="col">Test name</th>
 									<th scope="col">Point</th>
@@ -163,7 +162,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<tbody style=" font-size:20px;">
 								<tr>
 									<th scope="row"><%=i+1%></th>
-									<td><%=ExamDAO.getFullNameID((int)obj.get("userid"))%></td>
 									<td><%=ExamDAO.getSubjectName(userid,(int)obj.get("testid"))%></td>
 									<td><%=ExamDAO.getTestName((int)obj.get("testid")) %></td>
 									<td><%=obj.get("point") %></td>
