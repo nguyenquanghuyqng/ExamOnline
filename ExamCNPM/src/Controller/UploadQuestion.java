@@ -53,11 +53,14 @@ public class UploadQuestion extends HttpServlet {
 
 		Connection conn = DBConnection.CreateConnection();
 
+		
+		System.out.println("Start import excel");
 		UploadQuestionDAO.ImportExcel(request, response, conn, path);
 
 //		conn = DBConnection.CreateConnection();
 		
 		// Lấy danh sach question dua vao list
+		System.out.println("Show date ");
 		List<Question> list = QuestionDAO.DisplayQuestion(pageid, count, conn);
 
 		int sumrow=QuestionDAO.CountRow(conn);

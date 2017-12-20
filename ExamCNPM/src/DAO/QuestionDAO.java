@@ -187,7 +187,13 @@ public class QuestionDAO {
 		try{
 		PreparedStatement ptmt = conn.prepareStatement(sql);
 		ResultSet rs = ptmt.executeQuery();
-		max= rs.getInt(1);
+			while(rs.next())
+			{
+				System.out.println("Get Option truosc:" +max);
+				max= rs.getInt("max(optionid)");
+				System.out.println("Get Option sau:" +max);
+
+			}
 		} catch (SQLException e) {
 		// TODO Auto-generated catch block
 			e.printStackTrace();

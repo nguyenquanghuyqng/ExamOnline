@@ -38,34 +38,53 @@ public class UploadQuestionDAO {
 					Row row = sheet.getRow(i);
 
 					Question_01 qs = new Question_01();
-					Option op = new Option();
+					//Option op = new Option();
+					List<Option> oplist= new ArrayList<Option>();
+//					int maxquestionid=QuestionDAO.maxQuestionid(conn);
 					try {
 						DataFormatter formatter = new DataFormatter();
+						System.out.println("Question haha");
 						System.out.println((int) row.getCell(0).getNumericCellValue());
-						System.out.println((int)row.getCell(1).getNumericCellValue());
+						//System.out.println((int)row.getCell(1).getNumericCellValue());
+						System.out.println(row.getCell(1).getStringCellValue());
 						System.out.println(row.getCell(2).getStringCellValue());
-						System.out.println(row.getCell(3).getStringCellValue());
-						System.out.println(formatter.formatCellValue(row.getCell(4)));//(row.getCell(4).getStringCellValue()));
-						System.out.println((int) row.getCell(5).getNumericCellValue());
+						System.out.println(formatter.formatCellValue(row.getCell(3)));//(row.getCell(4).getStringCellValue()));
+						System.out.println((int) row.getCell(4).getNumericCellValue());
 						
 						
 						
-						qs.setQuestionid((int) row.getCell(0).getNumericCellValue());
-						qs.setNumber((int)row.getCell(1).getNumericCellValue());
-						qs.setContentquestion(row.getCell(2).getStringCellValue());
-						qs.setCorrectoption(row.getCell(3).getStringCellValue());
-						qs.setMediaid(Integer.parseInt(formatter.formatCellValue(row.getCell(4))));
-						qs.setQuestiontypeid((int) row.getCell(5).getNumericCellValue());
-						int j=6;
+//						qs.setQuestionid((int) row.getCell(0).getNumericCellValue());
+//						qs.setNumber((int)row.getCell(1).getNumericCellValue());
+//						qs.setContentquestion(row.getCell(2).getStringCellValue());
+//						qs.setCorrectoption(row.getCell(3).getStringCellValue());
+//						qs.setMediaid(Integer.parseInt(formatter.formatCellValue(row.getCell(4))));
+//						qs.setQuestiontypeid((int) row.getCell(5).getNumericCellValue());
+						
+						
+						qs.setNumber((int)row.getCell(0).getNumericCellValue());
+						qs.setContentquestion(row.getCell(1).getStringCellValue());
+						qs.setCorrectoption(row.getCell(2).getStringCellValue());
+						qs.setMediaid(Integer.parseInt(formatter.formatCellValue(row.getCell(3))));
+						qs.setQuestiontypeid((int) row.getCell(4).getNumericCellValue());
+						
+						int j=5;
 						int maxcol=j+qs.getNumber();
-						int maxoptionid=QuestionDAO.maxOptionid(conn);
+//						int maxoptionid=QuestionDAO.maxOptionid(conn);
 						while(j<=maxcol)
 						{
+							Option op= new Option();
+							System.out.println("Option");
+							
+//							System.out.println(qs.getQuestionid());
+//							System.out.println(maxoptionid++);
+							System.out.println(row.getCell(j).getStringCellValue());
+							System.out.println(op.isIsanswer());
+							
 							op.setQuestionid(qs.getQuestionid());
-							op.setOptionid(maxoptionid++);
+//							op.setOptionid(maxoptionid++);
 							op.setOptionname(row.getCell(j).getStringCellValue());
 							//XL_PlyWorksheet.cells(1, "A").End().Column
-							if((qs.getCorrectoption())==(op.getOptionname().charAt(0)))
+							if((qs.getCorrectoption()).equals(op.getOptionname().charAt(0)))
 							{
 								op.setIsanswer(true);
 							}
@@ -73,10 +92,7 @@ public class UploadQuestionDAO {
 							{
 								op.setIsanswer(false);
 							}
-							System.out.println(qs.getQuestionid());
-							System.out.println(maxoptionid++);
-							System.out.println(row.getCell(j).getStringCellValue());
-							System.out.println(op.isIsanswer());
+							oplist.add(op);
 							j++;
 						}
 					}
@@ -86,7 +102,7 @@ public class UploadQuestionDAO {
 					}
 
 					
-					UploadQuestionDAO.InsertData(request, qs,op, conn);
+					UploadQuestionDAO.InsertData(request, qs,oplist, conn);
 
 				}
 			} catch (FileNotFoundException e) {
@@ -98,33 +114,31 @@ public class UploadQuestionDAO {
 			}
 		}
 
-		public static void InsertData(HttpServletRequest request, Question_01 qs, Option op, Connection conn) {
-			String sqlqs= "insert into questions(questionid,number,"
-			+ "contentquestion,correctoption, mediaid,questiontypeid) values(?,?,?,?,?,?)";
-			String sqlop = "insert into options values(?,?,?,?)";
+		public static void InsertData(HttpServletRequest request, Question_01 qs, List<Option> op, Connection conn) {
+//			String sqlqs= "insert into questions(number,"
+//			+ "contentquestion,correctoption, mediaid,questiontypeid) values(?,?,?,?,?)";
+//			String sqlop = "insert into options(questionid,optionname,isanswer) values(?,?,?)";
 
 			try {
 
-				PreparedStatement ptmt = conn.prepareStatement(sqlqs);
+				PreparedStatement ptmt = conn.prepareCall("Call pr_InsertQuestion(?,?,?,?,?,?,?)");
+				ptmt.setInt(1, qs.getNumber());
+				ptmt.setString(2, qs.getContentquestion());
+				ptmt.setString(3, qs.getCorrectoption());
+				ptmt.setInt(4, qs.getMediaid());
+				ptmt.setInt(5, qs.getQuestiontypeid());
 
-				ptmt.setInt(1, qs.getQuestionid());
-				ptmt.setInt(2, qs.getNumber());
-				ptmt.setString(3, qs.getContentquestion());
-				ptmt.setString(4, qs.getCorrectoption());
-				ptmt.setInt(5, qs.getMediaid());
-				ptmt.setInt(6, qs.getQuestiontypeid());
-				
 				int kt = ptmt.executeUpdate();
+				int i=0;
 				
 				if (kt != 0) {
 					System.out.println("dc 1/2 r");
 					PreparedStatement ptmtop = conn.prepareStatement(sqlop);
-					while((qs.getQuestionid())==(op.getQuestionid()))
+					while(i<op.size())
 					{
 						ptmtop.setInt(1,qs.getQuestionid());
-						ptmtop.setInt(2,op.getOptionid());
-						ptmtop.setString(3,op.getOptionname());
-						ptmtop.setBoolean(4,op.isIsanswer());
+						ptmtop.setString(1,op.get(i).getOptionname());
+						ptmtop.setBoolean(2,op.get(i).isIsanswer());
 						int ktt= ptmtop.executeUpdate(sqlop);
 						if(ktt!=0)
 						{
@@ -136,9 +150,10 @@ public class UploadQuestionDAO {
 							request.setAttribute("message", "Insert data from excel to mysql  failed");
 							System.out.println("ngu r");
 						}
-					}
 					
+					i++;
 					ptmtop.close();
+					}
 					
 				} 
 				else {
