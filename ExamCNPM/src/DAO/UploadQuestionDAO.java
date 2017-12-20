@@ -56,8 +56,9 @@ public class UploadQuestionDAO {
 						Option op = new Option();
 
 						op.setOptionname(row.getCell(j).getStringCellValue());
-						char charAt = (char) op.getOptionname().charAt(0);
-						if ((qs.getCorrectoption()).equals(charAt)) {
+						//char charAt = (char) op.getOptionname().charAt(0);
+						char charAt= (qs.getCorrectoption()).charAt(0);
+						if ((charAt)==(op.getOptionname().charAt(0))) {
 							op.setIsanswer(true);
 						} else {
 							op.setIsanswer(false);
