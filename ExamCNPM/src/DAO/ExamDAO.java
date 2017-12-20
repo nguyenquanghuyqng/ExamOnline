@@ -131,8 +131,8 @@ public class ExamDAO {
 				obj.put("question", rs.getString("contentquestion"));
 				obj.put("id", rs.getString("questionid"));
 
-				query = "select *from questions inner join options on questions.questionid = options.quesitonid "
-						+ "where questionid =?;";
+				query = "select *from questions inner join options on questions.questionid = options.questionid "
+						+ " where questions.questionid =?;";
 				ps = (PreparedStatement) con.prepareStatement(query);
 				ps.setString(1, rs.getString("questionid"));
 				rs1 = ps.executeQuery();
