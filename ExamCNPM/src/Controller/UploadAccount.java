@@ -3,6 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -70,7 +71,11 @@ public class UploadAccount extends HttpServlet {
 		
 		System.out.println("Start import file");
 		
-		UploadUser.ImportExcel(conn, filePath, classid, subjectid);
+		try {
+			UploadUser.ImportExcel(conn, filePath, classid, subjectid);
+		} catch (ParseException e) {
+			System.out.println("Exception:"+e.getMessage());
+		}
 
 //		conn = DBConnection.CreateConnection();
 		

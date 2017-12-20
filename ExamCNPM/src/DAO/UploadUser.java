@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
-import java.util.*;
+import java.text.ParseException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ import BEAN.Account_2;
 public class UploadUser {
 
 	public static void ImportExcel( Connection conn, String ex, int classid, int subjectid)
-			throws ServletException, IOException {
+			throws ServletException, IOException, ParseException {
 		// File
 		FileInputStream inp;
 		System.out.println("Đường dẫn :"+ex.toString());
@@ -55,11 +55,15 @@ public class UploadUser {
 //					acc.setImage(row.getCell(7).getStringCellValue());
 //					acc.setRoleid((int) row.getCell(8).getNumericCellValue());
 //					DataFormatter formatter = new DataFormatter();
+					
+
+					
+					
 					System.out.println("Get Cell:");
 					System.out.println(row.getCell(0).getStringCellValue());
 					System.out.println(row.getCell(1).getStringCellValue());
 					System.out.println(row.getCell(2).getStringCellValue());
-					System.out.println((int) row.getCell(3).getNumericCellValue());
+					System.out.println(row.getCell(3).getStringCellValue());
 					System.out.println(row.getCell(4).getStringCellValue());
 					System.out.println(row.getCell(5).getStringCellValue());
 					System.out.println(row.getCell(6).getStringCellValue());
@@ -97,7 +101,7 @@ public class UploadUser {
 	}
 
 	public static void InsertData(Account_2 acc, 
-			Connection conn, int classid, int subjectid) {
+			Connection conn, int classid, int subjectid) throws ParseException {
 		try {
 
 //			PreparedStatement ptmt = conn.prepareStatement("insert into users(username,"
@@ -127,6 +131,23 @@ public class UploadUser {
 			
 			PreparedStatement ptmt = conn.prepareCall("Call pr_InsertAccount(?,?,?,?,?,?,?,?,?,?)");
 
+			
+//			SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+//			
+//			Date birthday = (Date) formatter1.parse(acc.getBirthday());
+			
+			System.out.println(acc.getUsername());
+			System.out.println(acc.getPass());
+			System.out.println(acc.getFullname());
+			System.out.println(acc.getBirthday());
+			System.out.println(acc.getCountry());
+			System.out.println(acc.getPhone());
+			System.out.println(acc.getImage());
+			System.out.println(acc.getRoleid());
+			System.out.println(classid);
+			System.out.println(subjectid);
+			
+			
 			ptmt.setString(1, acc.getUsername());
 			ptmt.setString(2, acc.getPass());
 			ptmt.setString(3, acc.getFullname());

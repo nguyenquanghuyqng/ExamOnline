@@ -1,5 +1,7 @@
 package BEAN;
 
+import java.sql.*;
+
 public class Account_2 {
 	private int userid;
 	private String username;
@@ -44,14 +46,6 @@ public class Account_2 {
 		this.fullname = fullname;
 	}
 
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
-
 	public String getCountry() {
 		return country;
 	}
@@ -90,6 +84,14 @@ public class Account_2 {
 
 	public void setClassid(int classid) {
 		this.classid = classid;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 
 }
