@@ -168,6 +168,29 @@
 
 									</tr>
 									
+									<script type="text/javascript">
+
+									$(document).ready(function() {
+										$("#myBtn${list.testid}").click(function() {
+											$("#myModal_2").modal();
+										});
+									});
+									
+							        var table = document.getElementById("simple-table"),rindex;
+									
+									for(var i =1 ; i < table.rows.length; i++)
+									{
+										 table.rows[i].onclick = function()
+										{
+											rindex = this.rowIndex;		
+											document.getElementById("testid").value = this.cells[0].innerHTML;
+											document.getElementById("datetimestart").value = this.cells[4].innerHTML;
+											document.getElementById("datetimeend").value = this.cells[5].innerHTML;
+											document.getElementById("time").value = this.cells[7].innerHTML;
+										};
+									}
+									</script>
+									
 								</c:forEach>
 							</tbody>
 						</table>
@@ -251,54 +274,26 @@
 				<div class="modal-header" style="padding: 0px 10px; background:skyblue">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h2>
-						<span class="glyphicon glyphicon-user"></span> Edit User
+						<span class="glyphicon glyphicon-user"></span> Edit Time Exam
 					</h2>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
-					<form action="SaveEditAccount?pageid=1" method="POST" name="frmInsertAcc">
+					<form action="UpdateTimeExam?pageid=1" method="POST" name="frmInsertAcc">
 						<div class="form-group">
-							<label for="usrname">User ID</label> 
-							<input type="text" class="form-control" name="userid" id ="userid" placeholder="UserID">
+							<label for="usrname">Test ID</label> 
+							<input type="text" class="form-control" name="testid" id ="testid" placeholder="TestID">
 						</div>
 						<div class="form-group">
-							<label for="usrname">Username</label> 
-							<input type="text" class="form-control" name="username" id ="username" placeholder="Username">
+							<label for="usrname">Date time start</label> 
+							<input type="datetime" class="form-control" name="datetimestart" id ="datetimestart" placeholder="Date time start">
 						</div>
 						<div class="form-group">
-							<label for="psw">Password</label> 
-							<input type="text" class="form-control" name="pass" id="pass" placeholder="Password">
-						</div>
-
-						<div class="form-group">
-							<label for="usrname">Fullname</label> 
-							<input type="text" class="form-control" name="fullname" id="fullname" placeholder="Fullname">
+							<label for="usrname">Date time end</label> 
+							<input type="datetime" class="form-control" name="datetimeend" id ="datetimeend" placeholder="Date time start">
 						</div>
 						<div class="form-group">
-							<label for="psw">Birthday</label> <input
-								type="date" class="form-control" name="birthday" id="birthday"
-								placeholder="Birthday">
-						</div>
-						<div class="form-group">
-							<label for="usrname"> Country</label> 
-							<input type="text" class="form-control" name="country" id="country" placeholder="Country">
-						</div>
-						<div class="form-group">
-							<label for="psw">Phone</label> 
-							<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone">
-						</div>
-						<div class="form-group">
-							<label for="psw">Image</label> 
-							<input type="text" class="form-control" name="image" id="image" placeholder="Image">
-						</div>
-						<div class="form-group">
-							<label for="psw">Roleid</label><br>
-							<select name="roleid" id="roleid">
-								<option>Choose roleid for account</option>
-                    			<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-                    		</select>
+							<label for="psw">Time</label> 
+							<input type="time" class="form-control" name="time" id="time" placeholder="Time">
 						</div>
 
 						<button type="submit" class="btn btn-success btn-block"  onclick="return KiemTraHopLe()">

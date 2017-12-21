@@ -159,6 +159,33 @@ public class ResultDAO {
 		return count;
 
 	}
+	
+	public static int CountRowTest(Connection conn) {
+
+		int count = 0;
+
+		String sql = "select count(*) from tests";
+
+		PreparedStatement ptmt;
+		try {
+
+			ptmt = conn.prepareStatement(sql);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			rs.next();
+
+			count = rs.getInt(1);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return count;
+
+	}
+	
 	public static boolean UpdateResult(Result rt, Connection conn) {
 
 		boolean t = false;

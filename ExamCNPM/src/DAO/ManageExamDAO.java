@@ -98,7 +98,7 @@ public class ManageExamDAO {
 			
 			int count = 0;
 
-			String sql = "select count(*) from listclassexamview";
+			String sql = "select count(*) from tests";
 
 			PreparedStatement ptmt;
 			try {
@@ -181,5 +181,37 @@ public class ManageExamDAO {
 			}
 			
 			return list;
+		}
+		
+		public static boolean UpdateTimeTestSheet(TestSheet ts) {
+
+			Connection conn = DBConnection.CreateConnection();
+			
+			try {
+
+				CallableStatement ptmt = conn.prepareCall("{call pr_UpdateTimeExam(? ,? ,? ,?)}");
+				 
+				ptmt.setInt(1, ts.getTestid());
+				ptmt.setString(2, ts.getDatetimestart());
+				ptmt.setString(3, ts.getDatetimeend());
+				ptmt.setString(4, ts.getTime());
+
+				int kt = ptmt.executeUpdate();
+				
+				if (kt != 0) {
+
+					System.out.println("Successfull");
+					return true;
+
+				} else {
+
+					System.out.println("Failed");
+					return false;
+				}
+
+			} catch (SQLException e) {
+				System.out.print("Error: "+e);
+			}
+			return false;
 		}
 }
