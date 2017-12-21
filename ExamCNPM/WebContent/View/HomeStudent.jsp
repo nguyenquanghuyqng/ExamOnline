@@ -1,5 +1,9 @@
+<%@page import="DAO.LoginDAO"%>
+<%@page import="BEAN.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
 
 <%-- <%@page import="org.json.simple.JSONObject"%> --%>
 <%-- <%@page import="DAO.ExamDAO"%> --%>
@@ -75,6 +79,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 
+	<%
+		// Lấy ra username đăng nhập vào từ session
+		String user = (String) session.getAttribute("username");
+		LoginDAO userDAO = new LoginDAO();
+		User u = userDAO.getUser(user);
+		%>
+
 	<!-- banner -->
 	<div class="banner1" id="home">
 		<div class="banner-overlay-agileinfo ">
@@ -91,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="dropdown">
 						<a class="btn dropdown-toggle pull-right user" type="button"
 							data-toggle="dropdown"> <i class="glyphicon glyphicon-user"></i>
-							<%=session.getAttribute("fullname") %> <span class="caret"></span>
+							<%=u.getFullname() %> <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" style="width: 300px;">
 							<li><a href="ViewProfile">Account Settings <span
@@ -295,7 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h4 style="color: red"><%=request.getAttribute("web") %></h4>
 					</a>
 				</div>
-			
+
 				<script type="text/javascript">
 				
 				var program ="<%=request.getAttribute("program")%>";
@@ -385,7 +396,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</a>
 				</div>
 				<div class="col-md-4 service-grids-w3ls">
-					<a  href="ResultForward"> <i class="fa fa-file"
+					<a href="ResultForward"> <i class="fa fa-file"
 						aria-hidden="true"></i>
 						<h5>Exam results</h5>
 						<p>Students</p>
