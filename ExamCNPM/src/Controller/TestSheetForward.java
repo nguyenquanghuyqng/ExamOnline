@@ -37,6 +37,9 @@ public class TestSheetForward extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection conn= DBConnection.CreateConnection();
 		HttpSession session=request.getSession(false);
+		
+		String username = (String)session.getAttribute("username");
+		
 		int subjectid = (int) session.getAttribute("subjectid");
 		System.out.println(subjectid);
 		int testid = (int) session.getAttribute("testid");
@@ -52,7 +55,7 @@ public class TestSheetForward extends HttpServlet {
 		int qstypeID = ExamDAO.getQuestionTypeID(subjectid, testid);
 		
 		//lay ra gio thi trong bai thi
-		Date time =  ExamDAO.getTime("trung",subjectid,testid);
+		Date time =  ExamDAO.getTime(username,subjectid,testid);
 		Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
 		calendar.setTime(time);   // assigns calendar to given date 
 		int hours = calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
