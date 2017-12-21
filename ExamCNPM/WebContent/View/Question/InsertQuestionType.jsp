@@ -5,7 +5,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Insert Question</title>
+        <title>Insert Question Type</title>
 
 
         <meta name="description" content="overview &amp; stats" />
@@ -333,7 +333,7 @@
                     $('#add').click(function () {
                         i++;
                         $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, semi-colon=80%" name="questiontypename'+i+'" placeholder="Enter question type" class="form-control name_list" ></textarea></td><td><button type="button" name="remove" id="' +
+                            '"><td><textarea style="height:80px, semi-colon=80%" name="questiontypename['+i+']"  id="questiontype'+i+'" placeholder="Enter question type" class="form-control name_list" ></textarea></td><td><button type="button" name="remove" id="' +
                             i + '" class="btn btn-danger btn_remove">X</button></td></tr><c:out>${amount='+i+'}</c:out>');
                     });
 
@@ -343,7 +343,7 @@
                     });
                     $('#submit').click(function () {
                         $.ajax({
-                            url: "name.php",
+                            url: "InsertQuestionType",
                             method: "POST",
                             data: $('#add_name').serialize(),
                             success: function (data) {
@@ -545,7 +545,7 @@
                                                         <table class="table table-bordered" id="dynamic_field">
                                                             <tr>
                                                                 <td>
-                                                                    <textarea style="height:80px, semi-colon=80%" name="questiontypename" placeholder="Enter question type" class="form-control name_list"></textarea>
+                                                                    <textarea style="height:80px, semi-colon=80%" name="questiontypename[1]"   id="questiontype1" placeholder="Enter question type" class="form-control name_list"></textarea>
                                                                 </td>
                                                                 <td>
                                                                     <button type="button" name="add" id="add" class="btn btn-success">+

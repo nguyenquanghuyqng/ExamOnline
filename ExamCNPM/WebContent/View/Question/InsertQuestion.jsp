@@ -329,8 +329,8 @@
                     $('#add').click(function () {
                         i++;
                         $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, width=80%" name="optionname[]" placeholder="Enter Option Content" class="form-control name_list" ></textarea></td><td style="max-width: 51px;"><button type="button" name="remove" id="' +
-                            i + '" class="btn btn-danger btn_remove">X</button><input type="checkbox" id="option' + i + '"  style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
+                            '"><td><textarea style="height:80px, width=80%" name="optionname['+i+']" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" ></textarea></td><td style="max-width: 51px;"><button type="button" name="remove" id="' +
+                            i + '" class="btn btn-danger btn_remove">X</button><input type="checkbox" id="optioncb' + i + '"  style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
                     });
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
@@ -338,7 +338,7 @@
                     });
                     $('#submit').click(function () {
                         $.ajax({
-                            url: "name.php",
+                            url: "InsertQuestion",
                             method: "POST",
                             data: $('#add_name').serialize(),
                             success: function (data) {
@@ -537,13 +537,13 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="appointmentfor">Subject</label>
-                                                    <select id="subjects" name="subjects" class="form-control">
+                                                    <select id="subject1" name="subject1" class="form-control">
                                                   <!--  <option value="English">English</option>
                                                         <option value="Math">Math</option>
                                                         <option value="C++">C++</option>  -->
                                                         <c:forEach items="${subjects}" var="subjects">
-			                                        		<option class="dropdown" value="${subjects.subjectid}">${subjects.subjectname}</option>
-			                                        	</c:forEach>
+						                                     <option class="dropdown" value="${subjects.subjectid}">${subjects.subjectname}</option>
+						                                </c:forEach>
                                                     </select>
                                                     
                                                 </div>
@@ -552,14 +552,14 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="time">Question Type</label>
-                                                    <select id="questiontypes" name="questiontypes" class="form-control">
+                                                    <select id="questiontype1" name="questiontype1" class="form-control">
                                                  <!--   <option value="Toiec">Toiec</option>
                                                         <option value="Math">Math</option>
                                                         <option value="Software Engenering">Software Engenering</option> -->
-                                                        <c:forEach items="$questiontypes}" var="questiontypes">
-			                                        		<option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
-			                                        	</c:forEach>
-                                                    </select>
+                                                        <c:forEach items="${questiontypes}" var="questiontypes">
+						                                        <option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
+						                                </c:forEach>
+			                                        </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -584,13 +584,13 @@
                                                             <table class="table table-bordered" id="dynamic_field">
                                                                 <tr>
                                                                     <td>
-                                                                        <textarea style="height:80px, width=80%" name="optionname[]" placeholder="Enter Option Content" class="form-control name_list"></textarea>
+                                                                        <textarea style="height:80px, width=80%" name="optionname[1]"  id="option1" placeholder="Enter Option Content" class="form-control name_list"></textarea>
                                                                     </td>
                                                                     <td style="max-width: 51px;">
                                                                         <button type="button" name="add" id="add" class="btn btn-success">
                                                                             <strong>+</strong>
                                                                         </button>
-                                                                        <input type="checkbox" id="option1" style="margin-left: -93px;margin-top: -33px;" />
+                                                                        <input type="checkbox" id="optioncb1" style="margin-left: -93px;margin-top: -33px;" />
                                                                     </td>
 
                                                                 </tr>
@@ -625,14 +625,14 @@
                                             <br> Question type
                                             <br>
 
-                                            <select name="questionstypes">
+                                            <select name="questiontype2" id="questiontype2">
                                           <!--  <option>OOP</option>
                                                 <option>Lap Trinh Windows</option>
                                                 <option>Lap Trinh Web</option>
                                                 <option>Thuong mai dien tu</option> -->
-                                                <c:forEach items="$questiontypes}" var="questiontypes">
-			                                       <option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
-			                                    </c:forEach>
+                                                <c:forEach items="${questiontypes}" var="questiontypes">
+						                              <option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
+						                        </c:forEach>
                                             </select>
                                             <br>
                                             <br>
