@@ -65,7 +65,7 @@ public class InsertQuestion extends HttpServlet {
 				j++;
 			}
 
-			QuestionDAO.InsertOptions(qt.getQuestionid(), op, conn);
+			QuestionDAO.InsertOptions(op, conn);
 
 			if (kt) {
 
