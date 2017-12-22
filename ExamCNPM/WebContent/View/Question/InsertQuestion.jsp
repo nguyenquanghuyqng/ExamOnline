@@ -14,7 +14,7 @@
         <title>Insert Question</title>
 
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
-        <meta name="description" content="overview &amp; stats" />
+        <meta name="description" content="overviewque &amp; stats" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
         <!-- bootstrap & fontawesome -->
@@ -327,7 +327,7 @@
                 });
             </script>
 
-    <!-- DYNAMIC CREATING TEXTAREA -->
+ <!-- DYNAMIC CREATING TEXTAREA -->
             <script>
                 $(document).ready(function () {
                     var i = 1;
@@ -335,14 +335,25 @@
                         i++;
                         var n = document.getElementById('number').value;
                         var left = document.getElementsByTagName('textarea').length;
-                        if(left !=0)
+                        if(left !=0 )
                         {
-                            i=n-Math.abs(n-left);
+                            if(n>=left){
+                                i=n-Math.abs(n-left);
+                                for(i; i<n; i++){
+                                    $('#dynamic_field').append('<tr id="row' + i +
+                                    '"><td><textarea style="height:80px, width=80%" name="option'+i+'" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" required></textarea></td><td style="max-width: 51px;"><button style="opacity: 0;"></button><input type="checkbox" id="optioncb' + i + '" name="optionCheck'+i+'" value="'+i+'" style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
+                                }  
+                            }
+                            else
+                            {
+                                i=left;
+                                for(i; i>=n; i--){
+                                    $('#row' + i + '').remove();
+                                }  
+                            }
                         }
-                        for(i; i<n; i++){
-                            $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, width=80%" name="optionname[]" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" required></textarea></td><td style="max-width: 51px;"><button style="opacity: 0;"></button><input type="checkbox" id="optioncb' + i + '" name="optionCheck[]" value="'+i+'" style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
-                        }  
+                        
+                        
                     });
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
@@ -599,7 +610,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="time">Question Type</label>
-<<<<<<< HEAD
+
                                                     <br><%
 														    try{
 														//Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -614,7 +625,7 @@
 													       resultset =statement.executeQuery("select questiontypeid from questiontypes") ;
 														%>
 														
-													        <select id="testtypeid" name="testtypeid" style="border: 1px solid #00ffc1">
+													        <select id="questiontypeid" name="questiontypeid" style="border: 1px solid #00ffc1">
 													        <%  while(resultset.next()){ %>
 													            <option selected><%= resultset.getString(1)%></option>
 													        <% } %>
@@ -627,22 +638,22 @@
 													             out.println("wrong entry"+e);
 													        }
 														%>
-=======
-                                                    <select id="questiontype1" name="questiontype1" class="form-control">
-                                                 <!--   <option value="Toiec">Toiec</option>
-                                                        <option value="Math">Math</option>
-                                                        <option value="Software Engenering">Software Engenering</option> -->
-                                                        <c:forEach items="${questiontypes}" var="questiontypes">
-						                                        <option class="dropdown" id="" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
-						                                </c:forEach>
-			                                        </select>
->>>>>>> master
+
+<!--                                                     <select id="questiontype1" name="questiontype1" class="form-control"> -->
+<!--                                                    <option value="Toiec">Toiec</option>
+<!--                                                         <option value="Math">Math</option> -->
+<!--                                                         <option value="Software Engenering">Software Engenering</option> -->
+<%--                                                         <c:forEach items="${questiontypes}" var="questiontypes"> --%>
+<%-- 						                                        <option class="dropdown" id="" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option> --%>
+<%-- 						                                </c:forEach> --%>
+<!-- 			                                        </select> -->
+
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="name">Question</label>
-                                                    <input id="questioncontent" name="questioncontent" type="text" placeholder="Content" class="form-control input-md">
+                                                    <input id="contentquestion" name="contentquestion" type="text" placeholder="Content" class="form-control input-md">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -661,20 +672,20 @@
                                                             <table class="table table-bordered" id="dynamic_field">
                                                                 <tr>
                                                                     <td>
-                                                                        <textarea style="height:80px, width=80%" name="optionname[]"  id="option1" placeholder="Enter Option Content" class="form-control name_list" required></textarea>
+                                                                        <textarea style="height:80px, width=80%" name="option1"  id="option1" placeholder="Enter Option Content" class="form-control name_list" required></textarea>
                                                                     </td>
                                                                     <td style="max-width: 51px;">
                                                                         <button type="button" name="add" id="add" class="btn btn-success">
                                                                             <strong>+</strong>
                                                                         </button>
-                                                                        <input type="checkbox" id="optioncb1" name="optionCheck[]" value="1" style="margin-left: -93px;margin-top: -33px;" />
+                                                                        <input type="checkbox" id="optioncb1" name="optionCheck1" value="1" style="margin-left: -93px;margin-top: -33px;" />
                                                                     </td>
 
                                                                 </tr>
                                                             </table>
                                                             <!--<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" /> -->
                                                             <!-- </div> -->
-                                                          
+                                                          <input type="hidden" name="correctoption" id="correctoption" class="btn btn-info" value="" />
                                                            
                                                         </form>
                                                         <br>
@@ -724,7 +735,7 @@
 										       resultset =statement.executeQuery("select questiontypeid from questiontypes") ;
 											%>
 											
-										        <select id="testtypeid" name="testtypeid" style="border: 1px solid #00ffc1">
+										        <select id="questiontype2" name="questiontype2" style="border: 1px solid #00ffc1">
 										        <%  while(resultset.next()){ %>
 										            <option selected><%= resultset.getString(1)%></option>
 										        <% } %>

@@ -59,11 +59,19 @@ public class InsertQuestion extends HttpServlet {
 
 			List<Option> op = new ArrayList<Option>();
 			request.setCharacterEncoding("UTF-8");
-			int j = 0;
-			while (j < qt.getNumber()) {
+			int j = 1;
+			while (j <= qt.getNumber()) {
 				// qtlist.get(j).setQuestiontypeid(sumrow);
 				Option o = new Option();
-				op.get(j).setOptionname(request.getParameter("optionname[]"));
+				o.setOptionname(request.getParameter("optionname"+j));
+				if(request.getParameter("optionCheck"+j)=="true")
+				{
+					o.setIsanswer(true);
+				}
+				else
+					o.setIsanswer(false);
+				
+				// op.get(j).setOptionname(request.getParameter("optionname[]"));
 				//op.get(j).setIsanswer(request.getstat);
 				op.add(o);
 				j++;
@@ -73,30 +81,31 @@ public class InsertQuestion extends HttpServlet {
 
 			if (kt) {
 
-				String pageidstr = request.getParameter("pageid");
-				int count = 5;
 
-				// Ep kieu Int
-				int pageid = Integer.parseInt(pageidstr);
+				// String pageidstr = request.getParameter("pageid");
+				// int count = 5;
+
+				// // Ep kieu Int
+				// int pageid = Integer.parseInt(pageidstr);
 
 				// Neu pageid == 1 thi se khong phan trang
 				// Neu pageid != 1 thi se phan trang
 
-				if (pageid == 1) {
-				} else {
+				// if (pageid == 1) {
+				// } else {
 
-					pageid = pageid - 1;
-					pageid = pageid * count + 1;
-				}
+				// 	pageid = pageid - 1;
+				// 	pageid = pageid * count + 1;
+				// }
 
-				List<QuestionType> questiontypes = QuestionTypeDAO.DisplayQuestionType(pageid, count, conn);
-				List<Subject> subjects = SubjectDAO.DisplaySubject(pageid, count, conn);
+				List<QuestionType> questiontypes = QuestionTypeDAO.DisplayQuestionType(1, 20, conn);
+				List<Subject> subjects = SubjectDAO.DisplaySubject(1, 20, conn);
 
-				int maxpageid = (sumrow / count) + 1;
+				// int maxpageid = (sumrow / count) + 1;
 
-				request.setAttribute("maxpageid", maxpageid);
+				// request.setAttribute("maxpageid", maxpageid);
 
-				request.setAttribute("numberpage", Integer.parseInt(pageidstr));
+				// request.setAttribute("numberpage", Integer.parseInt(pageidstr));
 
 				request.setAttribute("questiontypes", questiontypes);
 				request.setAttribute("subjects", subjects);
