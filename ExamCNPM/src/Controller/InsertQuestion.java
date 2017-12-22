@@ -37,6 +37,7 @@ public class InsertQuestion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		System.out.println("Start controller");
 		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 
@@ -44,7 +45,10 @@ public class InsertQuestion extends HttpServlet {
 		Question_01 qt = new Question_01();
 		request.setCharacterEncoding("UTF-8");
 
+		System.out.println("before getting number");
 		qt.setNumber(Integer.parseInt(request.getParameter("number")));
+		System.out.println("get number:"+ qt.getNumber());
+		System.out.println("tip neh");
 		qt.setContentquestion(request.getParameter("contentquestion"));
 		qt.setCorrectoption(request.getParameter("correctoption"));
 		qt.setMediaid(Integer.parseInt(request.getParameter("mediaid")));
@@ -56,7 +60,7 @@ public class InsertQuestion extends HttpServlet {
 			List<Option> op = new ArrayList<Option>();
 			request.setCharacterEncoding("UTF-8");
 			int j = 0;
-			while (j < op.size()) {
+			while (j < qt.getNumber()) {
 				// qtlist.get(j).setQuestiontypeid(sumrow);
 				Option o = new Option();
 				op.get(j).setOptionname(request.getParameter("optionname[]"));

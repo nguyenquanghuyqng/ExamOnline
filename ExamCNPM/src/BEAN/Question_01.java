@@ -7,17 +7,19 @@ public class Question_01 {
 	private String contentquestion;
 	private String correctoption;
 	private int mediaid;
+	private String media;
 	private int questiontypeid;
 
 	public Question_01() {
 	}
 
-	public Question_01(int questionid, int number, String contentquestion, String correctoption, int mediaid, int questiontypeid) {
+	public Question_01(int questionid, int number, String contentquestion, String correctoption, int mediaid,String media, int questiontypeid) {
 		this.questionid = questionid;
 		this.number = number;
 		this.contentquestion = contentquestion;
 		this.correctoption = correctoption;
 		this.mediaid = mediaid;	
+		this.setMedia(media);
 		this.questiontypeid = questiontypeid;
 	}
 	public int getQuestionid() {
@@ -66,5 +68,13 @@ public class Question_01 {
 
 	public void setQuestiontypeid(int questiontypeid) {
 		this.questiontypeid = questiontypeid;
+	}
+
+	public String getMedia() {
+		return media;
+	}
+
+	public void setMedia(String media) {
+		this.media = media;
 	}
 }

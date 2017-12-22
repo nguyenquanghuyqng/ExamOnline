@@ -158,23 +158,45 @@ public class QuestionTypeDAO {
 		return max;
 	}
 
-	public static boolean InsertQuestionType(List<QuestionType> qt, Connection conn) {
+	// public static boolean InsertQuestionType(List<QuestionType> qt, Connection conn) {
 
-		String sql = "insert into questiontypes (questiontypeid, questiontypename) value(?,?)";
-		String n= "select max(questiontypeid) from questiontypes";
+	// 	// String sql = "insert into questiontypes (questiontypeid, questiontypename) value(?,?)";
+	// 	// String n= "select max(questiontypeid) from questiontypes";
+	// 	String sql = "call usp_iQuestiontype(?)";
+	// 	PreparedStatement ptmt;
+
+	// 	try {
+	// 		ptmt = conn.prepareStatement(sq);
+	// 		ResultSet rs = ptmt.executeQuery();
+	// 		int i = rs.getInt(1);
+
+	// 		ptmt = conn.prepareStatement(sql);
+
+	// 		int j = 0;
+	// 		while (j < qt.size()) {
+	// 			ptmt.setInt(1,++i);
+	// 			ptmt.setString(2, qt.get(j).getQuestiontypename());
+	// 			if (ptmt.executeUpdate() == 0) {
+	// 				return false;
+	// 			}
+	// 			j++;
+	// 		}	
+	// 	} catch (SQLException e) {
+	// 		e.printStackTrace();
+	// 	}
+	// 	return true;
+	// }
+
+	public static boolean InsertQuestionType(List<QuestionType> qt, Connection conn) {
+		String sql = "call usp_iQuestiontype(?)";
 		PreparedStatement ptmt;
 
 		try {
-			ptmt = conn.prepareStatement(n);
-			ResultSet rs = ptmt.executeQuery();
-			int i = rs.getInt(1);
-
 			ptmt = conn.prepareStatement(sql);
 
 			int j = 0;
 			while (j < qt.size()) {
-				ptmt.setInt(1,++i);
-				ptmt.setString(2, qt.get(j).getQuestiontypename());
+				ptmt.setString(1, qt.get(j).getQuestiontypename());
 				if (ptmt.executeUpdate() == 0) {
 					return false;
 				}

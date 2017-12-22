@@ -322,21 +322,27 @@
                 });
             </script>
 
-
+    <!-- DYNAMIC CREATING TEXTAREA -->
             <script>
                 $(document).ready(function () {
                     var i = 1;
                     $('#add').click(function () {
                         i++;
                         $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, width=80%" name="optionname['+i+']" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" ></textarea></td><td style="max-width: 51px;"><button type="button" name="remove" id="' +
-                            i + '" class="btn btn-danger btn_remove">X</button><input type="checkbox" id="optioncb' + i + '"  style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
+                            '"><td><textarea style="height:80px, width=80%" name="optionname[]" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" ></textarea></td><td style="max-width: 51px;"><button type="button" name="remove" id="' +
+                            i + '" class="btn btn-danger btn_remove">X</button><input type="checkbox" id="optioncb' + i + '" name="optionCheck[]" value="'+i+'" style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
                     });
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
                         $('#row' + button_id + '').remove();
                     });
-                    $('#submit').click(function () {
+                    $('#insert').click(function () {
+                        var elements = document.getElementsByTagName('textarea').length;
+                        document.getElementById("number").value = elements;
+                        document.getElementById("number0").innerHTML =document.getElementById("number").value;
+    
+                        document.getElementById("number1").innerHTML=elements;
+                        alert (elements);
                         $.ajax({
                             url: "InsertQuestion",
                             method: "POST",
@@ -349,6 +355,22 @@
                     });
                 });
             </script>
+
+    <!-- check CHECKBOX -->
+            <script type="text/javascript" language="JavaScript">
+                function checkCheckBoxes(theForm) {
+                    var test = document.getElementsByName("studentDel[]");
+                    for(var i =0; i<test.length; i++){
+                        if (test[i].checked == true) 
+                        {
+                            return true;
+                        } 
+                    }
+                    alert ('Hãy chọn dòng để xóa!');
+                    return false;
+                }
+                </script>
+
             <div id="sidebar" class="sidebar responsive ace-save-state">
                 <script type="text/javascript">
                     try {
@@ -530,7 +552,7 @@
                                     <div class="well-title">
                                         <h2 align="left">Insert Question</h2>
                                     </div>
-                                    <form method="POST" action="InsertAQuestion?pageid=1">
+                                    <form method="POST" action="InsertQuestion?pageid=1">
                                         <!-- Form start -->
                                         <div class="row">
                                             <!-- Select Basic -->
@@ -579,24 +601,27 @@
                                                 <div class="form-group">
                                                     <div class="control-group" id="fields">
                                                         <label class="control-label" for="option">Option</label>
-                                                        <form action="InsertOption?pageid=1" method="post" name="add_name" id="add_name">
+                                                        <form action="InsertOption?pageid=1" method="post" name="add_name" id="add_name"  onsubmit="return checkCheckBoxes(this)">
                                                             <!-- <div class="" style="max-width: 445px;"> -->
                                                             <table class="table table-bordered" id="dynamic_field">
                                                                 <tr>
                                                                     <td>
-                                                                        <textarea style="height:80px, width=80%" name="optionname[1]"  id="option1" placeholder="Enter Option Content" class="form-control name_list"></textarea>
+                                                                        <textarea style="height:80px, width=80%" name="optionname[]"  id="option1" placeholder="Enter Option Content" class="form-control name_list"></textarea>
                                                                     </td>
                                                                     <td style="max-width: 51px;">
                                                                         <button type="button" name="add" id="add" class="btn btn-success">
                                                                             <strong>+</strong>
                                                                         </button>
-                                                                        <input type="checkbox" id="optioncb1" style="margin-left: -93px;margin-top: -33px;" />
+                                                                        <input type="checkbox" id="optioncb1" name="optionCheck[]" value="1" style="margin-left: -93px;margin-top: -33px;" />
                                                                     </td>
 
                                                                 </tr>
                                                             </table>
                                                             <!--<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" /> -->
                                                             <!-- </div> -->
+                                                            <p id="number0"></p>
+                                                            <p id="number1"></p>
+                                                            <input type="hidden" name="number" id="number" class="btn btn-info" value="" />
                                                         </form>
                                                         <br>
                                                     </div>

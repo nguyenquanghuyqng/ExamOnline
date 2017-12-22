@@ -29,58 +29,39 @@ public class InsertQuestionType extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println("questiontype controller");
+//		System.out.println("trc khi get number");
+//		int number = Integer.parseInt(request.getParameter("number1"));
 		Connection conn = DBConnection.CreateConnection();
-
-		int sumrow = QuestionTypeDAO.CountRow(conn);
 
 		List<QuestionType> qtlist = new ArrayList<QuestionType>();
 		request.setCharacterEncoding("UTF-8");
-		int j=0;
-		while(j<qtlist.size()){
+		System.out.println("trc khi get number");
+		int number = Integer.parseInt(request.getParameter("number"));
+		int j=1;
+		System.out.println("trc khi get questiontype list");
+		while(j<=number){
 			// qtlist.get(j).setQuestiontypeid(sumrow);
-			qtlist.get(j).setQuestiontypename(request.getParameter("questiontypename[]"));
+			QuestionType qt =  new QuestionType();
+			qt.setQuestiontypename(request.getParameter("questiontype"+Integer.toString(j)));
+			System.out.println("trong get questiontype list: "+ qt.getQuestiontypename());
+			// qtlist.get(j).setQuestiontypename(request.getParameter("questiontype"+j+1));
+			// System.out.println("option 0 = "+qtlist.get(j).getQuestiontypename());
+			qtlist.add(qt);
 			j++;
 		}
+		System.out.println("sau khi get questiontype list");
 		boolean kt = QuestionTypeDAO.InsertQuestionType(qtlist, conn);
 
-		if (kt) {
+//		if (kt) {
 
-			String pageidstr = request.getParameter("pageid");
-			// count là số lượng phần tử tối đa hiện ở trang
-			int count = 5;
 
-			// Ep kieu Int
-			int pageid = Integer.parseInt(pageidstr);
-
-			// Neu pageid == 1 thi se khong phan trang
-			// Neu pageid != 1 thi se phan trang
-
-			if (pageid == 1) {
-			} else {
-
-				pageid = pageid - 1;
-				pageid = pageid * count + 1;
-			}
-
-			List<QuestionType> list = QuestionTypeDAO.DisplayQuestionType(pageid, count, conn);
-
-			int maxpageid = (sumrow / count) + 1;
-
-			request.setAttribute("maxpageid", maxpageid);
-
-			request.setAttribute("listemp", list);
-
-			request.setAttribute("numberpage", Integer.parseInt(pageidstr));
-
-			request.setAttribute("questiontypes", list);
-
-			request.getRequestDispatcher("View/Question/UpdateDeleteQuestionType.jsp").forward(request, response);
-		}
-		else {
+		// 	request.getRequestDispatcher("View/Question/UpdateDeleteQuestionType.jsp").forward(request, response);
+		// }
+		// else {
 			request.getRequestDispatcher("View/Question/InsertQuestionType.jsp").forward(request, response);
 		}
 
 	}
 
-}
+

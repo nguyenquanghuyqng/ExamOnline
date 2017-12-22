@@ -36,7 +36,7 @@
         <link rel="stylesheet " href="Style/css/template.css" type="text/css ">
 
         <script src="Style/js/jquery-2.1.4.min.js"></script>
-
+        <script src="Style/js/jquery.min.js"></script>
         <script src="Style/js/bootstrap.min.js"></script>
 
         <!-- ace scripts -->
@@ -322,7 +322,7 @@
             <script type="text/javascript">
             $(document).ready(function(){
                 $("#textarea").keyup(function(){
-                    $("#count").text($(this).val().length);
+                    $("#number").text($(this).val().length);
                   });
             });
             </script>
@@ -332,9 +332,11 @@
                     var i = 1;
                     $('#add').click(function () {
                         i++;
+       
                         $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, semi-colon=80%" name="questiontypename['+i+']"  id="questiontype'+i+'" placeholder="Enter question type" class="form-control name_list" ></textarea></td><td><button type="button" name="remove" id="' +
-                            i + '" class="btn btn-danger btn_remove">X</button></td></tr><c:out>${amount='+i+'}</c:out>');
+                            '"><td><textarea style="height:80px, semi-colon=80%" name="questiontype'+i+'"  id="questiontype'+i+'" placeholder="Enter question type" class="form-control name_list" ></textarea></td><td><button type="button" name="remove" id="' +
+                            i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
+
                     });
 
                     $(document).on('click', '.btn_remove', function () {
@@ -342,6 +344,11 @@
                         $('#row' + button_id + '').remove();
                     });
                     $('#submit').click(function () {
+                        var elements = document.getElementsByTagName('textarea').length;
+                        document.getElementById("number").value=elements;
+                        alert(elements);
+                        alert( document.getElementById("number").value );
+                      
                         $.ajax({
                             url: "InsertQuestionType",
                             method: "POST",
@@ -354,7 +361,7 @@
                     });
                 });
             </script>
-
+    
             <div id="sidebar" class="sidebar responsive ace-save-state">
                 <script type="text/javascript">
                     try {
@@ -545,7 +552,7 @@
                                                         <table class="table table-bordered" id="dynamic_field">
                                                             <tr>
                                                                 <td>
-                                                                    <textarea style="height:80px, semi-colon=80%" name="questiontypename[1]"   id="questiontype1" placeholder="Enter question type" class="form-control name_list"></textarea>
+                                                                    <textarea style="height:80px, semi-colon=80%" name="questiontype1" id="questiontype1" placeholder="Enter question type" class="form-control name_list"></textarea>
                                                                 </td>
                                                                 <td>
                                                                     <button type="button" name="add" id="add" class="btn btn-success">+
@@ -554,14 +561,16 @@
                                                             </tr>
                                                         </table>
                                                     </div>
-                                                   
+                                                    <input type="text" name="number" id="number" class="btn btn-info" />   
                                                 </form>
                                                 <br>
                                                 
                                             </div>
                                         </div>
+                                        <!-- <p id="number0"></p>
+                                        <p id="number1"></p> -->
                                          <!-- <input type="submit" value="ADD" id="singlebutton" name="singlebutton" class="btn btn-info"> -->
-                                         <input type="submit" value="ADD" class="btn btn-info"/>
+                                         <input type="submit" value="ADD" id="submit" class="btn btn-info"/>
                                          </form>
                                 </div>
 
