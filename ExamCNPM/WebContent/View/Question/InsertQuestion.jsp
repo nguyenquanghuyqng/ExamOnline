@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+    <%@ page import="java.sql.*" %>
+	<%ResultSet resultset =null;%>
+    
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html>
 
@@ -552,21 +557,40 @@
                                     <div class="well-title">
                                         <h2 align="left">Insert Question</h2>
                                     </div>
-                                    <form method="POST" action="InsertQuestion?pageid=1">
+                                    <form method="POST" action="InsertQuestion?pageid=1" enctype="multipart/form-data">
                                         <!-- Form start -->
                                         <div class="row">
                                             <!-- Select Basic -->
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="appointmentfor">Subject</label>
-                                                    <select id="subject1" name="subject1" class="form-control">
-                                                  <!--  <option value="English">English</option>
-                                                        <option value="Math">Math</option>
-                                                        <option value="C++">C++</option>  -->
-                                                        <c:forEach items="${subjects}" var="subjects">
-						                                     <option class="dropdown" value="${subjects.subjectid}">${subjects.subjectname}</option>
-						                                </c:forEach>
-                                                    </select>
+                                                    <br><%
+														    try{
+														//Class.forName("com.mysql.jdbc.Driver").newInstance();
+														Class.forName("com.mysql.jdbc.Driver");
+														Connection connection = 
+													         DriverManager.getConnection
+													         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+							// 						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
+													
+													       Statement statement = connection.createStatement() ;
+													
+													       resultset =statement.executeQuery("select subjectid from subjects") ;
+														%>
+														
+													        <select id="subjectid" name="subjectid" style="border: 1px solid #00ffc1">
+													        <%  while(resultset.next()){ %>
+													            <option selected><%= resultset.getString(1)%></option>
+													        <% } %>
+													        </select>
+												
+														<%
+													        }
+													        catch(Exception e)
+													        {
+													             out.println("wrong entry"+e);
+													        }
+														%>
                                                     
                                                 </div>
                                             </div>
@@ -574,14 +598,33 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="time">Question Type</label>
-                                                    <select id="questiontype1" name="questiontype1" class="form-control">
-                                                 <!--   <option value="Toiec">Toiec</option>
-                                                        <option value="Math">Math</option>
-                                                        <option value="Software Engenering">Software Engenering</option> -->
-                                                        <c:forEach items="${questiontypes}" var="questiontypes">
-						                                        <option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
-						                                </c:forEach>
-			                                        </select>
+                                                    <br><%
+														    try{
+														//Class.forName("com.mysql.jdbc.Driver").newInstance();
+														Class.forName("com.mysql.jdbc.Driver");
+														Connection connection = 
+													         DriverManager.getConnection
+													         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+							// 						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
+													
+													       Statement statement = connection.createStatement() ;
+													
+													       resultset =statement.executeQuery("select questiontypeid from questiontypes") ;
+														%>
+														
+													        <select id="testtypeid" name="testtypeid" style="border: 1px solid #00ffc1">
+													        <%  while(resultset.next()){ %>
+													            <option selected><%= resultset.getString(1)%></option>
+													        <% } %>
+													        </select>
+												
+														<%
+													        }
+													        catch(Exception e)
+													        {
+													             out.println("wrong entry"+e);
+													        }
+														%>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -601,7 +644,7 @@
                                                 <div class="form-group">
                                                     <div class="control-group" id="fields">
                                                         <label class="control-label" for="option">Option</label>
-                                                        <form action="InsertOption?pageid=1" method="post" name="add_name" id="add_name"  onsubmit="return checkCheckBoxes(this)">
+                                                        <form action="InsertOption?pageid=1" method="post" name="add_name" id="add_name"  onsubmit="return checkCheckBoxes(this)" enctype="multipart/form-data">
                                                             <!-- <div class="" style="max-width: 445px;"> -->
                                                             <table class="table table-bordered" id="dynamic_field">
                                                                 <tr>
@@ -628,7 +671,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="submit" value="ADD" id="insert" name="insert" class="btn btn-info" />
+                                        <input type="submit" value="ADD" id="insert" name="insert" class=" btn-info" />
                                     </form>
                                 </div>
                                
@@ -643,25 +686,43 @@
                                         <h2 align="left">Import File Excel</h2>
                                     </div>
                                     <div class="">
-                                        <form method="POST" action="UploadQuestion?pageid=1">
+                                        <form method="POST" action="UploadQuestion?pageid=1"  enctype="multipart/form-data">
 
                                             File to upload
                                             <input type="file" name="file">
                                             <br> Question type
                                             <br>
 
-                                            <select name="questiontype2" id="questiontype2">
-                                          <!--  <option>OOP</option>
-                                                <option>Lap Trinh Windows</option>
-                                                <option>Lap Trinh Web</option>
-                                                <option>Thuong mai dien tu</option> -->
-                                                <c:forEach items="${questiontypes}" var="questiontypes">
-						                              <option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
-						                        </c:forEach>
-                                            </select>
+                                            <%
+											    try{
+											//Class.forName("com.mysql.jdbc.Driver").newInstance();
+											Class.forName("com.mysql.jdbc.Driver");
+											Connection connection = 
+										         DriverManager.getConnection
+										         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+				// 						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
+										
+										       Statement statement = connection.createStatement() ;
+										
+										       resultset =statement.executeQuery("select questiontypeid from questiontypes") ;
+											%>
+											
+										        <select id="testtypeid" name="testtypeid" style="border: 1px solid #00ffc1">
+										        <%  while(resultset.next()){ %>
+										            <option selected><%= resultset.getString(1)%></option>
+										        <% } %>
+										        </select>
+									
+											<%
+										        }
+										        catch(Exception e)
+										        {
+										             out.println("wrong entry"+e);
+										        }
+											%>
                                             <br>
                                             <br>
-                                            <input type="submit" value="IMPORT" id="import" name="import" class="btn btn-info">
+                                            <input type="submit" value="IMPORT" id="import" name="import" class=" btn-info">
                                         </form>
                                     </div>
                                     <!-- form end -->

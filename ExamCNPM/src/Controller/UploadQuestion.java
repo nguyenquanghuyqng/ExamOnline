@@ -3,9 +3,11 @@ package Controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
+import java.nio.file.Paths;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import DAO.UploadQuestionDAO;
 import DB.DBConnection;
 
 @WebServlet("/UploadQuestion")
+@MultipartConfig
 public class UploadQuestion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
@@ -31,6 +34,7 @@ public class UploadQuestion extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Connection conn = DBConnection.CreateConnection();
 		String pageidstr= request.getParameter("pageid");
 		// count là số lượng phần tử tối đa hiện ở trang
 		int count =5;
@@ -51,11 +55,12 @@ public class UploadQuestion extends HttpServlet {
 			
 		}
 //		String path = request.getParameter("file");
+		System.out.println("Get Part");
 		
 		Part filePath = request.getPart("file");
 		
-		Connection conn = DBConnection.CreateConnection();
-
+		System.out.println("Path" + filePath);
+		
 		
 		System.out.println("Start import excel");
 		UploadQuestionDAO.ImportExcel(request, response, conn, filePath);
