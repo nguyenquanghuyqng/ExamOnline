@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import BEAN.Question;
 import DAO.QuestionDAO;
@@ -49,13 +50,15 @@ public class UploadQuestion extends HttpServlet {
 			pageid=pageid*count + 1;
 			
 		}
-		String path = request.getParameter("file");
-
+//		String path = request.getParameter("file");
+		
+		Part filePath = request.getPart("file");
+		
 		Connection conn = DBConnection.CreateConnection();
 
 		
 		System.out.println("Start import excel");
-		UploadQuestionDAO.ImportExcel(request, response, conn, path);
+		UploadQuestionDAO.ImportExcel(request, response, conn, filePath);
 
 //		conn = DBConnection.CreateConnection();
 		

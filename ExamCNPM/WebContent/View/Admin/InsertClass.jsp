@@ -103,7 +103,7 @@
 
 
 					<div class="">
-						<form method="POST" action="UploadAccount?pageid=1"> 
+						<form method="POST" action="UploadAccount?pageid=1" enctype="multipart/form-data"> 
 
 							File to upload: <input type="file" name="file" style="border: 1px solid #00ffc1"> 
 							

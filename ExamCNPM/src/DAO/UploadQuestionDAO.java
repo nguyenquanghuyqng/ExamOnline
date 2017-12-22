@@ -22,13 +22,13 @@ import java.util.*;
 
 public class UploadQuestionDAO {
 
-	public static void ImportExcel(HttpServletRequest request, HttpServletResponse response, Connection conn, String ex)
+	public static void ImportExcel(HttpServletRequest request, HttpServletResponse response, Connection conn, Part ex)
 			throws ServletException, IOException {
 		// File
 		FileInputStream inp;
 
 		try {
-			inp = new FileInputStream(ex.toString());
+			inp = (FileInputStream) ex.getInputStream();
 			HSSFWorkbook wb = new HSSFWorkbook(new POIFSFileSystem(inp));
 
 			// Lay so dong

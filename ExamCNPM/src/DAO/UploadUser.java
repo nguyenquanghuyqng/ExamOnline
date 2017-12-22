@@ -22,15 +22,16 @@ import BEAN.Account_2;
 
 public class UploadUser {
 
-	public static void ImportExcel( Connection conn, String ex, int classid, int subjectid)
+	public static void ImportExcel( Connection conn, Part ex, int classid, int subjectid)
 			throws ServletException, IOException, ParseException {
 		// File
 		FileInputStream inp;
-		System.out.println("Đường dẫn :"+ex.toString());
+		
+//		System.out.println("Đường dẫn :"+ex.toString());
+		
 		try {
-			inp = new FileInputStream(ex.toString());
-			
-			
+//			inp = new FileInputStream(ex.toString());
+			inp = (FileInputStream) ex.getInputStream();
 			
 			HSSFWorkbook wb = new HSSFWorkbook(new POIFSFileSystem(inp));
 

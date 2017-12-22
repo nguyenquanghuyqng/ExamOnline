@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ import DAO.UploadUser;
 import DB.DBConnection;
 
 @WebServlet("/UploadAccount")
+@MultipartConfig
 public class UploadAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -53,9 +56,13 @@ public class UploadAccount extends HttpServlet {
 			pageid=pageid*count + 1;
 			
 		}
-		String filePath = request.getParameter("file");
+//		String filePath = request.getParameter("file");
 		
-//		 Part filePart = request.getPart("file");
+		Part filePath = request.getPart("file");
+		
+//		String fileNameUpload = Paths.get(filePath.getSubmittedFileName()).getFileName().toString();
+
+		//		 Part filePart = request.getPart("file");
 		 
 //		 ServletContext context = pageContext.getServletContext();
 //		 String filePath = applicaion.getInitParameter("file");
@@ -72,7 +79,9 @@ public class UploadAccount extends HttpServlet {
 		System.out.println("Start import file");
 		
 		try {
+			
 			UploadUser.ImportExcel(conn, filePath, classid, subjectid);
+			
 		} catch (ParseException e) {
 			System.out.println("Exception:"+e.getMessage());
 		}
