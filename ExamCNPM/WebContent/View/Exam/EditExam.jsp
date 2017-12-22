@@ -52,7 +52,7 @@
 		<script type="text/javascript">
 			function show_comfirm() {
 				var comfirmBox;
-				comfirmBox = confirm("Bạn có chắc chắn muốn xóa tài khoản?");
+				comfirmBox = confirm("Bạn có chắc chắn muốn xóa bài thi không ?");
 				if (comfirmBox == true) {
 					return true;
 				} else {

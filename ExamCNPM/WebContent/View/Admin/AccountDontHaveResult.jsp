@@ -173,23 +173,23 @@
 							<!-- numberpage trong HomeController -->
 							<c:if test="${numberpage==1}">
 								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="AccountDontHaveResult?pageid=1">1</a></li>
+								<li><a href="AccountDontHaveResult?pageid=2">2</a></li>
+								<li><a href="AccountDontHaveResult?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage==maxpageid}">
 								<li class="disabled"><a href="">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
+								<li><a href="AccountDontHaveResult?pageid=1">1</a></li>
+								<li><a href="AccountDontHaveResult?pageid=2">2</a></li>
 								<li class="disabled"><a href="#">&raquo;</a></li>
 							</c:if>
 
 							<c:if test="${numberpage>1 && numberpage<maxpageid}">
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage-1}">&laquo;</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=1">1</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=2">2</a></li>
-								<li><a href="UpdateandDeleteResult?pageid=${numberpage+1}">&raquo;</a></li>
+								<li><a href="AccountDontHaveResult?pageid=${numberpage-1}">&laquo;</a></li>
+								<li><a href="AccountDontHaveResult?pageid=1">1</a></li>
+								<li><a href="AccountDontHaveResult?pageid=2">2</a></li>
+								<li><a href="AccountDontHaveResult?pageid=${numberpage+1}">&raquo;</a></li>
 							</c:if>
 						</ul>
 					</div>

@@ -94,9 +94,8 @@
 
 					<div class="page-header">
 						<h1>
-							Upadate and Delete Account <small> <i
-								class="ace-icon fa fa-angle-double-right"></i> Admin can delete
-								account user or update account user
+							Insert Class <small> <i
+								class="ace-icon fa fa-angle-double-right"></i> Admin can insert class 
 							</small>
 						</h1>
 					</div>
@@ -114,8 +113,8 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							Connection connection = 
 						         DriverManager.getConnection
-						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
-// 						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
+// 						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 						
 						       Statement statement = connection.createStatement() ;
 						
@@ -145,8 +144,8 @@
 									Class.forName("com.mysql.jdbc.Driver");
 									Connection connection = 
 								         DriverManager.getConnection
-								         ("jdbc:mysql://localhost:3306/examonline","root","1234");
-// 								         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
+// 								         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+								         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 								
 								       Statement statement = connection.createStatement() ;
 								
@@ -186,8 +185,8 @@
 								<th>roleid</th>
 								<th>classid</th>
 								<th>subjectid</th>
-								<!-- 								<th></th> -->
-								<!-- 								<th></th> -->
+								<!-- 	<th></th> -->
+								<!-- 	<th></th> -->
 							</tr>
 							<tbody id="myTable">
 								<c:forEach items="${account}" var="list">

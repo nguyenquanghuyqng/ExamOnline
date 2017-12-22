@@ -542,6 +542,7 @@
                                     <div class="well-title">
                                         <h2 align="center">Insert Question Types</h2>
                                     </div>
+                                   <center>
                                     <form method="POST" action="InsertQuestionType?pageid=1">
                                         <!-- Form start -->
                                         <div class="form-group">
@@ -570,8 +571,10 @@
                                         <!-- <p id="number0"></p>
                                         <p id="number1"></p> -->
                                          <!-- <input type="submit" value="ADD" id="singlebutton" name="singlebutton" class="btn btn-info"> -->
-                                         <input type="submit" value="ADD" id="submit" class="btn btn-info"/>
+                                         <input type="submit" value="ADD" id="submit" class=" btn-info"/>
                                          </form>
+                                         </center>
+                                         
                                 </div>
 
                                 <!-- form end -->
