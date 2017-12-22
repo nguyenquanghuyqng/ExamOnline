@@ -208,6 +208,22 @@ public class QuestionTypeDAO {
 		return true;
 	}
 
+	public static boolean InsertAQuestionType(QuestionType qt, Connection conn) {
+		String sql = "call usp_iQuestiontype(?)";
+		PreparedStatement ptmt;
+
+		try {
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, qt.getQuestiontypename());
+			if (ptmt.executeUpdate() == 0) {
+				return false;
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
 	public static boolean UpdateData(HttpServletRequest request, int id,QuestionType qt, Connection conn) {
 
 		boolean t = false;

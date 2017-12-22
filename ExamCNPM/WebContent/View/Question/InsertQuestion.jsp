@@ -328,21 +328,22 @@
                     var i = 1;
                     $('#add').click(function () {
                         i++;
-                        $('#dynamic_field').append('<tr id="row' + i +
-                            '"><td><textarea style="height:80px, width=80%" name="optionname[]" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" ></textarea></td><td style="max-width: 51px;"><button type="button" name="remove" id="' +
-                            i + '" class="btn btn-danger btn_remove">X</button><input type="checkbox" id="optioncb' + i + '" name="optionCheck[]" value="'+i+'" style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
+                        var n = document.getElementById('number').value;
+                        var left = document.getElementsByTagName('textarea').length;
+                        if(left !=0)
+                        {
+                            i=n-Math.abs(n-left);
+                        }
+                        for(i; i<n; i++){
+                            $('#dynamic_field').append('<tr id="row' + i +
+                            '"><td><textarea style="height:80px, width=80%" name="optionname[]" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" required></textarea></td><td style="max-width: 51px;"><button style="opacity: 0;"></button><input type="checkbox" id="optioncb' + i + '" name="optionCheck[]" value="'+i+'" style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
+                        }  
                     });
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
                         $('#row' + button_id + '').remove();
                     });
                     $('#insert').click(function () {
-                        var elements = document.getElementsByTagName('textarea').length;
-                        document.getElementById("number").value = elements;
-                        document.getElementById("number0").innerHTML =document.getElementById("number").value;
-    
-                        document.getElementById("number1").innerHTML=elements;
-                        alert (elements);
                         $.ajax({
                             url: "InsertQuestion",
                             method: "POST",
@@ -579,7 +580,7 @@
                                                         <option value="Math">Math</option>
                                                         <option value="Software Engenering">Software Engenering</option> -->
                                                         <c:forEach items="${questiontypes}" var="questiontypes">
-						                                        <option class="dropdown" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
+						                                        <option class="dropdown" id="" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option>
 						                                </c:forEach>
 			                                        </select>
                                                 </div>
@@ -592,8 +593,8 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="appointmentfor">Media file</label>
-                                                    <input type="file" name="file">
+                                                    <label class="control-label" for="appointmentfor">Number of Options</label>
+                                                    <input id="number" name="number" type="text" value="1" placeholder="Content" class="form-control input-md">
                                                 </div>
                                             </div>
 
@@ -606,7 +607,7 @@
                                                             <table class="table table-bordered" id="dynamic_field">
                                                                 <tr>
                                                                     <td>
-                                                                        <textarea style="height:80px, width=80%" name="optionname[]"  id="option1" placeholder="Enter Option Content" class="form-control name_list"></textarea>
+                                                                        <textarea style="height:80px, width=80%" name="optionname[]"  id="option1" placeholder="Enter Option Content" class="form-control name_list" required></textarea>
                                                                     </td>
                                                                     <td style="max-width: 51px;">
                                                                         <button type="button" name="add" id="add" class="btn btn-success">
@@ -619,12 +620,17 @@
                                                             </table>
                                                             <!--<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" /> -->
                                                             <!-- </div> -->
-                                                            <p id="number0"></p>
-                                                            <p id="number1"></p>
-                                                            <input type="hidden" name="number" id="number" class="btn btn-info" value="" />
+                                                          
+                                                           
                                                         </form>
                                                         <br>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="appointmentfor">Media file</label>
+                                                    <input type="file" name="file">
                                                 </div>
                                             </div>
                                         </div>
