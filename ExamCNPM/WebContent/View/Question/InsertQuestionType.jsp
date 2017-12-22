@@ -327,7 +327,7 @@
             });
             </script>
     <!-- DYNAMIC CREATING TEXTAREA -->
-            <script>
+            <!-- <script>
                 $(document).ready(function () {
                     var i = 1;
                     $('#add').click(function () {
@@ -360,7 +360,7 @@
                         });
                     });
                 });
-            </script>
+            </script> -->
     
             <div id="sidebar" class="sidebar responsive ace-save-state">
                 <script type="text/javascript">
@@ -547,7 +547,7 @@
                                         <div class="form-group">
                                             <div class="control-group" id="fields">
                                                 <label class="control-label" for="option">Question type</label>
-                                                <form name="add_name" id="add_name">
+                                                <!-- <form name="add_name" id="add_name">
                                                     <div class="">
                                                         <table class="table table-bordered" id="dynamic_field">
                                                             <tr>
@@ -562,9 +562,9 @@
                                                         </table>
                                                     </div>
                                                     <input type="text" name="number" id="number" class="btn btn-info" />   
-                                                </form>
+                                                </form> -->
                                                 <br>
-                                                
+                                                <input type="text" name="questiontypename" id="questiontypename" style="height:80px, semi-colon=80%" placeholder="Enter question type" class="form-control name_list"" />   
                                             </div>
                                         </div>
                                         <!-- <p id="number0"></p>

@@ -118,7 +118,7 @@
                         
                         
                         <div class="">
-						<h2>List User</h2>
+						<h2>List Exam</h2>
 						<table border='1' style="width: 100%"
 							class="table table-hover table-bordered table-striped" id ="simple-table">
 							<tr style="background: skyblue">
@@ -132,8 +132,7 @@
 								<th>time</th>
 
 								<th>
-									<button type="button" id="AddNewUser" style="background:#40ff00" onclick="return AddNewUser()">Add
-										User</button>
+									
 								</th>
 							</tr>
 							<tbody id="myTable">
