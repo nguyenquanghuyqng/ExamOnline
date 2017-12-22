@@ -22,6 +22,7 @@ public class EditExam extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		// Lấy số trang
 		String pageidstr= request.getParameter("pageid");
 		// count là số lượng phần tử tối đa hiện ở trang
 		int count =5;

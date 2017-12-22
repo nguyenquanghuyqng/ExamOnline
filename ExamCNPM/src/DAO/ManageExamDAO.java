@@ -18,12 +18,15 @@ public class ManageExamDAO {
 	// Insert One tsount Liên kết với servlet Inserttsount
 		public static boolean CreateTestSheet(TestSheet ts) {
 
+			// Khởi tạo kết nối
 			Connection conn = DBConnection.CreateConnection();
 			
 			try {
 
+				// Khởi tạo và gọi câu truy vấn đến store
 				CallableStatement ptmt = conn.prepareCall("{call pr_CreateTest(? ,? ,? ,? ,? ,? ,? ,? )}");
 				 
+				// Set các giá trị cho câu truy vấn
 				ptmt.setString(1, ts.getDatetimestart());
 				ptmt.setString(2, ts.getDatetimeend());
 				ptmt.setString(3, ts.getTime());
@@ -33,8 +36,8 @@ public class ManageExamDAO {
 				ptmt.setInt(7, ts.getClassid());
 				ptmt.setInt(8, ts.getQuestiontypeid());
 
+				// Câu lệnh thực hiện câu truy vấn
 				int kt = ptmt.executeUpdate();
-				
 				
 				
 				if (kt != 0) {
@@ -54,7 +57,7 @@ public class ManageExamDAO {
 			return false;
 		}
 
-		public static List<Exam> ShowListExam(int start, int count) {
+		public static List<Exam> ShowListExam(int start, int end) {
 
 			Connection conn = DBConnection.CreateConnection();
 			
@@ -66,7 +69,7 @@ public class ManageExamDAO {
 				CallableStatement ptmt = conn.prepareCall("{call pr_ViewListTestSheet(?,?)}");
 
 				ptmt.setInt(1, start-1);
-				ptmt.setInt(2, count);
+				ptmt.setInt(2, end);
 				
 				ResultSet rs = ptmt.executeQuery();
 				
@@ -120,7 +123,7 @@ public class ManageExamDAO {
 
 		}
 		
-		public static boolean DeleteExam(int testid,int number, Connection conn) {
+		public static boolean DeleteExam(int testid, int number, Connection conn) {
 
 			boolean t = false;
 

@@ -126,7 +126,8 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							Connection connection = 
 						         DriverManager.getConnection
-						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&amp;characterEncoding=utf8","root","PSSmqz60857");
+// 						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 						
 						       Statement statement = connection.createStatement() ;
 						
@@ -160,7 +161,8 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							Connection connection = 
 						         DriverManager.getConnection
-						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&amp;characterEncoding=utf8","root","PSSmqz60857");
+// 						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 						
 						       Statement statement = connection.createStatement() ;
 						
@@ -191,7 +193,8 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							Connection connection = 
 						         DriverManager.getConnection
-						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&amp;characterEncoding=utf8","root","PSSmqz60857");
+// 						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 						
 						       Statement statement = connection.createStatement() ;
 						
@@ -219,7 +222,8 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							Connection connection = 
 						         DriverManager.getConnection
-						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&amp;characterEncoding=utf8","root","PSSmqz60857");
+// 						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 						
 						       Statement statement = connection.createStatement() ;
 						
@@ -248,7 +252,8 @@
 							<br> Time : <br>
 							<input type="time" name="time" id="time" min="1" style="border: 1px solid #00ffc1"><br>
 							
-							<br> <input type="submit"
+							<br>
+							 <input type="submit"
 
 								value="Create Test Sheet" style="background: skyblue"
 								>

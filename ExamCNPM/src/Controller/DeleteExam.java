@@ -26,13 +26,15 @@ public class DeleteExam extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
+		// Khởi tạo kết nối 
 		Connection conn = (Connection) DBConnection.CreateConnection();
 		
+		// Lấy giá trị thông qua việc get Parameter
 		int testid = Integer.parseInt(request.getParameter("index"));
 		int number = Integer.parseInt(request.getParameter("number"));
 		
 		boolean kt = ManageExamDAO.DeleteExam(testid, number, conn);
+		
 		if(kt) {
 			System.out.println("Delete exam successfull");
 		}

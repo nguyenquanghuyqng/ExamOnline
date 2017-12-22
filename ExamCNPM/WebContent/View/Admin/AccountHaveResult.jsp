@@ -136,7 +136,8 @@
                  			
                  			
                  
-                 		<span style="margin-left: 50px;">Class : </span> <select name="class" id="class" style="border: 1px solid #00ffc1">
+                 		<span style="margin-left: 50px;">Class name: </span>
+                 		 <select name="class" id="class" style="border: 1px solid #00ffc1">
 							<option>Choose class</option>
                    			<option>151101A</option>
 							<option>151102A</option>

@@ -129,7 +129,8 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							Connection connection = 
 						         DriverManager.getConnection
-						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&amp;characterEncoding=utf8","root","PSSmqz60857");
+// 						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						          ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 						
 						       Statement statement = connection.createStatement() ;
 						
@@ -162,7 +163,8 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							Connection connection = 
 						         DriverManager.getConnection
-						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&amp;characterEncoding=utf8","root","PSSmqz60857");
+// 						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						          ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 						
 						       Statement statement = connection.createStatement() ;
 						

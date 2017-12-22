@@ -31,15 +31,12 @@ public class CreateTestSheet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		// set kieu tv
 		request.setCharacterEncoding("UTF-8");
 		
 		TestSheet ts = new TestSheet();
 		
-		System.out.println("Hello");
-		System.out.println(request.getParameter("timestart"));
-		System.out.println(request.getParameter("timeend"));
-		System.out.println(request.getParameter("time"));
-		
+		// Gán các giá trị từ bên jsp thông qua việc getParameter
 		ts.setClassid(Integer.parseInt(request.getParameter("classid")));
 		ts.setDatetimestart(request.getParameter("timestart"));
 		ts.setDatetimeend(request.getParameter("timeend"));
