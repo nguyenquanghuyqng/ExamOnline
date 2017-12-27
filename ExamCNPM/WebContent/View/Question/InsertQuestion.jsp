@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -330,7 +331,7 @@
  <!-- DYNAMIC CREATING TEXTAREA -->
             <script>
                 $(document).ready(function () {
-                    var i = 1;
+                    var i = 0;
                     $('#add').click(function () {
                         i++;
                         var n = document.getElementById('number').value;
@@ -341,7 +342,7 @@
                                 i=n-Math.abs(n-left);
                                 for(i; i<n; i++){
                                     $('#dynamic_field').append('<tr id="row' + i +
-                                    '"><td><textarea style="height:80px, width=80%" name="option'+i+'" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" required></textarea></td><td style="max-width: 51px;"><button style="opacity: 0;"></button><input type="checkbox" id="optioncb' + i + '" name="optionCheck'+i+'" value="'+i+'" style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
+                                    '"><td><textarea style="height:80px, width=80%" name="option'+i+'" id="option'+i+'" placeholder="Enter Option Content" class="form-control name_list" required></textarea></td><td style="max-width: 51px;"><button style="opacity: 0;"></button><input type="checkbox" id="optioncb[]" name="optionCheck'+i+'" style="margin-left: -93px;margin-top: -33px;"/></td></tr>');
                                 }  
                             }
                             else
@@ -355,31 +356,54 @@
                         
                         
                     });
+                    
                     $(document).on('click', '.btn_remove', function () {
                         var button_id = $(this).attr("id");
                         $('#row' + button_id + '').remove();
                     });
                     $('#insert').click(function () {
+                     	var media = $('#media').val();
                         $.ajax({
                             url: "InsertQuestion",
                             method: "POST",
-                            data: $('#add_name').serialize(),
+                            data: $('#addquestion').serialize(),
                             success: function (data) {
                                 alert(data);
-                                $('#add_name')[0].reset();
+                                $('#addquestion')[0].reset();
                             }
                         });
                     });
                 });
             </script>
 
+<!-- 			<script type="text/javascript" >
+// 			 $("#addquestion").submit(function(e) {
+// 				    e.preventDefault();
+// 				    $.ajax({
+// 				      type: 'POST',
+// 				      url: 'InsertQuestion',
+// 				      dataType: 'json',
+// 				      contentType:"application/json;charset=utf-8",
+// 				      data: $('#addquestion').serialize(),
+// 				      async:false,
+// 				      success: function() {
+// 				        alert("success");
+// 				      }
+				    
+// 				      });
+// 				    });
+			</script> -->
     <!-- check CHECKBOX -->
             <script type="text/javascript" language="JavaScript">
                 function checkCheckBoxes(theForm) {
-                    var test = document.getElementsByName("studentDel[]");
+                	e.preventDefault();
+                    var test = document.getElementsByID("optioncb[]");
+                    alert(test.length)
                     for(var i =0; i<test.length; i++){
                         if (test[i].checked == true) 
                         {
+                            document.getElementsByName('optionCheck'+i).value=true;
+                            document.getElementsByID('correctoption').value=i;
                             return true;
                         } 
                     }
@@ -499,7 +523,7 @@
                     </li>
 
 
-                    <li class="">
+                    <li class="">f
                         <a href="CalendarQuestion">
                             <i class="menu-icon fa fa-calendar"></i>
 
@@ -569,7 +593,7 @@
                                     <div class="well-title">
                                         <h2 align="left">Insert Question</h2>
                                     </div>
-                                    <form method="POST" action="InsertQuestion?pageid=1" enctype="multipart/form-data">
+                                    <form method="POST" action="InsertQuestion?pageid=1" id="addquestion" name="addquestion"  onsubmit="return checkCheckBoxes(this)" enctype="multipart/form-data">
                                         <!-- Form start -->
                                         <div class="row">
                                             <!-- Select Basic -->
@@ -582,17 +606,17 @@
 														Class.forName("com.mysql.jdbc.Driver");
 														Connection connection = 
 													         DriverManager.getConnection
-// 													         ("jdbc:mysql://localhost:3306/examonline","root","1234");
-													         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
+ 													         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+//													         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 													
 													       Statement statement = connection.createStatement() ;
 													
-													       resultset =statement.executeQuery("select subjectid from subjects") ;
+													       resultset =statement.executeQuery("select * from subjects") ;
 														%>
 														
 													        <select id="subjectid" name="subjectid" style="border: 1px solid #00ffc1">
 													        <%  while(resultset.next()){ %>
-													            <option selected><%= resultset.getString(1)%></option>
+													            <option selected value="<%= resultset.getString(1)%>"><%= resultset.getString(2)%></option>
 													        <% } %>
 													        </select>
 												
@@ -611,23 +635,24 @@
                                                 <div class="form-group">
                                                     <label class="control-label" for="time">Question Type</label>
 
-                                                    <br><%
+                                                    <br>
+                                                    <%
 														    try{
 														//Class.forName("com.mysql.jdbc.Driver").newInstance();
 														Class.forName("com.mysql.jdbc.Driver");
 														Connection connection = 
 													         DriverManager.getConnection
-// 													         ("jdbc:mysql://localhost:3306/examonline","root","1234");
-													         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
+ 													         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+//													         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 													
 													       Statement statement = connection.createStatement() ;
 													
-													       resultset =statement.executeQuery("select questiontypeid from questiontypes") ;
+													       resultset =statement.executeQuery("select * from questiontypes") ;
 														%>
 														
-													        <select id="questiontypeid" name="questiontypeid" style="border: 1px solid #00ffc1">
+													        <select id="questiontypeid1" name="questiontypeid1" style="border: 1px solid #00ffc1">
 													        <%  while(resultset.next()){ %>
-													            <option selected><%= resultset.getString(1)%></option>
+													            <option selected class="dropdown" value="<%= resultset.getString(1)%>"><%= resultset.getString(2)%></option>
 													        <% } %>
 													        </select>
 												
@@ -639,14 +664,11 @@
 													        }
 														%>
 
-<!--                                                     <select id="questiontype1" name="questiontype1" class="form-control"> -->
-<!--                                                    <option value="Toiec">Toiec</option>
-<!--                                                         <option value="Math">Math</option> -->
-<!--                                                         <option value="Software Engenering">Software Engenering</option> -->
-<%--                                                         <c:forEach items="${questiontypes}" var="questiontypes"> --%>
-<%-- 						                                        <option class="dropdown" id="" value="${questiontypes.questiontypeid}">${questiontypes.questiontypename}</option> --%>
-<%-- 						                                </c:forEach> --%>
-<!-- 			                                        </select> -->
+                                                     <!-- <select id="questiontype1" name="questiontype1" class="form-control">
+                                                         <c:forEach items="${questiontypes}" var="questiontypes">
+ 						                                        <option class="dropdown" value="${questiontypes.questiontypeid}" >${questiontypes.questiontypename}</option>
+ 						                                </c:forEach> 
+	                                                </select> -->
 
                                                 </div>
                                             </div>
@@ -659,7 +681,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="appointmentfor">Number of Options</label>
-                                                    <input id="number" name="number" type="text" value="1" placeholder="Content" class="form-control input-md">
+                                                    <input  type="text" id="number" name="number" value="1" placeholder="Content" class="form-control input-md">
                                                 </div>
                                             </div>
 
@@ -667,25 +689,25 @@
                                                 <div class="form-group">
                                                     <div class="control-group" id="fields">
                                                         <label class="control-label" for="option">Option</label>
-                                                        <form action="InsertOption?pageid=1" method="post" name="add_name" id="add_name"  onsubmit="return checkCheckBoxes(this)" enctype="multipart/form-data">
+                                                        <form action="InsertOption?pageid=1" method="post" name="add_name" id="add_name"  enctype="multipart/form-data">
                                                             <!-- <div class="" style="max-width: 445px;"> -->
                                                             <table class="table table-bordered" id="dynamic_field">
                                                                 <tr>
                                                                     <td>
-                                                                        <textarea style="height:80px, width=80%" name="option1"  id="option1" placeholder="Enter Option Content" class="form-control name_list" required></textarea>
+                                                                        <textarea style="height:80px, width=80%" name="option0"  id="option0" placeholder="Enter Option Content" class="form-control name_list" required></textarea>
                                                                     </td>
                                                                     <td style="max-width: 51px;">
                                                                         <button type="button" name="add" id="add" class="btn btn-success">
                                                                             <strong>+</strong>
                                                                         </button>
-                                                                        <input type="checkbox" id="optioncb1" name="optionCheck1" value="1" style="margin-left: -93px;margin-top: -33px;" />
+                                                                        <input type="checkbox" id="optioncb[]" name="optionCheck0" checked style="margin-left: -93px;margin-top: -33px;" />
                                                                     </td>
 
                                                                 </tr>
                                                             </table>
                                                             <!--<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" /> -->
                                                             <!-- </div> -->
-                                                          <input type="hidden" name="correctoption" id="correctoption" class="btn btn-info" value="" />
+                                                          <input type="hidden" name="correctoption" id="correctoption" class="btn-info"/>
                                                            
                                                         </form>
                                                         <br>
@@ -695,7 +717,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="appointmentfor">Media file</label>
-                                                    <input type="file" name="file">
+                                                    <input type="file" name="media" id="media"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -727,17 +749,17 @@
 											Class.forName("com.mysql.jdbc.Driver");
 											Connection connection = 
 										         DriverManager.getConnection
-// 										         ("jdbc:mysql://localhost:3306/examonline","root","1234");
-										         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
+ 										         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+//										         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
 										
 										       Statement statement = connection.createStatement() ;
 										
-										       resultset =statement.executeQuery("select questiontypeid from questiontypes") ;
+										       resultset =statement.executeQuery("select * from questiontypes") ;
 											%>
 											
-										        <select id="questiontype2" name="questiontype2" style="border: 1px solid #00ffc1">
+										        <select id="questiontypeid2" name="questiontypeid2" style="border: 1px solid #00ffc1">
 										        <%  while(resultset.next()){ %>
-										            <option selected><%= resultset.getString(1)%></option>
+										            <option selected value="<%= resultset.getString(1)%>"><%= resultset.getString(2)%></option>
 										        <% } %>
 										        </select>
 									

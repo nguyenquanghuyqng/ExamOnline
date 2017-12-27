@@ -11,7 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.Part;
+import java.nio.file.Paths;
 import BEAN.Question_01;
 import BEAN.Subject;
 import DAO.QuestionDAO;
@@ -46,74 +47,52 @@ public class InsertQuestion extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		System.out.println("before getting number");
-		qt.setNumber(Integer.parseInt(request.getParameter("number")));
-		System.out.println("get number:"+ qt.getNumber());
+		System.out.println("get number:" + request.getParameter("number"));
 		System.out.println("tip neh");
+		System.out.println("content = " + (request.getParameter("contentquestion")));
+		//System.out.println("correctoption = "+(char)(Integer.parseInt(request.getParameter("correctoption"))+65));
+		System.out.println("questiontypeid = " + request.getParameter("questiontypeid1"));
+
+		//		Part filePath = request.getPart("media");
+		//		System.out.println("media = "+filePath);
+		System.out.println("media = " + request.getParameter("media"));
+
+		qt.setNumber(Integer.parseInt(request.getParameter("number")));
 		qt.setContentquestion(request.getParameter("contentquestion"));
-		qt.setCorrectoption(request.getParameter("correctoption"));
-		qt.setMediaid(Integer.parseInt(request.getParameter("mediaid")));
-		qt.setQuestiontypeid(Integer.parseInt(request.getParameter("questiontypeid")));
+		//qt.setMediaid(Integer.parseInt(request.getParameter("media")));
+		qt.setQuestiontypeid(Integer.parseInt(request.getParameter("questiontypeid1")));
 
 		try {
-			boolean kt = QuestionDAO.InsertQuestion(qt, conn);
-
 			List<Option> op = new ArrayList<Option>();
 			request.setCharacterEncoding("UTF-8");
-			int j = 1;
-			while (j <= qt.getNumber()) {
-				// qtlist.get(j).setQuestiontypeid(sumrow);
+			int j = 0;
+			while (j < qt.getNumber()) {
 				Option o = new Option();
-				o.setOptionname(request.getParameter("optionname"+j));
-				if(request.getParameter("optionCheck"+j)=="true")
-				{
+
+				o.setOptionname((char) (65 + j) + "." + request.getParameter("option" + j));
+				System.out.println(o.getOptionname());
+				if (Boolean.parseBoolean(request.getParameter("optionCheck" + j)) == true) {
 					o.setIsanswer(true);
-				}
-				else
+					qt.setCorrectoption(String.valueOf((char) (65 + j)));
+				} else
 					o.setIsanswer(false);
-				
-				// op.get(j).setOptionname(request.getParameter("optionname[]"));
-				//op.get(j).setIsanswer(request.getstat);
+
+				System.out.println(o.isIsanswer());
 				op.add(o);
 				j++;
 			}
 
+			System.out.println("answer = " + request.getParameter("correctoption"));
+
+			boolean kt = QuestionDAO.InsertQuestion(qt, conn);
 			QuestionDAO.InsertOptions(op, conn);
 
-			if (kt) {
+			List<QuestionType> questiontypes = QuestionTypeDAO.DisplayQuestionType(1, 20, conn);
+			List<Subject> subjects = SubjectDAO.DisplaySubject(1, 20, conn);
 
-
-				// String pageidstr = request.getParameter("pageid");
-				// int count = 5;
-
-				// // Ep kieu Int
-				// int pageid = Integer.parseInt(pageidstr);
-
-				// Neu pageid == 1 thi se khong phan trang
-				// Neu pageid != 1 thi se phan trang
-
-				// if (pageid == 1) {
-				// } else {
-
-				// 	pageid = pageid - 1;
-				// 	pageid = pageid * count + 1;
-				// }
-
-				List<QuestionType> questiontypes = QuestionTypeDAO.DisplayQuestionType(1, 20, conn);
-				List<Subject> subjects = SubjectDAO.DisplaySubject(1, 20, conn);
-
-				// int maxpageid = (sumrow / count) + 1;
-
-				// request.setAttribute("maxpageid", maxpageid);
-
-				// request.setAttribute("numberpage", Integer.parseInt(pageidstr));
-
-				request.setAttribute("questiontypes", questiontypes);
-				request.setAttribute("subjects", subjects);
-
-				request.getRequestDispatcher("View/Question/UpdateDeleteQuestion.jsp").forward(request, response);
-			} else {
-				request.getRequestDispatcher("View/Question/InsertQuestion.jsp").forward(request, response);
-			}
+			request.setAttribute("questiontypes", questiontypes);
+			request.setAttribute("subjects", subjects);
+			request.getRequestDispatcher("View/Question/InsertQuestion.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
