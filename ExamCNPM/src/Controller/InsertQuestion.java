@@ -50,13 +50,17 @@ public class InsertQuestion extends HttpServlet {
 		System.out.println("get number:" + request.getParameter("number"));
 		System.out.println("tip neh");
 		System.out.println("content = " + (request.getParameter("contentquestion")));
-		//System.out.println("correctoption = "+(char)(Integer.parseInt(request.getParameter("correctoption"))+65));
 		System.out.println("questiontypeid = " + request.getParameter("questiontypeid1"));
-
-		//		Part filePath = request.getPart("media");
-		//		System.out.println("media = "+filePath);
+//
+//		System.out.println("Get Part");
+//		System.out.println("media = " + request.getParameter("media"));
+//		Part filePath = request.getPart("media");
+//		
+//		System.out.println("Path" + filePath);
+//		
+		
+		System.out.println("Start import excel");
 		System.out.println("media = " + request.getParameter("media"));
-
 		qt.setNumber(Integer.parseInt(request.getParameter("number")));
 		qt.setContentquestion(request.getParameter("contentquestion"));
 		//qt.setMediaid(Integer.parseInt(request.getParameter("media")));
@@ -66,24 +70,24 @@ public class InsertQuestion extends HttpServlet {
 			List<Option> op = new ArrayList<Option>();
 			request.setCharacterEncoding("UTF-8");
 			int j = 0;
+			
 			while (j < qt.getNumber()) {
 				Option o = new Option();
 
-				o.setOptionname((char) (65 + j) + "." + request.getParameter("option" + j));
+				o.setOptionname((char) (65 + j) + ". " + request.getParameter("option" + j));
 				System.out.println(o.getOptionname());
-				if (Boolean.parseBoolean(request.getParameter("optionCheck" + j)) == true) {
+				System.out.println(request.getParameter("optionCheck" + j));
+				if (request.getParameter("optionCheck" + j) != null) {
 					o.setIsanswer(true);
+//					qt.setCorrectoption(qt.getCorrectoption()+ String.valueOf((char) (65 + j))+";");
 					qt.setCorrectoption(String.valueOf((char) (65 + j)));
 				} else
 					o.setIsanswer(false);
-
-				System.out.println(o.isIsanswer());
 				op.add(o);
 				j++;
 			}
-
-			System.out.println("answer = " + request.getParameter("correctoption"));
-
+			
+			System.out.println("qt.correctoption= "+qt.getCorrectoption());
 			boolean kt = QuestionDAO.InsertQuestion(qt, conn);
 			QuestionDAO.InsertOptions(op, conn);
 

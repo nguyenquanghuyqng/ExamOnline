@@ -54,7 +54,6 @@ public class UploadQuestion extends HttpServlet {
 			pageid=pageid*count + 1;
 			
 		}
-//		String path = request.getParameter("file");
 		System.out.println("Get Part");
 		
 		Part filePath = request.getPart("file");
@@ -65,8 +64,6 @@ public class UploadQuestion extends HttpServlet {
 		System.out.println("Start import excel");
 		UploadQuestionDAO.ImportExcel(request, response, conn, filePath);
 
-//		conn = DBConnection.CreateConnection();
-		
 		// Lấy danh sach question dua vao list
 		System.out.println("Show date ");
 		List<Question> list = QuestionDAO.DisplayQuestion(pageid, count, conn);

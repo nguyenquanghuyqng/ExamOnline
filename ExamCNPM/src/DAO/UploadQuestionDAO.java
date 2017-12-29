@@ -13,6 +13,7 @@ import BEAN.Option;
 import BEAN.Question;
 import BEAN.Question_01;
 import Controller.UploadQuestion;
+import sun.net.www.http.KeepAliveCache;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -52,11 +53,13 @@ public class UploadQuestionDAO {
 					int maxcol = j + qs.getNumber();
 					System.out.print("maxcol= " + maxcol);
 
+					int k=0;
 					while (j <= maxcol) {
 						Option op = new Option();
 
-						op.setOptionname(row.getCell(j).getStringCellValue());
+						// op.setOptionname(String.valueOf((char) (65 + k++))+". "+row.getCell(j).getStringCellValue());
 						//char charAt = (char) op.getOptionname().charAt(0);
+						op.setOptionname(row.getCell(j).getStringCellValue());
 						char charAt= (qs.getCorrectoption()).charAt(0);
 						if ((charAt)==(op.getOptionname().charAt(0))) {
 							op.setIsanswer(true);
