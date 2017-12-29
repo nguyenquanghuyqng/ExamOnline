@@ -42,7 +42,6 @@ public class InsertQuestion extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 
-		int sumrow = QuestionDAO.CountRow(conn);
 		Question_01 qt = new Question_01();
 		request.setCharacterEncoding("UTF-8");
 

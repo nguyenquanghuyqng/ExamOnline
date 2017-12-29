@@ -239,7 +239,6 @@ public class QuestionDAO {
 	// 	return true;
 	// }
 
-	
 	public static boolean InsertOptions(List<Option> qt, Connection conn) {
 
 		String sql = "call usp_iOption(?,?)";
@@ -272,7 +271,7 @@ public class QuestionDAO {
 			ptmt = conn.prepareStatement(sql);
 
 			ptmt.setInt(1, qt.getNumber());
-			ptmt.setString(2,qt.getContentquestion());
+			ptmt.setString(2, qt.getContentquestion());
 			ptmt.setString(3, qt.getCorrectoption());
 			ptmt.setInt(4, qt.getMediaid());
 			ptmt.setInt(5, qt.getQuestiontypeid());
@@ -283,5 +282,46 @@ public class QuestionDAO {
 			e.printStackTrace();
 		}
 		return true;
+	}
+
+	public static boolean UpdateData(HttpServletRequest request, Question_01 qt, List<Option> op, Connection conn) {
+		String sqlqt = "call usp_uQuestion(?,?,?,?,?,?) ;";
+		String sqlop = "call usp_uOption(?,?,?,?);";
+
+		try {
+
+			PreparedStatement ptmt = conn.prepareStatement(sqlqt);
+			ptmt.setInt(1, qt.getQuestionid());
+			ptmt.setInt(2, qt.getNumber());
+			ptmt.setString(3, qt.getContentquestion());
+			ptmt.setString(4, qt.getCorrectoption());
+			ptmt.setInt(5, qt.getMediaid());
+			ptmt.setInt(6, qt.getQuestiontypeid());
+
+			int kt = ptmt.executeUpdate();
+
+			if (kt != 0) {
+				ptmt = conn.prepareStatement(sqlop);
+				int j = 0;
+				while (j < op.size()) {
+					ptmt.setInt(1,qt.getQuestionid());
+					ptmt.setInt(2,op.get(j).getOptionid());
+					ptmt.setString(3, op.get(j).getOptionname());
+					ptmt.setBoolean(4, op.get(j).isIsanswer());
+					if (ptmt.executeUpdate() == 0) {
+						return false;
+					}
+					j++;
+					
+				}
+				ptmt.close();
+				return true;
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return false;
 	}
 }
