@@ -646,7 +646,7 @@
 					<form action="SaveEditQuestionType?pageid=1" method="POST" name="frmInsertAcc">
 						<div class="form-group">
 							<label for="qtid">Questiontype ID</label> 
-							<input type="text" class="form-control" name="questiontypeid" id ="questiontypeid" value="${list.questiontypeid}" disabled> <!--placeholder="QuestiontypeID">-->
+							<input type="text" class="form-control" name="questiontypeid" id ="questiontypeid" value="${list.questiontypeid}" > <!--placeholder="QuestiontypeID">-->
 						</div>
 						<div class="form-group">
 							<label for="questiontypename">Questiontype</label> 

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mysql.jdbc.Connection;
 
 import BEAN.Question_01;
+import BEAN.Question;
 import BEAN.Option;
 import DAO.QuestionDAO;
 import DB.DBConnection;
@@ -89,7 +90,7 @@ public class SaveEditQuestion extends HttpServlet {
 
 				}
 
-				List<Question_01> list = QuestionDAO.DisplayQuestion(pageid, count, conn);
+				List<Question> list = QuestionDAO.DisplayQuestion(pageid, count, conn);
 
 				int sumrow = QuestionDAO.CountRow(conn);
 
@@ -109,7 +110,7 @@ public class SaveEditQuestion extends HttpServlet {
 				rd.forward(request, response);
 			} else {
 
-				List<Question_01> list = QuestionDAO.SelectQuestion(qt.getQuestionid(), conn);
+				List<Question> list = QuestionDAO.SelectQuestion(qt.getQuestionid(), conn);
 				request.setAttribute("questions", list);
 				request.getRequestDispatcher("View/Question/EditQuestion.jsp").forward(request, response);
 			}

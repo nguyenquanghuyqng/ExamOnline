@@ -226,8 +226,6 @@ public class QuestionTypeDAO {
 
 	public static boolean UpdateData(HttpServletRequest request, int id,QuestionType qt, Connection conn) {
 
-		boolean t = false;
-
 		String sql = "UPDATE questiontypes set questiontypename=? where questiontypeid=" + id + ";";
 
 		try {
@@ -239,7 +237,7 @@ public class QuestionTypeDAO {
 
 			if (kt != 0) {
 
-				return t = true;
+				return true;
 			}
 			ptmt.close();
 
@@ -247,7 +245,7 @@ public class QuestionTypeDAO {
 			System.out.println(e.getMessage());
 		}
 
-		return t;
+		return false;
 
 	}
 

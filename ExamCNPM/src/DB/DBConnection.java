@@ -15,16 +15,21 @@ public class DBConnection {
 //		String password="KMQeii39580";
 		
 		
-		String host= "node5694-examonline.ocs.opusinteractive.io";
-		String url="jdbc:mysql://"+host+"/examonline?useUnicode=true&characterEncoding=UTF-8";
-		String username="root";
-		String password="FQDoir38827";
+//		String host= "node5694-examonline.ocs.opusinteractive.io";
+//		String url="jdbc:mysql://"+host+"/examonline?useUnicode=true&characterEncoding=UTF-8";
+//		String username="root";
+//		String password="FQDoir38827";
 		
 		
 //		
 //		String url="jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8";
 //		String username="root";
 //		String password="PSSmqz60857";
+		
+		String host= "node10595-examonline.fr-1.paas.massivegrid.net";
+		String url="jdbc:mysql://"+host+"/examonline?useUnicode=true&characterEncoding=UTF-8";
+		String username="root";
+		String password="BSOxar77141";
 
 		try {
 			// load Driver

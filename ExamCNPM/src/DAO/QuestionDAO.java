@@ -2,6 +2,9 @@ package DAO;
 
 import java.sql.*;
 import java.util.*;
+
+import javax.servlet.http.HttpServletRequest;
+
 import BEAN.Question;
 import BEAN.QuestionType;
 import BEAN.Question_01;
@@ -284,6 +287,42 @@ public class QuestionDAO {
 		return true;
 	}
 
+	public static List<Question> SelectQuestion(int id, Connection conn) {
+
+		List<Question> list = new ArrayList<Question>();
+
+		String sql = "select * from questions where questionid = " + id + "";
+
+		try {
+
+			PreparedStatement ptmt = conn.prepareStatement(sql);
+
+			ResultSet rs = ptmt.executeQuery();
+
+			while (rs.next()) {
+
+				Question qs = new Question();
+
+				qs.setQuestionid(rs.getInt("questionid"));
+				qs.setQuestiontype(getQuestiontypename(rs.getInt("questiontypeid")));
+				//qs.setNumber(rs.getInt("number"));
+				qs.setContentquestion(rs.getString("contentquestion"));
+				qs.setOptions(getOptions(qs.getQuestionid()));
+				qs.setCorrectoption(rs.getString("correctoption"));
+				qs.setMediaid(rs.getInt("mediaid"));
+
+				list.add(qs);
+
+			}
+			ptmt.close();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return list;
+	}
+	
 	public static boolean UpdateData(HttpServletRequest request, Question_01 qt, List<Option> op, Connection conn) {
 		String sqlqt = "call usp_uQuestion(?,?,?,?,?,?) ;";
 		String sqlop = "call usp_uOption(?,?,?,?);";
