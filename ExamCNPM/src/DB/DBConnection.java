@@ -5,9 +5,9 @@ public class DBConnection {
 		Connection conn= null;
 
 		
-//		String url="jdbc:mysql://localhost:3306/examonline";
-//		String username="root";
-//		String password="1234";
+		String url="jdbc:mysql://localhost:3306/examonline";
+		String username="root";
+		String password="1234";
 		
 //		String host= "node16809-examonline.kilatiron.com";
 //		String url="jdbc:mysql://"+host+"/examonline?useUnicode=true&characterEncoding=UTF-8";
@@ -26,10 +26,10 @@ public class DBConnection {
 //		String username="root";
 //		String password="PSSmqz60857";
 		
-		String host= "node10595-examonline.fr-1.paas.massivegrid.net";
-		String url="jdbc:mysql://"+host+"/examonline?useUnicode=true&characterEncoding=UTF-8";
-		String username="root";
-		String password="BSOxar77141";
+//		String host= "node10595-examonline.fr-1.paas.massivegrid.net";
+//		String url="jdbc:mysql://"+host+"/examonline?useUnicode=true&characterEncoding=UTF-8";
+//		String username="root";
+//		String password="BSOxar77141";
 
 		try {
 			// load Driver
