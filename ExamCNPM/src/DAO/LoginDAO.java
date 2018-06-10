@@ -15,13 +15,13 @@ public class LoginDAO {
 
 		boolean t = false;
 
-		PreparedStatement ptmt = null;
+		java.sql.PreparedStatement ptmt = null;
 
 		String sql = "select username, pass, roleid from users";
 		//String sql = "select username, pass, roleid from users where username = ?";
 		try {
 
-			ptmt = (PreparedStatement) conn.prepareStatement(sql);
+			ptmt = conn.prepareStatement(sql);
 
 			ResultSet rs = ptmt.executeQuery();
 
