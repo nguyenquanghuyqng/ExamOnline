@@ -113,9 +113,9 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							Connection connection = 
 						         DriverManager.getConnection
-// 						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+						         ("jdbc:mysql://localhost:3306/examonline","root","1234");
 // 						         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
-													         ("jdbc:mysql://node10595-examonline.fr-1.paas.massivegrid.net/examonline?useUnicode=true&characterEncoding=UTF-8","root","BSOxar77141");						
+// 								("jdbc:mysql://node10595-examonline.fr-1.paas.massivegrid.net/examonline?useUnicode=true&characterEncoding=UTF-8","root","BSOxar77141");						
 						       Statement statement = connection.createStatement() ;
 						
 						       resultset =statement.executeQuery("select classid from classes") ;
@@ -144,9 +144,9 @@
 									Class.forName("com.mysql.jdbc.Driver");
 									Connection connection = 
 								         DriverManager.getConnection
-// 								         ("jdbc:mysql://localhost:3306/examonline","root","1234");
+								         ("jdbc:mysql://localhost:3306/examonline","root","1234");
 // 								         ("jdbc:mysql://node16816-examonlinevn.kilatiron.com/examonline?useUnicode=true&characterEncoding=UTF-8","root","PSSmqz60857");
-													         ("jdbc:mysql://node10595-examonline.fr-1.paas.massivegrid.net/examonline?useUnicode=true&characterEncoding=UTF-8","root","BSOxar77141");								
+// 										("jdbc:mysql://node10595-examonline.fr-1.paas.massivegrid.net/examonline?useUnicode=true&characterEncoding=UTF-8","root","BSOxar77141");								
 								       Statement statement = connection.createStatement() ;
 								
 								       resultset =statement.executeQuery("select subjectid from subjects") ;
