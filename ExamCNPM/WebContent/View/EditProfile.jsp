@@ -348,29 +348,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<a href="#home" class="scroll" id="toTop" style="display: block;">
 		<span id="toTopHover" style="opacity: 1;"> </span>
 	</a>
-	<!-- //smooth scrolling -->
-
-
-
-	
-
-	
-
-
-
-
-	
-
-
-	<!-- start-smoth-scrolling -->
-	
-	
-	<!-- //here ends scrolling icon -->
-	<!--js for bootstrap working-->
-<!-- 	<script src="js/bootstrap.js"></script> -->
-	<!-- //for bootstrap working -->
-
-
 </body>
 
 </html>

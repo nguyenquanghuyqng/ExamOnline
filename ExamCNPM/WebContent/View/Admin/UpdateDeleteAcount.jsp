@@ -385,19 +385,6 @@
 		</div>
 	</div>
 
-<!-- <!-- 	<script type="text/javascript"> --> -->
-<!-- // 		function AddNewUser() { -->
-	
-<!-- // 			$(document).ready(function() { -->
-<!-- // 				$("#AddNewUser").click(function() { -->
-<!-- // 					$("#myModal").modal(); -->
-<!-- // 				}); -->
-<!-- // 			}); -->
-			
-<!-- // 		} -->
-<!-- <!-- 	</script> --> -->
-		
-
 	<a href="#" id="btn-scroll-up"
 		class="btn-scroll-up btn btn-sm btn-inverse"> <i
 		class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
